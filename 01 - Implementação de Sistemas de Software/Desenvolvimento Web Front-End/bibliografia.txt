@@ -1,0 +1,52 @@
+Unidade 01
+Referência Bibliográfica Básica
+
+1 - (ok) SIKOS, L. Web Standards. Mastering HTML5, CSS3, and XML. [electronic resource]: 2nd ed. 2014. [S. l.: s. n.]. ISBN 9781484208830.
+2 - (ok) DACONTA, M. C.; SMITH, K. T.; OBRST, L. J. The semantic Web: a guide to the future of XML, Web services, and knowledge management. [s. l.]: Wiley, [s. d.]. ISBN 0471432571.
+
+Referência Bibliográfica Complementar
+Sites na Internet – Protocolo HTTP (Links para um site externo.)
+    World Wide Web Consortium (Links para um site externo.) - Padrões (Inglês) (Links para um site externo.)
+    World Wide Web Consortium (Links para um site externo.) - Padrões (Português)  (Links para um site externo.)
+    What Is Web 2.0 (Links para um site externo.) (O’Reilly) (Links para um site externo.)
+    Mozilla Developer Network (MDN) (Links para um site externo.) – Uma Visão Geral do HTTP (Links para um site externo.)
+    RFC 2616 - Hypertext Transfer Protocol (Links para um site externo.) -- HTTP/1.1 (ietf.org)
+
+----------------------------------------------------------------
+
+Unidade 02
+Referência Bibliográfica Básica
+
+1 - SILVA, Maurício Samy. HTML 5: a linguagem de marcação quer revolucionar a web. 2. ed. rev. e ampl. [s. l.]: Novatec, 2014. ISBN 9788575224038.
+2 - SANDERS, William B. Smashing HTML5: técnicas para a nova geração da web. Porto Alegre: Bookman, 2012. xiv, 354 p. ISBN 9788577809608.
+3 - (ok) DEITEL, Paul J.; Deitel, Harvey M. Ajax, Rich. Internet Applications e Desenvolvimento Web para Programadores. Pearson 776. ISBN 9788576051619.
+4 - SILVA, Maurício Samy. CSS3: desenvolva aplicações web profissionais com uso dos poderosos recursos de estilização das CSS3. São Paulo: Novatec, 2011. 494 p. ISBN 9788575222898.
+5 - BERTAGNOLLI, S. de C.; MILETTO, E. M. Desenvolvimento de software II: introdução ao desenvolvimento web com HTML, CSS, JavaScript e PHP. [s. l.]: Bookman, 2014. ISBN 9788582601952
+
+Referência Bibliográfica Complementar
+Sites na Internet – Linguagem HTML
+    W3Schools (Links para um site externo.)
+    HTMLReference.io (Links para um site externo.)
+    Mozilla Developer Network (MDN) (Links para um site externo.) 
+    Semantic HTML  (Links para um site externo.)
+
+Sites na Internet – Linguagem CSS
+    W3Schools – CSS 3 (Links para um site externo.) 
+    CSS Reference (Links para um site externo.)
+    Learn to code HTML & CSS (Links para um site externo.)
+    CSS Basics (Links para um site externo.) – Tudo sobre o CSS
+    Quirksmode (Links para um site externo.) – Compatibilidade de navegadores
+
+Sites na Internet - Linguagem JavaScript
+    Especificação da Linguagem – ECMA Script 262 (Links para um site externo.)
+    JavaScript Guide (MDN) (Links para um site externo.)
+    JavaScript Tutorial (W3Schools) (Links para um site externo.)
+    The HTML5 JavaScript (Links para um site externo.) API Index
+    Índice para Plataforma HTML5 (Links para um site externo.) e suas APIs 
+    Aplicativo do Google para aprender JavaScript (grassHopper (Links para um site externo.))
+    JavaScript – The Core (Links para um site externo.)
+    Fundamentos do JavaScript (Links para um site externo.)
+    TodoMVC (Links para um site externo.)
+    ECMAScript Compatibility Table (Links para um site externo.)
+
+

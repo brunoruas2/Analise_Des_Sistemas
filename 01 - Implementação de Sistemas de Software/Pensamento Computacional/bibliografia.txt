@@ -1,0 +1,28 @@
+Referências
+Referência Bibliográfica Básica
+1.(ok) BEECHER, Karl. Computational Thinking - A beginner's guide to problem-solving and programming. Swindon, UK: BCS Learning & Development Limited, 2017. (O´Reilly) EPUB ISBN-13: 978-1-78017-36-65.
+2.(ok) FORBELLONE, André Luiz Villar; EBERSPACHER, Henri Frederico. Lógica de programação: a construção de algoritmos e estruturas de dados. 3. ed. São Paulo: Prentice Hall, 2005. xii, 218 p. ISBN 8576050242.
+3.IEEE Transactions on Education. New York: Institute of Electrical and Electronics Engineers,1963-. Trimestral. Print ISSN: 0018-9359. Online ISSN: 1557-9638.
+4.MANZANO, José Augusto N. G; OLIVEIRA, Jayr Figueiredo de. Algoritmos: lógica para desenvolvimento de programação de computadores. 28. ed. rev. e atual. São Paulo, SP: Érica, 2016. ISBN 9788536518657.
+
+Referência Bibliográfica Complementar
+5.COMPUTERS IN HUMAN BEHAVIOR. New York, N.Y., USA: Pergamon,1985-. Bimestral. ISSN 0747-5632.
+6.GUEDES, Sérgio (Org). Lógica de programação algorítmica. São Paulo: Pearson, 2014. ISBN 9788543005546.
+7.MANZANO, José Augusto N. G. Estudo dirigido de algoritmos. 15. São Paulo Erica 2011 1 recurso online ISBN 9788536519067.
+8.SOUZA, Marcos Fernando Ferreira de. Computadores e sociedade: da filosofia às linguagens de programação. Editora Intersaberes 208 ISBN 9788559722116.
+9.TORRES, Fernando E. et al. Pensamento computacional [recurso eletrônico] / [revisão técnica: Vanessa Stangherlin Machado Paixão Cortes]. Porto Alegre: SAGAH, 2019. ISBN 978-85-9502-997-2.
+10.WANG, Paul S. From Computing to Computational Thinking. Boca Raton, USA: CRC Press, 2016. (O´Reilly) ISBN: 9781351630221.
+
+Referência Bibliográfica Básica
+BEECHER, Karl. Computational Thinking - A beginner's guide to problem-solving and programming. Swindon, UK: BCS Learning & Development Limited, 2017. (O´Reilly) EPUB ISBN-13: 978-1-78017-36-65.
+BELL, Tim; WITTEN, Ian H.; FELLOWS, Mike. Computer Science Unplugged – Ensinando Ciência da Computação sem o uso do computador. Tradução coordenada por Luciano Porto Barreto, 2011. Disponível em: https://classic.csunplugged.org/wp-content/uploads/2014/12/CSUnpluggedTeachers-portuguese-brazil-feb-2011.pdf (Links para um site externo.). Acesso em: 23 dez. 2020.
+IEEE Transactions on Education. New York: Institute of Electrical and Electronics Engineers,1963-. Trimestral. Print ISSN: 0018-9359. Online ISSN: 1557-9638.
+MANZANO, José Augusto N. G; OLIVEIRA, Jayr Figueiredo de. Algoritmos: lógica para desenvolvimento de programação de computadores. 28. ed. rev. e atual. São Paulo, SP: Érica, 2016. ISBN 9788536518657.
+
+Referência Bibliográfica Complementar
+COMPUTERS IN HUMAN BEHAVIOR. New York, N.Y., USA: Pergamon,1985-. Bimestral. ISSN 0747-5632.
+GUEDES, Sérgio (Org). Lógica de programação algorítmica. São Paulo: Pearson, 2014. ISBN 9788543005546.
+FORBELLONE, André Luiz Villar; EBERSPACHER, Henri Frederico. Lógica de programação: a construção de algoritmos e estruturas de dados. 3. ed. São Paulo: Prentice Hall, 2005. xii, 218 p. ISBN 8576050242
+MANZANO, José Augusto N. G. Estudo dirigido de algoritmos. 15. São Paulo Erica 2011 1 recurso online ISBN 9788536519067.
+SOUZA, Marcos Fernando Ferreira de. Computadores e sociedade: da filosofia às linguagens de programação. Editora Intersaberes 208 ISBN 9788559722116.
+SAGAH, 2019. ISBN 978-85-9502-997-2 6. WANG, Paul S. From Computing to Computational Thinking. Boca Raton, USA: CRC Press, 2016. (O´Reilly) ISBN: 9781351630221.

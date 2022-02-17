@@ -1,0 +1,11 @@
+C01 - Interpretar e elaborar documentos, pareceres, gráficos, tabelas e diagramas.
+
+C02 - Analisar, projetar, documentar e implementar sistemas computacionais.
+
+C07 - Promover a qualidade do processo de desenvolvimento de software.
+
+C08 - Elaborar e manter a documentação pertinente ao processo de software.
+
+C09 - Avaliar, selecionar e utilizar ferramentas, metodologias e tecnologias adequadas ao problema e ao contexto para a produção de sistemas computacionais.
+
+C10 - Desenvolver programas de computador empregando linguagens de programação e raciocínio lógico.

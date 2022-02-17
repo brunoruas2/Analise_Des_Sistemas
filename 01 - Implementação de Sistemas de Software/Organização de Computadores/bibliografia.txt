@@ -1,0 +1,11 @@
+Referências
+Referência Bibliográfica Básica
+1. (ok) STALLINGS, William. Arquitetura e organização de computadores. 10. ed. São Paulo: Pearson, c2018. E-book. ISBN 9788543020532.
+2. CORRÊA, Ana Grasielle Dionísio (Org.). Organização e arquitetura de computadores. São Paulo: Pearson, 2017. E-book. ISBN 9788543020327.
+3. PATTERSON, David A. Organização e projeto de computadores a interface hardware/software. Rio de Janeiro, GEN LTC 2017. 1 recurso online. ISBN 9788595152908.
+4. COMMUNICATIONS OF THE ACM. New York, N.Y., USA: Association for Computing Machinery, 1959-. Monthly. Disponível em: https://dl-acm-org.ez93.periodicos.capes.gov.br/citation.cfm?id=J79 (Links para um site externo.)
+
+Referência Bibliográfica Complementar
+1. (ok) TANENBAUM, Andrew S.; AUSTIN, Todd. Organização estruturada de computadores. 6. ed. São Paulo, SP: Pearson Education do Brasil, 2013. E-book. ISBN 9788581435398.
+2. MONTEIRO, Mário A. Introdução à organização de computadores. 5. ed. Rio de Janeiro: LTC - Livros Técnicos e Científicos, c2007. E-book. ISBN 978-85-216-1973-4.
+3. COMPUTER ARCHITECTURE NEWS. New York, N.Y., USA: Association for Computing Machinery,1972-. Trimestral (de 3 em 3 meses). ISSN 0163-5964. Disponível em: https://dl-acm-org.ez93.periodicos.capes.gov.br/citation.cfm?id=J89&picked=prox (Links para um site externo.).

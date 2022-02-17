@@ -1,0 +1,11 @@
+Unidade 01 e 02
+
+Referência Bibliográfica Básica
+1 - (ok) Ana Fernanda Gomes ASCENCIO; Edilene Aparecida Veneruchi de CAMPOS. Fundamentos da Programação de Computadores (Links para um site externo.): algoritmos, Pascal, C/C++ e Java - 2ª edição. São Paulo, SP : Pearson Education do Brasil, 2012.
+
+Referência Bibliográfica Complementar
+1 - H. DEITEL et. Al.  C#: Como Programar (Links para um site externo.). São Paulo: Makron Books, 2003.
+2 - John SHARP. Microsoft Visual C# 2013 (Links para um site externo.). Grupo A, 2014.
+3 - André Luiz Villar FORBELLONE, Henri Frederico EBERSPÄCHER. Lógica de programação: a construção de algoritmos e estruturas de dados (Links para um site externo.). São Paulo: Prentice Hall, 2005.
+4 - MANZANO, José Augusto N. G; OLIVEIRA, Jayr Figueiredo de. Algoritmos: lógica para desenvolvimento de programação de computadores (Links para um site externo.). 28. ed. rev. e atual. São Paulo, SP: Érica, 2016.
+5 - Sandra PUGA, Gerson RISSETTI. Lógica de Programação e Estrutura de Dados: (Links para um site externo.) com aplicações em Java - 2ª edição. São Paulo : Pearson, 2017.

@@ -1,0 +1,7 @@
+Referências
+
+Referência Bibliográfica Básica
+(ok) HUNTER, David J. Fundamentos de Matemática Discreta. Rio de Janeiro: LTC, 2011.
+
+Referência Bibliográfica Complementar
+ROSEN, Keneth H. Discrete Mathematics and its Applications. New York: McGraw-Hill, 2019.

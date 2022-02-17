@@ -1,0 +1,27 @@
+C01 -Interpretar e elaborar documentos, pareceres, gráficos, tabelas e diagramas.
+
+C02 - Analisar, projetar, documentar e implementar sistemas computacionais.
+
+C03 - Gerenciar projetos de software.
+
+C04 - Identificar, analisar e modelar processos de negócio, possibilitando ações empreendedoras.
+
+C05 -Personalizar processos de desenvolvimento de software.
+
+C06 - Gerenciar configurações do projeto de software.
+
+C07 - Promover a qualidade do processo de desenvolvimento de software.
+
+C08 -Elaborar e manter a documentação pertinente ao processo de software.
+
+C09 - Avaliar, selecionar e utilizar ferramentas, metodologias e tecnologias adequadas ao problema e ao contexto para a produção de sistemas computacionais.
+
+C10 - Desenvolver programas de computador empregando linguagens de programação e raciocínio lógico.
+
+C11 - Projetar o armazenamento e o tratamento dos dados, e realizar sua implementação.
+
+C12 - Especificar e gerenciar requisitos de software e o projeto de interfaces.
+
+C13 - Testar, implantar e manter sistemas computacionais.
+
+C14 - Promover a qualidade do produto de software.
