@@ -1,0 +1,99 @@
+21/02 – 27/02
+	- Propostas de problemas pelos alunos
+	- Definição dos temas iniciais: Lista de problemas mais votados
+
+28/02 – 06/03 
+	- Definição de grupos de trabalho
+	- Definição do problema – Seção 1
+
+07/03 – 13/03 
+	- Objetivos – Seção 1
+	- Justificativa – Seção 1
+
+14/03 – 20/03 
+	- Definição Público-alvo – Seção 1
+	- Personas – Seção 2
+	- Histórias de usuário – Seção 2
+
+21/03 – 27/03 
+	- Requisitos funcionais e não funcionais – Seção 2
+	- Restrições – Seção 2
+
+28/03 – 03/04 
+Entrega da Etapa 
+Postagem no Canvas: até 03/04
+	- Slides da apresentação
+	- Documentação devidamente atualizada no Github até a seção 2 (ou documento word).
+	- Desejável: Projeto do Github exportado como arquivo zip e postado no Canvas.
+
+04/04 – 10/04 
+	- Sprint Backlog
+	- Plano de Sprints
+	- Metodologia documentada – Seção 3
+
+11/04 – 17/04 
+	- Projeto de interface – Seção 4
+	- Arquitetura da solução – Seção 5
+
+18/04 – 24/04 
+Entrega da Etapa 02
+Postagem no Canvas: até 24/04/2022
+	- Documentação devidamente atualizada no Github até a seção 5 (ou documento word).
+	- Desejável: Projeto do Github exportado como arquivo zip e postado no Canvas.
+
+25/04 – 01/05 
+	- Sprint Backlog
+	- Plano de Sprints
+	- Protótipo do sistema.
+	- Template padrão do site (master page) – Seção 6
+	- Checklist dos requisitos funcionais e não funcionais a serem implementados
+
+02/05 – 08/05 
+	- Protótipo do sistema com requisitos priorizados em desenvolvimento. – Seção 7
+	- Desenvolvimento da homepage + uma funcionalidade (de acordo com divisão de tarefas do grupo)
+
+09/05 – 15/05 
+Entrega da Etapa 03
+Postagem no Canvas até 15/05/2022
+	- Documentação devidamente atualizada no Github, até a seção 8.
+	- Protótipo do sistema com requisitos priorizados implementados (homepage + mínimo uma funcionalidade)
+	- Projeto do Github exportado como arquivo zip e postado no Canvas.
+
+16/05 – 22/05 
+	- Sprint Backlog – cada componente do grupo deve entregar, no mínimo, uma funcionalidade
+	- Plano de Sprints
+	- Protótipo do sistema com requisitos priorizados em desenvolvimento. – Seção 7
+
+23/05 – 29/05 
+	- Protótipo do sistema com requisitos priorizados em desenvolvimento. – Seção 7
+	- Plano de testes de software – Seção 8
+
+30/05 – 05/06 
+	- Protótipo do sistema com requisitos priorizados em desenvolvimento. – Seção 7
+	- Registro de Testes de Software – Seção 9
+
+06/06 – 12/06 
+Entrega da Etapa 04
+Postagem no Canvas: até 12/06/2022
+	- Documentação devidamente atualizada no Github, até a seção 10.
+	- Protótipo do sistema com requisitos priorizados implementados.
+	- Projeto do Github exportado como arquivo zip e postado no Canvas.
+
+13/06 – 19/06 
+	- Sprint Backlog
+	- Plano de Sprints
+
+20/06 – 26/06 
+	- Integração de funcionalidades
+	- Hospedagem da solução desenvolvida
+
+27/06 – 03/07 
+Entrega da Etapa 05
+Postagem no Canvas: até 26/06/2022
+	- Software pronto
+	- Apresentação do projeto (arquivo de apresentação)
+	- Projeto do Github exportado como arquivo zip e postado no Canvas.
+	- Vídeo Apresentação dos projetos: 27/06/2022 a 02/07/2022
+
+04/07 – 14/07 
+Período de avaliação de projetos e divulgação de resultados
