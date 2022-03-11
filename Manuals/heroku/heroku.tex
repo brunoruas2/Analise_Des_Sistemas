@@ -4,7 +4,7 @@
 %% License: ISC license                          %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\documentclass[a4paper,11pt]{book}
+\documentclass[a4paper,11pt,oneside]{book}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
@@ -46,7 +46,7 @@
 
 \section{Definindo uma Aplicação}
 
-É uma coleção de \textbf{código-fonte} escrita em Ruby, Node.js, Java, Python, Clojure, Scala e PHP e alguma \textbf{dependency description} que instrui a build system com as informações adicionais sobre as dependências necessárias para a build e run da aplicação.
+Uma aplicação é a coleção de \textbf{código-fonte} escrita em Ruby, Node.js, Java, Python, Clojure, Scala e PHP, alguma \textbf{dependency description} que instrui a build system com as informações adicionais sobre as dependências necessárias para a build e run da aplicação e um \textbf{Procfile} que contém os comandos nomeados que serão usados na build.
 \\~\\
 O mecanismo de dependência varia de acordo com a linguagem:
 \begin{itemize}
@@ -58,7 +58,7 @@ O mecanismo de dependência varia de acordo com a linguagem:
 
 \section{Sabendo o que Executar}
 
-Um requirement é informar a plataforma quais partes da aplicação são runnable.
+Um \textbf{requirement} é informar a plataforma quais partes da aplicação são runnable.
 \\~\\
 O Heroku consegue perceber essas partes dos principais frameworks:
 \begin{itemize}
@@ -66,6 +66,20 @@ O Heroku consegue perceber essas partes dos principais frameworks:
 	\item Django $\rightarrow$ <app>/manage.py runserver
 	\item Node.js $\rightarrow$ main in package.json
 \end{itemize}
+
+Para algumas aplicações você deve explicitamente declarar o que deve ser executado. Isso é feito em um arquivo texto que vai junto do source code chamado de \textbf{Procfile}.
+\\~\\
+Cada linha do Procfile declara um \textbf{process type} que são os comandos nomeados que devem ser executados no processo de build da aplicação.
+\\~\\
+Um exemplo de Procfile:
+\begin{verbatim}
+	web: java -jar lib/foobar.jar $PORT
+	queue: java -jar lib/queue-processos.jar	
+\end{verbatim}
+
+Esse exemplo declara dois process type. O primeiro chamado \verb|web| que será executado no caminho indicado e o process type \verb|queue|.
+\\~\\
+Vale a pena, quando for planejar a sua aplicação. Se preocupar com a arquitetura dela. Uma referência que pode ser usada para isso é \url{https://devcenter.heroku.com/articles/architecting-apps}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}
