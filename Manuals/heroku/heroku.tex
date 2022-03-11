@@ -10,19 +10,18 @@
 \usepackage{lmodern}
 \usepackage{hyperref}
 \usepackage{graphicx}
-\usepackage[english]{babel}
+\usepackage[english,portuguese]{babel}
 
 \graphicspath{{./images/}} % set an default images folder
 
 % Book's title and subtitle
 \title{
-	\Huge \textbf{Sample Book Title} \\ 
-	\huge Sample book subtitle
+	\Huge \textbf{Heroku Manual} \\ 
+	\huge \url{https://devcenter.heroku.com/articles/how-heroku-works}
 	}
 % Author
 \author{
-	\textsc{First-name Last-name}
-	\thanks{\url{www.example.com}}
+	\textsc{Bruno ruas}
 	}
 
 \begin{document}
@@ -43,7 +42,30 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\chapter{How Heroku Works}
 
+\section{Definindo uma Aplicação}
+
+É uma coleção de \textbf{código-fonte} escrita em Ruby, Node.js, Java, Python, Clojure, Scala e PHP e alguma \textbf{dependency description} que instrui a build system com as informações adicionais sobre as dependências necessárias para a build e run da aplicação.
+\\~\\
+O mecanismo de dependência varia de acordo com a linguagem:
+\begin{itemize}
+	\item Ruby $\rightarrow$ Gemfile
+	\item Python $\rightarrow$ requirements.textbf
+	\item Node.js $\rightarrow$ package.json
+	\item Java $\rightarrow$ pom.xml
+\end{itemize}
+
+\section{Sabendo o que Executar}
+
+Um requirement é informar a plataforma quais partes da aplicação são runnable.
+\\~\\
+O Heroku consegue perceber essas partes dos principais frameworks:
+\begin{itemize}
+	\item Ruby on Rails $\rightarrow$ rails server
+	\item Django $\rightarrow$ <app>/manage.py runserver
+	\item Node.js $\rightarrow$ main in package.json
+\end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}
