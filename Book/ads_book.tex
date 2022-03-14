@@ -13,8 +13,12 @@
 \usepackage{graphicx} % to set a images directory
 \usepackage{xcolor} % changing colors
 \usepackage[hang,flushmargin]{footmisc} % remove footnote's identation
+\usepackage{amsmath} % alguns simbolos matematicos
+% \usepackage{circuitikz} % para desenhar circuitos logicos
 
 \DeclareUnicodeCharacter{0301}{\'{e}}
+
+\graphicspath{{./images/}} % set an default images folder
 
 % dark theme no pdf
 \pagecolor[rgb]{0.7,0.7,0.7}
@@ -39,7 +43,6 @@
 \author{
 	\textsc{Bruno de M. Ruas}
 }
-
 
 \begin{document}
 
@@ -394,7 +397,149 @@ Bibliografia Complementar
 
 \section{Fundamentos de Organização de Computadores}
 \subsection{Representação de Dados e Sistemas Binário}
-\subsection{Conceito de Lógica Digital}
+
+\subsubsection{Compreendendo o Sistema Decimal}
+
+Os componentes eletrônicos digitais só permitem dois estados de tensão: 0 e 1. Isso implica que toda informação manipulada pelos computadores é representado em um sistema de \textbf{numeração binária}.
+\\~\\
+O nosso modelo de sistema numérico usual é o decimal (também chamado base 10). Ele é um sistema posicional porque o peso do dígito é dependente da posição dele no número. Por exemplo:
+
+$$ 38_{10} = 3 \times 10^1 + 8 \times 10^0 = 30 + 8 $$
+$$ 17,25_{10} = 10 \times 10^1 + 7 \times 10^0 + 2 \times 10^{-1} + 5 \times 10^{-2} $$
+
+O subscrito indica o tipo de base usado. Uma característica dos sistemas posicionais é que o dígito mais a esquerda será o mais significativa (MSB - Most Significant Bit) e os à sua direita serão os LSB (Less Significant Bit).
+
+\subsubsection{O Sistema Binário}
+
+Como você já deve saber, no sistema binário temos apenas dois símbolos, entretanto, podemos representar todos os dígitos através deles só vamos precisar de mais dígitos binários (Binary Digit - BIT). Agora vamos aprender como representar números maiores que 1 em um sistema base 2.
+\\~\\
+O sistema binário é um sistema posicional (guarde isso na sua memória). Então a lógica é a mesma que os exemplos acima em base 10 mas com a diferença de multiplicarmos os números por $2^n$ onde $n$ é a posição do dígito. Nos número fracionais é igual ao sistema base 10, basta multiplicarmos as posições dos dígitos após a vírgula por números negativos da esquerda para direita.
+\\~\\
+Para converter um número base 10 em binário você precisa estar com a lista de potências de 2 na ponta da língua. Basta ir "caminhando"\ por ela até o maior valor abaixo do número desejado. Essa posição será o seu MSB = 1. Depois, basta ir calculando o quanto lhe falta para obter o número desejado. Abaixo nós representamos os mesmo números da seção de números base 10.
+
+$$ 38_{10} =  1 \times 2^5 + 0 \times 2^4 + 0 \times 2^3 + 1 \times 2^2 + 1 \times 2^1 + 0 \times 2^0 = 100110_2 $$
+
+$$ 17,25_{10} =  1 \times 2^5 + 0 + 0 + 0 + 1 \times 2^0 \ , \ 0 \times 2^{-1} + 1 \times 2^{-2} = 1001,01_2 $$
+
+\subsubsection{O Sistema Hexadecimal}
+
+O sistema hexadecimal por sua vez possui 16 símbolos (0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F) e pode ser convertido mais facilmente em binário que o sistema base 10. Assim a gente não precisa ficar trabalhando como binário (que acaba usando muitos dígitos para representar algum valor).
+\\~\\
+A conversão é feita pela equivalência entre cada 4 dígitos binários relacionados a cada símbolo hexadecimal de acordo com a tabela abaixo
+
+\begin{center}
+	\begin{tabular}{|c|c|}
+		\hline
+		Binário & Hexadecimal \\
+		\hline
+		0000 & 0 \\
+		0001 & 1 \\
+		0010 & 2 \\
+		0011 & 3 \\
+		0100 & 4 \\
+		0101 & 5 \\
+		0110 & 6 \\
+		0111 & 7 \\
+		1000 & 8 \\
+		1001 & 9 \\
+		1010 & A \\
+		1011 & B \\
+		1100 & C \\
+		1101 & D \\
+		1110 & E \\
+		1111 & F \\
+		\hline
+	\end{tabular}	
+\end{center}
+
+Por exemplo, vamos converter um número hexadecimal em binário. Usando a tabela acima, podemos pegar cada dígito (1,7,F) e substituir pelo seu valor binário. Após isso, podemos descartar os zeros a esquerda do MSB.
+
+$$ 17F_{16} =  \underset{\textrm{1}}{0001}\ \underset{7}{0111} \ \underset{F}{1111} = 10111111_2$$
+
+Para converter de binário para hexadecimal é só começar da direita para a esquerda em cada grupo de 4 bits.
+
+\subsection{Conceitos de Lógica Digital}
+
+Computadores são formados por componentes eletrônicos. Os transistores e os diodos são usados para a construção das portas lógicas que nos permitem, através de circuitos elétricos, replicar os operadores lógicos da lógica usados na algebra booleana. Assumindo valores em dois estágios: 0 (de 0 a 0,6 volts) e 1 (entre 3,6 e 5 volts).
+\\~\\
+Uma porta lógica nada mais é que um circuito que recebe sinais de entrada e, conforme a sua configuração, produz um sinal de saída cujo valor é dependente da entrada.
+\\~\\
+Podemos categorizar as portas lógicas em 3 grupos:
+
+\begin{itemize}
+	\item Portas Lógicas Básicas
+		\begin{itemize}
+			\item Operação Lógica - AND
+			\item Operação Lógica - OR
+			\item Operação Inversora - NOT
+		\end{itemize}
+	\item Funções e Portas Lógicas Compostas
+		\begin{itemize}
+			\item Operação Lógica - NAND (NOT-AND)
+			\item Operação Lógica - NOR (NOT-OR)
+			\item Operação Lógica - XOR (OR-EXCLUSIVA)
+		\end{itemize}
+	\item Expressões Lógicas e Circuitos Digitais
+\end{itemize}
+
+Eu já trabalhei bem a fundo a lógica matemática no meu curso do Projeto Matemática. Você pode conferir no capítulo 02 nesse \href{https://github.com/brunoruas2/Meus_Estudos/blob/main/Matem%C3%A1tica/Book%20of%20Proof%20-%20Richard%20Hammack/book_of_proof.pdf}{[LINK]}. A única diferença é que quando lá for TRUE ou VERDADE, aqui será 1 e, claramente, quando lá for FALSE ou FALSO, aqui será 0. 
+\\~\\
+Como nosso estudo nesse manual é mais focado em ADS eu só vou manter as anotações referentes à transposição da algebra booleana para os circuitos eletrônicos.
+
+\subsubsection{Operadores Básicos e Compostos}
+
+Aqui estão as representações usadas para os operadores básicos.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.5]{01-porta_NOT.png}
+	\caption{Porta NOT | Equação $Y = \overline{A}$}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.5]{02-porta_AND.png}
+	\caption{Porta AND | Equação $Y = A\ . \ B $}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.5]{03-porta_OR.png}
+	\caption{Porta OR  | Equação $Y = A + B $}
+\end{figure}
+
+Aqui estão as representações usadas para os operadores Compostos.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.5]{04-porta_NAND.png}
+	\caption{Porta OR  | Equação $Y = \overline{A\ . \ B} $}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.5]{05-porta_NOR.png}
+	\caption{Porta OR  | Equação $Y = \overline{A + B} $}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.5]{06-porta_XOR.png}
+	\caption{Porta OR  | Equação $Y = A \oplus B $}
+\end{figure}
+
+\subsubsection{Expressões Lógicas e Circuitos}
+
+Podemos usar os operadores lógicos para criar expressões do tipo $ Y = (A+B).C $ que pode ser lida como "Y é igual a A ou B e C"\footnote{Usando os símbolos lógicos mais clássicos, podemos escrever como $Y: (A \lor B) \land C $}. Podemos também usar os diagramas de circuitos para representar exatamente essa mesma opração lógica.
+
+\subsubsection{Operadores Básicos}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.8]{07-operacao_logica.png}
+\end{figure}
+
+
 \subsection{Circuitos Lógicos Digitais Básicos}
 \subsection{Introdução à Organização de Computadores}
 \subsection{Unidade Central de Processamento - UCP}
