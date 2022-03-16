@@ -14,6 +14,7 @@
 \usepackage{xcolor} % changing colors
 \usepackage[hang,flushmargin]{footmisc} % remove footnote's identation
 \usepackage{amsmath} % alguns simbolos matematicos
+\usepackage{float}
 % \usepackage{circuitikz} % para desenhar circuitos logicos
 
 \DeclareUnicodeCharacter{0301}{\'{e}}
@@ -232,7 +233,28 @@ Bibliografia Básica
 
 \section{A Web: Evolução, Padrões e Arquitetura}
 \subsection{Histórico e Evolução da Web}
+
+A Web é um sistema da informação de hipertextos onde o acesso é feito por meio de \textbf{navegadores (browsers)}.
+\\~\\
+Existem alguns protocolos comuns para transferência de alguns tipos de arquivos. Para mensagens (e-mail) usamos o \textbf{SMTP}, para transferência de arquivos usamos o \textbf{FTP}, aplicações de telefonia usam o \textbf{VOIP} e para páginas de conteúdo usamos o \textbf{HTML}.
+\\~\\
+A história da web eu ainda vou colocar aqui quando tiver mais tempo.
+
 \subsection{W3C e os Padrões da Web}
+
+O WORLD WIDE WEB CONSORTIUM (W3C) é uma organização sem fins lucrativos cujo lider é o Tim Berners-Lee, justamente o inventor da Web. Existem várias ogranizações ao longo do planeta que fazem parte desse consórcio internacional.
+
+Entre os padrões mantidos pelo W3C:
+\begin{itemize}
+	\item Design e Aplicações Web (HTML, CSS, SVG, Ajax, Acessibilidade);
+	\item Arquitetura da Web (Protocolo HTTP, URI);
+	\item Web Semântica (Linked Data - RDF, OWL, SPARQL);
+	\item Web Services (SOAP, WSDL);
+	\item Tecnologia XML (XML, XML Schema, XSLT);
+	\item Navegadores e ferramentas de autoria.
+\end{itemize}
+
+
 \subsection{Componentes da Arquitetura da Web}
 \subsection{URI, URL e URN}
 \subsection{Protocolo HTTP}
@@ -486,43 +508,41 @@ Eu já trabalhei bem a fundo a lógica matemática no meu curso do Projeto Matem
 \\~\\
 Como nosso estudo nesse manual é mais focado em ADS eu só vou manter as anotações referentes à transposição da algebra booleana para os circuitos eletrônicos.
 
-\subsubsection{Operadores Básicos e Compostos}
+\subsubsection{Operadores Básicos}
 
-Aqui estão as representações usadas para os operadores básicos.
-
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.5]{01-porta_NOT.png}
 	\caption{Porta NOT | Equação $Y = \overline{A}$}
 \end{figure}
 
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.5]{02-porta_AND.png}
 	\caption{Porta AND | Equação $Y = A\ . \ B $}
 \end{figure}
 
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.5]{03-porta_OR.png}
 	\caption{Porta OR  | Equação $Y = A + B $}
 \end{figure}
 
-Aqui estão as representações usadas para os operadores Compostos.
+\subsubsection{Operadores Compostos}
 
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.5]{04-porta_NAND.png}
 	\caption{Porta OR  | Equação $Y = \overline{A\ . \ B} $}
 \end{figure}
 
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.5]{05-porta_NOR.png}
 	\caption{Porta OR  | Equação $Y = \overline{A + B} $}
 \end{figure}
 
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.5]{06-porta_XOR.png}
 	\caption{Porta OR  | Equação $Y = A \oplus B $}
@@ -532,9 +552,7 @@ Aqui estão as representações usadas para os operadores Compostos.
 
 Podemos usar os operadores lógicos para criar expressões do tipo $ Y = (A+B).C $ que pode ser lida como "Y é igual a A ou B e C"\footnote{Usando os símbolos lógicos mais clássicos, podemos escrever como $Y: (A \lor B) \land C $}. Podemos também usar os diagramas de circuitos para representar exatamente essa mesma opração lógica.
 
-\subsubsection{Operadores Básicos}
-
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.8]{07-operacao_logica.png}
 \end{figure}
