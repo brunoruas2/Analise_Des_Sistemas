@@ -4,5 +4,8 @@
 		"Computing",
 		"Microfundamentos",
 		"Sociotecnológico"
+	],
+	"cSpell.enableFiletypes": [
+		"tex"
 	]
 }

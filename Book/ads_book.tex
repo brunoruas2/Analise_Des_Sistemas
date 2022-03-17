@@ -263,8 +263,127 @@ A W3C possui um processo de publicação das normativas. Normalmente, o fluxo é
 \end{itemize}
 
 \subsection{Componentes da Arquitetura da Web}
+
+a web pode ser entendida como uma coleção de componentes que permitem a comunicação entre o cliente e os servidores de aplicações. Os principais componentes dessa arquitetura são:
+\begin{itemize}
+	\item Ambiente Cliente (Client Web) \\~\\
+			Geralmente um Browser que envia as requisições usando o protocolo HTTP(S) para o servidor web através de uma rede de computadores.
+	\item Ambiente Servidor \\~\\
+			O ambiente servidor possui vários componentes (banco de dados, aplicações, API e etc) mas o principal componente é o servidor web. Ele recebe a requisição HTTP(S) do client, interpreta a URL e envia os recursos solicitados (HTML, CSS, JS, JPEG, MP4 e etc) por meio da rede. 
+	\item Internet \\~\\
+			É a rede mundial baseada no protocolo TCP/IP onde todo computador conectado é denominado host (hospedeiro) e possui um identificador de endereço IP (internet protocol) que possui determinados padrões.
+	\item URI (uniform resource locator) \\~\\
+			Como o nome indica, um URI é um localizado que pode ser classificado em duas maneiras. O URL é o tipo de URI que usa o endereço do conteúdo como método de localização, ele nos diz onde encontrar o recurso (por exemplo, o caminho \verb|c://home/desktop/test.txt|). O URN é o tipo que usa o nome do recurso, ele nos diz a identidade do item procurado (por exemplo, o sistema ISBN). 
+	\item Requisição \\~\\
+			É o pacote de dados enviado pelo client através da internet para o web server onde está a instrução do que deve ser enviado como resposta.
+	\item Resposta \\~\\
+			Como o nome já diz, é o retorno do web server ao client com os dados requisitados.
+	\item Protocolo HTTP \\~\\
+			É o padrão como client e web server se comunicam pela rede.
+\end{itemize}
+
 \subsection{URI, URL e URN}
+
+Já vimos que o URI abarca dos conceitos de URL e URN. Agora vamos aprender um pouco mais sobre os padrões de endereços em ambos os protocolos.
+
+\subsubsection{URL}
+
+O padrão URL serve para identificar o recurso pela sua localização e é composto da seguinte maneira:
+
+\begin{center}
+	\verb|ftp://example.com:8080/pasta/arquivo?name=book#nose| \\
+	Cujas partes são \\
+	\verb|scheme://authority/path?query#fragment|
+\end{center}
+
+Como podemos ver, a URL é composta por várias partes:
+\begin{itemize}
+	\item scheme - é a forma de interação (ftp, http, https, ...).
+	\item user:pass - são as informações do user.
+	\item host - endereço de ip do server.
+	\item porta - qual a porta TCP/IP do server (o padrão http é 80 e pode ser omitida).
+	\item path - local onde o recurso se encontra.
+	\item query - detalhe da consulta na forma de pares nome-valor.
+	\item fragmento - qual seção do recurso.
+\end{itemize}
+
+\subsubsection{URN}
+
+\begin{center}
+	\verb|urn:example:animal:ferret:nose| \\
+	Cujas partes são \\
+	\verb|scheme:path:authority|
+\end{center}
+
+A URN apenas nos dá um recurso específico (NSS) contido em algum namespace (NID) sem qualquer informação sobre onde o arquivo está localizado.
+
 \subsection{Protocolo HTTP}
+
+O hypertext transfer protocol é mantido pela W3C e rege a camada de aplicação dos sistemas distribuídos de informação em hipertexto. Existem muitas versões mas a mais utilizada é a 2.0 de 2015.
+\\~\\
+Para entender melhor o http, consideremos o processo usual de navegação na web:
+\begin{enumerate}
+	\item user informa a URL
+	\item client monta a requisição http e envia ao web server
+	\item server recebe a requisição e envia a resposta ao client
+	\item a resposta é recebida e interpretada pelo browser com os dados exibidos ao user
+	\item dependendo da página, pode ser que novas requisições sejam feitas para que todos os componentes sejam carregados propriamente.
+\end{enumerate}
+
+Podemos ver que o http é o conjunto de regras que rege a comunicação client-server da web.
+
+\subsubsection{Partes da requisição HTTP}
+
+Uma requisição é formada por 3 partes:
+\begin{itemize}
+	\item Linha de Requisição
+		\begin{itemize}
+			\item Método
+				\begin{itemize}
+					\item GET - Requisita dados.
+					\item POST - Envia dados para o server.
+					\item HEAD - Requisita dados mas o retorno deve ser um conjunto de cabeçalhos.
+					\item PUT - Criação ou Atualização de dados.
+					\item DELETE - Excluir algum dado.
+					\item TRACE - Solicita uma cópia da requisição (serve pra testar integridade).
+					\item PATCH - Alterações parciais em um recurso.
+					\item OPTIONS - Lista de métodos e opções disponíveis para o server.
+					\item CONNECT - Usado quando o client se conecta com o server via proxy.
+				\end{itemize}
+			\item Recurso - É o caminho do dado requerido.
+			\item Versão do Protocolo - Qual versão do http será usada.
+		\end{itemize}
+	\item Linhas de Cabeçalho \\
+			Inclui informações complementares à requisição sendo formado por pares nome-valor.
+	\item Corpo da Entidade \\
+			Dados adicionais como forms, arquivos para upload e etc.
+\end{itemize}
+
+\subsubsection{Partes da resposta HTTP}
+
+\begin{itemize}
+	\item Linha de Resposta
+		\begin{itemize}
+			\item Versão HTTP.
+			\item Código de Retorno.
+			\item Mensagem explicativa do código de retorno.
+		\end{itemize}
+	\item Linhas de Cabeçalho \\
+			Uma informação importante que consta no cabeçalho é o \verb|content-type|. Ele diz o formato do conteúdo enviado como resposta\footnote{Isso pode ser a causa de alguns bugs na sua aplicação.}. Essa informação é apresentada conforme os \href{https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Basics_of_HTTP/MIME_types}{MIME Types}.
+	\item Corpo da Entidade
+			É o recurso solicitado pelo client (html, css, js, jpeg, mp4, ...)
+\end{itemize}
+
+\subsubsection{Um pouco mais sobre Cabeçalhos}
+
+Os cabeçalhos possuem características parecidas tanto nas requests quanto nas responses. Podemos classifica-los como sendo dos tipos:
+\begin{itemize}
+	\item Request header - Informações sobre o client ou a requisição feita.
+	\item Response header - Informações sobre a resposta ou sobre o web server.
+	\item Entity header - Informações sobre o conteúdo da entidade trocada (tamanho e tipo).
+	\item General header - Informações gerais usadas tanto em requests quanto em responses.
+\end{itemize}
+
 \subsection{Servidores Web}
 \subsection{Dinâmica de Aplicações Web}
 \subsection{Visual Studio Code}
