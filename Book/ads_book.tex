@@ -12,10 +12,11 @@
 \usepackage{hyperref}
 \usepackage{graphicx} % to set a images directory
 \usepackage{xcolor} % changing colors
-\usepackage[hang,flushmargin]{footmisc} % remove footnote's identation
-\usepackage{amsmath} % alguns simbolos matematicos
+\usepackage[hang,flushmargin]{footmisc} % remove footnote's indentation
+\usepackage{amsmath} % alguns símbolos matemáticos
 \usepackage{float}
-% \usepackage{circuitikz} % para desenhar circuitos logicos
+% \usepackage{circuitikz} % para desenhar circuitos lógicos
+\usepackage{fancyvrb} % indentation in verbatim
 
 \DeclareUnicodeCharacter{0301}{\'{e}}
 
@@ -23,9 +24,9 @@
 
 % dark theme no pdf
 \pagecolor[rgb]{0.7,0.7,0.7}
-%\color[rgb]{0.9,0.9,0.9} %grey
+%\color[rgb]{0.9,0.9,0.9} % gray
 
-% tirando identação dos paragrafos
+% tirando indentation dos paragraphs
 \setlength{\parindent}{0ex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -385,8 +386,94 @@ Os cabeçalhos possuem características parecidas tanto nas requests quanto nas 
 \end{itemize}
 
 \subsection{Servidores Web}
+
+Você só consegue visualizar as informações de um site porque o servidor web foi capaz de interpretar a requisição feita pelo seu browser e responder com o conteúdo adequado. Agora vamos entender um pouco mais sobre o ambiente servidor.
+\\~\\
+O principal elemento do ambiente servidor é o web server. Ele é quem recebe, interpreta e responde as requisições dos clients ao longo da internet. Podemos também incluir outros elementos importantes no ambiente servidor como o \textbf{servidor de banco de dados} e os \textbf{servidores de serviços (APIs)}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{08-arq_web.png}
+	\caption{Esboço da arquitetura web}
+\end{figure}
+
+\subsubsection{Funções de um web service}
+
+Um web service nada mais é que um software rodando em uma máquina. Ele desempenha várias funções que podemos elencar como:
+\begin{itemize}
+	\item Atender as requests http e responder a elas.
+	\item Gerencias sites.
+	\item Gerencias arquivos dos sites.
+	\item Integrar mecanismos de scripts: php, perl, aspx, Ruby, Python e etc.
+	\item Autenticar users (básica ou com servidores de autenticação).
+	\item Implementar criptografia nas comunicações (https - tls/ssl).
+	\item Cache de recursos.
+	\item Auditoria das alterações e logs.
+\end{itemize}
+
+\subsubsection{Software e Provedores}
+
+Basicamente, existem 3 formas de tornar uma aplicação web acessível aos clients: Rodar um web server na máquina local; instalar e configurar um wer server em uma máquina dedicada para esse trabalho e, por fim, contratar um provedor que ofereça esse serviço.
+\\~\\
+A lista de softwares que se propõe a fazer o trabalho de um web server é enorme. O material do curso elenca dois:
+\begin{itemize}
+	\item Apache HTTP Server | \href{https://httpd.apache.org/}{Apache Web Server} \\
+			É um open source multi plataforma. Permite execução de multilinguagens como php, perl entre outras. Uma maneira simples de instalar é pelo \href{https://www.apachefriends.org/index.html}{XAMPP} (que já integra o apache web server, banco de dados MariaDB e um ambiente PHP e Perl).
+	\item Microsoft Internet Information Server (IIS) \\
+			É a solução proprietária da Microsoft. Baseado na plataforma .NET, permite hospedar sites estáticos. O IIS já vem disponível junto dos SO Windows.
+\end{itemize}
+
+A lista de provedores também é extensa  e possuem diferentes capacidades distintas mas podemos destacar algumas ferramentas úteis:
+\begin{itemize}
+	\item Servidores em Nuvem
+	\begin{itemize}
+		\item \href{https://azure.microsoft.com/pt-br/}{Azure}
+		\item \href{https://www.heroku.com/}{Heroku}\footnote{Esse aqui eu to estudando e fazendo um manual de como usar. Você pode ler o manual nesse \href{https://github.com/brunoruas2/Analise_Des_Sistemas/tree/main/Manuals/heroku}{[LINK]}}
+		\item \href{https://aws.amazon.com/pt/}{AWS}
+	\end{itemize}
+
+	\item Editores e IDEs online
+	\begin{itemize}
+		\item \href{https://replit.com/}{Replit}
+		\item \href{https://codesandbox.io/}{CodeSandbox}
+		\item \href{https://glitch.com/}{Glitch}
+		\item \href{https://pages.github.com/}{GitHub Pages}
+	\end{itemize}
+\end{itemize}
+
 \subsection{Dinâmica de Aplicações Web}
-\subsection{Visual Studio Code}
+
+Quando você acessa um site, o arquivo que coordena o modo de exposição da informação e os conteúdos da mesma é um arquivo ``\verb|.html|''. Observe o exemplo abaixo de uma página simples.
+
+\begin{Verbatim}[tabsize=4]
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<link rel="stylesheet" href="style.css">
+		<script> src='app.js'</script>
+	</head>
+	<body>
+		<img src='logo.jpg' alt="imagem_logo">
+	</body>
+</html>
+\end{Verbatim}
+
+As tags que contém as partes \verb|style.css|, \verb|app.js| e \verb|logo.jpg| fazem menção à outros arquivos que farão parte da composição da página. Alguns são referentes à funcionalidades ou layout da aplicação enquanto outros podem ser referentes à conteúdos mostrados na página.
+\\~\\
+Uma vez que o servidor compreende a request feita pelo client, ele envia uma série de arquivos que serão lidos pelo browser do usuário e serão interpretados por ele. O html é justamente o primeiro arquivo lido porque ele diz ao navegador quais conteúdos mostrar e, a partir das referências contidas no html, como mostrar e quais funcionalidades a página terá.
+
+\subsubsection{O processamento de um site}
+
+\begin{enumerate}
+	\item O client envia uma requisição via http (com o método GET) para o web server
+	\item O server envia o arquivo html da página requisitada para o browser
+	\item Ao processar o html, o browser percebe que ele faz menção de outros arquivos (como css, js, mp3, etc)
+	\item O browser faz novas requisições ao server até ter todos os arquivos necessários para o carregamento da página
+\end{enumerate}
+
+Como você pode ver, é muita coisa acontecendo. Você só não se dá conta disso porque o processo é muito rápido hoje em dia devida a velocidade das nossas conexões banda larga. Lembrando sempre que todas as requisições e respostas entre client e server são feitas usando-se o protocolo HTTP que a gente viu logo antes.
 
 \section{Desenvolvimento de Interfaces Web}
 \subsection{A Linguagem HTML}
