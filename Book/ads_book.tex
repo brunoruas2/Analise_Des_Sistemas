@@ -476,11 +476,43 @@ Uma vez que o servidor compreende a request feita pelo client, ele envia uma sé
 Como você pode ver, é muita coisa acontecendo. Você só não se dá conta disso porque o processo é muito rápido hoje em dia devida a velocidade das nossas conexões banda larga. Lembrando sempre que todas as requisições e respostas entre client e server são feitas usando-se o protocolo HTTP que a gente viu logo antes.
 
 \section{Desenvolvimento de Interfaces Web}
+
 \subsection{A Linguagem HTML}
+
+A linguagem HTML foi criada por Tim Berners-Lee no ano de 1991 e foi baseada no padrão Standard Generalized Markup Language (SGML). Seu escopo original era para permitir a divulgação de pesquisas científicas.
+\\~\\
+Com o passar dos anos, novas tecnologias foram somadas ao ecossistema para facilitar o processo de construção das soluções web. O Cascading Style Sheet (CSS) foi criado para facilitar o desenvolvimento do conteúdo separando a parte de estilo e aparência do conteúdo em HTML. O JavaScript permitiu a manipulação de elementos além de dar mais dinâmica para as páginas web.
+\\~\\
+O W3C foi criado em 1993 e, a partir dessa data, o HTML foi mantido e padronizado por essa organização. Desde então a linguagem vem sendo alterada para permitir sua evolução.
+\\~\\
+Em 2004 foi criado o Web Hypertext Application Technology Working Group (WHATWG) por pessoas da Apple, Mozilla e Opera. Na época, o W3C estava trabalhando no padrão XHTML 2.0 (que iria substituir o HTML 4.01) mas o WHATWG conseguiu propor um monde que acabou sendo o HTML 5. O HTML 5 foi recebido e amplamente adotado no desenvolvimento de aplicações hoje em dia.
+\\~\\
+\textbf{Panorama de uma aplicação}
+\\~\\
+Nós já sabemos que um client faz uma requisição ao web server por HTTP e esse, por sua vez, responde a requisição com, normalmente, um arquivo HTML. De posse de arquivo, o browser consegue saber se precisará solicitar mais arquivos ao web server até que todas as referências do HTML sejam satisfeitas e a página carregada.
+\\~\\
+A grosso modo, podemos dizer que o HTML pode fazer menções a arquivos dos seguintes tipos:
+\begin{itemize}
+	\item CSS
+	\item Arquivos de Multimídia
+	\item JavaScript
+	\item RIA - Rich Internet Applications
+		\begin{itemize}
+			\item Applet Java
+			\item Adobe Flash
+			\item Adobe Air
+			\item Adobe Flex
+			\item SilverLight
+		\end{itemize}
+\end{itemize}
+
+Se o site utiliza soluções dinâmicas como PHP, Java, Python, Ruby ou ASP.NET, quando a requisição é feita, o web server primeiro faz o processamento desses arquivos (normalmente por um outro servidor de APIs) e o resultado serão outros arquivos HTML, CSS, JS ou Multimídia. Após o processamento, o resultado é enviado para o client que será atualizado pelo browser.
+
 \subsubsection{Elementos de Texto e Multimídia}
 \subsubsection{Elementos Estruturais}
 \subsubsection{Elementos de Tabelas}
 \subsubsection{Elementos de Formulários}
+
 \subsection{A Linguagem CSS}
 \subsubsection{Seletores de Elementos}
 \subsubsection{Valores e Unidades}
@@ -488,6 +520,7 @@ Como você pode ver, é muita coisa acontecendo. Você só não se dá conta dis
 \subsubsection{Propriedades de Texto}
 \subsubsection{Layouts Responsivos}
 \subsubsection{Frameworks front-end - Bootstrap}
+
 \subsection{A Linguagem JavaScript}
 \subsubsection{Variáveis e Tipos de Dados}
 \subsubsection{Controle de Fluxo}
