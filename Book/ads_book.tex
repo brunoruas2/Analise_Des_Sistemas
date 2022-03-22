@@ -265,7 +265,7 @@ A W3C possui um processo de publicação das normativas. Normalmente, o fluxo é
 
 \subsection{Componentes da Arquitetura da Web}
 
-a web pode ser entendida como uma coleção de componentes que permitem a comunicação entre o cliente e os servidores de aplicações. Os principais componentes dessa arquitetura são:
+A web pode ser entendida como uma coleção de componentes que permitem a comunicação entre o cliente e os servidores de aplicações. Os principais componentes dessa arquitetura são:
 \begin{itemize}
 	\item Ambiente Cliente (Client Web) \\~\\
 			Geralmente um Browser que envia as requisições usando o protocolo HTTP(S) para o servidor web através de uma rede de computadores.
@@ -399,7 +399,7 @@ O principal elemento do ambiente servidor é o web server. Ele é quem recebe, i
 
 \subsubsection{Funções de um web service}
 
-Um web service nada mais é que um software rodando em uma máquina. Ele desempenha várias funções que podemos elencar como:
+Um web server nada mais é que um software rodando em uma máquina. Ele desempenha várias funções que podemos elencar como:
 \begin{itemize}
 	\item Atender as requests http e responder a elas.
 	\item Gerencias sites.
@@ -473,7 +473,7 @@ Uma vez que o servidor compreende a request feita pelo client, ele envia uma sé
 	\item O browser faz novas requisições ao server até ter todos os arquivos necessários para o carregamento da página
 \end{enumerate}
 
-Como você pode ver, é muita coisa acontecendo. Você só não se dá conta disso porque o processo é muito rápido hoje em dia devida a velocidade das nossas conexões banda larga. Lembrando sempre que todas as requisições e respostas entre client e server são feitas usando-se o protocolo HTTP que a gente viu logo antes.
+Como você pode ver, é muita coisa acontecendo. Só não nos damos conta disso porque o processo é muito rápido hoje em dia devida a velocidade das nossas conexões banda larga. Lembrando sempre que todas as requisições e respostas entre client e server são feitas usando-se o protocolo HTTP que a gente viu logo antes.
 
 \section{Desenvolvimento de Interfaces Web}
 
@@ -487,7 +487,7 @@ O W3C foi criado em 1993 e, a partir dessa data, o HTML foi mantido e padronizad
 \\~\\
 Em 2004 foi criado o Web Hypertext Application Technology Working Group (WHATWG) por pessoas da Apple, Mozilla e Opera. Na época, o W3C estava trabalhando no padrão XHTML 2.0 (que iria substituir o HTML 4.01) mas o WHATWG conseguiu propor um monde que acabou sendo o HTML 5. O HTML 5 foi recebido e amplamente adotado no desenvolvimento de aplicações hoje em dia.
 \\~\\
-\textbf{Panorama de uma aplicação}
+\textbf{Panorama de uma Aplicação}
 \\~\\
 Nós já sabemos que um client faz uma requisição ao web server por HTTP e esse, por sua vez, responde a requisição com, normalmente, um arquivo HTML. De posse de arquivo, o browser consegue saber se precisará solicitar mais arquivos ao web server até que todas as referências do HTML sejam satisfeitas e a página carregada.
 \\~\\
@@ -507,8 +507,140 @@ A grosso modo, podemos dizer que o HTML pode fazer menções a arquivos dos segu
 \end{itemize}
 
 Se o site utiliza soluções dinâmicas como PHP, Java, Python, Ruby ou ASP.NET, quando a requisição é feita, o web server primeiro faz o processamento desses arquivos (normalmente por um outro servidor de APIs) e o resultado serão outros arquivos HTML, CSS, JS ou Multimídia. Após o processamento, o resultado é enviado para o client que será atualizado pelo browser.
+\\~\\
+Nas aplicações modernas, o seu browser está em processo praticamente contínuo de interação com o servidor e vice-versa.
+\\~\\
+\textbf{A Sintaxe da Linguagem HTML}
+\\~\\
+Uma página HTML é uma coleção de \textbf{elementos}. Você consegue identificá-los facilmente porque estão entre os pares de símbolos \verb|<>|. Cada elemento também tem uma tag de abertura e uma de fechamento. Por exemplo:
+
+\begin{center}
+	\verb|<body> Aqui vai o conteúdo do body </body>|
+\end{center}
+
+Também existem elementos que não precisam do par de tags de abertura e fechamento. Por exemplo:
+
+\begin{center}
+	\verb| <input disable name='Nome' value='rommelcarneiro'>|
+\end{center}
+
+Agora que sabemos o que são elementos e como eles são construídos, podemos seguir para a \textbf{organização de um documento HTML}. Existe um padrão em todo arquivo HTML onde existem alguns elementos obrigatórios para o processamento da página pelo browser do client.
+
+\begin{Verbatim}[tabsize=4]
+<!DOCTYPE html> ------------------- Elemento da versão do HTML
+<html lang="en"> ------------------ Abertura do documento HTML 
+	<head> ------------------------ Abertura do cabeçalho      
+		<meta charset="UTF-8"> ---- Atributo nome = "valor"    
+		<title>Document</title> --- Elemento de Título         
+	</head> ----------------------- Fechamento do cabeçalho
+	<body> ------------------------ Abertura do corpo
+		<img src="logo.jpg"> ------ Elemento de imagem         
+	</body> ----------------------- Abertura do corpo
+</html> --------------------------- Fechamento do documento HTML
+\end{Verbatim}
+
+\textbf{Preâmbulo}
+\\~\\
+Como podemos ver, primeiro temos o preâmbulo \verb|DOCTYPE|, seguido do \verb|<html> </html>| onde temos outros dois elementos maiores, o cabeçalho (\verb|<head> </head>|) e o corpo (\verb|<body> </body>|).
+\\~\\
+O preâmbulo diz ao navegador qual versão da HTML será usada. Se ele não for indicado, o navegador vai tentar ``adivinhar'' qual a melhor maneira de interpretar a sua página (chamamos isso de \textbf{quirks mode}). Caso você informe qual a versão, o browser usará o processamento adequado (chamamos de \textbf{strict mode}). Os formatos do preâmbulo mudam de acordo com a versão do HTML:
+\begin{itemize}
+	\item HTML 5
+		\verb|<!DOCTYPE html>|
+	\item HTML 4.01
+	\verb|<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"|
+	\verb|"http://www.w3.org/TR/html4/loose.dtd">|
+	\item HTML 1.0
+	\verb|<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"| 
+	\verb|"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">|
+\end{itemize}
+
+\textbf{Cabeçalho}
+\\~\\
+É a primeira parte dentro da tag de html. Nele estão as informações sobre o documento de modo a organizar as referências de funcionalidade que serão usadas para o processamento da página web. Podemos resumir os elementos no cabeçalho como:
+\begin{itemize}
+	\item title - \verb|<title> </title>|
+		Define o título do documento. Que também afeta a aba do navegador.
+	\item link - \verb|<link rel="relacao" href="link_do_arquivo.extensao">|
+		Define as ligações externas como arquivos, scripts, CSS e etc. 
+	\item style - \verb|<link rel="stylesheet" href="style.css">|
+		É um tipo de link. Nele é que vamos indicar qual o arquivo que regerá o layout da nossa aplicação.
+	\item meta - \verb|meta name="nome" content="conteudo">|
+		Aqui teremos as informações adicionais sobre a página: codificação de caracteres, descrição, palavras-chaves, autor e etc.
+\end{itemize}
+
+\textbf{Corpo}
+\\~\\
+A segunda parte do html é o corpo. Nele é onde colocamos o conteúdo que fará parte da página. Como é muito comum de se encontrar nos sites, esse conteúdo pode vir mesclado em várias mídias como texto, imagens, vídeos, mapas e etc. Veremos com calma um pouco mais a frente.
 
 \subsubsection{Elementos de Texto e Multimídia}
+
+Como esse material tem o objetivo de ser para futuras consultas. Eu vou colocar as tags com um pequeno resumo mas não vou comentar muito sobre elas.
+
+\newpage
+
+\textbf{Parágrafos e Títulos}
+
+\begin{center}
+	\begin{tabular}{|c|c|}
+		\hline
+		\textbf{Elemento} & \textbf{Tags} \\
+		\hline
+		Títulos & \verb|<h1></h1>,...,<h6></h6>| \\
+		\hline
+		Parágrafo & \verb|<p></p>| \\
+		\hline
+		Quebra de Linha & \verb|<br>| \\
+		\hline
+		Itálico & \verb|<i></i>| \\
+		\hline
+		Negrito & \verb|<b></b>| \\
+		\hline
+		Importância & \verb|<strong></strong>| \\
+		\hline
+		Código-fonte & \verb|<code></code>| \\
+		\hline
+		Texto pre-formatado & \verb|<pre></pre>| \\
+		\hline
+		Citações & \verb|<blockquote></blockquote>| \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Enquanto estamos montando a nossa página html, devemos evitar usar os elementos dela para a formatação de layout da nossa solução. É altamente recomendado deixar toda essa responsabilidade para a nossa Cascading Style Sheets (CSS) e focar apenas no conteúdo textual da página web.
+
+\textbf{Listas}
+\\~\\
+Existem 3 tipos de listas em HTML.
+\\~\\
+Listas ordenadas:
+\begin{Verbatim}
+<ol>
+	<li> Primeiro item </li> --------> 1. Primeiro item
+	<li> Segundo item </li> ---------> 2. Segundo item
+	<li> Terceiro item </li> --------> 3. Terceiro item
+</ol>
+\end{Verbatim}
+
+Lista não ordenada:
+\begin{Verbatim}
+<ul>
+	<li> Primeiro item </li> --------> o Primeiro item
+	<li> Segundo item </li> ---------> o Segundo item
+	<li> Terceiro item </li> --------> o Terceiro item
+</ul>
+\end{Verbatim}
+
+Lista de definições:
+\begin{Verbatim}[tabsize=4]
+<dl>
+	<dt> Termo 01 </li> -------------> Termo 01
+		<dd> Definição 01 </li> -----> 		Definição 01
+	<dt> Termo 02 </li> -------------> Termo 02
+		<dd> Definição 02 </li> -----> 		Definição 02
+</dl>
+\end{Verbatim}
+	
 \subsubsection{Elementos Estruturais}
 \subsubsection{Elementos de Tabelas}
 \subsubsection{Elementos de Formulários}
