@@ -527,16 +527,16 @@ Também existem elementos que não precisam do par de tags de abertura e fechame
 Agora que sabemos o que são elementos e como eles são construídos, podemos seguir para a \textbf{organização de um documento HTML}. Existe um padrão em todo arquivo HTML onde existem alguns elementos obrigatórios para o processamento da página pelo browser do client.
 
 \begin{Verbatim}[tabsize=4]
-<!DOCTYPE html> ------------------- Elemento da versão do HTML
-<html lang="en"> ------------------ Abertura do documento HTML 
-	<head> ------------------------ Abertura do cabeçalho      
-		<meta charset="UTF-8"> ---- Atributo nome = "valor"    
-		<title>Document</title> --- Elemento de Título         
-	</head> ----------------------- Fechamento do cabeçalho
-	<body> ------------------------ Abertura do corpo
-		<img src="logo.jpg"> ------ Elemento de imagem         
-	</body> ----------------------- Abertura do corpo
-</html> --------------------------- Fechamento do documento HTML
+<!DOCTYPE html> -------------------> Elemento da versão do HTML
+<html lang="en"> ------------------> Abertura do documento HTML 
+	<head> ------------------------> Abertura do cabeçalho      
+		<meta charset="UTF-8"> ----> Atributo nome = "valor"    
+		<title>Document</title> ---> Elemento de Título         
+	</head> -----------------------> Fechamento do cabeçalho
+	<body> ------------------------> Abertura do corpo
+		<img src="logo.jpg"> ------> Elemento de imagem         
+	</body> -----------------------> Abertura do corpo
+</html> ---------------------------> Fechamento do documento HTML
 \end{Verbatim}
 
 \textbf{Preâmbulo}
@@ -559,13 +559,13 @@ O preâmbulo diz ao navegador qual versão da HTML será usada. Se ele não for 
 \\~\\
 É a primeira parte dentro da tag de html. Nele estão as informações sobre o documento de modo a organizar as referências de funcionalidade que serão usadas para o processamento da página web. Podemos resumir os elementos no cabeçalho como:
 \begin{itemize}
-	\item title - \verb|<title> </title>|
+	\item title - \verb|<title> </title>| \\
 		Define o título do documento. Que também afeta a aba do navegador.
-	\item link - \verb|<link rel="relacao" href="link_do_arquivo.extensao">|
+	\item link - \verb|<link rel="relacao" href="link_do_arquivo.extensao">| \\
 		Define as ligações externas como arquivos, scripts, CSS e etc. 
-	\item style - \verb|<link rel="stylesheet" href="style.css">|
+	\item style - \verb|<link rel="stylesheet" href="style.css">| \\
 		É um tipo de link. Nele é que vamos indicar qual o arquivo que regerá o layout da nossa aplicação.
-	\item meta - \verb|meta name="nome" content="conteudo">|
+	\item meta - \verb|meta name="nome" content="conteudo">| \\
 		Aqui teremos as informações adicionais sobre a página: codificação de caracteres, descrição, palavras-chaves, autor e etc.
 \end{itemize}
 
@@ -608,13 +608,13 @@ Como esse material tem o objetivo de ser para futuras consultas. Eu vou colocar 
 \end{center}
 
 Enquanto estamos montando a nossa página html, devemos evitar usar os elementos dela para a formatação de layout da nossa solução. É altamente recomendado deixar toda essa responsabilidade para a nossa Cascading Style Sheets (CSS) e focar apenas no conteúdo textual da página web.
-
+\\~\\
 \textbf{Listas}
 \\~\\
 Existem 3 tipos de listas em HTML.
 \\~\\
 Listas ordenadas:
-\begin{Verbatim}
+\begin{Verbatim}[tabsize=4]
 <ol>
 	<li> Primeiro item </li> --------> 1. Primeiro item
 	<li> Segundo item </li> ---------> 2. Segundo item
@@ -623,7 +623,7 @@ Listas ordenadas:
 \end{Verbatim}
 
 Lista não ordenada:
-\begin{Verbatim}
+\begin{Verbatim}[tabsize=4]
 <ul>
 	<li> Primeiro item </li> --------> o Primeiro item
 	<li> Segundo item </li> ---------> o Segundo item
@@ -635,14 +635,137 @@ Lista de definições:
 \begin{Verbatim}[tabsize=4]
 <dl>
 	<dt> Termo 01 </li> -------------> Termo 01
-		<dd> Definição 01 </li> -----> 		Definição 01
+	<dd> Definição 01 </li> ---------> 		Definição 01
 	<dt> Termo 02 </li> -------------> Termo 02
-		<dd> Definição 02 </li> -----> 		Definição 02
+	<dd> Definição 02 </li> ---------> 		Definição 02
 </dl>
 \end{Verbatim}
-	
+
+\textbf{Imagens}
+\begin{Verbatim}[tabsize=4]
+	<img width="200" height="180" src="img.png" alt="Peixe">
+\end{Verbatim}
+
+\textbf{Links}
+\begin{Verbatim}[tabsize=4]
+<a href="link.com" target="_blank"> Texto </a> ------> Nova tab
+<a href="link.com" target="_self"> Texto </a> -------> Mesma tab
+<a href="link.com" target="_parent"> Texto </a> -----> Frame pai
+<a href="link.com" target="_top"> Texto </a> --------> Janela atual
+<a href="link.com" target="nome_frame"> Texto </a> --> Frame nominado
+\end{Verbatim}
+
 \subsubsection{Elementos Estruturais}
+
+A partir da versão 4.0 o principal elemento usado para segmentar as partes de uma página html passou a ser o \verb|<div>| que é um um elemento de divisão genérico para agrupar qualquer conjunto de elementos necessários. Por exemplo:
+
+\begin{Verbatim}[tabsize=4]
+<div>
+    <h1> Titulo </h1>
+    <p> Parágrafo pequeno </p>
+    <ol>
+        <li>Item</li>
+        <li>Item</li>
+    </ol>
+</div>
+\end{Verbatim}
+
+Na versão 5 do HTML passamos a ter vários tipos de elementos com a mesma função dos \verb|<div>| mas agora com nomes mais fáceis de usar. As vezes nos referimos a eles como \textbf{elementos semânticos}. O novos elementos semânticos apresentados na versão 5 do html são:
+
+\begin{center}
+	\begin{tabular}{|c|c|}
+		\hline
+		\textbf{Elementos} & \textbf{Descrição} \\
+		\hline
+		\verb|<article>| & Define um artigo \\
+		\hline
+		\verb|<aside>| & Conteúdo ao lado da página \\
+		\hline
+		\verb|<details>| & Detalhes adicionais \\
+		\hline
+		\verb|<figcaption>| & Título para \verb|<figure>| \\
+		\hline
+		\verb|<figure>| & Elemento autocontido \\
+		\hline
+		\verb|<footer>| & Rodapé para seção \\
+		\hline
+		\verb|<header>| & Cabeçalho para seção \\
+		\hline
+		\verb|<main>| & Conteúdo principal \\
+		\hline
+		\verb|<mark>| & Texto destacado \\
+		\hline
+		\verb|<nav>| & Conteúdo de navegação \\
+		\hline
+		\verb|<section>| & Seção do documento \\
+		\hline
+		\verb|<summary>| & Resumo \\
+		\hline
+		\verb|<time>| & Define data/hora \\
+		\hline	
+	\end{tabular}	
+\end{center}
+
+Quando construímos a estrutura do nosso site apenas com elementos \verb|<div>| genéricos, nós não estamos indicando nenhuma relação entre essas seções. Quando usamos a divisão via elementos semânticos, permitimos um processamento por algoritmos de modo a abrir todo um leque de possibilidades de interações a partir disso. Esse é um dos motivos que justificam o nome da web 3.0 como sendo \textbf{web semântica}. 
+\\~\\
+Abaixo temos duas maneiras de representar uma estrutura de um site. A primeira em estrutura genérica de \verb|div| e a outra em elementos semânticos. Veja como a segunda abordagem é mais simples de ler.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{09-divs_semantic.png}
+	\caption{Estrutura em <div> x Estrutura em elementos semânticos}
+\end{figure}
+
+Não é difícil perceber que o uso de elementos semânticos é fortemente indicado para o desenvolvimento de aplicações web modernas.
+
 \subsubsection{Elementos de Tabelas}
+
+Não é nada incomum ter que demonstrar dados usando uma tabela. Pensando nisso, a linguagem HTML também possui um elemento especificamente criado para criação de tabelas. Uma tabela pode ser criada com o uso das seguintes tags:
+
+\newpage
+
+\begin{Verbatim}[tabsize=4]
+<table border="1"> --------------> Cria a Tabela
+	<caption> Título </caption> -> Coloca um Título
+	<tr> ------------------------> Table Row (tr)
+		<td>L1C1</td> -----------> Table Data Column 1
+		<td>L1C2</td> -----------> Table Data Column 2
+	</tr>
+	<tr>
+		<td>L2C1</td> -----------> Table Data Column 1
+		<td>L2C2</td> -----------> Table Data Column 2
+	</tr>
+</table>
+\end{Verbatim}
+
+Existem vários elementos que podem ser usados dentro de uma tabela. São os principais:
+
+\begin{center}
+	\begin{tabular}{|c|c|}
+		\hline
+		\textbf{Elementos} & \textbf{Descrição} \\
+		\hline
+		\verb|<table>| & Elemento que cria a tabela \\
+		\hline
+		\verb|<caption>| & Título da tabela \\
+		\hline
+		\verb|<thead>| & Linhas do cabeçalho \\
+		\hline
+		\verb|<tbody>| & Linhas do body \\
+		\hline
+		\verb|<tfoot>| & Linhas do rodapé \\
+		\hline
+		\verb|<tr>| & Linha da tabela \\
+		\hline
+		\verb|<th>| & Cabeçalho dentro de uma linha \\
+		\hline
+		\verb|<td>| & Table data \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\textbf{Comentário:} Não podemos cair na tentação de usar tabelas como ferramenta de layout da página. Pode até parecer mais simples no começo mas tabelas não são boas para criação de aplicações fluidas e dinâmicas.
+
 \subsubsection{Elementos de Formulários}
 
 \subsection{A Linguagem CSS}
