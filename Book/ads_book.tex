@@ -524,6 +524,10 @@ Também existem elementos que não precisam do par de tags de abertura e fechame
 	\verb| <input disable name='Nome' value='rommelcarneiro'>|
 \end{center}
 
+Atente para o fato que alguns elementos aceitam outros elementos internamente. Por exemplo, dentro do elemento \verb|<body></body>| nós colocamos todos os outros elementos que comporão a nossa página web, como por exemplo, formulários, parágrafos, vídeos e etc. Então se acostume de termos elementos dentro de outros elementos.
+\\~\\
+Dentro de alguns elementos podem ser inseridas informações e configurações por meio de parâmetros que chamamos de \textbf{atributos} do elemento. Por exemplo, no elemento logo acima, temos os atributos \verb|name| e \verb|value|.
+\\~\\
 Agora que sabemos o que são elementos e como eles são construídos, podemos seguir para a \textbf{organização de um documento HTML}. Existe um padrão em todo arquivo HTML onde existem alguns elementos obrigatórios para o processamento da página pelo browser do client.
 
 \begin{Verbatim}[tabsize=4]
@@ -713,7 +717,7 @@ Abaixo temos duas maneiras de representar uma estrutura de um site. A primeira e
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.5]{09-divs_semantic.png}
-	\caption{Estrutura em <div> x Estrutura em elementos semânticos}
+	\caption{Estrutura em <div> versus Estrutura em elementos semânticos}
 \end{figure}
 
 Não é difícil perceber que o uso de elementos semânticos é fortemente indicado para o desenvolvimento de aplicações web modernas.
@@ -768,9 +772,9 @@ Existem vários elementos que podem ser usados dentro de uma tabela. São os pri
 
 \subsubsection{Elementos de Formulários}
 
-A interação mais básica que precisamos de um usuário é a inserção de dados na aplicação. E dentre as várias maneiras de conseguirmos um dado inserido pelo usuário, o formulário é a mais simples.
+Uma das interações mais básicas que precisamos de um usuário é a inserção de dados na aplicação. Dentre as várias maneiras de conseguirmos um dado inserido pelo usuário, o formulário é a mais simples.
 \\~\\
-O HTML fornece vários elementos dentro do elemento \verb|<form></form>| que nos permite a criar campos de texto, botões clicáveis, campos de senha e etc. A sintaxe mais básica de um formulário é dada por:
+O HTML fornece vários atributos dentro do elemento \verb|<form></form>| que nos permite a criar campos de texto, botões clicáveis, campos de senha e etc. A sintaxe mais básica de um formulário é dada por:
 
 \begin{Verbatim}[tabsize=4]
 <form name="form_name" action="login.html" method="POST">
@@ -782,9 +786,31 @@ O HTML fornece vários elementos dentro do elemento \verb|<form></form>| que nos
 </form>
 \end{Verbatim}
 
-Podemos usar o atributo \textbf{name} ou \textbf{id} para identificar o nosso formulário\footnote{Isso é muito importante porque vamos usar essa informação para fazer alguma coisa.}. O atributo \textbf{action} indica qual URL vai ser disparada uma vez processado o form. O atributo \textbf{method} indica o método HTTP de submissão dos dados do formulário no nosso bando de dados (pode ser \verb|POST| ou \verb|GET|).
+Podemos usar o atributo \textbf{name} ou \textbf{id} para identificar o nosso formulário\footnote{Isso é muito importante porque vamos usar essa informação para fazer alguma coisa.}. O atributo \textbf{action} indica qual URL vai ser disparada uma vez processado o form (no nosso exemplo seria algo como \verb|http://server.com/login.html|). O atributo \textbf{method} indica o método HTTP de submissão dos dados do formulário no nosso bando de dados (pode ser \verb|POST| ou \verb|GET|).
 \\~\\
-Quando o método usado for o \verb|GET|, o browser faz uma requisição da \verb|URL| indicada para o servidor passando os parâmetros de input como \verb|querystring| na URL. No nosso exemplo, ficaria como 
+Quando o método usado for o \verb|GET|, o browser faz uma requisição da \verb|URL| indicada para o servidor passando os parâmetros de input como \textbf{querystring} na URL. No nosso exemplo, ficaria como \verb|http://server.com/login.html/| \verb|login.html?user=texto&psw=123|.
+\\~\\
+Quanto o método escolhido é o \verb|POST|, os dados são enviados ao servidor no corpo da requisição HTTP e não aparecem na URL. A essa altura você já deve ser capaz de entender as diferenças entre esses dois métodos.
+\\~\\
+\textbf{Elemento} \verb|input|
+\\~\\
+Esse elemento é bastante utilizado na composição dos formulários (na verdade, eu nem consigo pensar em um formulário sem pelo menos um input). Ele define os campos ou entradas de informação e possui os seguintes atributos:
+\begin{itemize}
+	\item \textbf{type} \\
+			Identifica o tipo do campo: text, number, password, email, date, submit, radio, checkbox.
+	\item \textbf{name} \\
+			Nome de identificação do campo.
+	\item \textbf{value} \\
+			Valor contudo no campo.
+	\item \textbf{placeholder} \\
+			Valor que aparece quando o campo estiver vazio.
+	\item \textbf{required} \\
+			Validação automática para evitar o não preenchimento do campo antes da submissão do form.
+	\item \textbf{disables} \\
+			Inativa o campo e não permite interação mas o user ainda poderá ver.
+\end{itemize}
+
+
 
 \subsection{A Linguagem CSS}
 \subsubsection{Seletores de Elementos}
