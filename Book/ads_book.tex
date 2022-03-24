@@ -768,6 +768,24 @@ Existem vários elementos que podem ser usados dentro de uma tabela. São os pri
 
 \subsubsection{Elementos de Formulários}
 
+A interação mais básica que precisamos de um usuário é a inserção de dados na aplicação. E dentre as várias maneiras de conseguirmos um dado inserido pelo usuário, o formulário é a mais simples.
+\\~\\
+O HTML fornece vários elementos dentro do elemento \verb|<form></form>| que nos permite a criar campos de texto, botões clicáveis, campos de senha e etc. A sintaxe mais básica de um formulário é dada por:
+
+\begin{Verbatim}[tabsize=4]
+<form name="form_name" action="login.html" method="POST">
+	Usuário: <br>
+	<input type="text" name="user" value=""> <br>
+	Senha: <br>
+	<input type="password" name="psw" value=""> <br> <br>
+	<input type="submit" value="OK">
+</form>
+\end{Verbatim}
+
+Podemos usar o atributo \textbf{name} ou \textbf{id} para identificar o nosso formulário\footnote{Isso é muito importante porque vamos usar essa informação para fazer alguma coisa.}. O atributo \textbf{action} indica qual URL vai ser disparada uma vez processado o form. O atributo \textbf{method} indica o método HTTP de submissão dos dados do formulário no nosso bando de dados (pode ser \verb|POST| ou \verb|GET|).
+\\~\\
+Quando o método usado for o \verb|GET|, o browser faz uma requisição da \verb|URL| indicada para o servidor passando os parâmetros de input como \verb|querystring| na URL. No nosso exemplo, ficaria como 
+
 \subsection{A Linguagem CSS}
 \subsubsection{Seletores de Elementos}
 \subsubsection{Valores e Unidades}
