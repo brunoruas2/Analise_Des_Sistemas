@@ -790,27 +790,70 @@ Podemos usar o atributo \textbf{name} ou \textbf{id} para identificar o nosso fo
 \\~\\
 Quando o método usado for o \verb|GET|, o browser faz uma requisição da \verb|URL| indicada para o servidor passando os parâmetros de input como \textbf{querystring} na URL. No nosso exemplo, ficaria como \verb|http://server.com/login.html/| \verb|login.html?user=texto&psw=123|.
 \\~\\
-Quanto o método escolhido é o \verb|POST|, os dados são enviados ao servidor no corpo da requisição HTTP e não aparecem na URL. A essa altura você já deve ser capaz de entender as diferenças entre esses dois métodos.
+Quando o método escolhido é o \verb|POST|, os dados são enviados ao servidor no corpo da requisição HTTP e não aparecem na URL. A essa altura você já deve ser capaz de entender as diferenças entre esses dois métodos.
 \\~\\
-\textbf{Elemento} \verb|input|
+\textbf{Elemento} \verb|<input>|
 \\~\\
 Esse elemento é bastante utilizado na composição dos formulários (na verdade, eu nem consigo pensar em um formulário sem pelo menos um input). Ele define os campos ou entradas de informação e possui os seguintes atributos:
 \begin{itemize}
-	\item \textbf{type} \\
-			Identifica o tipo do campo: text, number, password, email, date, submit, radio, checkbox.
-	\item \textbf{name} \\
-			Nome de identificação do campo.
-	\item \textbf{value} \\
-			Valor contudo no campo.
-	\item \textbf{placeholder} \\
-			Valor que aparece quando o campo estiver vazio.
-	\item \textbf{required} \\
-			Validação automática para evitar o não preenchimento do campo antes da submissão do form.
-	\item \textbf{disables} \\
-			Inativa o campo e não permite interação mas o user ainda poderá ver.
+	\item \verb|type| - Cada tipo de input possui uma visualização diferente quando a página é carregada. Isso é feito para permitir uma melhor interação do usuário de acordo com a natureza da informação requerida. As opções são:
+		\begin{itemize}
+			\item text - Campo de texto aberto. A quantidade de caracteres pode ser controlada pelo atributo \verb|maxlength|.
+			\item number - Só aceita número como input e permite a seleção por umas setinhas que aparecem ao lado do campo.
+			\item password - Igual ao campo texto mas com os caracteres anonimizados.
+			\item email - Confere se o texto inserido possui um @ antes de salvar o formulário.
+			\item date - Coloca uma máscara no formato de data e cria uma opção de input por calendário.
+			\item radio button - Uma opção clicável com um valor associado e um nome. O navegador só permite que um único radio button esteja selecionado se existir mais de uma opção com o mesmo nome no atributo \verb|name|.
+			\item checkbox - Mesma lógica do radio button mas com permissão de vários selecionados simultaneamente.
+			\item submit - É um botão clicável que normalmente dispara a informação do formulário ao servidor web ou a um script JS local.
+			\item reset - É igual um submit mas a única função dele é apagar tudo que foi preenchido no formulário.
+		\end{itemize}
+	\item \verb|name| - Nome de identificação do campo.
+	\item \verb|value| - Valor contudo no campo.
+	\item \verb|placeholder| - Valor que aparece quando o campo estiver vazio.
+	\item \verb|required| - Validação automática para evitar o não preenchimento do campo antes da submissão do form.
+	\item \verb|disabled| - Inativa o campo e não permite interação mas o user ainda poderá ver.
 \end{itemize}
 
+Na imagem abaixo podemos ver como cada tipo do elemento \verb|<input>| aparece para um usuário:
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{10-forms.png}
+	\caption{Tipos de elementos <input> dentro de um formulário html.}
+\end{figure}
+
+\textbf{Elemento} \verb|<textarea>|
+\\~\\
+Esse é tranquilo de entender. Sempre que precisarmos de um input de texto maior do que uma linha, podemos usar o elemento \verb|<textarea name="" rows="10"| \verb|cols="50"></textarea>| para isso. É possível alterar a quantidade de linhas e a número de colunas para apresentação da nossa caixa de texto apenas mudando os parâmetros dos atributos.
+
+\textbf{Elemento} \verb|<select>|
+\\~\\
+Podemos permitir que o usuário selecione uma lista pré-selecionada de opções através de uma \textbf{lista em caixa} (também chamada de \textbf{dropdown menu}). Um exemplo de código contendo esse elemento por ser visto abaixo.
+
+\begin{Verbatim}[tabsize=4]
+<label for="lista"> Dropdown Menu </label>
+<select name="lista">
+	<option value="">Selecione uma opção</option>
+	<option value="01">Opção 01</option>
+	<option value="02">Opção 02</option>
+	<option value="03">Opção 03</option>
+	<option value="04">Opção 04</option>
+	<option value="05">Opção 05</option>
+</select>	
+\end{Verbatim}
+
+É possível transformar a lista suspensa em uma lista fixa que permite mais de uma seleção. Para fazer isso é só adicionar o atributo \verb|multiple| e também o atributo \verb|size=| no elemento \verb|select|.
+\\~\\
+Perceba que além do elemento de lista nós trouxemos um novo elemento chamado \verb|label| que adiciona um texto associado a algum elemento. No nosso exemplo, veja como foi indicado no atributo \verb|for| o mesmo nome que o atributo \verb|name| recebe dentro do elemento \verb|select|.
+\\~\\
+O resultado pode ser visto abaixo:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{11-dropdown.png}
+	\caption{Tipos de elementos <input> dentro de um formulário html.}
+\end{figure}
 
 \subsection{A Linguagem CSS}
 \subsubsection{Seletores de Elementos}
