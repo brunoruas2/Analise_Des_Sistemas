@@ -17,6 +17,7 @@
 \usepackage{float}
 % \usepackage{circuitikz} % para desenhar circuitos lógicos
 \usepackage{fancyvrb} % indentation in verbatim (muito bom!)
+\usepackage{makecell} %multiline cell in table
 
 \DeclareUnicodeCharacter{0301}{\'{e}}
 
@@ -902,7 +903,7 @@ A prioridade de leitura das regras de estilo que o browser vai usar é 1) inline
 \\~\\
 A leitura de um arquivo CSS é bem simples. A primeira coisa que precisamos saber é quais elementos estão presentes no html que será trabalhado e quais desses elementos possuem atribuição de id específico. 
 \\~\\
-Por exemplo, se tivermos no nosso html dois elementos \verb|<p>|, só que um deles possui o atributo id (\verb|<p id="teste">|). Para criarmos uma regra de estilo no nosso CSS basta escrevermos a tag do elemento (sem os símbolos \verb|<>|) do seguinte modo.
+Por exemplo, se tivermos no nosso html dois elementos \verb|<p>|, só que um deles possui o atributo id \verb|<p id="teste">|. Para criarmos uma regra de estilo no nosso CSS basta escrevermos a tag do elemento (sem os símbolos \verb|<>|) do seguinte modo.
 
 \begin{Verbatim}[tabsize=4]
 p {
@@ -914,11 +915,11 @@ Essa regra diz que todos os textos contidos nos elementos \verb|<p>| terão a co
 
 \begin{Verbatim}[tabsize=4]
 #teste {
-	color: red;
+	color: black;
 }
 \end{Verbatim}
 
-Isso nos dará uma página onde todos os textos dos parágrafos serão azul à exceção do parágrafo identificado pelo \verb|id="teste"|.
+Isso nos dará uma página onde todos os textos dos parágrafos serão vermelhos à exceção do parágrafo identificado pelo \verb|id="teste"|.
 \\~\\
 Podemos resumir a sintaxe do CSS como sendo:
 
@@ -931,9 +932,34 @@ Podemos resumir a sintaxe do CSS como sendo:
 		}
 \end{Verbatim}
 
-Sendo que no nosso exemplo, tivemos dois tipos de seletor: 1) o nome do elemento e 2) o \#id do elemento específico.
+Ou seja, para aprender bem CSS, vamos precisar aprender as várias maneiras de selecionar os elementos da página html e as propriedades de estilo que o CSS nos permite manipular na construção das nossas aplicações web.
 
 \subsubsection{Seletores de Elementos}
+
+Eu já adianto, existem muitos tipos de seletores. Nós precisamos decorar todos os tipos? Evidente que não. O importante é saber que o estilo de uma aplicação pode ser desenvolvido de várias maneiras e que, quanto melhor for o método de organização do CSS, mais fácil será o desenvolvimento e a manutenção da aplicação no futuro. A tabela a seguir é uma referência para os vários tipos de seletores em CSS.
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+	\hline
+	\textbf{Tipo} & \textbf{Link com HTML} & \textbf{Exemplo de Sintaxe} \\
+	\hline
+	Elemento & Nome da tag html & \verb|p {color:blue;}| \\
+	\hline
+	Identificador & id dos elementos & \verb|#ident {color:blue;}| \\
+	\hline
+	Classe & Classe dos elementos & \verb|.classe {color:blue;}| \\
+	\hline
+	Atributo & Atributos dos elementos  & \verb|[atrib] {color:blue;}| \\
+	\hline
+	Pseudo-Classe & Situações dos elementos  & \makecell{ a \\ b } \\
+	\hline
+	Pseudo-Elemento & texto & \verb|| \\
+	\hline
+	Universal & texto & \verb|| \\
+	\hline
+\end{tabular}
+\end{center}
+
 \subsubsection{Valores e Unidades}
 \subsubsection{Display e Box Model}
 \subsubsection{Propriedades de Texto}
