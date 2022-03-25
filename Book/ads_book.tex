@@ -938,6 +938,7 @@ Ou seja, para aprender bem CSS, vamos precisar aprender as várias maneiras de s
 
 Eu já adianto, existem muitos tipos de seletores. Nós precisamos decorar todos os tipos? Evidente que não. O importante é saber que o estilo de uma aplicação pode ser desenvolvido de várias maneiras e que, quanto melhor for o método de organização do CSS, mais fácil será o desenvolvimento e a manutenção da aplicação no futuro. A tabela a seguir é uma referência para os vários tipos de seletores em CSS.
 
+\footnotesize
 \begin{center}
 \begin{tabular}{|c|c|c|}
 	\hline
@@ -949,18 +950,135 @@ Eu já adianto, existem muitos tipos de seletores. Nós precisamos decorar todos
 	\hline
 	Classe & Classe dos elementos & \verb|.classe {color:blue;}| \\
 	\hline
-	Atributo & Atributos dos elementos  & \verb|[atrib] {color:blue;}| \\
+	Atributo & Atributos dos elementos  & \begin{tabular}{lll}
+		\verb|[atrib] {color:blue;}| \\
+		\verb|[id="p01"] {color:blue;}| \\
+		\verb|[class~="marked" {color:blue;}| \\
+	\end{tabular} \\
 	\hline
-	Pseudo-Classe & Situações dos elementos  & \makecell{ a \\ b } \\
+	Pseudo-Classe & Situações dos elementos  & \begin{tabular}{lll} 
+		\verb|p:first-of-type {color:blue;}| \\ 
+		\verb|p:nth-child(3) {color:blue;}| \\ 
+		\verb|:hover {color:blue;}| \\
+	\end{tabular} \\
 	\hline
-	Pseudo-Elemento & texto & \verb|| \\
+	Pseudo-Elemento & Partes de elementos & \begin{tabular}{lll}
+		\verb|p::first-letter {color:blue;}| \\
+		\verb|p::first-time {color:blue;}| \\
+		\verb|p::after {color:blue;}| \\
+	\end{tabular} \\
 	\hline
-	Universal & texto & \verb|| \\
+	Universal & Todos os elementos & \verb|* {color:blue;}| \\
+	\hline
+\end{tabular}
+\end{center}
+\normalsize
+
+Podemos ver que existem vários modelos de seletores para os elementos html de um página. Alguns deles são dependente de contexto de interação do elemento. Especialmente, as situações de pseudo-classe são muito úteis para criação de aplicações fluidas e avançadas.
+\\~\\
+Link para lista de todos os pseudo-elementos e pseudo-classes suportados pelo CSS atualmente: \href{https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors/Pseudo-classes_and_pseudo-elements}{[LINK]}.
+\\~\\
+\textbf{Combinação de Seletores}
+\\~\\
+Podemos usar combinações de seletores para definir as regras de estilo das nossas aplicações web. Essas combinações obedecem a determinadas regras que devem ser seguidas para se obter o resultado esperado. Abaixo segue uma tabela de referência.
+
+\begin{center}
+\begin{tabular}{|c|c|}
+	\hline
+	\textbf{Regra} & \textbf{Interpretação} \\
+	\hline
+	\verb|A,B {...}| & Aplica a mesma regra em A e B \\	
+	\hline
+	\verb|A.B {...}| & classes e ids associados à A e B ao mesmo tempo \\	
+	\hline
+	\verb|A B {...}| & Elementos em B que também pertençam a A \\	
+	\hline
+	\verb|A > B {...}| & Elementos em B filhos de elementos de A \\	
+	\hline
+	\verb|A + B {...}| & Elemento em B próximo irmão de elementos de A \\	
+	\hline
+	\verb|A ~ B {...}| & Elementos em B próximos irmãos de elementos de A \\
 	\hline
 \end{tabular}
 \end{center}
 
+\textbf{Prioridade de Seletores}
+\\~\\
+O processamento das declarações CSS obedecem a ordem em 3 regras:
+\begin{itemize}
+	\item O processamento é de cima para baixo. A última declaração é a que prevalecerá.
+	\item Regras específicas são prioridade em relação à regras gerais.
+	\item As declarações marcadas como importantes \verb|p {color: red !important;}| são prioritárias.
+\end{itemize}
+
 \subsubsection{Valores e Unidades}
+
+Atenção aqui. Entender bem quais unidades podem ser usadas e os tipos de unidades ajuda muito o desenvolvimento de interfaces bem planejadas e responsivas.
+\\~\\
+\footnotesize
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+	\hline
+	\textbf{Tipo} & \textbf{Medida} & \textbf{Significado} & \textbf{Observação} \\
+	\hline
+	Absoluto & \begin{tabular}{lllll}
+		in \\
+		\hline
+		cm \\
+		\hline
+		mm \\
+		\hline
+		pt \\
+		\hline
+		pc \\
+	\end{tabular} & \begin{tabular}{lllll}
+		Polegadas \\
+		\hline
+		Centímetros \\
+		\hline
+		Milímetros \\
+		\hline
+		Pontos \\
+		\hline
+		Paicas \\
+	\end{tabular} & \\
+	\hline
+	Relativo & \begin{tabular}{lll}
+		em \\ \ \\
+		\hline
+		px \\ \ \\
+		\hline
+		\% \\
+	\end{tabular} & \begin{tabular}{lll}
+		Tamanho da fonte \\ \ \\
+		\hline
+		Pixels \\ \ \\
+		\hline
+		Percentual \\
+	\end{tabular} & \begin{tabular}{lll}
+		1.2em é equivalente a \\ 
+		120\% do tamanho original. \\
+		\hline
+		Um ponto no display onde \\
+		a página é exibida. \\
+		\hline
+		120\% é a mesma coisa que 1.2 em. \\
+	\end{tabular} \\
+	\hline
+\end{tabular}
+\end{center}
+\normalsize
+
+\textbf{Cores em CSS}
+\\~\\
+Existem infinitas combinações de cores para a paleta que será usada em qualquer aplicação web. Existem diferentes maneiras de definir quais cores serão usadas em CSS:
+\begin{itemize}
+	\item RGB hexadecimal - \#RRGGBB
+	\item RGB abreviado - \#RGB
+	\item RGB decimal - rgb(rrr,ggg,bbb)
+	\item Palavras-Chaves
+\end{itemize}
+
 \subsubsection{Display e Box Model}
 \subsubsection{Propriedades de Texto}
 \subsubsection{Layouts Responsivos}
