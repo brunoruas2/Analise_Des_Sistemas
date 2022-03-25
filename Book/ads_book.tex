@@ -16,7 +16,7 @@
 \usepackage{amsmath} % alguns símbolos matemáticos
 \usepackage{float}
 % \usepackage{circuitikz} % para desenhar circuitos lógicos
-\usepackage{fancyvrb} % indentation in verbatim
+\usepackage{fancyvrb} % indentation in verbatim (muito bom!)
 
 \DeclareUnicodeCharacter{0301}{\'{e}}
 
@@ -445,7 +445,7 @@ A lista de provedores também é extensa  e possuem diferentes capacidades disti
 
 Quando você acessa um site, o arquivo que coordena o modo de exposição da informação e os conteúdos da mesma é um arquivo ``\verb|.html|''. Observe o exemplo abaixo de uma página simples.
 
-\begin{Verbatim}[tabsize=4]
+\begin{Verbatim}[tabsize=4,frame=single]
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -530,17 +530,17 @@ Dentro de alguns elementos podem ser inseridas informações e configurações p
 \\~\\
 Agora que sabemos o que são elementos e como eles são construídos, podemos seguir para a \textbf{organização de um documento HTML}. Existe um padrão em todo arquivo HTML onde existem alguns elementos obrigatórios para o processamento da página pelo browser do client.
 
-\begin{Verbatim}[tabsize=4]
-<!DOCTYPE html> -------------------> Elemento da versão do HTML
-<html lang="en"> ------------------> Abertura do documento HTML 
-	<head> ------------------------> Abertura do cabeçalho      
-		<meta charset="UTF-8"> ----> Atributo nome = "valor"    
-		<title>Document</title> ---> Elemento de Título         
-	</head> -----------------------> Fechamento do cabeçalho
-	<body> ------------------------> Abertura do corpo
-		<img src="logo.jpg"> ------> Elemento de imagem         
-	</body> -----------------------> Abertura do corpo
-</html> ---------------------------> Fechamento do documento HTML
+\begin{Verbatim}[tabsize=4,frame=single]
+<!DOCTYPE html> -----------------> Elemento da versão do HTML
+<html lang="en"> ----------------> Abertura do documento HTML 
+	<head> ----------------------> Abertura do cabeçalho      
+		<meta charset="UTF-8"> --> Atributo nome = "valor"    
+		<title>Document</title> -> Elemento de Título         
+	</head> ---------------------> Fechamento do cabeçalho
+	<body> ----------------------> Abertura do corpo
+		<img src="logo.jpg"> ----> Elemento de imagem         
+	</body> ---------------------> Abertura do corpo
+</html> -------------------------> Fechamento do HTML
 \end{Verbatim}
 
 \textbf{Preâmbulo}
@@ -580,9 +580,7 @@ A segunda parte do html é o corpo. Nele é onde colocamos o conteúdo que fará
 \subsubsection{Elementos de Texto e Multimídia}
 
 Como esse material tem o objetivo de ser para futuras consultas. Eu vou colocar as tags com um pequeno resumo mas não vou comentar muito sobre elas.
-
-\newpage
-
+\\~\\
 \textbf{Parágrafos e Títulos}
 
 \begin{center}
@@ -618,7 +616,7 @@ Enquanto estamos montando a nossa página html, devemos evitar usar os elementos
 Existem 3 tipos de listas em HTML.
 \\~\\
 Listas ordenadas:
-\begin{Verbatim}[tabsize=4]
+\begin{Verbatim}[tabsize=4,frame=single]
 <ol>
 	<li> Primeiro item </li> --------> 1. Primeiro item
 	<li> Segundo item </li> ---------> 2. Segundo item
@@ -627,7 +625,7 @@ Listas ordenadas:
 \end{Verbatim}
 
 Lista não ordenada:
-\begin{Verbatim}[tabsize=4]
+\begin{Verbatim}[tabsize=4,frame=single]
 <ul>
 	<li> Primeiro item </li> --------> o Primeiro item
 	<li> Segundo item </li> ---------> o Segundo item
@@ -636,7 +634,7 @@ Lista não ordenada:
 \end{Verbatim}
 
 Lista de definições:
-\begin{Verbatim}[tabsize=4]
+\begin{Verbatim}[tabsize=4,frame=single]
 <dl>
 	<dt> Termo 01 </li> -------------> Termo 01
 	<dd> Definição 01 </li> ---------> 		Definição 01
@@ -663,7 +661,7 @@ Lista de definições:
 
 A partir da versão 4.0 o principal elemento usado para segmentar as partes de uma página html passou a ser o \verb|<div>| que é um um elemento de divisão genérico para agrupar qualquer conjunto de elementos necessários. Por exemplo:
 
-\begin{Verbatim}[tabsize=4]
+\begin{Verbatim}[tabsize=4,frame=single]
 <div>
     <h1> Titulo </h1>
     <p> Parágrafo pequeno </p>
@@ -726,9 +724,7 @@ Não é difícil perceber que o uso de elementos semânticos é fortemente indic
 
 Não é nada incomum ter que demonstrar dados usando uma tabela. Pensando nisso, a linguagem HTML também possui um elemento especificamente criado para criação de tabelas. Uma tabela pode ser criada com o uso das seguintes tags:
 
-\newpage
-
-\begin{Verbatim}[tabsize=4]
+\begin{Verbatim}[tabsize=4,frame=single]
 <table border="1"> --------------> Cria a Tabela
 	<caption> Título </caption> -> Coloca um Título
 	<tr> ------------------------> Table Row (tr)
@@ -776,7 +772,7 @@ Uma das interações mais básicas que precisamos de um usuário é a inserção
 \\~\\
 O HTML fornece vários atributos dentro do elemento \verb|<form></form>| que nos permite a criar campos de texto, botões clicáveis, campos de senha e etc. A sintaxe mais básica de um formulário é dada por:
 
-\begin{Verbatim}[tabsize=4]
+\begin{Verbatim}[tabsize=4,frame=single]
 <form name="form_name" action="login.html" method="POST">
 	Usuário: <br>
 	<input type="text" name="user" value=""> <br>
@@ -819,19 +815,19 @@ Na imagem abaixo podemos ver como cada tipo do elemento \verb|<input>| aparece p
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.6]{10-forms.png}
+	\includegraphics[scale=0.4]{10-forms.png}
 	\caption{Tipos de elementos <input> dentro de um formulário html.}
 \end{figure}
 
 \textbf{Elemento} \verb|<textarea>|
 \\~\\
 Esse é tranquilo de entender. Sempre que precisarmos de um input de texto maior do que uma linha, podemos usar o elemento \verb|<textarea name="" rows="10"| \verb|cols="50"></textarea>| para isso. É possível alterar a quantidade de linhas e a número de colunas para apresentação da nossa caixa de texto apenas mudando os parâmetros dos atributos.
-
+\\~\\
 \textbf{Elemento} \verb|<select>|
 \\~\\
 Podemos permitir que o usuário selecione uma lista pré-selecionada de opções através de uma \textbf{lista em caixa} (também chamada de \textbf{dropdown menu}). Um exemplo de código contendo esse elemento por ser visto abaixo.
 
-\begin{Verbatim}[tabsize=4]
+\begin{Verbatim}[tabsize=4,frame=single]
 <label for="lista"> Dropdown Menu </label>
 <select name="lista">
 	<option value="">Selecione uma opção</option>
@@ -856,6 +852,87 @@ O resultado pode ser visto abaixo:
 \end{figure}
 
 \subsection{A Linguagem CSS}
+
+Nós falamos na parte inicial do nosso estudo sobre HTML, mas especificamente na parte do cabeçalho, que uma das referências que normalmente fazemos é a de uma \textbf{Cascading Style Sheet (CSS)}. A ideia por trás disso é que a manutenção e o desenvolvimento da aplicação web fica mais simples quando trabalhamos todo o aspecto de estilo visual em um arquivo separado (.css) do arquivo que trata da estrutura da aplicação (.html).
+\\~\\
+Contudo, na realidade, existem outras formas de trabalhar o visual da aplicação além do arquivo .css em separado. No geral, podemos dizer que existem 3 formas de gerenciamento de estilo de um aplicação web:
+\begin{itemize}
+	\item CSS externo - Melhor forma. Nosso material estará focado nesse tipo de arquitetura.
+	\item Bloco interno - As regras ficam no próprio arquivo html. Pode ter aplicações para questões muito específicas. Mas as atualizações vão precisar ser feitas em cada página, sempre que necessário.
+	\item Atributo inline - Pior forma. Aqui, as regras de estilo são definidas diretamente no elemento html. Qualquer mínima alteração terá de ser feita diretamente no elemento e em todas as páginas.
+\end{itemize}
+
+Aqui podemos ver um exemplo de cada aplicação do estilo visual que elencamos acima:
+\begin{Verbatim}[tabsize=4,frame=single]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Exemplo CSS</title>
+
+	###Esse é um exemplo de arquivo externo###
+	<link rel="stylesheet" href="style.css" type="text/css">
+
+	###Exemplo de bloco interno####
+	<style type="text/css">
+		p {
+			font-size: 10pt;
+			font-family: "Verdana";
+			color: blue;
+		  }
+		
+		h1 { font-size: 16pt; 
+			 font-family: "Impact"; 
+			 color: red;
+			}
+	</style>
+
+</head>
+<body>
+	####Exemplo de inline#####
+	<p style="margin-left: 0.5in; font-size: 8pt;">
+		Texto do parágrafo
+	</p>
+</body>
+</html>
+\end{Verbatim}
+
+A prioridade de leitura das regras de estilo que o browser vai usar é 1) inline, 2) Bloco interno, 3) CSS externo e 4) Default do navegador.
+\\~\\
+\textbf{Sintaxe da linguagem CSS}
+\\~\\
+A leitura de um arquivo CSS é bem simples. A primeira coisa que precisamos saber é quais elementos estão presentes no html que será trabalhado e quais desses elementos possuem atribuição de id específico. 
+\\~\\
+Por exemplo, se tivermos no nosso html dois elementos \verb|<p>|, só que um deles possui o atributo id (\verb|<p id="teste">|). Para criarmos uma regra de estilo no nosso CSS basta escrevermos a tag do elemento (sem os símbolos \verb|<>|) do seguinte modo.
+
+\begin{Verbatim}[tabsize=4]
+p {
+	color: red;
+}
+\end{Verbatim}
+
+Essa regra diz que todos os textos contidos nos elementos \verb|<p>| terão a cor vermelha. Contudo, se quisermos adotar uma regra específica para apenas um elemento em questão, podemos definir a regra no css diretamente para o elemento com o seu id.
+
+\begin{Verbatim}[tabsize=4]
+#teste {
+	color: red;
+}
+\end{Verbatim}
+
+Isso nos dará uma página onde todos os textos dos parágrafos serão azul à exceção do parágrafo identificado pelo \verb|id="teste"|.
+\\~\\
+Podemos resumir a sintaxe do CSS como sendo:
+
+\begin{Verbatim}[tabsize=4,frame=single]
+	seletor { 
+		propriedade_1 : valor_da_propriedade_1; 
+		propriedade_2 : valor_da_propriedade_2;
+		...
+		propriedade_n : valor_da_propriedade_n;
+		}
+\end{Verbatim}
+
+Sendo que no nosso exemplo, tivemos dois tipos de seletor: 1) o nome do elemento e 2) o \#id do elemento específico.
+
 \subsubsection{Seletores de Elementos}
 \subsubsection{Valores e Unidades}
 \subsubsection{Display e Box Model}
