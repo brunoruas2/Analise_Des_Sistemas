@@ -1173,10 +1173,63 @@ Bibliografia Complementar
 \end{itemize}
 
 \section{Conceitos e Processos de Software}
-\subsection{Desafios e Contribuições da Área}
+
+A engenharia de software é subárea da Ciência da Computação que lida com as atividades de desenvolvimento, operação e evolução de software. Esse campo surgiu com a crise do software de 1968.
+
 \subsection{Definições}
-\subsection{Ciclo de Vida de Software}
+
+Agora vamos aprender os conceitos usados ao longo do trabalho de engenharia de software:
+\begin{itemize}
+	\item Programa - Conjunto de instruções em uma linguagem de programação.
+	\item Software - Programa + Estrutura de Dados + Documentação. 
+	\item Sistema - Conjunto de elementos interdependentes de Softwares, Hardware e Pessoas. Podem ser intensivos em qualquer umas dessas 3 partes.
+\end{itemize}
+
+\subsection{Processo de Software}
+
+O processo de Software é um conjunto de etapas usadas para a produção de soluções de software. Podemos elencar dois conceitos importantes que compõe o processo de software:
+\begin{itemize}
+	\item Descrição de Processos:
+		\begin{itemize}
+			\item Atividades - Lista de etapas necessárias.
+			\item Produtos ou Artefatos - Produto gerado pelas atividades.
+			\item Papéis - Quem executa cada atividade.
+			\item Condições - As requisições pré e pós execução das atividades.
+		\end{itemize}
+	\item Modelos de Ciclo de Vida:
+		\begin{itemize}
+			\item Modelo Sequencial Linear \\
+				Análise/Projeto/Codificação/Teste.
+			\item Modelo em Cascata \\
+				Definição/Projeto/Implementação/Integração/Manutenção.
+			\item Modelo Incremental \\
+				O projeto é quebrado em incrementos e cada incremento possui um modelo sequencial linear ou em cascata.
+			\item Modelo Incremental Evolutivo \\
+				Esboço/loop{Especificação/Desenvolvimento/Validação} até que se tenha a versão final.
+			\item Modelo Espiral \\
+				loop{Planejamento/Modelagem/Construção/Entrega/Feedback} para cada incremento novo ao software.
+			\item Modelo Iterativo \\
+				É o modelo Sequencial Linear mas com possibilidade de retorno para as etapas anteriores até que se esteja aprovado pelo cliente.
+			\item Modelo V \\
+				Durante todas as etapas de processo de software nós já vamos definindo os testes que serão usados para a aprovação do produto. 
+		\end{itemize}
+\end{itemize}
+
+Hoje em dia, temos dois modelos mais usados. A modelo incremental foca em entregar um pedaço de cada vez e o modelo iterativo permite entregar versões mais simples do produto e ir aprimorando elas. O modelo atual mais usado é justamente o \textbf{Modelo incremental iterativo}.
+
 \subsection{Processos Ágeis}
+
+Os processos ágeis nasceram no final do século XX. Seguem o modelo incremental e iterativo de desenvolvimento. Os incrementos são pequenos e sucessivos (2 a 3 semanas). O cliente está constantemente em contato com o produto gerado no ciclo. A documentação é reduzida porque há muita comunicação interpessoal.
+\\~\\
+Existem várias metodologias mas podemos elencar alguns:
+\begin{itemize}
+	\item eXtreme Programming (XP)
+	\item Scrum
+	\item Dynamic System Development (DSDM)
+	\item Feature Driven Development (FDD)
+	\item Crystal Families
+\end{itemize}
+
 \subsection{Processos Prescritivos}
 \subsection{Quando usar cada Processo?}
 \subsection{Requisitos Funcionais}
@@ -1462,7 +1515,6 @@ Bibliografia Complementar
 \end{itemize}
 
 \section{Conceitos e Competências de Pensamento Computacional}
-\subsection{O que é?}
 
 Existem divergências quanto ao significado preciso desse conceito, contudo, as interpretações vigentes costumam convergir para a definição que o pensamento computacional é a maneira de organizar o raciocínio de modo a pensar de maneira organizada, lógica e propor soluções úteis para os problemas propostos.
 \\~\\
@@ -1490,12 +1542,21 @@ Além desses passos, podemos acrescentar mais algumas etapas ao esforço de solu
 Esses passos não são necessariamente seguidos nessa ordem\footnote{Embora, na minha opinião, faz todo sentido seguir nessas etapas mesmo.}. Podemos pensar nessa lista como etapas necessárias mas não sucessivas. Agora veremos um pouco mais sobre cada uma delas.
 
 \section{Computação Desplugada}
-\subsection{O que é?}
-\subsection{A importância da Computação Desplugada}
-\subsection{Compreensão de Texto}
-\subsection{Adivinhação de Número}
-\subsection{Roteiro Turístico}
-\subsection{Nonograma}
+
+O foco dessa seção é elencar algum problemas que podem ser resolvidos com algoritmos que foram construídos usando o uso das etapadas aprendidas na seção anterior.
+\\~\\
+Várias situações que nós encontramos no processo de construção de uma solução podem ser entendidas como análogas a algum dos problemas elencados aqui. Por isso é bom manter anotações sempre que aprendermos uma técnica de resolução nova para um problema.
+
+\begin{itemize}
+	\item Compresão de Texto: \\
+		 Resolvido com a substituição de seções longas por caracteres menores antes da transmissão. Depois enviamos as regras de codificação para processamento da mensagem original. Tópico teórico: Teoria da Informação; Codificação.
+	\item Adivinhação de um Número: \\
+		Basta ir perguntando pela metade das opções. Essa é a solução de menor rodadas. Tópico teórico: Árvore de Decisão; Eficiência de Algoritmos.
+	\item Problema do Caixeiro Viajante: \\
+		Construção de um grafo e escolha do caminho de menor soma entre as distâncias dos nós. Tópico teórico: Teoria dos Grafos.
+	\item Nonograma: \\
+		Procurar as regras de construção das imagens para cada linha até que se tenha um conjunto de regras para ser aplicadas nas instruções iniciais. Desafio difícil de implementar por linguagem de programação. Tópicos teóricos: Abstração; Modelagem.
+\end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \part{Análise e Projeto de Software}
