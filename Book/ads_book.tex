@@ -1185,7 +1185,7 @@ Agora vamos aprender os conceitos usados ao longo do trabalho de engenharia de s
 	\item Sistema - Conjunto de elementos interdependentes de Softwares, Hardware e Pessoas. Podem ser intensivos em qualquer umas dessas 3 partes.
 \end{itemize}
 
-\subsection{Processo de Software}
+\subsection{Modelos e Princípios de Processo de Software}
 
 O processo de Software é um conjunto de etapas usadas para a produção de soluções de software. Podemos elencar dois conceitos importantes que compõe o processo de software:
 \begin{itemize}
@@ -1216,6 +1216,10 @@ O processo de Software é um conjunto de etapas usadas para a produção de solu
 \end{itemize}
 
 Hoje em dia, temos dois modelos mais usados. A modelo incremental foca em entregar um pedaço de cada vez e o modelo iterativo permite entregar versões mais simples do produto e ir aprimorando elas. O modelo atual mais usado é justamente o \textbf{Modelo incremental iterativo}.
+\\~\\
+Agora que aprendemos o conceito de modelo de processo de software, vamos analisar algumas abordagens de elaboração de software. Podemos dizer que existem 3 grupos principais de processos de gestão de software: 1) Processos ágeis; 2) Processos Prescritivos e 3) Processos Enxutos (lean process).
+\\~\\
+\textbf{Comentário:} No material do curso só foram abordadas os dois primeiros processos.
 
 \subsection{Processos Ágeis}
 
@@ -1261,9 +1265,137 @@ Além dos papéis e dos artefatos, existem as cerimônias do modelo Scrum:
 \end{itemize}
 
 \subsection{Processos Prescritivos}
+
+Antes do predomínio das metodologias ágeis, os processos de controle de produção de software eram orientados por processos prescritivos, também são chamados de processos dirigidos por planos. A ideia é primeiro planejar tudo e ir visualizando o caminhar dos trabalhos em termos do planejamento inicial. O Rational Unified Process (RUP) é o mais famoso desses modelos.
+\\~\\
+O RUP hoje pertence à IBM e possui algumas características principais:
+\begin{itemize}
+	\item Possui vários princípios dos quais podemos citar:
+		\begin{itemize}
+			\item Foco nos riscos principais
+			\item Garantia do valor
+			\item Permitir mudanças
+			\item Definição da arquitetura da solução o mais breve possível
+			\item Construção da solução em componentes
+		\end{itemize}
+	\item Baseado em componentes/etapas planejadas
+		\begin{itemize}
+			\item Disciplinas (o que deve ser feito) \\
+				Requisitos/Análise/Projeto/Implementação/Teste
+			\item Fases (as etapas de cumprimento das disciplinas) \\
+				Concepção/Elaboração/Construção/Transição
+		\end{itemize}
+	\item Possui linguagem padronizada: Unified Modeling Language (UML)
+	\item É dirigido por caso de uso
+	\item Funciona por modelo iterativo-incremental
+\end{itemize}
+
+Os benefícios dos processos prescritivos ainda são vistos nas maiores empresas, principalmente relacionados ao uso da UML para definição de etapas necessárias em interações e processos. Abaixo temos um exemplo retirado do material do curso. Mais informações sobre a UML podem ser encontradas nesse \href{https://www.devmedia.com.br/modelagem-de-sistemas-atraves-de-uml-uma-visao-geral/27913}{[LINK]}.
+
+\tiny
+\begin{Verbatim}[tabsize=4,frame=single]
+	Especificação do caso de uso Matricular em disciplinas do sistema de controle acadêmico. Fonte: A 
+	especificação do caso de uso foi adaptada do livro BEZERRA, Eduardo. Princípios de análise e projeto 
+	de sistemas com UML. Rio de Janeiro: Campus, 2003.
+
+	Matricular em disciplinas 
+	Sumário: O aluno usa o sistema para se matricular em disciplinas.
+	Ator primário: aluno
+	Ator secundário: Sistema Financeiro
+	Pré-condições: o aluno está identificado pelo sistema
+
+	Fluxo Principal:
+
+	1- O aluno solicita a matrícula em disciplinas;
+	2- O sistema apresenta a lista de disciplinas disponíveis para o semestre corrente para as quais o 
+	alunos possui pré-requisitos;
+	3– O aluno seleciona as disciplinas desejadas e solicita a matrícula;
+	4- O sistema aloca o aluno em turmas de ofertas das disciplinas desejadas e informa ao aluno a turma 
+	alocada para cada disciplina bem como o professor, os horários e dias da semana e as salas de aula;
+	5- O aluno confirma as alocações feitas;
+	6- O sistema realiza a matrícula e envia os dados para o Sistema Financeiro;
+	7- O caso de uso termina.
+
+	Fluxo Alternativo (4): Inclusão em lista de espera
+
+	a) Se não há vaga ou oferta disponível para alguma disciplina selecionada pelo aluno, o sistema informa
+	o fato ao aluno e fornece a opção de inserir o aluno em uma lista de espera para aquela disciplina;
+	b) Se o aluno aceitar o sistema insere o aluno na lista de espera desejada e apresenta a posição do 
+	aluno na lista. O caso de uso retorna ao passo 4;
+	c) Se o aluno não aceitar o caso de uso prossegue a partir do passo 4.
+
+	Fluxo de Exceção (4): Violação de regra de negócio relativa quantidade máxima de créditos 
+
+	a) Se o aluno já atingiu a quantidade máxima de créditos em que pode se matricular por semestre, o 
+	sistema informa a quantidade de disciplinas que ele pode se matricular e o caso de uso retorna ao 
+	passo 2;
+
+	Pós-Condições: O aluno foi inscrito em turmas das disciplinas selecionadas ou foi acrescentado a 
+	listas de esperas das disciplinas selecionadas.
+\end{Verbatim}
+\normalsize
+
+Ao final de cada fase são superados os marcos principais do RUP. Cada marco significa o maior risco relacionado àquela etapa. Na fase de concepção é o marco de objetivo de ciclo de vida. Na fase de elaboração é o marco que arquitetura do software. Na fase da construção é o marco da capacidade operacional inicial e, por fim, no marco da transição é o marco da entrega do produto.
+\\~\\
+Existem problemas nos métodos prescritivos, os principais são:
+\begin{itemize}
+	\item Forte apego à hierarquia
+	\item Segmentação elevada do processo de construção
+	\item Em situações críticas, acabam dando lugar a processos ágeis
+\end{itemize}
+
 \subsection{Quando usar cada Processo?}
+
+Na vida real, podemos encontrar vários modelos misturados no dia a dia das empresas. As práticas em cada empresa são orgânicas e fortemente baseadas na cultura organização local.
+\\~\\
+Podemos sempre analisar os modelos como uma matriz de 2 eixos: Cascata x Iterativo e Disciplinado x Flexível. Aqui nós só analisamos os processos iterativos. Cabe a você saber se precisa de um processos mais formal como o RUP ou algo mais rápido e flexível como o SCRUM.
+
+\subsection{Requisitos}
+
+Podem ser divididos em 2 grupos: requisitos de cliente e requisitos do software. A primeira classe é focada nas necessidades dos usuários\footnote{Por meio das histórias de usuários ou dos casos de uso.} que utilização o sistema (é o problema a ser resolvido). A segunda categoria são as características que o produto deve ter para cumpri os requisitos dos clientes (são as ferramentas que o sistema terá para interagir com os users).
+\\~\\
+Os requisitos de software podem ser divididos em funcionais e não funcionais. Essa divisão será abordada de maneira mais detalhada abaixo.
+
 \subsection{Requisitos Funcionais}
+
+Os requisitos funcionais são as características que o software deve ter para resolver os problemas elencados como objetivos do sistema proposto. São definidos pelos stakeholders (user, clientes, especialistas e investidores). No SCRUM eles estão no backlog do projeto e no RUP está num documento específico para isso.
+\\~\\
+É uma lista de exposições breves das funcionalidades que o software fará e como ele se comportará em relação a alguma interação dos usuários. Atente para o fato que os requisitos funcionais são sempre relacionados a algum usuário e não à características técnicas do sistema.
+
 \subsection{Requisitos Não Funcionais}
+
+São as descrições das normas e padrões do produto de software. É aqui que definimos a linguagem de programação, o ambiente, os critérios de segurança, banco de dados, disponibilidade do produto, desempenho e etc.
+\\~\\
+Um requisito não funcional deve sempre citar um critério de aceitação quantificável. Desse modo, podemos realizar testes objetivos na hora de avaliar se o desenvolvimento da feature foi bem sucedido na iteração.
+\\~\\
+Podemos elencar alguns tipos de requisito não funcional:
+\begin{itemize}
+	\item Desempenho
+	\item Disponibilidade
+	\item Portabilidade
+	\item Usabilidade
+	\item Capacidade e Degradação
+	\item Manutenibilidade
+\end{itemize}
+
+Outros requisitos não funcionais são relacionados ao processo de desenvolvimento. Como por exemplo:
+\begin{itemize}
+	\item Restrição da equipe desenvolvedora
+	\item Qual processo de software deve ser usada
+	\item Qual documentação deve ser criada
+\end{itemize}
+
+Além dessas duas classificações, podemos ter restrições relacionadas ao projeto de software:
+\begin{itemize}
+	\item Qual SGBD deve ser usado
+	\item Plataforma de disponibilidade (web ou não)
+	\item Qual linguagem de programação usada
+	\item Qual o SO das plataformas
+	\item Existência de sistema legado
+\end{itemize}
+
+Todos os requisitos não funcionais estarão no backlog da sprint através da aceitação do incremento pelo cliente e no RUP existe uma documentação específica para isso.
+
 
 \section{Atividades e Artefatos da Engenharia de Software}
 \subsection{Atividades Técnicas}
