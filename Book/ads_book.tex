@@ -1398,8 +1398,84 @@ Todos os requisitos não funcionais estarão no backlog da sprint através da ac
 
 
 \section{Atividades e Artefatos da Engenharia de Software}
+
+O processo de produção de software é divido em atividades com seus respectivos responsáveis e os artefatos criados a cada etapa finalizada.
+\\~\\
+As atividades são dividas em técnicas, gerenciais e de apoio\footnote{Não focaremos nessa parte mas são as atividades de RH, administrativo e etc.}. Essas atividades são as que compõe toda a gestão da engenharia de software.
+
 \subsection{Atividades Técnicas}
+
+Dentro das atividades técnicas nós temos a \textbf{engenharia de requisitos}, \textbf{design/projeto de software}, \textbf{implementação/codificação}, \textbf{testes} e \textbf{aceitação do cliente}.
+\\~\\
+Podemos elencar as seguintes atividades técnicas necessárias ao bom processo de engenharia de requisitos:
+\begin{itemize}
+	\item Levantamento de Requisitos (Elicitação):
+		\begin{itemize}
+			\item Entrevistas
+			\item Observação
+			\item Leitura de documentação
+		\end{itemize}
+	\item Análise dos Requisitos:
+		\begin{itemize}
+			\item Análise das lacunas
+			\item Modelagem gráfica
+			\item Revisão das descrições
+		\end{itemize}
+	\item Especificação dos Requisitos:
+		\begin{itemize}
+			\item Descrição sem ambiguidades
+			\item Linguagem natural, controlada ou específica
+		\end{itemize}
+	\item Validação dos Requisitos:
+		\begin{itemize}
+			\item Revisão de tudo
+			\item Prototipagem
+			\item Notações complexas podem dificultar entendimento do cliente
+			\item Validação por parte do cliente
+		\end{itemize}
+\end{itemize}
+
+Agora vamos ver as atividades de Projeto (design) de Software:
+\begin{itemize}
+	\item Ponderação das alternativas de soluções
+	\item Escolha da solução que será implementada
+	\item Detalhamento da solução escolhida (elaboração do projeto):
+		\begin{itemize}
+			\item Arquitetura do Software:
+				Alto nível de abstração. Foco nos requisitos não funcionais. Representação das partes gerais da solução.
+			\item Projeto Detalhado:
+				Baixa abstração. Definição dos objetos e das interações. Foco nos requisitos funcionais. Algoritmos e estruturas de dados.
+		\end{itemize}
+\end{itemize}
+
+Uma vez que temos os requisitos elencados e o projeto definido, entramos na etapa de implementação ou codificação.
+\\~\\
+Implementados os algoritmos, temos a etapa de testes de software para validar os requisitos e garantir que os objetivos sejam alcançados. Podem ser manuais ou automatizados.
+\\~\\
+Por fim, temos a aprovação do cliente no sentido de cumprimento das funcionalidades esperadas e da qualidade exigida da solução.
+\\~\\
+Após a aprovação, existe a etapa de manutenção de software que é composta da repetição de todas as etapas expostas acima. Cada manutenção ou aprimoramento passa pelas etapas descritas desde a análise de requisito até a aprovação.
+\\~\\
+\textbf{Medidas de Software}
+\\~\\
+São abordagens de medição e definição de metas para o cumprimento das etapas programadas para alcance dos objetivos da solução contratada.
+
 \subsection{Atividades Gerenciais}
+
+São as atividades que atuam no controle da complexidade da solução desenvolvida e podem ser dividas em \textbf{gestão de configuração}, \textbf{gestão de projeto}, \textbf{gestão de requisitos} e \textbf{gestão de processos} e, além dessas, possuem atividades afins como gestão da qualidade e estimativas de software.
+
+A gestão de configuração ou gestão de versões é a atividade que cuida da manutenção e organização dos arquivos produzidos durante todo o processo de software. É a atividade que controla as atualizações dos programas e mantém a memória de todas as etapas anteriores.
+\\~\\
+A gerência de projeto de software é a atividade que controle a dinâmica de tempo, pessoas, custos envolvido no processo de desenvolvimento.
+\\~\\
+A gerência de requisitos é a atividade de controle das necessidades de mudança no escopo do projeto bem como controla as mudanças na mudança da necessidade do cliente a respeito da mudança de requisitos. Também atua na priorização dos requisitos para a definição dos focos de trabalho. Outra atividade relacionada é o controle da rastreabilidade dos requisitos pois todas as etapas de elaboração devem ser relacionadas a algum requisito que pertença ao escopo solicitado pelo cliente.
+\\~\\
+A gestão de Processos é a atividade de definição e melhoria do processo de gestão de software de acordo com as boas práticas, dos modelos de capacitação e maturidade como (CMMI e MPS.BR).
+\\~\\
+A gestão da qualidade é a atividade que avalia as várias interfaces de dinâmicas que impactam no resultado final do produto de software.
+\\~\\
+A estimativa de software é a atividade de gerar previsões com base na história da empresa de desenvolvimento afim de melhorar a alocação dos recursos para cumprimento das etapas previstas no início do processo de planejamento.
+
 \subsection{Testes de Software}
 \subsection{Guias e Templates}
 \subsection{Desenhando Processos de Software}
