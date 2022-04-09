@@ -1511,26 +1511,93 @@ Um plano de teste deve conter os casos de testes que, por sua vez, devem conter 
 	\item Registro de execução (falha ou sucesso)
 \end{itemize}
 
-\subsection{Guias e Templates}
+\subsection{Artefatos e Templates}
 
-Os \textbf{artefatos} são um dos produtos que as atividades técnicas e gerencias produzem em cada ciclo de trabalho.
-\\~\\
-Eles fornecem a descrição e definição dos outros produtos tangíveis durante o esforço. Existem vários tipos, vamos elencar alguns:
+\subsubsection{Artefatos}
+
+Os \textbf{artefatos} são um dos produtos que as atividades técnicas e gerencias produzem em cada ciclo de trabalho e podem ser usados nas etapas posteriores da execução do projeto. Existem vários tipos, vamos elencar alguns:
 \begin{itemize}
-	\item Especificação de requisitos
-	\item Backlog
-	\item Casos de testes
-	\item Lista de bugs
-	\item Plano do projeto
-	\item Plano de testes
-	\item Ata de reunião
-	\item Matriz de rastreabilidade
+	\item Artefatos do processo de desenvolvimento:
+	\begin{itemize}
+		\item Backlog do produto\footnote{Nós já sabemos o que é.}
+		\item Diagramas de casos de usados
+		\item Descrição de casos de uso
+		\item Documento de especificação de requisitos \\
+		Descreve os requisitos baseados em casos de uso ou outra forma de descrição.
+	\end{itemize}
+	\item Artefatos do processe de gerenciamento:
+	\begin{itemize}
+		\item Documento de arquitetura de software \\
+		O nome já denuncia mas é importante porque contém vários diagramas do desenho da aplicação e como a solução foi construída em partes funcionais.
+		\item Plano de Teste de software
+		\item Casos de testes
+		\item Lista de bugs
+		\item Plano de projeto
+		\item Matriz de rastreabilidade \\
+		Mostra como os requisitos (que compõe as linhas da matriz) se relacionam com os artefatos produzidos durante o processo de produção.
+	\end{itemize}
 \end{itemize}
 
-Agora vamos aprofundar um pouco mais em alguns desses artefatos que são importantes para o bom trabalho de engenharia de software.
+\subsubsection{Templates}
+
+Nós já aprendemos o que são os artefatos de software e em que contexto eles são gerados, agora, vamos aprender algumas ferramentas e templates que nos auxiliam no processo de criação desses artefatos durante o processo de desenvolvimento de software.
+\\~\\
+\textbf{Comentário:} Essa seção é mais para consulta quando você precisar gerenciar algum projeto de desenvolvimento de software. Vou tentar manter os links atualizados mas caso algum deixe de funcionar, pode me avisar pelo \href{https://twitter.com/bruno_ruas2}{twitter}.
+\\~\\
+\textbf{Backlog do produto e Kanban}
+\\~\\
+Existem várias maneiras de organizar o cumprimento dos requisitos contidos no backlog do projeto. O kanban é um quadro onde transformamos cada item do backlog em unidades separáveis (geralmente post-its ou quadros) onde podemos mover para quadrantes de um board maior. Usualmente temos os quadrantes "A fazer", "Fazendo" e "Feito". Desse modo, podemos ver rapidamente o estado do desenvolvimento das atividades programadas para a sprint.
+\\~\\
+Existem várias ferramentas virtuais que podem ser usadas no processo como:
+\begin{itemize}
+	\item \href{https://trello.com/}{Trello}
+	\item \href{https://www.pivotaltracker.com/}{PivotalTracker}
+\end{itemize}
+
+\textbf{Especificação de Requisitos de Software}
+\\~\\
+Existem vários templates disponíveis na internet:
+\begin{itemize}
+	\item \href{https://www.reqview.com/doc/iso-iec-ieee-29148-templates.html}{IEE/ISO/IEC 29148}
+	\item \href{http://www.hectordufau.com.br/openup/openup/guidances/examples/use_case_spec_CD5DD9B1.html}{Esse exemplo}
+	\item \href{https://www.volere.org/wp-content/uploads/2018/12/template14_ptbra.pdf}{Método Volere}
+	\item \href{https://github.com/DroidFoundry/DroidMetronome/wiki/TEMPLATE-Documento-de-Especifica%C3%A7%C3%A3o-de-Objetivos-e-Requisitos-(EOR)}{PUC-MG}
+\end{itemize}
+
+\textbf{Documento de Arquitetura de Software}
+\begin{itemize}
+	\item \href{https://wiki.sei.cmu.edu/confluence/display/SAD/Template%3AArchitectureViewTemplate}{Architecture View Template}
+	\item \href{https://wiki.sei.cmu.edu/confluence/display/SAD/Template:InterfaceTemplate}{Interface Template}
+	\item \href{https://webstore.iec.ch/preview/info_isoiecieee42020%7Bed1.0%7Den.pdf}{IEE/ISO/IEC 42020}
+\end{itemize}
+
+Nesse link \href{https://www.cin.ufpe.br/~gta/rup-vc/core.base_rup/guidances/guidelines/test_case_81FD1D9F.html}{aqui} você pode ver como elaborar um caso de teste funcional a partir dos casos de uso.
+\\~\\
+Aqui tem um template de \href{https://pucminas.instructure.com/courses/49008/files/2889647?wrap=1}{ata de reunião}.
+\\~\\
+Por fim, temos um template de matriz de impacto de mudanças \href{https://pucminas.instructure.com/courses/49008/files/2889655?wrap=1}{aqui}. E uma matriz de rastreabilidade em excel \href{https://cdn.softwaretestinghelp.com/wp-content/qa/uploads/2013/10/Requirements-Traceability-matrix.xlsx}{aqui}.
 
 \subsection{Desenhando Processos de Software}
 
+Essa última seção é um exercício onde vamos colocar em prática todos os conceitos aprendidos até agora. Temos que saber que os conceitos aprendidos não são regras imutáveis na aplicação prática em um processo de software. Podemos combinar características de vários modelos durante o processo de execução de um planejamento sempre com foco na melhora contínua da qualidade do software.
+\\~\\
+Mesmo tendo muita flexibilidade sobre o processo de software, podemos elencar características que são obrigatórias em qualquer desenho:
+\begin{itemize}
+	\item Qual o modelo de ciclo de vida
+	\item Quais as atividades que comporão o processo de software e quais a técnicas usadas ao longo delas
+	\item Quais produtos ou artefatos serão gerados a cada etapa
+	\item Os papéis dos agentes relacionados ao longo do processo
+\end{itemize}
+
+Nós começamos o nosso estudo de engenharia de software pelos modelos de ciclo de vida exatamente porque eles regem grande parte das atividades e artefatos produzidos durante todo o processo de software. A maturidade da empresa, dimensionamento da mão de obra, recursos disponíveis, verba do projeto, tempo de execução e outras características são importantes para definição do melhor modelo de ciclo de vida a ser adotado.
+\\~\\
+A nossa jornada pela engenharia de software vai ser em grande medida construir um amplo repertório de modelos de ciclo de vida, atividades e artefatos.
+\\~\\
+Para facilitar o complexo processo de software, existem várias ferramentas que centralizam as diferentes etapas e simplificam o processo de gestão:
+\begin{itemize}
+	\item Bizagi Modeler
+	\item Eclipse Process Framework
+\end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Lógica Computacional}
