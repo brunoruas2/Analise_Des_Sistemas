@@ -1087,7 +1087,31 @@ Um dos aspectos mais importantes na construção de uma aplicação web é a dis
 \\~\\
 A propriedade display é que determina como um elemento e seus filhos são dispostos na página. Alguns valores dessa propriedade se referem a maneira como o elemento é organizado em relação aos elementos irmãos e alguns valores se referem a maneira como seus elementos filhos são dispostos dentro do elemento pai.
 \\~\\
-Caso não coloquemos nenhuma informação de display nos elementos, eles possuem uma categoria default própria que pode ser do tipo \verb|inline| ou \verb|block|. Os elementos \verb|inline| (\verb|<a>, <apan>, <img>, <button>, <input>| e etc) são colocados automaticamente um ao lado do outro na mesma linha enquanto existir espaço na tela. Os elementos \verb|block| (\verb|<div>,<h1 até h6>,| \verb|<p>,<form>,<canvas>,<table>| e etc) sempre ocupam uma linha inteira da página. Mais ou menos como nessa imagem abaixo
+Caso não coloquemos nenhuma informação de display nos elementos, eles possuem uma categoria default própria que pode ser do tipo \verb|inline| ou \verb|block|.
+\\~\\
+Os elementos \verb|inline| são colocados automaticamente um ao lado do outro na mesma linha enquanto existir espaço na tela.
+
+\begin{itemize}
+	\item \verb|<a>|
+	\item \verb|<span>|
+	\item \verb|<img>|
+	\item \verb|<button>|
+	\item \verb|<input>| 
+	\item etc
+\end{itemize}
+
+Os elementos \verb|block| sempre ocupam uma linha inteira da página. 
+\begin{itemize}
+	\item \verb|<div>|
+	\item \verb|<h1>| \dots \verb|<h6>|
+	\item \verb|<p>|
+	\item \verb|<form>|
+	\item \verb|<canvas>|
+	\item \verb|<table>|
+	\item etc
+\end{itemize}
+
+Mais ou menos como nessa imagem abaixo
 
 \begin{figure}[H]
 	\centering
@@ -1104,7 +1128,7 @@ input {
 }
 \end{Verbatim}
 
-No caso de elementos inside\footnote{também chamados de elementos filhos.}, o atributo display pode receber os valores \verb|display="table"|,\verb|display="grid"| e \verb|display="flex"|. Quando colocamos esses atributos em um elemento pai (outside), ele automaticamente vida um elemento do tipo \verb|display="block"|.
+No caso de elementos inside\footnote{também chamados de elementos filhos.}, o atributo display pode receber os valores \verb|display="table"|,\verb|display="grid"| e \verb|display="flex"|. Quando colocamos esses atributos nos elementos inside, o elemento que o contém, que chamamos de elemento pai (outside), automaticamente vira um elemento do tipo \verb|display="block"|.
 \\~\\
 A propriedade \verb|display="table"| em um elemento outside permite que os elementos inside recebam variações desse atributo para a construção de layout em formato de tabela. Desse modo, se nosso elemento outside é do tipo \verb|display="table"|, então, os elementos inside podem ser \verb|"table-row"|, \verb|"table-cell"|, \verb|"table-column"|, \verb|"table-caption"|, \verb|"table-row-group"|, \verb|"table-header-group"| e \verb|"table-footer-group"|.
 \\~\\
