@@ -589,6 +589,7 @@ Como esse material tem o objetivo de ser para futuras consultas. Eu vou colocar 
 		\hline
 		\textbf{Elemento} & \textbf{Tags} \\
 		\hline
+		\hline
 		Títulos & \verb|<h1></h1>,...,<h6></h6>| \\
 		\hline
 		Parágrafo & \verb|<p></p>| \\
@@ -680,6 +681,7 @@ Na versão 5 do HTML passamos a ter vários tipos de elementos com a mesma funç
 		\hline
 		\textbf{Elementos} & \textbf{Descrição} \\
 		\hline
+		\hline
 		\verb|<article>| & Define um artigo \\
 		\hline
 		\verb|<aside>| & Conteúdo ao lado da página \\
@@ -745,6 +747,7 @@ Existem vários elementos que podem ser usados dentro de uma tabela. São os pri
 	\begin{tabular}{|c|c|}
 		\hline
 		\textbf{Elementos} & \textbf{Descrição} \\
+		\hline
 		\hline
 		\verb|<table>| & Elemento que cria a tabela \\
 		\hline
@@ -944,6 +947,7 @@ Eu já adianto, existem muitos tipos de seletores. Nós precisamos decorar todos
 	\hline
 	\textbf{Tipo} & \textbf{Link com HTML} & \textbf{Exemplo de Sintaxe} \\
 	\hline
+	\hline
 	Elemento & Nome da tag html & \verb|p {color:blue;}| \\
 	\hline
 	Identificador & id dos elementos & \verb|#ident {color:blue;}| \\
@@ -987,6 +991,7 @@ Podemos usar combinações de seletores para definir as regras de estilo das nos
 	\hline
 	\textbf{Regra} & \textbf{Interpretação} \\
 	\hline
+	\hline
 	\verb|A,B {...}| & Aplica a mesma regra em A e B \\	
 	\hline
 	\verb|A.B {...}| & classes e ids associados à A e B ao mesmo tempo \\	
@@ -1020,6 +1025,7 @@ Atenção aqui. Entender bem quais unidades podem ser usadas e os tipos de unida
 \begin{tabular}{|c|c|c|c|}
 	\hline
 	\textbf{Tipo} & \textbf{Medida} & \textbf{Significado} & \textbf{Observação} \\
+	\hline
 	\hline
 	Absoluto & \begin{tabular}{lllll}
 		in \\
@@ -1160,10 +1166,170 @@ As propriedades de \verb|margin|, \verb|border| e \verb|padding| aceitam atribut
 	\caption{O Box Model do CSS.}
 \end{figure}
 
+\textbf{Fundo de Elementos (Background)}
 
+Todo elementos html possui um atributo de background que pode ser acessado pelos seguintes comandos:
+\begin{itemize}
+	\item \verb|background-color| - Cor de fundo
+	\item \verb|background-image| - Imagem ou gradiente\footnote{Você pode pesquisar para saber a lista dos gradientes disponíveis.}
+	\item \verb|background-repeat| - Comando caso a img não seja do tamanho do elemento. Pode ser do tipo \verb|repeat|, \verb|repeat-x|, \verb|repeat-y|, \verb|space|, \verb|round|
+	\item \verb|background-position| - Define a posição inicial da imagem. Pode ser do tipo \verb|top|, \verb|left|, \verb|right|, \verb|center|, \verb|bottom|
+\end{itemize}
 
 \subsubsection{Propriedades de Texto}
+
+Existem várias propriedades quando o assunto é texto em CSS. Abaixo podemos ver uma tabela para referência.
+
+\footnotesize
+\begin{tabular}{|c|c|c|}
+	\hline
+	\textbf{Propriedade} & \textbf{Descrição} & \textbf{Valores} \\
+	\hline
+	\hline
+	\verb|font-family| & Tipo de fonte &  aria | helvetica | sans-serif \\
+	\hline
+	\verb|font-size| & Tamanho da Letra & \begin{tabular}{llll}
+		 xx-small | x-small | small  \\ 
+		| medium | large | x-large   \\ 
+		| xx-large | smaller | larger  \\
+		| 10px | 80\%
+	\end{tabular} \\
+	\hline
+	\verb|font-style| & Estilo da fonte & normal | italic | oblique \\
+	\hline
+	\verb|font-weight| & Largura & normal | bold | bolder | 100 \\
+	\hline
+	\verb|font-variant| & \begin{tabular}{ll}
+		Minúsculas como \\ maiúsculas menores
+	\end{tabular} & normal | small-caps \\
+	\hline
+	\verb|line-height| & Altura & normal | 1.6 | 80\% \\
+	\hline
+	\verb|color| & Cor do texto &  \\
+	\hline
+	\verb|text-align| & Alinhamento & left | right | center | justify \\
+	\hline
+	\verb|text-shadow| & Sombra & \begin{tabular}{llll}
+		x y z [cor] \\
+		x - horizontal \\
+		y - vertical \\
+		z - difusão da sombra
+	\end{tabular}\\
+	\hline
+	\verb|text-decoration-line| & Tipo de decoração & underline | overline |line-through \\
+	\hline
+	\verb|text-decoration-style| & \begin{tabular}{ll}
+		Tipo de linha \\ de decoração
+	\end{tabular} & solid | wavy | dashed | dotted | double \\
+	\hline
+	\verb|text-decoration-color| & \begin{tabular}{ll}
+		Cor da linha \\ de decoração
+	\end{tabular} &  \\
+	\hline
+	\verb|letter-spacing| & \begin{tabular}{ll}
+		Espaçamento das \\ letras
+	\end{tabular} & normal  | 2px | 0.1em \\
+	\hline
+	\verb|word-spacing| & \begin{tabular}{ll}
+		Espaçamento das \\ palavras
+	\end{tabular} & normal  | 2px | 0.1em \\
+	\hline
+	\verb|text-transform| & \begin{tabular}{ll}
+		Tipo de escrita \\ do texto
+	\end{tabular} & capitalize | uppercase | lowercase \\
+	\hline		
+\end{tabular}
+\normalsize
+\\~\\
+\ 
+\\~\\
+\textbf{Fontes de Texto na Web}
+\\~\\
+O CSS nos dá as seguintes opções de letras: serif, sans-serif,monospace, cursive e fantasy. Contudo, nós nunca teremos certeza se o navegados do user terá a capacidade de carregar a fonte que desejamos. Para evitar esse problema, podemos definir opções de fontes do seguinte modo:
+
+\begin{center}
+\begin{Verbatim}[tabsize=4,frame=single]
+	p {
+		font-family: "Trebuchet MS", Verdana, sans-serif;
+	}		
+\end{Verbatim}
+\end{center}
+
+O navegador do user vai tenter renderizar a página usando a primeira opção, caso ele não consiga, ele vai para as outras opções.
+\\~\\
+Além das opções padrão CSS, podemos usar fontes proprietárias de outras fontes (Google Fonts, DaFont, Adobe e etc). A maneira de fazer isso é definir uma propriedade de importação como no exemplo abaixo
+
+\begin{Verbatim}[tabsize=4,frame=single]
+@import url('https://fonts.googleapis.com/css?family=Baloo');
+
+div {
+	font-family: 'Baloo', cursive;
+}
+\end{Verbatim}
+
 \subsubsection{Layouts Responsivos}
+
+Não é nada incomum acharmos sites que respondem dinamicamente ao tamanho da tela. Agora vamos aprender um pouco sobre esse método de desenvolvimento de aplicações web.
+\\~\\
+O Responsive Web Design (RWD) é a ferramenta que define o layout de um site de modo dinâmico ao tamanho da tela ou janela do dispositivo. Para poder usar esse método, nós precisamos planejar nosso código HTML e CSS de maneira compatível com essa metodologia.
+\\~\\
+Os principais padrões de layout responsivos são. Por enquanto eu vou deixar esse seção mais enxuta:
+\begin{itemize}
+	\item Mostly Fluid
+	\item Column Drop
+	\item Layout Shifter
+	\item Off Canvas
+	\item Tiny Tweaks
+\end{itemize}
+
+\textbf{Media Queries}
+\\~\\
+As media queries são os parâmetros usados na aplicação que usam alguma característica do dispositivo onde a página está sendo exibida. Abaixo nós podemos ver um exemplo de elemento HTML com media query.
+
+\scriptsize
+\begin{Verbatim}[tabsize=4,frame=single]
+<head>
+	<link rel="stylesheet" media='screen and (min-width: 900px)' href="tela_g.css">
+	<link rel="stylesheet" media='screen and (max-width: 600px)' href="tela_p.css">
+<\head>
+\end{Verbatim}
+\normalsize
+
+Nesse exemplo HTML, podemos ver como, de acordo com o tamanho da tela, o arquivo de estilo CSS carregado vai ser o "tela\_g.css" ou o "tela\_p.css".
+\\~\\
+Do lado do CSS, a sintaxe das media queries são usadas da seguinte maneira:
+
+\begin{Verbatim}[tabsize=4,frame=single]
+	body { background-color: red; }
+
+	@media screen and (min-width: 600px) {
+		body {background-color: orange;}
+	}
+	
+	@media screen and (min-width: 800px) {
+		body {background-color: yellow;}
+	}
+\end{Verbatim}
+
+Podemos ver que, de acordo com a largura da tela, o CSS envia para o navegador uma cor de fundo do body diferente. Agora estamos começando a ver a lógica por trás dos designs responsivos.
+
+As opções de \textbf{media types} são:
+\begin{itemize}
+	\item all - Qualquer tipo de mídia
+	\item print - Impressoras
+	\item screen - Telas de computadores, smartphones e tablets
+\end{itemize}
+
+As opções de \textbf{media features} são as características dos dispositivos tais como:
+\begin{itemize}
+	\item color - Profundidade de cores em bits
+	\item color-index - Número de cores indexadas 
+	\item width e height - Largura e altura do viewport
+	\item device-width e device-height - Largura e altura do dispositivo
+	\item orientation - Proporção do viewport (portrait ou landscape)
+	\item resolution - Resolução de saída em dpi
+\end{itemize}
+
 \subsubsection{Frameworks front-end - Bootstrap}
 
 \subsection{A Linguagem JavaScript}
