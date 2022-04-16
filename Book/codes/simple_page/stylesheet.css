@@ -1,19 +1,7 @@
-p {
-    color: red;
-}
-
-#teste1 {
-    color: blue;
-}
-
-#teste1 {
-    display: block;
-    height: 100px;
-    margin: 35px;
-    padding: 35px;
-    border: solid 20px black;
-}
-
-* {
-    color: black !important;
+#caixa {
+    height:200px;
+    width: 200px;
+    background-color: Blue;
+    margin: 10px;
+    border: solid 10px black;
 }
