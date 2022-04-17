@@ -549,16 +549,19 @@ Agora que sabemos o que são elementos e como eles são construídos, podemos se
 Como podemos ver, primeiro temos o preâmbulo \verb|DOCTYPE|, seguido do \verb|<html> </html>| onde temos outros dois elementos maiores, o cabeçalho (\verb|<head> </head>|) e o corpo (\verb|<body> </body>|).
 \\~\\
 O preâmbulo diz ao navegador qual versão da HTML será usada. Se ele não for indicado, o navegador vai tentar ``adivinhar'' qual a melhor maneira de interpretar a sua página (chamamos isso de \textbf{quirks mode}). Caso você informe qual a versão, o browser usará o processamento adequado (chamamos de \textbf{strict mode}). Os formatos do preâmbulo mudam de acordo com a versão do HTML:
+
+\footnotesize
 \begin{itemize}
-	\item HTML 5
-		\verb|<!DOCTYPE html>|
-	\item HTML 4.01
-	\verb|<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"|
+	\item HTML 5 \\
+	\verb|<!DOCTYPE html>|
+	\item HTML 4.01 \\
+	\verb|<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"| \\
 	\verb|"http://www.w3.org/TR/html4/loose.dtd">|
-	\item HTML 1.0
-	\verb|<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"| 
+	\item HTML 1.0 \\
+	\verb|<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"| \\
 	\verb|"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">|
 \end{itemize}
+\normalsize
 
 \textbf{Cabeçalho}
 \\~\\
@@ -646,18 +649,20 @@ Lista de definições:
 \end{Verbatim}
 
 \textbf{Imagens}
-\begin{Verbatim}[tabsize=4]
+\begin{Verbatim}[tabsize=4,frame=single]
 	<img width="200" height="180" src="img.png" alt="Peixe">
 \end{Verbatim}
 
 \textbf{Links}
-\begin{Verbatim}[tabsize=4]
+\footnotesize
+\begin{Verbatim}[tabsize=4,frame=single]
 <a href="link.com" target="_blank"> Texto </a> ------> Nova tab
 <a href="link.com" target="_self"> Texto </a> -------> Mesma tab
 <a href="link.com" target="_parent"> Texto </a> -----> Frame pai
 <a href="link.com" target="_top"> Texto </a> --------> Janela atual
 <a href="link.com" target="nome_frame"> Texto </a> --> Frame nominado
 \end{Verbatim}
+\normalsize
 
 \subsubsection{Elementos Estruturais}
 
@@ -1166,8 +1171,13 @@ As propriedades de \verb|margin|, \verb|border| e \verb|padding| aceitam atribut
 	\caption{O Box Model do CSS.}
 \end{figure}
 
-\textbf{Fundo de Elementos (Background)}
+Durante a elaboração da interface não é nada incomum usar as bordas como método de visualização. O comando que cria a borda é
+\begin{center}
+	\verb|border: solid 20px black|.
+\end{center}
 
+\textbf{Fundo de Elementos (Background)}
+\\~\\
 Todo elementos html possui um atributo de background que pode ser acessado pelos seguintes comandos:
 \begin{itemize}
 	\item \verb|background-color| - Cor de fundo
@@ -1312,7 +1322,7 @@ Do lado do CSS, a sintaxe das media queries são usadas da seguinte maneira:
 \end{Verbatim}
 
 Podemos ver que, de acordo com a largura da tela, o CSS envia para o navegador uma cor de fundo do body diferente. Agora estamos começando a ver a lógica por trás dos designs responsivos.
-
+\\~\\
 As opções de \textbf{media types} são:
 \begin{itemize}
 	\item all - Qualquer tipo de mídia
@@ -1329,6 +1339,29 @@ As opções de \textbf{media features} são as características dos dispositivos
 	\item orientation - Proporção do viewport (portrait ou landscape)
 	\item resolution - Resolução de saída em dpi
 \end{itemize}
+
+\textbf{Resolução e Viewport}
+\\~\\
+Quando as tela mudam de tamanho, o valor do \textbf{pixel} também é alterado. Para resolver esse problema, o CSS utiliza um método de cálculo que padroniza as medidas independentemente do tamanho da tela.
+\\~\\
+Se nossa aplicação for desenvolvida para uma tela com 1920 pixels (full HD), podemos converter cada pixel em uma nova unidade que permita a aplicação recalcular os tamanhos dos componentes em pixels de modo a se adequar melhor ao display. No exemplo a abaixo, nós estamos ``mudando'' o valor padrão do pixel para caber em uma tela com 1/3 de 1920 (640 pixels):
+
+$$ Viewport = \dfrac{\textrm{Resolução}}{\textrm{Pixel-Ratio}} = \dfrac{1920}{3} = 640 \ pixels $$
+
+Para habilitar esse método de ajuste, o HTML precisa ter a seguinte linha no \verb|head|:
+
+\footnotesize
+\begin{Verbatim}[tabsize=4,frame=single]
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+\end{Verbatim}
+\normalsize
+
+\textbf{Layout Flex}
+\\~\\
+Já aprendemos como reduzir a escala da nossa aplicação com o viewport. Mas, em telas de smartphones ou monitores pequenos, simplesmente reduzir a aplicação para caber no dispositivo pode não ser suficiente para uma boa experiência.
+\\~\\
+O Layout Flex (flexbox) é uma ferramenta que permite mudar a maneira como os elementos são dispostos na tela através da mudança na ordem de disposição dos elementos.
+
 
 \subsubsection{Frameworks front-end - Bootstrap}
 
