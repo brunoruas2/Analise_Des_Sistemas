@@ -1,14 +1,32 @@
-body { background-color: red; }
-
-@media screen and (min-width: 600px) {
-    body {background-color: orange;}
+header {
+    background-color: yellow;
+    border: solid black 5px;
+    height: 85px;
+    text-align: center;
 }
 
-@media screen and (min-width: 800px) {
-    body {background-color: yellow;}
+#middle {
+    display: flex;
+    height: 525px;
 }
 
-.article {
+main {
+    background-color: cyan;
+    border: solid black 5px;
+    width: 80%;
     display: inline;
-    border: solid 20px black;
+}
+
+nav {
+    background-color: gray;
+    border: solid black 5px;
+    width: 20%;
+    display: inline;
+}
+
+footer {
+    text-align: center;
+    background-color: red;
+    border: solid black 5px;
+    height: 85px;
 }

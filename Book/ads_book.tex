@@ -1190,7 +1190,8 @@ Todo elementos html possui um atributo de background que pode ser acessado pelos
 
 Existem várias propriedades quando o assunto é texto em CSS. Abaixo podemos ver uma tabela para referência.
 
-\footnotesize
+\scriptsize
+\begin{center}	
 \begin{tabular}{|c|c|c|}
 	\hline
 	\textbf{Propriedade} & \textbf{Descrição} & \textbf{Valores} \\
@@ -1200,9 +1201,9 @@ Existem várias propriedades quando o assunto é texto em CSS. Abaixo podemos ve
 	\hline
 	\verb|font-size| & Tamanho da Letra & \begin{tabular}{llll}
 		 xx-small | x-small | small  \\ 
-		| medium | large | x-large   \\ 
-		| xx-large | smaller | larger  \\
-		| 10px | 80\%
+		 medium | large | x-large   \\ 
+		 xx-large | smaller | larger  \\
+		 10px | 80\%
 	\end{tabular} \\
 	\hline
 	\verb|font-style| & Estilo da fonte & normal | italic | oblique \\
@@ -1215,7 +1216,7 @@ Existem várias propriedades quando o assunto é texto em CSS. Abaixo podemos ve
 	\hline
 	\verb|line-height| & Altura & normal | 1.6 | 80\% \\
 	\hline
-	\verb|color| & Cor do texto &  \\
+	\verb|color| & Cor do texto &  [cor] \\
 	\hline
 	\verb|text-align| & Alinhamento & left | right | center | justify \\
 	\hline
@@ -1234,7 +1235,7 @@ Existem várias propriedades quando o assunto é texto em CSS. Abaixo podemos ve
 	\hline
 	\verb|text-decoration-color| & \begin{tabular}{ll}
 		Cor da linha \\ de decoração
-	\end{tabular} &  \\
+	\end{tabular} & [cor] \\
 	\hline
 	\verb|letter-spacing| & \begin{tabular}{ll}
 		Espaçamento das \\ letras
@@ -1249,10 +1250,10 @@ Existem várias propriedades quando o assunto é texto em CSS. Abaixo podemos ve
 	\end{tabular} & capitalize | uppercase | lowercase \\
 	\hline		
 \end{tabular}
+\end{center}
+
 \normalsize
-\\~\\
-\ 
-\\~\\
+
 \textbf{Fontes de Texto na Web}
 \\~\\
 O CSS nos dá as seguintes opções de letras: serif, sans-serif,monospace, cursive e fantasy. Contudo, nós nunca teremos certeza se o navegados do user terá a capacidade de carregar a fonte que desejamos. Para evitar esse problema, podemos definir opções de fontes do seguinte modo:
@@ -1326,8 +1327,10 @@ Podemos ver que, de acordo com a largura da tela, o CSS envia para o navegador u
 As opções de \textbf{media types} são:
 \begin{itemize}
 	\item all - Qualquer tipo de mídia
+	\item handheld - Para telas responsivas ao toque
 	\item print - Impressoras
 	\item screen - Telas de computadores, smartphones e tablets
+	\item outras
 \end{itemize}
 
 As opções de \textbf{media features} são as características dos dispositivos tais como:
@@ -1339,7 +1342,8 @@ As opções de \textbf{media features} são as características dos dispositivos
 	\item orientation - Proporção do viewport (portrait ou landscape)
 	\item resolution - Resolução de saída em dpi
 \end{itemize}
-
+\ 
+\\~\\
 \textbf{Resolução e Viewport}
 \\~\\
 Quando as tela mudam de tamanho, o valor do \textbf{pixel} também é alterado. Para resolver esse problema, o CSS utiliza um método de cálculo que padroniza as medidas independentemente do tamanho da tela.
@@ -1356,11 +1360,13 @@ Para habilitar esse método de ajuste, o HTML precisa ter a seguinte linha no \v
 \end{Verbatim}
 \normalsize
 
+A Vantagem dessa abordagem é que ela permite a manutenção da leitura quando nossa página é carregada por telas menores. Também podemos controlar a capacidade de rolagem e zoom do usuário por meio dessa meta tag.
+\\~\\
 \textbf{Layout Flex}
 \\~\\
 Já aprendemos como reduzir a escala da nossa aplicação com o viewport. Mas, em telas de smartphones ou monitores pequenos, simplesmente reduzir a aplicação para caber no dispositivo pode não ser suficiente para uma boa experiência.
 \\~\\
-O Layout Flex (flexbox) é uma ferramenta que permite mudar a maneira como os elementos são dispostos na tela através da mudança na ordem de disposição dos elementos.
+No Layout Flex (flexbox) nós podemos definir o comportamento dos elementos html filhos dentro de um bloco maior. Nesse modelo, nós conseguimos mudar o posicionamento relativo dos elementos filhos sempre que a tela se comportar de determinada maneira prevista (como o caso do nosso site ser aberto em uma tela de smartphone ao invés de um monitor).
 
 
 \subsubsection{Frameworks front-end - Bootstrap}
