@@ -1367,7 +1367,74 @@ A Vantagem dessa abordagem é que ela permite a manutenção da leitura quando n
 Já aprendemos como reduzir a escala da nossa aplicação com o viewport. Mas, em telas de smartphones ou monitores pequenos, simplesmente reduzir a aplicação para caber no dispositivo pode não ser suficiente para uma boa experiência.
 \\~\\
 No Layout Flex (flexbox) nós podemos definir o comportamento dos elementos html filhos dentro de um bloco maior. Nesse modelo, nós conseguimos mudar o posicionamento relativo dos elementos filhos sempre que a tela se comportar de determinada maneira prevista (como o caso do nosso site ser aberto em uma tela de smartphone ao invés de um monitor).
+\\~\\
+Para usar esse recurso, usaremos no elemento pai\footnote{Que no exemplo abaixo será um elemento da classe "container"} o parâmetro \verb|display: flex; flex-wrap: wrap;|. Além de definirmos o tipo de display no elemento pai, usaremos a media query para ajustar o tamanho ideal dos elementos na tela. Podemos ver melhor no exemplo de código abaixo:
 
+\scriptsize
+\begin{Verbatim}[tabsize=4,frame=single]
+Parte HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="stylesheet.css">
+	<title>Document</title>
+</head>
+<body>
+	<main class='container'>
+		<div id="orange"></div>
+		<div id="green"></div>
+		<div id="yellow"></div>
+	</main>
+</body>
+</html>
+\end{Verbatim}
+
+\begin{Verbatim}[tabsize=4,frame=single]
+Parte CSS
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+div {
+    height: 80px;
+    width: 100%;
+}
+
+/* tela pequena */
+#orange {
+    background-color: orange;
+    order: 1;
+}
+
+#green {
+    background-color: green;
+    order: 2;
+}
+
+#yellow {
+    background-color: yellow;
+    order: 3;
+}
+
+/* tela media */
+@media screen and (min-width: 600px) {
+    #orange { width : 100%}   
+    #green { width : 70%}
+    #yellow { width : 30%}
+}
+
+/* tela grande */
+@media screen and (min-width: 1000px) {
+    #orange { width : 40%}
+    #green { width : 40%}
+    #yellow { width : 20%}
+}
+\end{Verbatim}
+\normalsize
 
 \subsubsection{Frameworks front-end - Bootstrap}
 
