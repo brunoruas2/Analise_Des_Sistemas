@@ -1,44 +1,38 @@
 .container {
-    display: flex;
-    flex-wrap: wrap;
+    height: 700px;
+    display: grid;
+    grid-template-columns: 25% 35% 15% 25%;
+    grid-template-rows: auto;
+    grid-template-areas: 
+    "header header header header"
+    "main main . sidebar"
+    "footer footer footer footer";
 }
 
-div {
-    height: 80px;
-    width: 100%;
-}
-
-/* tela pequena */
-#orange {
+header {
+    grid-area: header;
     background-color: orange;
-    order: 1;
+    margin: solid black 5px;
+    height: 100px;
 }
 
-#green {
+main {
+    grid-area: main;
+    background-color: blue;
+    margin: solid black 5px;
+    height: 500px;
+}
+
+nav {
+    grid-area: sidebar;
+    background-color: red;
+    margin: solid black 5px;
+    height: 500px;
+}
+
+footer {
+    grid-area: footer;
     background-color: green;
-    order: 2;
-}
-
-#yellow {
-    background-color: yellow;
-    order: 3;
-}
-
-/* tela media */
-@media screen and (min-width: 600px) {
-    #orange { width : 100%}
-    
-    #green { width : 70%}
-    
-    #yellow { width : 30%}
-}
-
-
-/* tela grande */
-@media screen and (min-width: 1000px) {
-    #orange { width : 40%}
-    
-    #green { width : 40%}
-    
-    #yellow { width : 20%}
+    margin: solid black 5px;
+    height: 100px;
 }
