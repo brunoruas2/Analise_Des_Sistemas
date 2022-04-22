@@ -1,32 +1,35 @@
+body {
+    background-color: rgb(255, 255, 255);
+}
+
 .container {
     height: 700px;
     display: grid;
-    grid-template-columns: 25% 35% 15% 25%;
+    grid-template-columns: 20% 30% 30% 19%;
     grid-template-rows: auto;
-    grid-template-areas: 
+    grid-template-areas:
     "header header header header"
-    "main main . sidebar"
+    "main main main sidebar"
     "footer footer footer footer";
+    column-gap: 5px;
+    row-gap: 5px;
 }
 
 header {
     grid-area: header;
     background-color: orange;
-    margin: solid black 5px;
     height: 100px;
 }
 
 main {
     grid-area: main;
     background-color: blue;
-    margin: solid black 5px;
     height: 500px;
 }
 
 nav {
     grid-area: sidebar;
     background-color: red;
-    margin: solid black 5px;
     height: 500px;
 }
 

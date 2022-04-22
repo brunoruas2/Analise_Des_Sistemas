@@ -1390,9 +1390,7 @@ Parte HTML
 	</main>
 </body>
 </html>
-\end{Verbatim}
 
-\begin{Verbatim}[tabsize=4,frame=single]
 Parte CSS
 .container {
     display: flex;
@@ -1458,7 +1456,91 @@ O sistema Grid possui alguns conceitos que nos ajudam a criar e manter a interfa
 	\item Track - Um conjunto linear de cells (uma linha ou uma coluna do grid)
 \end{itemize}
 
-Abaixo podemos ver um exemplo de aplicação usando essa metodologia
+Abaixo podemos ver um exemplo de aplicação usando essa metodologia:
+
+\scriptsize
+\begin{Verbatim}[tabsize=4,frame=single]
+Parte HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheet.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            Header
+        </header>
+        <main>
+            Main
+        </main>
+        <nav>
+            Sidebar
+        </nav>
+        <footer>
+            Footer
+        </footer>
+    </div>
+</body>
+</html>
+
+Parte CSS
+body {
+    background-color: rgb(255, 255, 255);
+}
+
+.container {
+    height: 700px;
+    display: grid;
+    grid-template-columns: 20% 30% 30% 19%;
+    grid-template-rows: auto;
+    grid-template-areas:
+    "header header header header"
+    "main main main sidebar"
+    "footer footer footer footer";
+    column-gap: 5px;
+    row-gap: 5px;
+}
+
+header {
+    grid-area: header;
+    background-color: orange;
+    height: 100px;
+}
+
+main {
+    grid-area: main;
+    background-color: blue;
+    height: 500px;
+}
+
+nav {
+    grid-area: sidebar;
+    background-color: red;
+    height: 500px;
+}
+
+footer {
+    grid-area: footer;
+    background-color: green;
+    margin: solid black 5px;
+    height: 100px;
+}
+\end{Verbatim}
+\normalsize
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.3]{15-layout-grid.png}
+	\caption{Layout Grid}
+\end{figure}
+
+Com base nessa lógica, podemos posicionar elementos usando o sistemas de coordenadas do CSS Grid.
+
+
 
 
 \subsubsection{Frameworks front-end - Bootstrap}
