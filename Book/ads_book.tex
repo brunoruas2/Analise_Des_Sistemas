@@ -872,6 +872,7 @@ Contudo, na realidade, existem outras formas de trabalhar o visual da aplicaçã
 \end{itemize}
 
 Aqui podemos ver um exemplo de cada aplicação do estilo visual que elencamos acima:
+\scriptsize
 \begin{Verbatim}[tabsize=4,frame=single]
 <!DOCTYPE html>
 <html lang="en">
@@ -904,6 +905,7 @@ Aqui podemos ver um exemplo de cada aplicação do estilo visual que elencamos a
 </body>
 </html>
 \end{Verbatim}
+\normalsize
 
 A prioridade de leitura das regras de estilo que o browser vai usar é 1) inline, 2) Bloco interno, 3) CSS externo e 4) Default do navegador.
 \\~\\
@@ -913,7 +915,7 @@ A leitura de um arquivo CSS é bem simples. A primeira coisa que precisamos sabe
 \\~\\
 Por exemplo, se tivermos no nosso html dois elementos \verb|<p>|, só que um deles possui o atributo id \verb|<p id="teste">|. Para criarmos uma regra de estilo no nosso CSS basta escrevermos a tag do elemento (sem os símbolos \verb|<>|) do seguinte modo.
 
-\begin{Verbatim}[tabsize=4]
+\begin{Verbatim}[tabsize=4,frame=single]
 p {
 	color: red;
 }
@@ -921,7 +923,7 @@ p {
 
 Essa regra diz que todos os textos contidos nos elementos \verb|<p>| terão a cor vermelha. Contudo, se quisermos adotar uma regra específica para apenas um elemento em questão, podemos definir a regra no css diretamente para o elemento com o seu id.
 
-\begin{Verbatim}[tabsize=4]
+\begin{Verbatim}[tabsize=4,frame=single]
 #teste {
 	color: black;
 }
@@ -932,12 +934,12 @@ Isso nos dará uma página onde todos os textos dos parágrafos serão vermelhos
 Podemos resumir a sintaxe do CSS como sendo:
 
 \begin{Verbatim}[tabsize=4,frame=single]
-	seletor { 
-		propriedade_1 : valor_da_propriedade_1; 
-		propriedade_2 : valor_da_propriedade_2;
-		...
-		propriedade_n : valor_da_propriedade_n;
-		}
+seletor { 
+	propriedade_1 : valor_da_propriedade_1; 
+	propriedade_2 : valor_da_propriedade_2;
+	...
+	propriedade_n : valor_da_propriedade_n;
+}
 \end{Verbatim}
 
 Ou seja, para aprender bem CSS, vamos precisar aprender as várias maneiras de selecionar os elementos da página html e as propriedades de estilo que o CSS nos permite manipular na construção das nossas aplicações web.
@@ -1011,7 +1013,8 @@ Podemos usar combinações de seletores para definir as regras de estilo das nos
 	\hline
 \end{tabular}
 \end{center}
-
+\ 
+\\~\\
 \textbf{Prioridade de Seletores}
 \\~\\
 O processamento das declarações CSS obedecem a ordem em 3 regras:
@@ -1079,7 +1082,8 @@ Atenção aqui. Entender bem quais unidades podem ser usadas e os tipos de unida
 \end{tabular}
 \end{center}
 \normalsize
-
+\ 
+\\~\\
 \textbf{Cores em CSS}
 \\~\\
 Existem infinitas combinações de cores para a paleta que será usada em qualquer aplicação web. Existem diferentes maneiras de definir quais cores serão usadas em CSS:
@@ -1132,7 +1136,7 @@ Mais ou menos como nessa imagem abaixo
 
 Podemos modificar o comportamento padrão de um elemento através do parâmetro \verb|display:| no CSS. Por exemplo, para transformar os \verb|<input>| em um elemento sozinho na página, podemos colocar no CSS a seguinte linha
 
-\begin{Verbatim}[tabsize=4]
+\begin{Verbatim}[tabsize=4,frame=single]
 input { 
 	display: block; 
 	margin: 0 auto; 
@@ -1175,7 +1179,8 @@ Durante a elaboração da interface não é nada incomum usar as bordas como mé
 \begin{center}
 	\verb|border: solid 20px black|.
 \end{center}
-
+\ 
+\\~\\
 \textbf{Fundo de Elementos (Background)}
 \\~\\
 Todo elementos html possui um atributo de background que pode ser acessado pelos seguintes comandos:
@@ -1251,18 +1256,18 @@ Existem várias propriedades quando o assunto é texto em CSS. Abaixo podemos ve
 	\hline		
 \end{tabular}
 \end{center}
-
 \normalsize
-
+\ 
+\\~\\
 \textbf{Fontes de Texto na Web}
 \\~\\
 O CSS nos dá as seguintes opções de letras: serif, sans-serif,monospace, cursive e fantasy. Contudo, nós nunca teremos certeza se o navegados do user terá a capacidade de carregar a fonte que desejamos. Para evitar esse problema, podemos definir opções de fontes do seguinte modo:
 
 \begin{center}
 \begin{Verbatim}[tabsize=4,frame=single]
-	p {
-		font-family: "Trebuchet MS", Verdana, sans-serif;
-	}		
+p {
+	font-family: "Trebuchet MS", Verdana, sans-serif;
+}		
 \end{Verbatim}
 \end{center}
 
@@ -1292,7 +1297,8 @@ Os principais padrões de layout responsivos são. Por enquanto eu vou deixar es
 	\item Off Canvas
 	\item Tiny Tweaks
 \end{itemize}
-
+\ 
+\\~\\
 \textbf{Media Queries}
 \\~\\
 As media queries são os parâmetros usados na aplicação que usam alguma característica do dispositivo onde a página está sendo exibida. Abaixo nós podemos ver um exemplo de elemento HTML com media query.
@@ -1310,17 +1316,19 @@ Nesse exemplo HTML, podemos ver como, de acordo com o tamanho da tela, o arquivo
 \\~\\
 Do lado do CSS, a sintaxe das media queries são usadas da seguinte maneira:
 
+\scriptsize
 \begin{Verbatim}[tabsize=4,frame=single]
-	body { background-color: red; }
+body { background-color: red; }
 
-	@media screen and (min-width: 600px) {
-		body {background-color: orange;}
-	}
-	
-	@media screen and (min-width: 800px) {
-		body {background-color: yellow;}
-	}
+@media screen and (min-width: 600px) {
+	body {background-color: orange;}
+}
+
+@media screen and (min-width: 800px) {
+	body {background-color: yellow;}
+}
 \end{Verbatim}
+\normalsize
 
 Podemos ver que, de acordo com a largura da tela, o CSS envia para o navegador uma cor de fundo do body diferente. Agora estamos começando a ver a lógica por trás dos designs responsivos.
 \\~\\
@@ -1368,20 +1376,12 @@ Já aprendemos como reduzir a escala da nossa aplicação com o viewport. Mas, e
 \\~\\
 No Layout Flex (flexbox) nós podemos definir o comportamento dos elementos html filhos dentro de um bloco maior. Nesse modelo, nós conseguimos mudar o posicionamento relativo dos elementos filhos sempre que a tela se comportar de determinada maneira prevista (como o caso do nosso site ser aberto em uma tela de smartphone ao invés de um monitor).
 \\~\\
-Para usar esse recurso, usaremos no elemento pai\footnote{Que no exemplo abaixo será um elemento da classe "container"} o parâmetro \verb|display: flex; flex-wrap: wrap;|. Além de definirmos o tipo de display no elemento pai, usaremos a media query para ajustar o tamanho ideal dos elementos na tela. Podemos ver melhor no exemplo de código abaixo:
+Para usar esse recurso, usaremos no elemento pai\footnote{Que no exemplo abaixo será um elemento da classe "container"} o parâmetro \verb|display:| \verb|flex; flex-wrap: wrap;|. Além de definirmos o tipo de display no elemento pai, usaremos a media query para ajustar o tamanho ideal dos elementos na tela. Podemos ver melhor no exemplo de código abaixo:
 
 \scriptsize
 \begin{Verbatim}[tabsize=4,frame=single]
 Parte HTML
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="stylesheet.css">
-	<title>Document</title>
-</head>
 <body>
 	<main class='container'>
 		<div id="orange"></div>
@@ -1451,42 +1451,26 @@ Para além das medias queries e layout flex, podemos construir o front end de um
 O sistema Grid possui alguns conceitos que nos ajudam a criar e manter a interface de uma aplicação que use essa metodologia:
 \begin{itemize}
 	\item Line - Separa as cells
-	\item Cell - É uma unidade de medida que pertence a uma linha e uma coluna
+	\item Cell - É uma unidade encapsulada em uma linha e uma coluna
 	\item Area - Conjunto de cells
 	\item Track - Um conjunto linear de cells (uma linha ou uma coluna do grid)
 \end{itemize}
 
-Abaixo podemos ver um exemplo de aplicação usando essa metodologia:
+Abaixo temos o código de uma aplicação simples usando esse sistema de construção de front end:
 
 \scriptsize
 \begin{Verbatim}[tabsize=4,frame=single]
-Parte HTML
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="stylesheet.css">
-    <title>Document</title>
-</head>
+ ------- Parte HTML -------
 <body>
     <div class="container">
-        <header>
-            Header
-        </header>
-        <main>
-            Main
-        </main>
-        <nav>
-            Sidebar
-        </nav>
-        <footer>
-            Footer
-        </footer>
+        <header>Header </header>
+        <main>Main</main>
+        <nav>Sidebar</nav>
+        <footer>Footer</footer>
     </div>
 </body>
-</html>
 
-Parte CSS
+------- Parte CSS -------
 body {
     background-color: rgb(255, 255, 255);
 }
@@ -1538,9 +1522,77 @@ footer {
 	\caption{Layout Grid}
 \end{figure}
 
-Com base nessa lógica, podemos posicionar elementos usando o sistemas de coordenadas do CSS Grid.
+Com base nessa lógica, podemos posicionar elementos usando o sistemas de coordenadas do CSS Grid. Vamos refazer a interface que acabamos de ver usando apenas esse conceito de ``items'' dentro de um ``container''.
+\\~\\
+Ao invés de definir a separação da tela como parâmetro da classe container no CSS, nós vamos criar o container e orientar, dentro de cada item, como ele se comportará no grid.
 
+\scriptsize
+\begin{Verbatim}[tabsize=4,frame=single]
+------ Parte HTML ------
+<body>
+    <div class="container">
+        <div class="item-a">Header</div>
+        <div class="item-b">Main</div>
+        <div class="item-c">Nav</div>
+        <div class="item-d">Footer</div>
+    </div>
+</body>
 
+------ Parte CSS ------
+body {
+    background-color: rgb(255, 255, 255);
+}
+
+.container {
+    height: 700px;
+    display: grid;
+    grid-template-columns: 24% 25% 25% 25%;
+    grid-template-rows: 10% 80% 10%;
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+}
+
+.item-a {
+    background-color: orange;
+    grid-column-start: 1;
+    grid-column-end: span 4;
+    grid-row-start: 1;
+    grid-row-end: 1;
+}
+
+.item-b {
+    background-color: blue;
+    grid-column-start: 1;
+    grid-column-end: span 3;
+    grid-row-start: 2;
+    grid-row-end: 2;
+}
+
+.item-c {
+    background-color: red;
+    grid-column-start: 4;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 2;
+}
+
+.item-d {
+    background-color: green;
+    grid-column-start: 1;
+    grid-column-end: span 4;
+    grid-row-start: 3;
+    grid-row-end: 3;
+}
+\end{Verbatim}
+\normalsize
+
+Nem vale a pena mostrar uma imagem do resultado porque ele é exatamente igual à imagem anterior.
+\\~\\
+Com isso, podemos ver que é o desenvolvimento de uma interface de aplicação web pode ser feito de diferentes maneiras, mas o que realmente importa é uma boa documentação e um planejamento bem feito para que o cliente termine com o que ele realmente precisa e o time de desenvolvimento não precise perder preciosas horas no bem conhecido ciclo de ``vai-e-volta'' até que o cliente aceite algum layout.
+\\~\\
+\textbf{Responsividade com Grid, Flexbox e Media Query}
+\\~\\
+Para finalizar nosso estudo de desenvolvimento web com CSS vamos fazer uma aplicação simples  
 
 
 \subsubsection{Frameworks front-end - Bootstrap}
