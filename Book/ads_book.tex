@@ -1601,7 +1601,38 @@ O código que gerou esse resultado pode ser visto no repositório desse projeto 
 	\caption{Aplicação com front end responsivo}
 \end{figure}
 
+\textbf{Comentário:} Acredite, com os conceitos aprendidos até agora nós já conseguimos fazer aplicações simples com páginas estáticas com relativa facilidade. Uma disso é que enquanto escrevo esse parágrafo\footnote{Dia 29/04/2022.} eu acabei de criar a primeira página da aplicação web front end que meu grupo precisa entregar como projeto do primeiro semestre da graduação. Eu usei, basicamente, apenas o que aprendemos aqui e alguma pesquisa no google para coisas mais simples.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.25]{17-brefV1.jpg}
+	\caption{Página inicial usando o sistema grid e viewport.}
+\end{figure}
+
+
 \subsubsection{Frameworks front-end - Bootstrap}
+
+Como era de se esperar, os programadores perceberam que era possível combinar várias práticas do mercado em ``pacotes'',``bibliotecas'' ou ``frameworks'' que, no fundo, são códigos escritos em HTML, CSS e JavaScript. Essas ferramentas facilitam demais o processo de desenvolvimento mas, como tudo na vida, precisam ser usadas com moderação e habilidade. Não podemos correr o risco de virarmos ``escravos'' de nenhum framework.
+\\~\\
+Com o devido aviso dado, podemos iniciar nosso estudo de Frameworks famosos com o \href{Bootstrap}{Boostrap}. A culpa de várias sites que acessamos terem um ``jeitão'' parecido é, em boa parte, desse framework que até hoje é o mais famoso. Foi desenvolvido em 2011 por Mark Otto e Jacob Thornton no Twitter\footnote{Isso mesmo.} e disponibilizado no GitHub.
+\\~\\
+O Bootstrap se ajusta automaticamente a diferentes modelos de tela porque tem, dentro dele, tamanhos pré-determinados de telas que se ajustam ao dispositivo\footnote{Igual a nossa aplicação usando viewport.}. A ``fronteira'' entre os tamanhos de tela são os chamados \textbf{Breakpoints}. A tabela abaixo resume as relações entre tamanho da tela e ajuste do container da aplicação.
+\ 
+\\~\\
+\scriptsize
+\begin{tabular}{|c|c|c|c|c|c|}
+	\hline
+	& \textbf{Extra Small} & \textbf{Small} & \textbf{Medium} & \textbf{Large} & \textbf{Extra Large}  \\
+	& <57px & $\geq$ 576px & $\geq$ 768px & $\geq$ 992px & $\geq$ 1200px \\ 
+	\hline
+	\hline
+	Max container size & (auto) & 540px & 720px & 960px & 1140px \\
+	\hline
+	Nome da Classe & \verb|.col-| & \verb|.col-sm-| & \verb|.col-md-| & \verb|.col-lg-| & \verb|.col-xl-| \\
+	\hline
+
+\end{tabular}
+\normalsize
 
 \subsection{A Linguagem JavaScript}
 \subsubsection{Variáveis e Tipos de Dados}
