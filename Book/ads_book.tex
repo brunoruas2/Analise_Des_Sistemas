@@ -1380,7 +1380,7 @@ Para usar esse recurso, usaremos no elemento pai\footnote{Que no exemplo abaixo 
 
 \scriptsize
 \begin{Verbatim}[tabsize=4,frame=single]
-Parte HTML
+------- Parte HTML -------
 <!DOCTYPE html>
 <body>
 	<main class='container'>
@@ -1391,7 +1391,7 @@ Parte HTML
 </body>
 </html>
 
-Parte CSS
+------- Parte CSS -------
 .container {
     display: flex;
     flex-wrap: wrap;
@@ -1616,9 +1616,9 @@ Como era de se esperar, os programadores perceberam que era possível combinar v
 \\~\\
 Com o devido aviso dado, podemos iniciar nosso estudo de Frameworks famosos com o \href{Bootstrap}{Boostrap}. A culpa de várias sites que acessamos terem um ``jeitão'' parecido é, em boa parte, desse framework que até hoje é o mais famoso. Foi desenvolvido em 2011 por Mark Otto e Jacob Thornton no Twitter\footnote{Isso mesmo.} e disponibilizado no GitHub.
 \\~\\
-O Bootstrap se ajusta automaticamente a diferentes modelos de tela porque tem, dentro dele, tamanhos pré-determinados de telas que se ajustam ao dispositivo\footnote{Igual a nossa aplicação usando viewport.}. A ``fronteira'' entre os tamanhos de tela são os chamados \textbf{Breakpoints}. A tabela abaixo resume as relações entre tamanho da tela e ajuste do container da aplicação.
-\ 
-\\~\\
+O Bootstrap se ajusta automaticamente a diferentes modelos de tela porque tem, dentro dele, tamanhos pré-determinados de telas que se ajustam ao dispositivo\footnote{Igual a nossa aplicação usando viewport.}. A ``fronteira'' entre os tamanhos de tela são os chamados \textbf{Breakpoints}. A tabela abaixo resume as relações entre tamanho da tela e ajuste do container da aplicação. O site oficial pode ser acessado nesse \href{http://getbootstrap.com/}{[link]}.
+
+\begin{center}
 \scriptsize
 \begin{tabular}{|c|c|c|c|c|c|}
 	\hline
@@ -1633,6 +1633,65 @@ O Bootstrap se ajusta automaticamente a diferentes modelos de tela porque tem, d
 
 \end{tabular}
 \normalsize
+\end{center}
+\ 
+\\~\\
+\textbf{Download do Bootstrap}
+\\~\\
+Existem duas opções de download desse Framework:
+\begin{itemize}
+	\item CSS e JS compilados - Já vem pronto pra uso mas é um pouco limitado.
+	\item Código Fonte - Permite customização e vem com as fontes do Bootstrap mas precisa de compilação.
+\end{itemize}
+
+Para saber como fazer basta uma pesquisa rápida no \href{https://www.google.com/search?channel=crow5&client=firefox-b-d&q=como+instalar+o+boostrap}{[google]} ou no \href{https://www.youtube.com/results?search_query=how+to+install+and+use+boostrap}{[youtube]}.
+\\~\\
+\textbf{Conteúdo do Boostrap}
+\\~\\
+A melhor fonte sobre qualquer tecnologia geralmente é a própria \href{https://getbootstrap.com/docs/5.1/getting-started/introduction/}{documentação oficial}. Mas podemos dividir as partes do Bootstrap em:
+\begin{itemize}
+	\item Reboot - Para uniformização da aparência em diferentes navegadores
+	\item Tipografia - Textos e fontes
+	\item Code - Linhas de código
+	\item Images - Relacionado aos recursos de imagens
+	\item Tables - Relacionado aos recursos de tabelas
+	\item Figures - Imagens com textos associados
+\end{itemize}
+\ 
+\\~\\
+\textbf{Componentes do Boostrap}
+\\~\\
+Nós já sabemos que o HTML possui uma lógica de estruturação da página. Contudo, quando estamos usando o Bootstrap temos que ``reaprender'' como pensar nossa estrutura da página a partir dos conceitos e modelos do framework.
+\\~\\
+Para o Bootstrap, a página é criada usando-se \textbf{componentes}. A lista é bem grande mas podemos destacar alguns:
+\begin{itemize}
+	\item Breadcrumb - Trilha com o caminho do site até uma página
+	\item Navbar - Barra de menu e pesquisa
+	\item Carousel - Conjunto rotativo de imagens em destaque no site
+	\item Cards - Cartões para uso diverso. Podem ser imagens ou texto
+	\item Modal - Caixas de diálogo (tipo um popup só que dentro da página)
+\end{itemize}
+\ 
+\\~\\
+\textbf{Sistema Grid no Bootstrap}
+\\~\\
+Como nós já sabemos, o sistema grid é uma maneira conveniente de controlarmos a estrutura visual da nossa aplicação. Diante disso, não é surpreendente que esse framework também use uma versão dessa lógica.
+\\~\\
+Para o Bootstrap, \textbf{todas as páginas} serão sempre divididas em 12 colunas. A lógica de divisão é como na tabela abaixo:
+\tiny
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
+	\hline
+	.col-md-1 & .col-md-1 & .col-md-1 & .col-md-1 & .col-md-1 & .col-md-1 & .col-md-1 & .col-md-1 & .col-md-1 & .col-md-1 & .col-md-1 & .col-md-1 \\
+	\hline
+\end{tabular}
+
+\begin{tabular}{|cccccccc|cccc|}
+	\hline
+	.col-md-8 & \phantom{.col-md-1} & \phantom{.col-md-1} & \phantom{.col-md-1} & \phantom{.col-md-1} & \phantom{.col-md-1} & \phantom{.col-md-1} & \phantom{.col-md-1} & col.md-4 & \phantom{.col-md-1} & \phantom{.col-md-1} & \phantom{.col-md-1} \\
+	\hline
+\end{tabular}
+\normalsize
+
 
 \subsection{A Linguagem JavaScript}
 \subsubsection{Variáveis e Tipos de Dados}
