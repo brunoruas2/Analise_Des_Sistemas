@@ -1677,21 +1677,72 @@ Para o Bootstrap, a página é criada usando-se \textbf{componentes}. A lista é
 \\~\\
 Como nós já sabemos, o sistema grid é uma maneira conveniente de controlarmos a estrutura visual da nossa aplicação. Diante disso, não é surpreendente que esse framework também use uma versão dessa lógica.
 \\~\\
-Para o Bootstrap, \textbf{todas as páginas} serão sempre divididas em 12 colunas. A lógica de divisão é como na tabela abaixo:
-\tiny
-\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
-	\hline
-	.col-md-1 & .col-md-1 & .col-md-1 & .col-md-1 & .col-md-1 & .col-md-1 & .col-md-1 & .col-md-1 & .col-md-1 & .col-md-1 & .col-md-1 & .col-md-1 \\
-	\hline
-\end{tabular}
+Para o Bootstrap, \textbf{todas as páginas} serão sempre divididas em 12 colunas. Quando um elemento está dentro de outro, o padrão de 12 colunas se mantém. A lógica de divisão é como na imagem abaixo:
 
-\begin{tabular}{|cccccccc|cccc|}
-	\hline
-	.col-md-8 & \phantom{.col-md-1} & \phantom{.col-md-1} & \phantom{.col-md-1} & \phantom{.col-md-1} & \phantom{.col-md-1} & \phantom{.col-md-1} & \phantom{.col-md-1} & col.md-4 & \phantom{.col-md-1} & \phantom{.col-md-1} & \phantom{.col-md-1} \\
-	\hline
-\end{tabular}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.35]{17-boostrap-columns.png}
+	\caption{Colunas no Bootstrap}
+\end{figure}
+
+O código HTML usando o Bootstrap é fortemente baseado em \verb|<div>|. A novidade está no uso de classes específicas que dão a lógica contida nos arquivos usados pelo framework.
+\\~\\
+A hierarquia é similar ao grid system porque a aplicação existira dentro de um container. O Container terá pelo menos uma linha (row). Cada linha terá pelo menos uma coluna. Internalize essa hierarquia de Container, Linhas e Colunas.
+
+\scriptsize
+\begin{Verbatim}[frame=single,tabsize=4]
+----- HTML -----
+<div class="row">
+	<div class="col-md-6" id="cel1">.col-md-6</div>
+	<div class="col-md-6" id="cel2">.col-md-6</div>
+</div>
+<div class="row">
+	<div class="col-md-2" id="cel1">.col-md-2</div>
+	<div class="col-md-10" id="cel2">.col-md-10</div>
+</div>
+<div class="row">
+	<div class="col-md-9" id="cel1">.col-md-9</div>
+	<div class="col-md-3" id="cel2">.col-md-3</div>
+</div>
+
+----- CSS ------
+#cel1 {
+    color: white;
+    background-color: red;
+    height: 100px;
+    border: solid black 3px;
+}
+
+#cel2 {
+    color: white;
+    background-color: blue;
+    height: 100px;
+    border: solid black 3px;
+}
+\end{Verbatim}
 \normalsize
 
+Na próxima imagem podemos ver o resultado desse código. O sistema de 12 colunas md-1 torna bem simples a disposição dos conteúdos na tela.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.35]{18-bootstrap-columnsrows}
+	\caption{Container, Rows e Columns}
+\end{figure}
+
+\textbf{Exercício Prático - Site de Wired usando Bootstrap}
+\\~\\
+Para exercitar esses conceitos, podemos usar como referência a página do famoso site de notícias Wired\footnote{Acesso em 02/05/2022.}. A imagem de referência será a versão desktop e a mobile do site.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.25]{19-desafio-wired.png}
+	\caption{Layout Desktop e Mobile}
+\end{figure}
+
+A primeira coisa que precisamos é identificar as estruturas de linhas e colunas da visão desktop. Podemos ver que temos uma barra superior. Uma estrutura de 3 colunas sendo as duas primeiras referentes à uma seção e a lateral direita referente a outra seção.
+\\~\\
+Em termos dos componentes co bootstrap podemos fazer uma interface equivalente como na imagem abaixo.
 
 \subsection{A Linguagem JavaScript}
 \subsubsection{Variáveis e Tipos de Dados}
