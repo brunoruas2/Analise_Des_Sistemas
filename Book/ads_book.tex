@@ -5,6 +5,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \documentclass[a4paper,11pt,oneside]{book}
+
 \usepackage[portuguese]{babel}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -15,20 +16,14 @@
 \usepackage[hang,flushmargin]{footmisc} % remove footnote's indentation
 \usepackage{amsmath} % alguns símbolos matemáticos
 \usepackage{float}
-% \usepackage{circuitikz} % para desenhar circuitos lógicos
 \usepackage{fancyvrb} % indentation in verbatim (muito bom!)
-\usepackage{makecell} %multiline cell in table
+\usepackage{makecell} % multiline cell in table
+% \usepackage{circuitikz} % para desenhar circuitos lógicos
 
 \DeclareUnicodeCharacter{0301}{\'{e}}
-
 \graphicspath{{./images/}} % set an default images folder
-
-% dark theme no pdf
-\pagecolor[rgb]{0.7,0.7,0.7}
-%\color[rgb]{0.9,0.9,0.9} % gray
-
-% tirando indentation dos paragraphs
-\setlength{\parindent}{0ex}
+\pagecolor[rgb]{0.7,0.7,0.7} % color theme no pdf
+\setlength{\parindent}{0ex} % tirando indentation dos paragraphs
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % First page of book which contains 'stuff' like: %
@@ -1822,8 +1817,6 @@ Esse aqui é apenas o começo da nossa caminhada!
 
 \subsubsection{Variáveis e Tipos de Dados}
 
-\textbf{Variáveis e Constantes}
-\\~\\
 A linguagem JS é de tipagem dinâmica. Então o tipo de variável é definido pela própria linguagem na hora da atribuição do valor. Temos dois tokens de atribuição em JS \textbf{var} ou \textbf{let}.
 
 \begin{Verbatim}[tabsize=4,frame=single]
@@ -1868,7 +1861,17 @@ Também é possível usar o token \verb|const| para atribuição. Esse token fun
 \\~\\
 \textbf{Tipos e Estruturas de Dados}
 \\~\\
-Em JS podemos definir os dados em dois grandes grupos. O primeiro é chamado de \textbf{Primitivos} e sua definição é ser uma das categorias: Null, Undefined, Boolean, Number ou String. Se um dado não é do tipo primitivo, então ele será um \textbf{Objeto} e pode ser . 
+Todas as variáveis que são números, textos (strings) ou valores booleanos (true ou false) são o que chamamos de \textbf{tipo Primitivo}. As variáveis especiais do tipo nulo (null) ou indefinido (undefined) são possuem características de tipo primitivo mas podem ser entendidas como sendo de um tipo único especial. No ECMAScript 6 foi inserida uma nova categoria de variáveis chamadas de \textbf{tipo Simbólico ou Symbol}\footnote{Não vamos nos aprofundar nisso agora. Depois eu atualizo esse material com o ECMAScript 6.}. O que não for de tipo primitivo, null, undefined ou symbol, será do \textbf{tipo Objeto} que possui uma lista de propriedades, que por sua vez, possuem um nome e valores associados.
+\\~\\
+Podemos resumir o que acabamos de ver como:
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{20-tipos-var-JS.png}
+	\caption{Tipos de Dados do JavaScript}
+\end{figure}
+
+
+\textbf{Tipo Numérico}
 
 \textbf{Tipo Boolean}
 
