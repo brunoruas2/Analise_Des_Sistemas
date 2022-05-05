@@ -1781,8 +1781,105 @@ Para citar alguns desses motores:
 \end{center}
 
 \textbf{Comentário:} Não confunda a linguagem de programação \href{https://www.java.com/pt-BR/}{Java} com JavaScript. São linguagens totalmente diferentes.
+\\~\\
+\textbf{Aplicação da Linguagem JavaScript}
+\\~\\
+Da mesma maneira que vimos com o CSS, podemos trazer o JS para nossa aplicação web de diferentes maneiras:
+\begin{itemize}
+	\item Por arquivo externo - Código é mantido em um arquivo separado
+\begin{Verbatim}
+<script type="text/javascript" src="script.js"></script>
+\end{Verbatim}
+	\item Em Bloco interno - Código fica em um bloco dentro do HTML
+\begin{Verbatim}
+<script type="text/javascript">
+	/* Código JS */
+	alert("Olá mundo!");
+</script>
+\end{Verbatim}
+	\item Inline - Código fica dentro de um atributo do elemento HTML
+\begin{Verbatim}
+<p onClick="alert("Click feito!");"></p>
+\end{Verbatim}
+\end{itemize}
+
+Agora que sabemos que podemos ``turbinar'' nossas páginas web com o uso de JS, podemos nos perguntar o que pode ser feito com essa ferramenta. A resposta é praticamente qualquer coisa! Podemos elencar como principais aplicações:
+\begin{itemize}
+	\item Manipulação de objetos e tratamento de eventos relacionados aos elementos HTML a partir do uso de uma API chamada DOM (Documento Object Model)\footnote{Sério, dá pra gerar praticamente uma página HTML com o uso do DOM. Isso é muito poderoso.}
+	\item Comunicação com servidores e utilização de APIs via AJAX\footnote{Veremos mais pra frente o que é isso.} usando o XMLHttpRequest ou na API Fetch
+	\item Armazenamento de dados no client com o uso das APIs Indexed DB e LocalStorage/SessionStorage
+	\item Usar as APIs do HTML5: Canvas, Media, File, Drag and Drop, Geolocation, Web Workers, History
+\end{itemize}
+\ 
+\\~\\
+\textbf{JavaScript além do Browser}
+\\~\\
+As pessoas gostaram tanto de JS que foram capazes de construir uma aplicação que implementa o v8 do chrome fora do browser. Isso mesmo, podemos rodar aplicações em JS direto no terminal do seu computador. Basta usar a aplicação \href{https://nodejs.org/en/}{Node.js}. Hoje em dia, dá pra fazer uma aplicação inteira, backend e frontend com JS.
+\\~\\
+Com JS podemos também construir aplicações desktop usando uma biblioteca chamada \href{https://www.electronjs.org/}{Electron}.
+\\~\\
+Esse aqui é apenas o começo da nossa caminhada!
 
 \subsubsection{Variáveis e Tipos de Dados}
+
+\textbf{Variáveis e Constantes}
+\\~\\
+A linguagem JS é de tipagem dinâmica. Então o tipo de variável é definido pela própria linguagem na hora da atribuição do valor. Temos dois tokens de atribuição em JS \textbf{var} ou \textbf{let}.
+
+\begin{Verbatim}[tabsize=4,frame=single]
+var variavel01;     // Aqui eu declarei sem atribuir nada
+var x = 10;         // x agora é um numérico de valor 10
+let y = "Olá mundo" // y é uma string
+\end{Verbatim}
+
+Agora temos que entender o motivo de termos dois tokens de atribuição. Mas, para poder explicar isso, precisamos entender que existem diferentes \textbf{escopos de variáveis} quando um programa em JS é executado. Os escopos das variáveis em JS são:
+\begin{itemize}
+	\item Escopo Global - Variáveis sempre disponíveis para consulta e edição
+	\item Escopo Local - Variáveis existem apenas dentro de um bloco de código (um loop ou uma condicional, por exemplo)
+\end{itemize}
+
+As variáveis declaradas com \verb|var| são de \textbf{escopo global} se forem declaradas fora de funções\footnote{Nesse caso são de escopo local}. Já a atribuição feita com \verb|let| é de \textbf{escopo local}.
+\\~\\
+Abaixo temos um exemplo bem bacana mostrando essas diferenças.
+
+\begin{Verbatim}[tabsize=4,frame=single]
+var a = 5;
+var b = 10;
+
+if (a === 5) {
+	let a = 4;
+	var b = 1;
+
+	console.log(a);
+	console.log(b);
+}
+
+-> Mostra 4 e 1 no console <-
+
+console.log(a);
+console.log(b);
+
+-> Mostra 5 e 1 no console <-
+\end{Verbatim}
+
+\textbf{Comentário:} Uma boa prática em JS (e em praticamente todas as linguagens) é sempre declarar as variáveis na parte de cima de cada bloco ou no começo do código.
+\\~\\
+Também é possível usar o token \verb|const| para atribuição. Esse token funciona igual ao \verb|let| e é definido para constantes. Uma boa prática da comunidade é usar letra maiúsculas para definir suas constantes.
+\\~\\
+\textbf{Tipos e Estruturas de Dados}
+\\~\\
+Em JS podemos definir os dados em dois grandes grupos. O primeiro é chamado de \textbf{Primitivos} e sua definição é ser uma das categorias: Null, Undefined, Boolean, Number ou String. Se um dado não é do tipo primitivo, então ele será um \textbf{Objeto} e pode ser . 
+
+\textbf{Tipo Boolean}
+
+\textbf{Tipo String}
+
+\textbf{Tipo Objeto}
+
+\textbf{Datas e Horas}
+
+\textbf{Arrays, Vetores ou Matrizes}
+
 \subsubsection{Controle de Fluxo}
 \subsubsection{Funções}
 \subsubsection{Documento Object Model (DOM)}
