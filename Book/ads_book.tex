@@ -1847,12 +1847,12 @@ if (a === 5) {
 	console.log(b);
 }
 
--> Mostra 4 e 1 no console <-
+-> Mostra 4 e 1 no console
 
 console.log(a);
 console.log(b);
 
--> Mostra 5 e 1 no console <-
+-> Mostra 5 e 1 no console
 \end{Verbatim}
 
 \textbf{Comentário:} Uma boa prática em JS (e em praticamente todas as linguagens) é sempre declarar as variáveis na parte de cima de cada bloco ou no começo do código.
@@ -1866,18 +1866,136 @@ Todas as variáveis que são números, textos (strings) ou valores booleanos (tr
 Podemos resumir o que acabamos de ver como:
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.6]{20-tipos-var-JS.png}
+	\includegraphics[scale=0.8]{20-tipos-var-JS.png}
 	\caption{Tipos de Dados do JavaScript}
 \end{figure}
 
-
 \textbf{Tipo Numérico}
-
+\\~\\
+JS não faz diferença entre números inteiros ou fracionados. Para essa linguagem, tudo é considerado o que chamamos de \textbf{ponto flutuante} de 64 bits. O valor máximo possível é acessado pela propriedade do objeto \verb|Number| por meio das propriedades \small \verb|Number.POSITIVE_INFINITY| e \verb|Number.NEGATIVE_INFINITY|\normalsize.
+\\~\\
+Quando tentamos fazer uma operação matemática não possível (como raiz de -1) recebemos o resultado \verb|NaN| que significa Not-a-Number.
+\\~\\
+Não é incomum termos que converter caracteres do tipo texto mas que representam números. Para isso, podemos usar a função nativa \verb|parseInt| ou \verb|parseFloat|.
+\\~\\
 \textbf{Tipo Boolean}
+\\~\\
+Os operadores booleanos são operadores que apenas admitem duas entradas: \verb|true| ou \verb|false|. Podemos chamar essas entradas diretamente ou através de operações lógicas usando operadores lógicos ou matemáticos. Abaixo temos uma tabela que podemos usar de referência.
 
+\begin{center}
+\begin{tabular}{|l|c|l|}
+	\hline
+	\textbf{Operador} & \textbf{Exemplo} & \textbf{Observação} \\
+	\hline
+	\hline
+	Mesmo valor & x == y & true se mesmo valor \\
+	\hline
+	Mesmo valor e tipo & x === y & true se mesmo valor e tipo \\
+	\hline
+	Diferente valor & x !== y & true se diferente valor \\
+	\hline
+	Maior que & x > y & true se x maior que y \\
+	\hline
+	Menor que & x < y & true se x menor que y \\
+	\hline
+	Maior igual & x >= y & true se maior igual \\
+	\hline
+	Menor igual & x <= y & true se menor igual \\
+	\hline
+	Negação & !x & true se x for false \\
+	\hline
+	And & x \&\& y & true se x e y forem true \\
+	\hline
+	Or & x || y & true se x ou y forem true \\
+	\hline
+\end{tabular}
+\end{center}
+\ 
+\\~\\
 \textbf{Tipo String}
+\\~\\
+Qualquer aplicação precisa ser capaz de lidar com textos. Uma string é exatamente uma cadeia de caracteres não numéricos (mas caracteres numéricos também podem compor uma string) que pode ser declarada por meio de aspas simples ``abc'' ou compostas `abc'.
+\\~\\
+Também é comum precisarmos juntar diferentes strings. No javascript, podemos fazer isso simplesmente usando o operador de soma:
 
+\begin{Verbatim}[tabsize=4,frame=single]
+str = `abc' + `def'
+
+console.log(str)
+
+-> abcdef
+\end{Verbatim}
+
+Alguns caracteres das nossas strings podem ser os mesmos usados na própria linguagem. Isso nos obriga a termos que aprender como fazer um ``bypass'' desses caracteres. Abaixo temos uma tabela para referência.
+
+\begin{center}
+\begin{tabular}{|l|l|}
+	\hline
+	\textbf{Código} & \textbf{Significado} \\
+	\hline
+	\hline
+	$\backslash$0 & Null \\
+	\hline
+	$\backslash$' & Aspas simples \\
+	\hline
+	$\backslash$" & Aspas compostas \\
+	\hline
+	$\backslash \backslash$ & Barra invertida \\
+	\hline
+	$\backslash$n & Nova linha \\
+	\hline
+	$\backslash$r & Retorno \\
+	\hline
+	$\backslash$v & Tabulação Vertical \\
+	\hline
+	$\backslash$t & Tabulação \\
+	\hline
+	$\backslash$b & Backspace \\
+	\hline
+	$\backslash$f & form feed \\
+	\hline
+	$\backslash$uXXXX & Unicode \\
+	\hline
+	$\backslash$xXX & Latin-1 \\
+	\hline
+\end{tabular}
+\end{center}
+
+A partir do ECMAScript6 existe outra maneira de compor strings: por meio do uso da crase \verb|`isso é uma string`|. A vantagem desse método, chamado de \textbf{TemplateString} é que esse tipo de string é especial que pode receber expressões interpretáveis como no exemplo abaixo:
+
+\begin{Verbatim}[tabsize=4,frame=single]
+nome = "bruno"
+console.log(nome)
+-> bruno
+
+linha = `meu nome é ${nome}`
+console.log(linha)
+-> meu nome é bruno
+\end{Verbatim}
+
+Podemos ver que na última linha o resultado faz uso do valor da variável \verb|nome|. Provavelmente, sempre que a gente entra em um site que possui aquela mensagem amigável de ``Seja bem vindo, Fulano'', o programador usou essa função para produzir aquele texto.
+\\~\\
 \textbf{Tipo Objeto}
+\\~\\
+Objetos são uma boa parte do que faz o JS ser tão poderoso. Cada objeto é simplesmente uma coleção de pares nome-valor. Os nomes são as \textbf{propriedades} do objeto e os valores podem ser qualquer tipo de variável que vimos logo antes (incluindo outros objetos e funções). Quando a propriedade for uma função, dizemos que essa função é um \textbf{método} do objeto.
+
+\begin{Verbatim}[tabsize=4,frame=single]
+var objeto1 = new Object(); /* Criando o objeto "objeto1" */
+
+objeto1.name = "bruno"; /* modo 1 de criar uma propriedade */
+objeto1["age"] = 28;    /* modo 2 de criar uma propriedade */
+
+console.log(objeto1)
+-> { age:28 , name:bruno }
+
+var objeto2 = {         /* modo de criar o objeto */ 
+	nome: "bruno",		/* junto das propriedades */
+	idade: 28
+}
+console.log(objeto2)
+-> { nome:bruno, idade: 28 }
+\end{Verbatim}
+
 
 \textbf{Datas e Horas}
 
