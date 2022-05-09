@@ -1996,10 +1996,92 @@ console.log(objeto2)
 -> { nome:bruno, idade: 28 }
 \end{Verbatim}
 
-
+Para acessar o valor de uma propriedade em um objeto basta escrever algo como: \verb|objeto.propriedade|.\footnote{Python é assim também.}
+\ 
+\\~\\
 \textbf{Datas e Horas}
+\\~\\
+Na elaboração de uma aplicação é comum ter que lidar com varáveis do relacionadas ao tempo. Para isso o JS possui um tipo de objeto especialmente projetado para facilitar essa tratativa. O objeto \verb|Date()|. Podemos usa-lo como:
 
+\begin{center}
+\begin{Verbatim}[tabsize=4,frame=single]
+var a = new Date() /* Atribui a data atual ao objeto */
+var c = new Date(string) /* Atribui a data por uma string */
+var d = new Date(Ano,Mes,Dia,Hora,Segundo,Milisegundos)
+\end{Verbatim}
+\end{center}
+
+Geralmente estamos preocupados apenas com o dia, mês e ano. Para criar um objeto com esses valores basta ir colocando na mesma ordem do último elemento do exemplo acima.
+\\~\\
+\textbf{Aviso:} Quando você for indicar o mês, saiba que para o JS, janeiro é 0 e dezembro é 11. Então quando quisermos salvar a data `01/01/2022' usaremos \verb|Date(2022,0,1)|.
+\\~\\
+Como todo objeto, a variável criada com o Date() possui várias propriedades e métodos. Uma boa referência é o material do MDN que pode ser visto \href{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date}{[aqui]}. Mas podemos elencar alguns médodos importantes como:
+
+\begin{center}
+\begin{Verbatim}[tabsize=4,frame=single]
+var z = new Date()
+
+z.getFullYear()
+z.getMonth()
+z.getDate()
+z.getDay()
+z.getHours()
+z.getMinutes()
+z.getSeconds()
+z.getMillisecondes()
+z.getTimes()
+\end{Verbatim}
+\end{center}
+
+Acho que não é necessário explicar cada método desse porque o nome é bem alto explicativo.
+\ 
+\\~\\
 \textbf{Arrays, Vetores ou Matrizes}
+\\~\\
+Um array é uma estrutura de dados semelhante a uma lista. Em JS temos algumas maneiras de criar arrays:
+
+\begin{center}
+\begin{Verbatim}[tabsize=4,frame=single]
+/* Modo 01 */
+var a = new Array()
+a[0] = 'valor01'
+a[1] = 'valor02'
+
+/* Modo 02 */
+var b = new Array('valor01','valor02')
+
+/* Modo 03 */
+var c = ['valor01','valor02']
+\end{Verbatim}
+\end{center}
+
+Todos os 3 modos produzem o mesmo resultado e podem ser usados alternadamente.
+\\~\\
+Como qualquer objeto, existem vários métodos muito úteis dentro de um Array().
+
+\scriptsize
+\begin{center}
+\begin{Verbatim}[tabsize=4,frame=single]
+concat() /* Junta dois ou mais vetores */
+fill() /* Preencher os elementos em um vetor com um valor estático */
+find() /* Retorna o valor do primeiro elemento em um vetor que atender ao filtro */
+findIndex() /* Retorna o índice do primeiro elemento em um vetor */
+forEach() /* Chama uma função para cada elemento do vetor */
+indexOf() /* Busca um elemento no vetor e retorna a sua posição */
+isArray() /* Verifica se um objeto é um vetor */
+join() /* Junta todos os elementos de um vetor em uma string */
+lastIndexOf() /* Pesquisar o vetor por um elemento, começando no final */
+pop() /* Remove o último elemento de um vetor e retorna o elemento */
+push() /* Adiciona novos elementos para o final de um vetor */
+reverse() /* Inverte a ordem dos elementos em um vetor */
+slice() /* Seleciona uma parte de um vetor e retorna o novo vetor */
+sort() /* Classifica os elementos de um vetor */
+splice() /* Adiciona/remove elementos de um vetor */
+toString() /* Converte um vetor em uma string e retorna o resultado */
+valueOf() /* Retorna o valor primitivo de um vetor */
+\end{Verbatim}
+\end{center}
+\normalsize
 
 \subsubsection{Controle de Fluxo}
 \subsubsection{Funções}
