@@ -2188,6 +2188,28 @@ while (i <= 5) {
 \end{center}
 
 Primeiro criamos a variável \verb|i| e usamos a estrutura de loop \verb|while| para a seguinte regra ``Se i for menor igual a 5 então mostre a mensagem `Contagem: Número i'''. Quando o valor da variável \verb|i| é 6, a expressão do loop retorna um false e saímos do loop.
+\\~\\
+O operador que aprendemos anteriormente faz um loop enquanto a condição expressa entre os parênteses não for false. Mas existem situações onde queremos executar o bloco de código um número definido de vezes. Para isso o JS possui o token \verb|for|.
+
+\begin{center}
+\begin{Verbatim}[tabsize=4,frame=single]
+// Exemplo de loop com for
+let frutas = ['pera','uva','maca','banana']
+
+for (let index = 0; index < frutas.length; index++) {
+	console.log(frutas[index])
+}
+
+> pera
+> uva
+> maca
+> banana
+\end{Verbatim}
+\end{center}
+
+Nesse exemplo acima vemos que o parênteses da expressão do \verb|for| possui 3 linhas de códigos separadas por ponto e vírgula. Na primeira, criamos uma variável index. Na segunda, temos a nossa expressão que avalia se o index é menor que o tamanho do array frutas. E na terceira, temos a regra de incremento + 1 para cada iteração do loop.
+\\~\\
+Dentro do loop, nós mandamos ele lançar no terminal o valor do elemento do array correspondente ao index.
 
 \subsubsection{Funções}
 \subsubsection{Documento Object Model (DOM)}
