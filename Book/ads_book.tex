@@ -2164,8 +2164,30 @@ readLine.question('Qual seu nome? ', name => {
 \end{center}
 
 \textbf{Declarações de Repetição}
+\\~\\
+Além de termos tokens que nos permitem executar apenas alguns blocos de código. Existem outros que nos permitem usarmos um mesmo bloco de código repetidamente. Chamamos essas estruturas lógicas de laços de repetição.
+\\~\\
+A primeira maneira de criarmos um laço de repetição em JS é por meio do token \verb|while| do seguinte modo:
+\begin{center}
+\begin{Verbatim}[tabsize=4,frame=single]
+// Exemplo de loop com while
+var i = 0
 
+while (i <= 5) {
+	console.log(`Contagem: ${i}`)
+	i++ // soma + 1 ao valor de i
+}
 
+> Contagem: 0
+> Contagem: 1
+> Contagem: 2
+> Contagem: 3
+> Contagem: 4
+> Contagem: 5
+\end{Verbatim}
+\end{center}
+
+Primeiro criamos a variável \verb|i| e usamos a estrutura de loop \verb|while| para a seguinte regra ``Se i for menor igual a 5 então mostre a mensagem `Contagem: Número i'''. Quando o valor da variável \verb|i| é 6, a expressão do loop retorna um false e saímos do loop.
 
 \subsubsection{Funções}
 \subsubsection{Documento Object Model (DOM)}
