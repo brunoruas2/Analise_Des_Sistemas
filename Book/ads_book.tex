@@ -1980,16 +1980,16 @@ Podemos ver que na última linha o resultado faz uso do valor da variável \verb
 Objetos são uma boa parte do que faz o JS ser tão poderoso. Cada objeto é simplesmente uma coleção de pares nome-valor. Os nomes são as \textbf{propriedades} do objeto e os valores podem ser qualquer tipo de variável que vimos logo antes (incluindo outros objetos e funções). Quando a propriedade for uma função, dizemos que essa função é um \textbf{método} do objeto.
 
 \begin{Verbatim}[tabsize=4,frame=single]
-var objeto1 = new Object(); /* Criando o objeto "objeto1" */
+var objeto1 = new Object(); // Criando o objeto "objeto1"
 
-objeto1.name = "bruno"; /* modo 1 de criar uma propriedade */
-objeto1["age"] = 28;    /* modo 2 de criar uma propriedade */
+objeto1.name = "bruno"; // modo 1 de criar uma propriedade
+objeto1["age"] = 28;    // modo 2 de criar uma propriedade
 
 console.log(objeto1)
 -> { age:28 , name:bruno }
 
-var objeto2 = {         /* modo de criar o objeto */ 
-	nome: "bruno",		/* junto das propriedades */
+var objeto2 = {         // modo de criar o objeto 
+	nome: "bruno",		// junto das propriedades
 	idade: 28
 }
 console.log(objeto2)
@@ -2005,8 +2005,8 @@ Na elaboração de uma aplicação é comum ter que lidar com varáveis do relac
 
 \begin{center}
 \begin{Verbatim}[tabsize=4,frame=single]
-var a = new Date() /* Atribui a data atual ao objeto */
-var c = new Date(string) /* Atribui a data por uma string */
+var a = new Date() // Atribui a data atual ao objeto
+var c = new Date(string) // Atribui a data por uma string
 var d = new Date(Ano,Mes,Dia,Hora,Segundo,Milisegundos)
 \end{Verbatim}
 \end{center}
@@ -2062,28 +2062,111 @@ Como qualquer objeto, existem vários métodos muito úteis dentro de um Array()
 \scriptsize
 \begin{center}
 \begin{Verbatim}[tabsize=4,frame=single]
-concat() /* Junta dois ou mais vetores */
-fill() /* Preencher os elementos em um vetor com um valor estático */
-find() /* Retorna o valor do primeiro elemento em um vetor que atender ao filtro */
-findIndex() /* Retorna o índice do primeiro elemento em um vetor */
-forEach() /* Chama uma função para cada elemento do vetor */
-indexOf() /* Busca um elemento no vetor e retorna a sua posição */
-isArray() /* Verifica se um objeto é um vetor */
-join() /* Junta todos os elementos de um vetor em uma string */
-lastIndexOf() /* Pesquisar o vetor por um elemento, começando no final */
-pop() /* Remove o último elemento de um vetor e retorna o elemento */
-push() /* Adiciona novos elementos para o final de um vetor */
-reverse() /* Inverte a ordem dos elementos em um vetor */
-slice() /* Seleciona uma parte de um vetor e retorna o novo vetor */
-sort() /* Classifica os elementos de um vetor */
-splice() /* Adiciona/remove elementos de um vetor */
-toString() /* Converte um vetor em uma string e retorna o resultado */
-valueOf() /* Retorna o valor primitivo de um vetor */
+concat() // Junta dois ou mais vetores
+fill() // Preencher os elementos em um vetor com um valor estático
+find() // Retorna o valor do primeiro elemento em um vetor que atender ao filtro
+findIndex() // Retorna o índice do primeiro elemento em um vetor
+forEach() // Chama uma função para cada elemento do vetor
+indexOf() // Busca um elemento no vetor e retorna a sua posição
+isArray() // Verifica se um objeto é um vetor
+join() // Junta todos os elementos de um vetor em uma string
+lastIndexOf() // Pesquisar o vetor por um elemento, começando no final
+pop() // Remove o último elemento de um vetor e retorna o elemento
+push() // Adiciona novos elementos para o final de um vetor
+reverse() // Inverte a ordem dos elementos em um vetor
+slice() // Seleciona uma parte de um vetor e retorna o novo vetor
+sort() // Classifica os elementos de um vetor
+splice() // Adiciona/remove elementos de um vetor
+toString() // Converte um vetor em uma string e retorna o resultado
+valueOf() // Retorna o valor primitivo de um vetor
 \end{Verbatim}
 \end{center}
 \normalsize
 
+\textbf{Comentário:} Eu achei estranho que o material não falou nada sobre vetor e matriz. Então uma hora eu volto para expandir essa parte com esses outros dois tipos de dados.
+
 \subsubsection{Controle de Fluxo}
+
+Em qualquer linguagem de programação\footnote{Sempre vai existir alguma excessão, eu sei.} existem maneiras de organizar blocos de código para o compilador/interpretador saber o que priorizar na hora do processamento do código. Em JS isso é feito com o uso das chaves \{ \}.
+\\~\\
+\textbf{Declarações de Seleção}
+\\~\\
+Quando estamos fazendo um script de código, é muito comum termos que nos adaptar as situações onde determinados eventos podem ou não acontecer. Para isso, usamos algumas estruturas lógicas que permitem o processamento de blocos de texto apenas se alguma condição predeterminada seja satisfeita. Ou seja, usamos um condicionante do tipo ``Se-Então''.
+
+\begin{center}
+\begin{Verbatim}[tabsize=4,frame=single]
+if (expressao) {
+	bloco de codigo caso true
+}
+else {
+	outro bloco de codigo caso false
+}
+\end{Verbatim}
+\end{center}
+
+Existem situações onde existem múltiplas possibilidades. Pensando nisso, o JS possui um operador de \verb|switch| que permite vários condicionantes de maneiras mais simples do que vários \verb|if|s sucessivos.
+
+\begin{center}
+\begin{Verbatim}[tabsize=4,frame=single]
+switch (expressao) {
+	case valor01:
+	bloco_se_01
+	break
+
+	case valor02:
+	bloco_se_02
+	break
+
+	default:
+	bloco_se_nao_01_ou_02
+	break
+}
+\end{Verbatim}
+\end{center}
+
+Veja que usamos o token \verb|break| para indicar que vamos para outra condicional. Não podemos esquecer disso.
+\\~\\
+Abaixo temos um exemplo de uma aplicação simples usando esse método de gestão de fluxo. Não se preocupe em entender o código inteiro, foque apenas no que estamos estudando.
+
+\begin{center}
+\begin{Verbatim}[tabsize=4,frame=single]
+// Função que recebe um input no terminal
+const readLine = require('readline').createInterface({
+	input: process.stdin,
+	output: process.stdout
+})
+
+readLine.question('Qual seu nome? ', name => {
+	switch (name) {
+		case 'bruno':
+			console.log(`OI, BRUNO!`)
+			break
+	
+		case 'mario':
+			console.log('Salve, Mario!')
+			break
+		
+		default:
+			console.log(`Olá, ${name}. Seja bem-vindo(a)!`)
+	}
+	readLine.close()
+})
+
+> Qual seu nome? bruno
+> OI, BRUNO!
+
+> Qual seu nome? mario
+> Salve, Mario!
+
+> Qual seu nome? pedro
+> Olá, pedro. Seja bem-vindo(a)!
+\end{Verbatim}
+\end{center}
+
+\textbf{Declarações de Repetição}
+
+
+
 \subsubsection{Funções}
 \subsubsection{Documento Object Model (DOM)}
 \subsubsection{A Notação de Objetos (JSON)}
