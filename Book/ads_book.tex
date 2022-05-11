@@ -1963,6 +1963,7 @@ Alguns caracteres das nossas strings podem ser os mesmos usados na própria ling
 
 A partir do ECMAScript6 existe outra maneira de compor strings: por meio do uso da crase \verb|`isso é uma string`|. A vantagem desse método, chamado de \textbf{TemplateString} é que esse tipo de string é especial que pode receber expressões interpretáveis como no exemplo abaixo:
 
+\begin{center}
 \begin{Verbatim}[tabsize=4,frame=single]
 nome = "bruno"
 console.log(nome)
@@ -1972,6 +1973,7 @@ linha = `meu nome é ${nome}`
 console.log(linha)
 -> meu nome é bruno
 \end{Verbatim}
+\end{center}
 
 Podemos ver que na última linha o resultado faz uso do valor da variável \verb|nome|. Provavelmente, sempre que a gente entra em um site que possui aquela mensagem amigável de ``Seja bem vindo, Fulano'', o programador usou essa função para produzir aquele texto.
 \\~\\
@@ -2212,6 +2214,13 @@ Nesse exemplo acima vemos que o parênteses da expressão do \verb|for| possui 3
 Dentro do loop, nós mandamos ele lançar no terminal o valor do elemento do array correspondente ao index.
 
 \subsubsection{Funções}
+\\~\\
+Nós aprendemos anteriormente que funções são umas das varáveis do tipo objeto no JS. Sempre que pudermos generalizar um tratamento de dados por meio da criação de uma função, devemos optar por esse caminho porque assim tornamos a manutenção dos nossos programas melhor e evitamos ter que repetir linhas de código muito parecidas.
+\\~\\
+Mesmo sendo um objeto, o JS possui um token específico para a criação de funções. Abaixo temos dois exemplos adaptados do material do curso.
+
+testi 
+
 \subsubsection{Documento Object Model (DOM)}
 \subsubsection{A Notação de Objetos (JSON)}
 \subsubsection{Programação Ajax}
