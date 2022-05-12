@@ -2258,9 +2258,52 @@ Também podemos usar as funções para criação de \textbf(estruturas padroniza
 
 \begin{center}
 \begin{Verbatim}[tabsize=4,frame=single]
+function Pessoa (primeiro,ultimo) {
+	this.primeiro = primeiro
+	this.ultimo = ultimo
 
+	this.nomeCompleto = function() {
+		return this.primeiro + ' ' + this.ultimo
+	}
+
+	this.nomeCompletoInvertido = function() {
+		return this.ultimo + ' ' + this.primeiro
+	}
+}
+
+var chefe = new Pessoa ('Bruno','Ruas')
+
+console.log(chefe.nomeCompleto)
+console.log(chefe.nomeCompletoInvertido)
+
+> Bruno Ruas
+> Ruas Bruno
 \end{Verbatim}
 \end{center}
+
+Novamente, temos um termo sendo usado sem que antes ele tenha sido criado. Nesse caso é o termo \verb|this|. Ele é usado para fazer referência ao objeto criado (ou classe) como podemos ver no chamamento dos valores do \verb|console.log|.
+\\~\\
+Outra novidade é que criamos uma ``cópia'' do objeto \verb|Pessoa| só que com um outro nome: \verb|chefe|.\footnote{Sério, tudo isso é bem legal. Mas vai demandar um tempo até se acostumar.}
+\ 
+\\~\\
+\textbf{Arrow Functions}
+\\~\\
+Agora vamos entrar num ponto que, para mim, foi bem difícil de entender no começo. O JS permite que a construção de \textbf{funções anônimas}, ou seja, funções que não precisam de nomes definidos. Mas antes de aprendermos mais sobre isso, precisamos saber que existem diferentes modos de se criar uma função em JS. Abaixo temos 3 maneiras de se criar a função \verb|soma|.
+
+\begin{center}
+\begin{Verbatim}[tabsize=4,frame=single]
+// forma tradicional
+soma = function(a,b) { return a + b }
+
+//forma com arrow function
+soma = (a,b) => {return a + b}
+
+//arrow function com chaves omitidas
+soma = (a,b) => a + b
+\end{Verbatim}
+\end{center}
+
+
 
 
 \subsubsection{Documento Object Model (DOM)}
