@@ -2303,10 +2303,170 @@ soma = (a,b) => a + b
 \end{Verbatim}
 \end{center}
 
+Agora que entendemos um pouco melhor a construção de funções em JS, podemos ir mais fundo nas \textbf{arrow functions}. Esse método de definição de funções foi criado para facilitar a criação de funções dentro de contextos, ou seja, se você está criando uma função em uma linha de código normal (sem estrar em um bloco de código) é melhor usar a forma tradicional. Agora, se você estiver em um contexto diferente (como em um parâmetro de um objeto ou mesmo uma função) é melhor usar a arrow function.
+\\~\\
+Assim como os outros objetos, existem propriedades e métodos das arrow functions que podemos usar. Um exemplo disso é o operador \verb|this| que faz referência ao bloco em que nossa arrow functions está contida. Em uma função normal, nós aprendemos que esse operador faz referência à própria função. Abaixo temos um exemplo adaptado do material.
 
+\scriptsize
+\begin{center}
+\begin{Verbatim}[tabsize=4,frame=single]
+// usando 'this' em uma arrow function
+var Pessoa2 = {
+    nome:'Bruno',
+    amigos: ['Ana','Clarck','Bruce'],
 
+    exibeAmigos() {
+        this.amigos.forEach(f => console.log(this.nome + ' é amigo de ' + f))
+    }
+}
+
+Pessoa2.exibeAmigos()
+
+> Bruno é amigo de Ana
+> Bruno é amigo de Clarck
+> Bruno é amigo de Bruce
+\end{Verbatim}
+\end{center}
+\normalsize
+
+Vamos ver o que esse código acima nos ensina. Primeiro nós criamos uma variável de objeto chamado \verb|Pessoa2| e atribuímos duas propriedades a ela: nome e amigos. Sendo que a propriedade `amigos' é um array com 3 elementos. Como Pessoa2 é um objeto, nós podemos criar métodos dentro dele (que nada mais são do que funções em um objeto), e é exatamente o que fizemos com a função exibeAmigos().
+\\~\\
+Quando criamos o método exibeAmigos, nós usamos o operador \verb|this| em um contexto onde ele faz referência ao bloco que contém a função, nesse caso, é a variável Pessoa2. Na primeira linha da nossa função exibeAmigos nós usamos um método
+\\~\\
+Dentro de função exibeAmigos nós chamamos a propriedade \verb|amigos| do nosso objeto \verb|Pessoa2| por meio do `this'. Como já vimos, um array é um objeto em JS, portanto, ele possui várias propriedades e métodos dentro dele. O \verb|forEach| que está ali é precisamente uma desses métodos desse objeto que faz um loop para cada elemento do array.
+\\~\\
+Dentro do loop criado pelo método \verb|forEach| do nosso array \verb|amigos| nós criamos uma arrow function que usa a variável f (que nada mais é do que o elemento do array no loop). Então nós fizemos o seguinte, para cada elemento do array que agora chamamos de f, vamos fazer um console.log que nos dá o nome da Pessoa2, a string `` conhece '' e o nome do amigo que é a variável f.
+\\~\\
+Com isso temos o resultado apresentado no final desse bloco de código. Com o tempo as coisas vão ficar menos confusas, mas já podemos ver que o JS possui bastante metodologias de processamento de informação que teremos que dominar para tirar o máximo das nossas aplicações web.
 
 \subsubsection{Documento Object Model (DOM)}
+
+Como o contexto de aplicação do JS sempore foi o web, essa linguagem possui algumas integrações ao ambiente do navegador que são muito úteis para a construção de aplicações verdadeiramente inteligentes. Uma das capacidades mais relevantes é a de alterar estruturas HTML e CSS por meio de códigos escritos em JS. Isso é feito por intermédio da API \href{https://developer.mozilla.org/pt-BR/docs/Web/API/Document_Object_Model/Introduction}{Document Object Model (DOM)} que é um padrão da W3C para os navegadores. Abaixo temos os principais elementos que a compõe.
+\\~\\
+Todos esses objetos estão vinculados ao objeto maior \verb|window| que é a janela do navegador.
+\begin{itemize}
+	\item \verb|history|
+	\item \verb|navigator|
+	\item \verb|location|
+	\item \verb|screen|
+	\item \verb|document|
+		\begin{itemize}
+			\item \verb|link|
+			\item \verb|anchor|
+			\item \verb|form|
+				\begin{itemize}
+					\item \verb|button|
+					\item \verb|check box|
+					\item \verb|radio|
+					\item \verb|password|
+					\item \verb|reset|
+					\item \verb|submit|
+				\end{itemize}
+		\end{itemize}
+\end{itemize}
+
+Cada um desses elementos possui informações e podem ser manipulados para conseguirmos construir as aplicações da maneira como quisermos.
+\\~\\
+\textbf{Comentário:} No material do curso nós só aprofundamos em dois desses vários elementos. Depois eu volto aqui a medida que for aprendendo mais sobre os outros.
+\ 
+\\~\\
+\textbf{Objeto Window}
+\\~\\
+O objeto window é o representante da camada de software que contém o browser do user. Ele contém toda a hierarquia que mostramos nessa lista de elementos acima. Além de conter todos esses elementos dentro dele, esse objeto\footnote{Como o próprio nome diz, tudo no DOM são, em algum grau, objetos.Mantenha isso em mente!} possui métodos e propriedades que são úteis para o gerenciamento das nossas aplicações.
+\\~\\
+Na parte de \textbf{armazenamento de dados} o window nos dá duas maneiras: \textbf{localStorage} e \textbf{sessionStorage}. No primeiro os dados são mantidos mesmo se o navegador seja fechado. Já o sessionStorage mantém os arquivos apenas enquanto o navegador é mantido aberto. Abaixo temos um exemplo de como usar esses repositórios.
+
+\scriptsize
+\begin{center}
+\begin{Verbatim}[tabsize=4,frame=single]
+// guardando dados no repositorio de sessao
+sessionStorage.setItem('login','Bruno Ruas')
+alert('O usuário logado é: ' + sessionStorage.getItem('login'))
+
+> Aparece um popup com a mensagem "O Usuário logado é: Bruno Ruas"
+\end{Verbatim}
+\end{center}
+\normalsize
+
+Veja que para salvar o dado, temos o uso do par 'nome'-'valor' e do método \verb|setItem|. Para obter o dado, basta usar o método \verb|getItem| e passar o nome do valor salvo anteriormente.
+\\~\\
+Também podemos atrelar algumas funcionalidades ao tempo. É bem comum vermos depois de x minutos a seção de um site ser encerrada, por exemplo. O objeto window possui algumas maneiras de lidarmos com o tempo:
+\begin{itemize}
+	\item \verb|setInterval(funcao, intervalo)| - Browser executa uma função continuamente a cada x milisegundos
+	\item \verb|clearInterval()| - Cancela a repetição da função
+	\item \verb|setTimeout(funcao,intervalo)| - Agenda a execução de uma função com um delay de x milissegundos
+	\item \verb|clearTimeout()| - Cancela o agendamento
+\end{itemize}
+\ 
+\\~\\
+\textbf{Object Document}
+\\~\\
+Logo após o navegador processar os arquivos da página web, o objeto \textbf{document} passa a existir e pode ser manipulado pelo nosso código JS. No material temos uma lista das principais propriedades que esse objeto possui\footnote{A descrição eu só vou colocar se for algo não óbvio.}.
+
+\begin{center}
+	\begin{tabular}{|l|l|}
+	\hline
+	\textbf{Propriedade} & \textbf{Descrição} \\
+	\hline
+	\hline
+	\verb|addEventListener| &  Uma função dispara se um evento ocorre \\
+	\hline
+	\verb|baseURI| & Retorna a URI \\
+	\hline
+	\verb|body| & Retorna ou modifica o body \\
+	\hline
+	\verb|cookie| & Retorna todos os cookies \\
+	\hline
+	\verb|characterSet| & Charset da página \\
+	\hline
+	\verb|documentElement| & Todo o html \\
+	\hline
+	\verb|documentoURI| & URI do document \\
+	\hline
+	\verb|forms| & Um array com os forms do html \\
+	\hline
+	\verb|getElementsById| &  \\
+	\hline
+	\verb|getElementsByClassName| &  \\
+	\hline
+	\verb|getElementsByName| &  \\
+	\hline
+	\verb|getElementsByTagName| &  \\
+	\hline
+	\verb|images| &  \\
+	\hline
+	\verb|lastModified| & Data de modificação do documento \\
+	\hline
+	\verb|links| & Array com todos os links \\
+	\hline
+	\verb|querySelector| & Primeiro elemento por um seletor CSS \\
+	\hline
+	\verb|querySelectorAll| & Array com todos os de um seletor CSS \\	
+	\hline
+	\verb|removeEventListener| &  \\
+	\hline
+	\verb|scripts| & Array com os scripts do documento \\
+	\hline
+	\verb|title| &  \\
+	\hline
+	\verb|URL| &  \\
+	\hline
+\end{tabular}
+\end{center}
+
+Não tem muito pra onde correr. Só vamos aprender bem usando, mas por agora, basta termos em mente que essas funcinalidades existem e poderão ser úteis em algum momento.
+\\~\\
+Abaixo tempos um exemplo usando uma função JS para alterar um elemento do body através do DOM.
+
+\begin{center}
+\begin{Verbatim}[tabsize=4,frame=single]
+
+\end{Verbatim}
+\end{center}
+
+
+
+
 \subsubsection{A Notação de Objetos (JSON)}
 \subsubsection{Programação Ajax}
 
