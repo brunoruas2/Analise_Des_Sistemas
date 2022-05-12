@@ -2219,7 +2219,48 @@ Nós aprendemos anteriormente que funções são umas das varáveis do tipo obje
 \\~\\
 Mesmo sendo um objeto, o JS possui um token específico para a criação de funções. Abaixo temos dois exemplos adaptados do material do curso.
 \\~\\
-Testando a edição de um arquivo em LaTeX com neovim.
+\begin{center}
+\begin{Verbatim}[tabsize=4,frame=single]
+// Criacao de uma funcao de soma
+function soma(x,y) {
+	var total = x + y
+	return total
+}
+
+soma(2,3)
+
+> 5
+\end{Verbatim}
+\end{center}
+
+Para o segundo exemplo, nós queremos construir uma função que retorna a média dos valores apresentados entre os parênteses. Para isso, precisaremos de um dos tokens que vimos na seção passada. Sabemos muito bem que a média é calculada pela soma dos $n$ valores dividida pela quantidade $n$. Para isso, teremos que usar o token de laço de repetição.
+
+\begin{center}
+\begin{Verbatim}[tabsize=4,frame=single]
+function media() {
+	var soma = 0
+	n = arguments.length
+		for (var i = 0; i < n; i++ ) {
+		soma = arguments[i] + soma
+	}
+		return soma / n
+}
+
+media(2,3,4,5)
+
+> 3.5
+\end{Verbatim}
+\end{center}
+
+Calma, eu sei que em uma primeira vista é estranho esse objeto \verb|arguments| ter sido chamado do nada. Acontece que no JS (e em muitas linguagens) alguns objetos, a exemplo das funções, possuem métodos que podem ser usados mesmo no momento da sua criação. Nesse caso, é o exemplo desse objeto que nos diz a quantidade de argumentos que foram inseridos na nossa função media().\footnote{Legal né?!.}
+\\~\\
+Também podemos usar as funções para criação de \textbf(estruturas padronizadas de objetos) que são conhecidas como \textit{classes}. Abaixo vamos criar uma estrutura para objetos do tipo \verb|Pessoa|.
+
+\begin{center}
+\begin{Verbatim}[tabsize=4,frame=single]
+
+\end{Verbatim}
+\end{center}
 
 
 \subsubsection{Documento Object Model (DOM)}
