@@ -2459,12 +2459,37 @@ Não tem muito pra onde correr. Só vamos aprender bem usando, mas por agora, ba
 Abaixo tempos um exemplo usando uma função JS para alterar um elemento do body através do DOM.
 
 \begin{center}
-\begin{Verbatim}[tabsize=4,frame=single]
-
+\begin{Verbatim}[tabsize=3,frame=single]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>PUC-MG</title>
+    <!-- JavaScript-->
+    <script type='text/javascript'>
+        function Executar() {
+          document.getElementById('saida').innerHTML = Date()
+        }
+    </script>
+</head>
+<body>
+    <button type="button" onclick="Executar()">
+			Aperte!
+		</button>
+    
+		<h1>Saída</h1>
+    <div id="saida">Condição Inicial</div>
+</body>
+</html>
 \end{Verbatim}
 \end{center}
 
+No código acima temos o script em JS dentro do próprio arquivo HTML usando a tag \verb|<script>|. Nesse script nós criamos a função \verb|Executar()| que nada mais faz do que procurar o elemento HTML cujo id é igual a `saida' e substitui o HTML desse elemento pela data atual vinda da função nativa \verb|Date()|. Abaixo podemos ver a diferença entre a situação inicial e a final após apertar o botão.
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.7]{21-JS-DOM-script.png}
+	\caption{Manipulação do HTML com DOM e JS}
+\end{figure}
 
 
 \subsubsection{A Notação de Objetos (JSON)}

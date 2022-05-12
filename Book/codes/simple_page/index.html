@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="stylesheet.css">
-    <title>Document</title>
+    <title>PUC-MG</title>
+    <!-- JavaScript-->
+    <script type='text/javascript'>
+        function Executar() {
+            document.getElementById('saida').innerHTML = Date()
+        }
+    </script>
 </head>
 <body>
-    <div class="container">
-        <div class="item-a">Header</div>
-        <div class="item-b">Main</div>
-        <div class="item-c">Nav</div>
-        <div class="item-d">Footer</div>
-    </div>
+    <button type="button" onclick="Executar()">Aperte!</button>
+    <h1>Saída</h1>
+    <div id="saida">Condição Inicial</div>
 </body>
 </html>
