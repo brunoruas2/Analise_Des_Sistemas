@@ -2372,7 +2372,7 @@ Cada um desses elementos possui informações e podem ser manipulados para conse
 \\~\\
 \textbf{Objeto Window}
 \\~\\
-O objeto window é o representante da camada de software que contém o browser do user. Ele contém toda a hierarquia que mostramos nessa lista de elementos acima. Além de conter todos esses elementos dentro dele, esse objeto\footnote{Como o próprio nome diz, tudo no DOM são, em algum grau, objetos.Mantenha isso em mente!} possui métodos e propriedades que são úteis para o gerenciamento das nossas aplicações.
+O objeto window é o representante da da janela do browser. Ele contém toda a hierarquia que mostramos nessa lista de elementos acima. Além de conter todos esses elementos dentro dele, esse objeto\footnote{Como o próprio nome diz, tudo no DOM são, em algum grau, objetos.Mantenha isso em mente!} possui métodos e propriedades que são úteis para o gerenciamento das nossas aplicações.
 \\~\\
 Na parte de \textbf{armazenamento de dados} o window nos dá duas maneiras: \textbf{localStorage} e \textbf{sessionStorage}. No primeiro os dados são mantidos mesmo se o navegador seja fechado. Já o sessionStorage mantém os arquivos apenas enquanto o navegador é mantido aberto. Abaixo temos um exemplo de como usar esses repositórios.
 
@@ -2491,6 +2491,115 @@ No código acima temos o script em JS dentro do próprio arquivo HTML usando a t
 	\caption{Manipulação do HTML com DOM e JS}
 \end{figure}
 
+\textbf{Objeto Navigator}
+\\~\\
+Como o próprio deixa claro, o objeto navigator representa o software do navegador usado pelo user. Esse objeto nos dá algumas informações úteis sobre o navegador usado. Abaixo temos uma tabela com alguns dos métodos contidos nesse objeto.
+
+\begin{center}
+	\begin{tabular}{|c|c|}
+		\hline
+		Propriedade & Descrição \\
+		\hline
+		\hline
+		\verb|appCodeName| & Codigo do navegador \\
+		\hline
+		\verb|appName| & Nome do navegador \\
+		\hline
+		\verb|appVersion| & Versão do navegador \\
+		\hline
+		\verb|cookieEnabled| & Cookies habilitados \\
+		\hline
+		\verb|geolocation| & Geolocation \\
+		\hline
+		\verb|language| &  \\
+		\hline
+		\verb|onLine| & Se o browser está online \\
+		\hline
+		\verb|platform| & Qual sistema operacional \\
+		\hline
+		\verb|product| & Engine do navegador \\
+		\hline
+		\verb|userAgent| & \begin{tabular}{ll} User-agent que o browser\\envia ao navegador \end{tabular} \\
+		\hline
+	\end{tabular}	
+\end{center}
+
+Abaixo temos um exemplo de página web adaptado do material do curso que faz uso o objeto navegador e retorna a geolocalização do navegador.
+
+\scriptsize
+\begin{center}
+\begin{Verbatim}[tabsize=4,frame=single]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>PUC-MG</title>
+    <script type="text/javascript">
+        // funcao que recebe as coord e retorna um string
+        function showPosition(position) {
+            lat = position.coords.latitude
+            long = position.coords.longitude
+            texto = `Lat: ${lat} e Long ${long}`
+
+            document.getElementById('saida').innerHTML = texto
+        }
+
+        // funcao que muda o HTML do elemento saida
+        function getPosition() {
+            if (window.navigator.geolocation) {
+                window.navigator.geolocation.getCurrentPosition(showPosition)
+            } else {
+                x.innerHTML = 'Não tivemos acesso a' + 
+                'sua localização!'
+            }
+        }
+    </script>
+</head>
+<body>
+    <button type="button" onclick="getPosition()">
+        Geolocation
+    </button>
+    <h1>Mensagem</h1>
+    <div id="saida">Sua localização vai aparecer aqui!</div>
+</body>
+</html>
+\end{Verbatim}
+\end{center}
+\normalsize
+
+Nesse código acima temos uma página simples com um botão que, ao ser ativado, dispara a função \verb|getPosition()|. Essa função dispara uma outra função chamada \verb|showPosition|. O resultado pode ser visto na imagem abaixo\footnote{Eu só dei uma censurada porque segurança nunca é demais.}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.7]{22-JS-DOM-navigator.png}
+	\caption{Utilização do Objeto Navegador}
+\end{figure}
+
+\textbf{Eventos}
+\\~\\
+Outra funcionalidade interessante do DOM é a capacidade de usarmos não apenas os elementos da página mas também o contexto (ou eventos) em que esses elementos se encontram. Por exemplo, é comum vermos uma imagem aumentar de tamanho quando colocamos o mouse sobre ela. Com essa funcionaliade, conseguimos explorar vários cenários de interação do usuário com a página.
+\\~\\
+No exemplo abaixo,  temos o uso de dois contextos do mouse sobre um elemento de texto. Quando o mouse está sobre o elemento, nós mudamos a cor dele para vermelho. Quando o mouse não está sobre o elemento, a cor dele se torna preto.
+
+\begin{center}
+\begin{Verbatim}[tabsize=4,frame=single]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>PUC-MG</title>
+</head>
+<body>
+	<p onmouseover="this.style.color='red'" 
+		 onmouseout="this.style.color='black'">
+		 
+		Texto
+
+	</p>
+</body>
+</html>
+\end{Verbatim}
+\end{center}
+
+Podemos ver mais um exemplo do uso do token \verb|this|, mas dessa vez fora de um bloco de código de uma função. Nesse contexto, esse operador faz referência ao elemento HTML e altera o seu valor do parâmetro de estilo que indicamos (a cor do texto).
 
 \subsubsection{A Notação de Objetos (JSON)}
 \subsubsection{Programação Ajax}
