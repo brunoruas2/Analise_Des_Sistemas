@@ -2599,9 +2599,127 @@ No exemplo abaixo,  temos o uso de dois contextos do mouse sobre um elemento de 
 \end{Verbatim}
 \end{center}
 
-Podemos ver mais um exemplo do uso do token \verb|this|, mas dessa vez fora de um bloco de código de uma função. Nesse contexto, esse operador faz referência ao elemento HTML e altera o seu valor do parâmetro de estilo que indicamos (a cor do texto).
+Podemos ver mais um exemplo do uso do token \verb|this| mas dessa vez fora de um bloco de código de uma função. Nesse contexto, esse operador faz referência ao elemento HTML e altera o seu valor do parâmetro de estilo que indicamos (a cor do texto).
+\\~\\
+Mesmo sendo possível fazer uso do atributo de evento direto no HTML, como fizemos no exemplo anterior, a boa prática é manter essas features em um arquivo JS à parte (igual nós fizemos com o CSS) pois isso torna o arquivo de estrutura mais fácil de ler. Abaixo temos exatamente a mesma funcionalidade mas usando o campo de script do meta mas que poderia ser hospedado em um arquivo .js em separado.
+
+\scriptsize
+\begin{center}
+\begin{Verbatim}[tabsize=4,frame=single]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>PUC-MG</title>
+</head>
+<body>
+    <p id="texto">
+        Texto
+    </p>
+</body>
+
+<script type="text/javascript">
+    var elem = window.document.getElementById('texto')
+
+    elem.addEventListener('mouseout',
+    function () {
+        window.document.getElementById('texto').style.color = ''
+        window.document.getElementById('texto').style.fontSize = ''
+    }, false)
+
+    elem.addEventListener('mouseover',
+    function () {
+        window.document.getElementById('texto').style.color = 'red'
+        window.document.getElementById('texto').style.fontSize = '20px'
+    }, false)
+</script>
+</html>
+\end{Verbatim}
+\end{center}
+\normalsize
+
+Veja que primeiro nós criamos uma variável \verb|elem| utilizando o \verb|getElementById|. Como essa variável é um objeto, podemos usar um de seus métodos chamado \verb|addEventListener| que recebe 3 parâmetros: o primeiro é o gatilho de disparo, o segundo é a função que será executada e o terceiro é, para todos os efeitos, sempre falso.\footnote{Você pode pesquisar um pouco se estiver curioso do motivo disso.}
+\\~\\
+No exemplo acima temos dois gatilhos de eventos cadastrados. O primeiro é o \verb|mouseout| que nada mais é que o padrão. O segundo é \verb|mouseover| que dispara sempre que o mouse estiver sobre o elemento selecionado.
+\\~\\
+Mesmo que a primeira vista pareça mais simples usar os atributos de contexto direto no HTML, nós precisamos pensar em situações onde a aplicação se torna demasiada grande. Nesses casos, é muito melhor, para controlar a evolução da nossa aplicação web e garantir uma boa manutenção, mantermos em arquivos separados tanto o estilo quanto a funcionalidade.
+\\~\\
+Outra coisa importante a ser notada é que o script deve estar abaixo da variável que será manipulada. Primeiro o elemento precisa existir para usarmos o nosso código. Esse é o motivo da tag \verb|script| estar na parte de baixo da página e não no \verb|head| como nos outros exemplos.
+\\~\\
+Na tabela a baixo temos os principais tipos de gatilhos que podem ser usados pelo DOM. Para usar algum desses no direto no HTML é necessário colocar a palavra `on' na frente. Por exemplo, `click' vira `onclick'.
+
+\begin{center}
+	\begin{tabular}{|l|l|}
+	\hline
+	\textbf{Propriedade} & \textbf{Descrição} \\
+	\hline
+	\verb|click| & Click em link ou elemento \\
+	\hline
+	\verb|change| & Default alterado em input texto \\
+	\hline
+	\verb|focus| & Foco em um elemento \\
+	\hline
+	\verb|blur| &  Ao tirar o foco \\
+	\hline
+	\verb|mouseover| & Mouse em cima  \\
+	\hline
+	\verb|mouseout| &  Mouse em outro lugar \\
+	\hline
+	\verb|select| &  Select em um form \\
+	\hline
+	\verb|submit| &  Submit em um form \\
+	\hline
+	\verb|resize| &  Mudança na janela do broser \\
+	\hline
+	\verb|load| & Algum elemento é carregado \\
+	\hline
+	\verb|unload| & Ao sair da página \\
+	\hline
+\end{tabular}
+\end{center}
+
+\textbf{Comentário:} Aqui o professor da disciplina faz o desafio de criarmos uma calculadora simples com o uso dos elementos estudados nessa seção. Um dia eu volto aqui e faço esse desafio.
 
 \subsubsection{A Notação de Objetos (JSON)}
+
+O JavaScript Object Notation (JSON) é um formato de descrição de dados que se baseia em texto e pode ser lido diretamente sem muita dificuldade. Existem vários outros tipos de escrita de dados onde, geralmente, temos um trade-off entre eficiência versus simplicidade. Quanto mais próximo da linguagem de máquina, melhor é pro computador processar mas mais difícil é para os humanos entender.
+\\~\\
+Como o JSON se popularizou muito, diversas outras linguagens já possuem a capacidade de processar dados nesse formato. O que aumenta ainda mais a aceitabilidade dele como veículo de envio e codificação de informação tanto no frontend quanto no backend.
+\\~\\
+Falando em backend, com a popularização de programas como nodejs, é cada vez mais comuns a construção de comunicação entre a camada de aplicação web e servidor através de APIs cuja atividade é, simplificadamente, receber JSON e enviar JSON.
+\\~\\
+Como dito anteriormente, o JSON não é o único formato existente no mercado. Para destacar alguns outros, temos o XML, RDF, Planilhas, CSV, Documentos TXT, JPEG-2000, TIFF e vários outros formatos proprietários. Mas, sem dúvida, a competição mais árdua é entre JSON e XML.
+\ 
+\\~\\
+\textbf{Sintaxe do SJON}
+\\~\\
+Um arquivo JSON é muito parecido com um bloco de código JS. Começa e termina com chaves \verb|{}| e cada elemento é formado por um par de nome-valor e são separados por vírgula. O JSON permite diferentes tipos de valores que podem ser dos mesmo tipos de dados que estudamos anteriormente para o JS. Abaixo temos um exemplo de um arquivo JS.
+
+\begin{center}
+\begin{Verbatim}[tabsize=4,frame=single]
+	{
+		"idade": 28,
+		"nome": "Bruno Ruas",
+		"materias": [
+		{
+			"materia": "Econometria",
+			"professor": "Bill Gates"
+		},
+		{
+			"materia": "Microeconomia",
+			"professor": "Steve Jobs"
+		}
+		],
+		"nerd":true
+	}
+\end{Verbatim}
+\end{center}
+
+Nesse exemplo, podemos ver que o valor para Idade é do tipo number. Nome é uma string. Matérias é um array (veja que ele está entre chaves \verb|[]|, exatamente como aprendemos antes. Cada elemento do nosso array de matérias é um objeto, que começam e terminam com chaves, com duas propriedades: matéria e professor. Por fim, temos um booleano para a pegunta "É nerd?".
+\\~\\
+Os outros tipos de dados como datas, geolocalização e outros, são passados em JSON como uma string. Temopos que lembrar disso se um dia precisamos lidar com esse tipo de informação.
+\\~\\
+\textbf{Comentário:} Quando estamos criando um JSON dentro de um código JS nós não precisamos colocar as aspas no nome dos elementos. Mas é padrão que essas aspas sejam usadas em objetos JSON. Então temos que ficar atentos a isso também.
+
 \subsubsection{Programação Ajax}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

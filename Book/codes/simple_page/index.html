@@ -2,32 +2,26 @@
 <html lang="en">
 <head>
     <title>PUC-MG</title>
-    <script type="text/javascript">
-        // funcao que recebe as coord e retorna um string
-        function showPosition(position) {
-            lat = position.coords.latitude
-            long = position.coords.longitude
-            texto = `Lat: ${lat} e Long ${long}`
-
-            document.getElementById('saida').innerHTML = texto
-        }
-
-        // funcao que muda o HTML do elemento saida
-        function getPosition() {
-            if (window.navigator.geolocation) {
-                window.navigator.geolocation.getCurrentPosition(showPosition)
-            } else {
-                x.innerHTML = 'Não tivemos acesso a' + 
-                'sua localização!'
-            }
-        }
-    </script>
 </head>
 <body>
-    <button type="button" onclick="getPosition()">
-        Geolocation
-    </button>
-    <h1>Mensagem</h1>
-    <div id="saida">Sua localização vai aparecer aqui!</div>
+    <p id="texto">
+        Texto
+    </p>
 </body>
+
+<script type="text/javascript">
+    var elem = window.document.getElementById('texto')
+
+    elem.addEventListener('mouseout',
+    function () {
+        window.document.getElementById('texto').style.color = ''
+        window.document.getElementById('texto').style.fontSize = ''
+    }, false)
+
+    elem.addEventListener('mouseover',
+    function () {
+        window.document.getElementById('texto').style.color = 'red'
+        window.document.getElementById('texto').style.fontSize = '20px'
+    }, false)
+</script>
 </html>
