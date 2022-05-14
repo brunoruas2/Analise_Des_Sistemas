@@ -2696,29 +2696,85 @@ Um arquivo JSON é muito parecido com um bloco de código JS. Começa e termina 
 
 \begin{center}
 \begin{Verbatim}[tabsize=4,frame=single]
+{
+	"idade": 28,
+	"nome": "Bruno Ruas",
+	"materias": [
 	{
-		"idade": 28,
-		"nome": "Bruno Ruas",
-		"materias": [
-		{
-			"materia": "Econometria",
-			"professor": "Bill Gates"
-		},
-		{
-			"materia": "Microeconomia",
-			"professor": "Steve Jobs"
-		}
-		],
-		"nerd":true
+		"materia": "Econometria",
+		"professor": "Bill Gates"
+	},
+	{
+		"materia": "Microeconomia",
+		"professor": "Steve Jobs"
 	}
+	],
+	"nerd":true
+}
 \end{Verbatim}
 \end{center}
 
-Nesse exemplo, podemos ver que o valor para Idade é do tipo number. Nome é uma string. Matérias é um array (veja que ele está entre chaves \verb|[]|, exatamente como aprendemos antes. Cada elemento do nosso array de matérias é um objeto, que começam e terminam com chaves, com duas propriedades: matéria e professor. Por fim, temos um booleano para a pegunta "É nerd?".
+Nesse exemplo, podemos ver que o valor para Idade é do tipo number. Nome é uma string. Matérias é um array, veja que ele está entre colchetes \verb|[]|, exatamente como aprendemos antes. Cada elemento do nosso array de matérias é um objeto, que começam e terminam com chaves, com duas propriedades: matéria e professor. Por fim, temos um booleano para a pegunta "É nerd?".
 \\~\\
 Os outros tipos de dados como datas, geolocalização e outros, são passados em JSON como uma string. Temopos que lembrar disso se um dia precisamos lidar com esse tipo de informação.
 \\~\\
 \textbf{Comentário:} Quando estamos criando um JSON dentro de um código JS nós não precisamos colocar as aspas no nome dos elementos. Mas é padrão que essas aspas sejam usadas em objetos JSON. Então temos que ficar atentos a isso também.
+\ 
+\\~\\
+\textbf{Objeto JSON no JavaScript}
+\\~\\
+Agora que sabemos um pouco sobre esse tipo de estrutura de dados, vamos aprender como manipular esse objeto dentro de um script JS. A maneira que o JS tem que trabalhar com JSON é por meio de um objeto nativo da linguagem chamado, nem um pouco sem querer, de JSON. Esse objeto possui dois métodos úteis: Um \verb|parse()| que recebe uma string e retorna um objeto na notação JSON e um \verb|stringfy()| que pega um objeto análogo JSON e transforma em string.
+
+\begin{center}
+\begin{Verbatim}[tabsize=4,frame=single]
+// JSON em string
+var TextoJSON = `{"Revistas": [
+    {
+        "titulo":"V de Vingança",
+        "autor":"Frank Miller"
+    },
+    {
+        "titulo":"Batman - The Dark Knight",
+        "autor":"Frank Miller"
+    },
+    {
+        "titulo":"One Piece Nº 29",
+        "autor":"Eichiro Oda"
+    }
+]}`
+
+// Usando o metodo de parse do JSON
+var banca = JSON.parse(TextoJSON)
+
+function listaTitulos() {
+    lista = ''
+    for (let i = 0; i < banca.Revistas.length; i++) {
+        lista += banca.Revistas[i].titulo + ' - ' +
+        banca.Revistas[i].autor + '\n'
+    }
+    console.log(lista)
+}
+
+listaTitulos()
+
+> V de Vingança - Frank Miller
+> Batman - The Dark Knight - Frank Miller
+> One Piece Nº 29 - Eichiro Oda
+\end{Verbatim}
+\end{center}
+
+Primeiro nós criamos uma string no formato de um JSON. Depois passamos essa string pelo objeto JSON com o método \verb|parse|. Após isso, nós temos um objeto chamado banca com a mesma estrutura do nosso JSON desejado. Depois nós criamos uma função de loop que retorna uma string com o título, o autor e o caracter especial de quebra de linha \verb|\n|.
+\\~\\
+Para converter nosso objeto novamente para string basta usarmos o seguinte comando:
+\begin{center}
+\begin{Verbatim}[tabsize=4,frame=single]
+JSON.stringify(banca,null,2)
+\end{Verbatim}
+\end{center}
+
+O primeiro parâmetro é o objeto a ser convertido. O segundo nós podemos colocar como null\footnote{Existe uma explicação para isso, mas não precisamos dela agora.}. Por fim, o terceiro diz o tamanho do espaço para melhorar a identação.
+\\~\\
+Saber como lidar com objetos JSON dentro de um script JS nos permite construir aplicações inteiras apenas com JS. Um framework muito famoso hoje em dia chamado MEAN (MongoDb, Express, Angular e NodeJS) utiliza o JS como principal linguagem para construção de toda a aplicação web.
 
 \subsubsection{Programação Ajax}
 
