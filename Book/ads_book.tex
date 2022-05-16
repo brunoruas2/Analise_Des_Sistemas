@@ -2789,10 +2789,43 @@ Diferente do que vimos até agora, o \textbf{Asynchronous Javascript and XML} ou
 
 Algumas aplicações muito famosas foram construída usando, em algum grau, essa abordagem. Podemos citar o Youtube, Gmail, Google Earth e mais um monte de outras aplciações do Google.
 \\~\\
-A melhor maneira de entender como o AJAX é diferente da abordagem tradicional, vamos comparar as duas maneiras. No modelo tradicional
+Para entendermos como o AJAX é diferente da abordagem tradicional, vamos comparar as duas maneiras. No modelo tradicional, o browser faz requisições ao web server que, por sua vez, devolte a página solicitada com as devidas alterações previamente programadas. Contudo, nessa abordagem, toda a inteligência de negócio é mantida no ambiente do servidor. O esquema abaixo nos permite relembrar como é feita a comunicação entre essas duas entidades.
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{23-webapp-tradicional.png}
+	\caption{Esquema de uma aplicação web tradicional}
+\end{figure}
 
+O problema dessa abordagem tradicional é que os dados enviados entre servidor e browser são páginas inteiras. O método AJAX trouxe a possibiliadde de quebramos esses dados em "pacotes"\ menores de informações. Nesse caso, ao invés de requisições de páginas inteiras, podemos pedir ao servidor apenas "pedaços"\ menores de informação.
+\\~\\
+A metodologia AJAX trás para o lado do cliente (client side) parte da tarefa de processar os dados. Parte do processamento fica no server side e a outra parte é feita no client. Durante a sessão, várias requisições são feitas do browser (que contém o código JS) para o server por meio do uso do XMLHTTPRequest ou API Fetch. A atualização da página acontece via DOM e não pelo recebimento de um HTML novo.
+\\~\\
+Essa comunicação acontece geralmente por meio de arquivos XML ou JSON (mas pode ser qualquer outro formato de dados).
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{24-webapp-ajax.png}
+	\caption{Esquema de uma aplicação web com AJAX}
+\end{figure}
+
+Ao abrirmos a aplicação pela primeira vez, o servidor nos envia a maior parte dos dados que serão usados na visualização (a base de toda a aplicação). Depois disso, todas as mudanças na tela serão baseadas em DOM e arquivos de dados JSON ou XML.
+\\~\\
+Podemos elencar algumas vantagens desse modelo de construção de solução web:
+\begin{itemize}
+	\item Redução do tráfego na rede
+	\item Redução de carga no web server
+	\item Flexibilidade no desenolvimento do lado do server (foco em APIs)
+\end{itemize}
+
+Mas como tudo na vida, o AJAX possui algumas desvantagens:
+\begin{itemize}
+	\item Maior complexidade de desenvolvimento
+	\item Aplicação mais pesada no client
+	\item Só funciona em navegadores mais modernos
+	\item Pode precisar de ajustes dependendo do navegador do client
+	\item O usuário perde a opção de avançar e voltar no seu histórico\footnote{Isso dá pra remediar mas não é simples.}
+\end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Fundamentos de Engenharia de Software}
