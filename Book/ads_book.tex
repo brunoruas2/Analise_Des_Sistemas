@@ -22,7 +22,7 @@
 
 \DeclareUnicodeCharacter{0301}{\'{e}}
 \graphicspath{{./images/}} % set an default images folder
-\pagecolor[rgb]{0.7,0.7,0.7} % color theme no pdf
+% \pagecolor[rgb]{0.7,0.7,0.7} % color theme no pdf
 \setlength{\parindent}{0ex} % tirando indentation dos paragraphs
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2937,6 +2937,23 @@ xmlhttp.send()
 \end{center}
 
 Podemos ver que nós criamos uma função disparada apenas quando o status muda e, como colocamos uma condição dentro, só teremos a realm modificação caso o status da comunicação seja 200 (que é o padrão para sucesso) e o status da comunicação seja o de completo.
+\\~\\
+\textbf{API Fetch}
+\\~\\
+Os navegadores atuais nos permitem uma alternativa ao XMLHttpRequest chamada API Fetch. A vantagem é que essa nova tecnologia nos permite fazer uso das \textit{promises} que simplifica a escrita da programação assíncrona. Podemos ver um exemplo abaixo.
+
+\begin{center}
+\begin{Verbatim}[tabsize=4,frame=single]
+<script>
+	fetch('https:api.github.com/users/brunoruas2')
+		.then(res => res.json())
+		.then(data => console.log(data))
+		.catch(err => console.log('Erro: ', err))
+</script>
+\end{Verbatim}
+\end{center}
+
+\textbf{Comentário:} O material não se aprofunda no tema, então eu volto aqui para aprofundar no futuro. Aqui tem um \href{https://developer.mozilla.org/pt-BR/docs/Web/Guide/AJAX}{[link]} com um material de referência da MDN.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Fundamentos de Engenharia de Software}
