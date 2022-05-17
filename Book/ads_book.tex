@@ -2690,7 +2690,7 @@ Falando em backend, com a popularização de programas como nodejs, é cada vez 
 Como dito anteriormente, o JSON não é o único formato existente no mercado. Para destacar alguns outros, temos o XML, RDF, Planilhas, CSV, Documentos TXT, JPEG-2000, TIFF e vários outros formatos proprietários. Mas, sem dúvida, a competição mais árdua é entre JSON e XML.
 \ 
 \\~\\
-\textbf{Sintaxe do SJON}
+\textbf{Sintaxe do JSON}
 \\~\\
 Um arquivo JSON é muito parecido com um bloco de código JS. Começa e termina com chaves \verb|{}| e cada elemento é formado por um par de nome-valor e são separados por vírgula. O JSON permite diferentes tipos de valores que podem ser dos mesmo tipos de dados que estudamos anteriormente para o JS. Abaixo temos um exemplo de um arquivo JS.
 
@@ -2826,6 +2826,117 @@ Mas como tudo na vida, o AJAX possui algumas desvantagens:
 	\item Pode precisar de ajustes dependendo do navegador do client
 	\item O usuário perde a opção de avançar e voltar no seu histórico\footnote{Isso dá pra remediar mas não é simples.}
 \end{itemize}
+
+\textbf{Objeto XMLHTTPRequest}
+\\~\\
+Agora que entendemos melhor o que é o AJAX e como podemos construir aplicações com ele, precisamos entender bem uma das suas principais ferramentas: o objeto XMLHTTPRequest. Inicialmente criado pelo Microsoft e adaptado pelo Mozilla, o XMLHTTPRequest é um objeto (mas também pode ser interpretado como uma API) que é fornecido pelo próprio navegador e que permite que nosso código JS troque dados com um servidor web.
+\\~\\
+O objeto XMLHTTPRequest é a base do AJAX. Mas cuidado. Apesar do nome, ele aceita a troca de informações em diferentes formatos além do XML: JSON, HTML, TXT, XML. Além disso por ele podemos nos conectar à serviços por outros métodos além do HTTP.
+\\~\\
+Para aprender como usar essa ferramenta, vamos por partes. Podemos começar o nosso script com a criação de um objeto que será do tipo XMLHTTPRequest.
+
+\scriptsize
+\begin{center}
+\begin{Verbatim}[tabsize=4,frame=single]
+// funcao caso a conexao funcione
+function success() {
+		window.document.getElementById('texto').innerHTML = this.responseText
+}
+
+// funcao caso a conexao de erro
+function error(err) {console.log('Erro:',err)}
+
+
+// criacao do objeto XmlHttpRequest
+var xhr = new XMLHttpRequest()
+
+// executa a funcao success se a requisicao funcionar
+xhr.onload = success
+
+// executa um funcao erro se a conexao nao funcionar
+xhr.onerror = error
+
+// defindo a requisicao
+xhr.open('GET','https://api.github.com/users/brunoruas2')
+
+xhr.send()
+\end{Verbatim}
+\end{center}
+\normalsize
+
+Esse script acima executa uma consulta a uma url do github que retorna um JSON com informações a respeito da conta de algum usuário. Essa requisição é feita no método \verb|send()|. Em caso de sucesso, o xhr dispara a função \verb|success| que, por sua vez, altera usa o DOM para printar na tela o JSON coletado. Em caso de erro, ele mostra, no console\footnote{Para acessar basta apertar f12 em qualquer navegador moderno.} com uma mensagem de texto que contém o erro.
+\\~\\
+Como podemos perceber (e como quase tudo em JS) existem vários métodos úteis no objeto XMLHttpRequest que devemos aprender. Abaixo temos uma tabela de referência com esses métodos.
+
+\begin{center}
+	\begin{tabular}{|l|l|}
+	\hline
+	\textbf{Propriedade} & \textbf{Descrição} \\
+	\hline
+	\hline
+	\verb|status| & Codigo HTTP da resposta \\
+	\hline
+	\verb|statusText| & Texto da resposta \\
+	\hline
+	\verb|readyState| & Status do pedido \\
+	\hline
+	\verb|responseTexte| & Txt bruto da resposta \\
+	\hline
+	\verb|responseXML| & \begin{tabular}{l}
+											 			Resposta em um objeto \\
+														no DOM. Mas só funciona \\
+														Se o tipo for text/xml
+											 \end{tabular} \\
+	\hline
+	\verb|onreadystatechange| & \begin{tabular}{l}
+											 			       Dispara uma função quando \\
+																	 o readState muda
+											        \end{tabular} \\
+	\hline
+	\verb|onerror| & Executa função se erro \\
+	\hline
+	\verb|onprogress| & \begin{tabular}{l}
+											  Dispara uma função em \\
+												caso de demora na resposta
+											\end{tabular} \\
+	\hline
+	\verb|onload| & Função se o send funcionar \\
+	\hline
+\end{tabular}
+\end{center}
+
+Para cada requisição, o método readyState retorna um estágio diferente. Podemos pensar que cada requisição possui uma série de passos a serem feitos até a sua conclusão. Esses passos são lidos pelo método onreadystatechange e possuem características que podemos ver na lista abaixo.
+\\~\\
+Os estágios de uma requisição são:
+\begin{itemize}
+	\item \verb|Uninitialized (0)| - Objeto criado mas não iniciado
+	\item \verb|Loading (1)| - Objeto criado mas não usou o método send()
+	\item \verb|Loaded (2)| - Send() executado mas os cabeçalhos não estão disponíveis
+	\item \verb|Interactive (3)| - Alguns dados recebidos mas não completamente
+	\item \verb|Completed (4)| - Todos os dados foram recebidos e podem ser lidos
+\end{itemize}
+
+Abaixo temos um exemplo de uso do \verb|readyState| para verificação do status da chamada.
+
+\begin{center}
+\begin{Verbatim}[tabsize=4,frame=single]
+function requisicaoAJAX() {
+	var xmlhttp = new HMLHttpResquest()
+}
+
+xmlhttp.onreadystatechange = function() {
+	if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+		divElement = document.getElementById('texto')
+		divElement.innerHTML = xmlhttp.responseText
+	}
+}
+
+xmlhttp.open("GET","www.google.com/api.php")
+xmlhttp.send()
+\end{Verbatim}
+\end{center}
+
+Podemos ver que nós criamos uma função disparada apenas quando o status muda e, como colocamos uma condição dentro, só teremos a realm modificação caso o status da comunicação seja 200 (que é o padrão para sucesso) e o status da comunicação seja o de completo.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Fundamentos de Engenharia de Software}

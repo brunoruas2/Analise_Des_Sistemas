@@ -1,27 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>PUC-MG</title>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+<script>
+    function success() {
+        window.document.getElementById('texto').innerHTML = this.responseText
+    }
+    var xhr = new XMLHttpRequest()
+    xhr.onload = success
+    xhr.open('GET','https://api.github.com/users/brunoruas2')
+    xhr.send()
+</script>
 </head>
 <body>
-    <p id="texto">
-        Texto
-    </p>
+    <p id="texto"></p>
 </body>
-
-<script type="text/javascript">
-    var elem = window.document.getElementById('texto')
-
-    elem.addEventListener('mouseout',
-    function () {
-        window.document.getElementById('texto').style.color = ''
-        window.document.getElementById('texto').style.fontSize = ''
-    }, false)
-
-    elem.addEventListener('mouseover',
-    function () {
-        window.document.getElementById('texto').style.color = 'red'
-        window.document.getElementById('texto').style.fontSize = '20px'
-    }, false)
-</script>
 </html>
