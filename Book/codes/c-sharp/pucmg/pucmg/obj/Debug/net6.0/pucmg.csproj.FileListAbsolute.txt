@@ -1,0 +1,15 @@
+C:\Users\bruno\Documentos\GitHub\Analise_Des_Sistemas\Book\codes\c-sharp\pucmg\pucmg\bin\Debug\net6.0\pucmg.exe
+C:\Users\bruno\Documentos\GitHub\Analise_Des_Sistemas\Book\codes\c-sharp\pucmg\pucmg\bin\Debug\net6.0\pucmg.deps.json
+C:\Users\bruno\Documentos\GitHub\Analise_Des_Sistemas\Book\codes\c-sharp\pucmg\pucmg\bin\Debug\net6.0\pucmg.runtimeconfig.json
+C:\Users\bruno\Documentos\GitHub\Analise_Des_Sistemas\Book\codes\c-sharp\pucmg\pucmg\bin\Debug\net6.0\pucmg.dll
+C:\Users\bruno\Documentos\GitHub\Analise_Des_Sistemas\Book\codes\c-sharp\pucmg\pucmg\bin\Debug\net6.0\pucmg.pdb
+C:\Users\bruno\Documentos\GitHub\Analise_Des_Sistemas\Book\codes\c-sharp\pucmg\pucmg\obj\Debug\net6.0\pucmg.csproj.AssemblyReference.cache
+C:\Users\bruno\Documentos\GitHub\Analise_Des_Sistemas\Book\codes\c-sharp\pucmg\pucmg\obj\Debug\net6.0\pucmg.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bruno\Documentos\GitHub\Analise_Des_Sistemas\Book\codes\c-sharp\pucmg\pucmg\obj\Debug\net6.0\pucmg.AssemblyInfoInputs.cache
+C:\Users\bruno\Documentos\GitHub\Analise_Des_Sistemas\Book\codes\c-sharp\pucmg\pucmg\obj\Debug\net6.0\pucmg.AssemblyInfo.cs
+C:\Users\bruno\Documentos\GitHub\Analise_Des_Sistemas\Book\codes\c-sharp\pucmg\pucmg\obj\Debug\net6.0\pucmg.csproj.CoreCompileInputs.cache
+C:\Users\bruno\Documentos\GitHub\Analise_Des_Sistemas\Book\codes\c-sharp\pucmg\pucmg\obj\Debug\net6.0\pucmg.dll
+C:\Users\bruno\Documentos\GitHub\Analise_Des_Sistemas\Book\codes\c-sharp\pucmg\pucmg\obj\Debug\net6.0\refint\pucmg.dll
+C:\Users\bruno\Documentos\GitHub\Analise_Des_Sistemas\Book\codes\c-sharp\pucmg\pucmg\obj\Debug\net6.0\pucmg.pdb
+C:\Users\bruno\Documentos\GitHub\Analise_Des_Sistemas\Book\codes\c-sharp\pucmg\pucmg\obj\Debug\net6.0\pucmg.genruntimeconfig.cache
+C:\Users\bruno\Documentos\GitHub\Analise_Des_Sistemas\Book\codes\c-sharp\pucmg\pucmg\obj\Debug\net6.0\ref\pucmg.dll

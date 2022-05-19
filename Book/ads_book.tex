@@ -191,8 +191,74 @@ Bibliografia Complementar
 \end{itemize}
 
 \section{Lógica de Programação e Estrutura de Controle, Funções e Procedimentos}
+
 \subsection{Conceito de Algoritmo}
+
+Em resumo, um algoritmo é uma sequência de ordens que, se seguidas, deve gerar um resultado previsto e desejado. Não vale muito a pena aprofundar além disso agora.
+
 \subsection{Variáveis}
+
+Uma variável é uma posição na memórida do computador. Isso mesmo, é algo com endereço definido, nada solto no universo ou obscuro dentro da máquina. Esse dado é gravado para posterior leitura por parte do programa que está sendo executado.
+\\~\\
+Podemos ter como origem do dado o próprio programa que está sendo executado ou o usuário por meio da entrada de dados ou, ainda, a leitura de dados previamente armazenados na memória do computador.
+\\~\\
+Cada variável possui vários tipos de atributos que podemos elencar na lista abaixo:
+\begin{itemize}
+	\item Tem um endereço na memória
+	\item Possui um nome de identificação
+	\item Armazena um valor
+	\item Possui um tipo de dados
+		\begin{itemize}
+			\item Numérico - Inteiros e Reais (Double ou Ponto Flutuante)
+			\item Não numérico - Lógico e Caractere
+			\item Arranjos - Vetores e Matrizes
+			\item Arquivos
+			\item etc
+		\end{itemize}
+\end{itemize}
+
+O endereço da memória é feita pelos indereços que possuem apenas 2 estágios de registro: 0 ou 1. Um bit é exatamente essa medida de registo. 1 byte é composto de 8bits. 1 kilobyte contém 1024bytes ($2^10$). 1 megabyte contém 1024KB ($2^20$). 1 gigabyte contém 1024MB ($2^30$). 1 terabyte possui 1024GB ($2^40$).
+\\~\\
+Ou seja, se um computador possui 3 gigas de memória RAM, ele tem 3 bilhões de bytes como endereços disponíveis para um registro na memória\footnote{Isso é muito impressionante!}. Cada byte possui um endereço único. Na memória RAM costuma-se usar a base Hexadecimal para definir os endereços. Vamos ver isso melhor na matéria de Arquitetura de Computadores.
+\\~\\
+Também vimos que as variáveis possuem identificadores. Em c\# existem regras para a criação dos identificadores:
+\begin{itemize}
+	\item Devem começar com uma letra
+	\item Não podem ter espaços
+	\item Não podem usar uma das palavras reservadas pela linguagem
+	\item É case sensitive, ou seja, o nome "Var" é diferente do nome "var"
+\end{itemize}
+
+O identificador deve sempre ter algum sentido que permita a rápida interpretação por parte de algum leitor do código fonte da aplicação. Isso é fundamental para manutenção de códigos produzidos por várias pessoas diferentes. Entretanto, devemos evitar nomes de variáveis muito grandes. Na verdade, quanto menor o nome, mantido o sentido na leitura, melhor.
+\\~\\
+Outra boa prática é usar o camelCase para variáveis com mais de uma palavra. Esse padrão é bem simples: primeira palavra em minúsculo e a segunda com a primeira letra em maiúscula.
+\\~\\
+\textbf{Declaração de Variáveis em c\#}
+\\~\\
+Vamos aprender agora como declarar os 4 tipos mais simples de variáveis:
+\begin{itemize}
+	\item \verb|int| para definir inteiros
+	\item \verb|double| ou \verb|float| para definir números reais
+	\item \verb|string| para cadeia de caracteres
+	\item \verb|bool| para as variáveis booleanas
+\end{itemize}
+
+\begin{center}
+\begin{Verbatim}[tabsize=4,frame=single]
+	static void Main(string[] args) 
+	{
+		int idade, numero;
+		double peso, salario;
+		string nomePai, rua, dtNasc;
+		bol temCasa;
+	} 
+\end{Verbatim}
+\end{center}
+
+Nesse código acima temos a declaração de várias variáveis de cada tipo. Basta colocar o tipo da variável seguido do nome de cada uma delas separadas por vírgula.
+\\~\\
+\textbf{Comentário:} Em c\# todas as linhas precisam conter um caracter de encerramendo que é o ponto e vírgula \verb|;|. Sem esse token, o computador vai interpretar a próxima linha como sendo a continuação da anterior.
+
 \subsection{Estrutura Sequencial}
 \subsubsection{Etapas de um Algoritmo e o Operador de Atribuição}
 \subsubsection{Operadores e Funções Aritméticas}
