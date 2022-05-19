@@ -411,7 +411,51 @@ Essa diferença de pre e pós é importante para as estruturas de repetição, p
 \\~\\
 Existem outras operações que estão contidas em um objeto nativo chamado \verb|Math|. Para fazermos potenciação usamos o método \verb|Math.Pow()|. Para fazermos raiz quadrada podemos usar \verb|Math.Sqrt()|\footnote{Embora a gente saiba que a radiciação é uma potência de fração.}.
 
+
 \subsubsection{Expressões Aritméticas}
+
+Agora podemos juntar tudo que vimos em um programa simples de cálculo da média de 5 valores. O código e o seu resultado podem ser vistos abaixo.
+
+\scriptsize
+\begin{center}
+\begin{Verbatim}[tabsize=4,frame=single]
+// Declaracao dos tipos das variaveis
+int n1, n2, n3, n4, n5, soma;
+float media;
+
+// Input dos dados
+Console.WriteLine("Programa para cálculo da média de 5 valores.");
+
+Console.WriteLine("Por favor, forneça o primeiro número");
+n1 = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Por favor, forneça o segundo número");
+n2 = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Por favor, forneça o terceiro número");
+n3 = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Por favor, forneça o quarto número");
+n4 = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Por favor, forneça o quinto número");
+n5 = Convert.ToInt32(Console.ReadLine());
+
+// Processamento
+soma = n1 + n2 + n3 + n4 + n5;
+media = soma / 5;
+
+// Output dos dados
+Console.WriteLine("Os números fornecidos foram:");
+Console.WriteLine("N1={0},N2={1},N3={2},N4={3},N5={4}", n1, n2, n3, n4, n5);
+Console.WriteLine("Cuja média é igual a {0}", media);
+\end{Verbatim}
+\end{center}
+\normalsize
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.8]{25-algoritmo-logica-media-cs.png}
+	\caption{Programa de cálculo da média de 5 valores em c\#}
+\end{figure}
+
+
 \subsection{Estrutura Condicional}
 \subsubsection{Condição Simples e Composta}
 \subsubsection{Operadores Booleanos e Exemplos de Uso do Comando IF}
