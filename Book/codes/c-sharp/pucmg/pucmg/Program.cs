@@ -1,3 +1,4 @@
 ﻿
-// Um comentário é feito desse modo
-Console.WriteLine(value: "Olá, Mundo!");
+float x = 17%2;
+
+Console.WriteLine(x);

@@ -209,7 +209,7 @@ Cada variável possui vários tipos de atributos que podemos elencar na lista ab
 	\item Armazena um valor
 	\item Possui um tipo de dados
 		\begin{itemize}
-			\item Numérico - Inteiros e Reais (Double ou Ponto Flutuante)
+			\item Numérico - Inteiros e Reais (Double ou Ponto Flutuante)\footnote{Float possui precisão simples e Double possui dupla precisão.}
 			\item Não numérico - Lógico e Caractere
 			\item Arranjos - Vetores e Matrizes
 			\item Arquivos
@@ -217,7 +217,7 @@ Cada variável possui vários tipos de atributos que podemos elencar na lista ab
 		\end{itemize}
 \end{itemize}
 
-O endereço da memória é feita pelos indereços que possuem apenas 2 estágios de registro: 0 ou 1. Um bit é exatamente essa medida de registo. 1 byte é composto de 8bits. 1 kilobyte contém 1024bytes ($2^10$). 1 megabyte contém 1024KB ($2^20$). 1 gigabyte contém 1024MB ($2^30$). 1 terabyte possui 1024GB ($2^40$).
+O endereço da memória é feita pelos indereços que possuem apenas 2 estágios de registro: 0 ou 1. Um bit é exatamente essa medida de registo. 1 byte é composto de 8bits. 1 kilobyte contém 1024bytes ($2^{10}$). 1 megabyte contém 1024KB ($2^{20}$). 1 gigabyte contém 1024MB ($2^{30}$). 1 terabyte possui 1024GB ($2^{40}$).
 \\~\\
 Ou seja, se um computador possui 3 gigas de memória RAM, ele tem 3 bilhões de bytes como endereços disponíveis para um registro na memória\footnote{Isso é muito impressionante!}. Cada byte possui um endereço único. Na memória RAM costuma-se usar a base Hexadecimal para definir os endereços. Vamos ver isso melhor na matéria de Arquitetura de Computadores.
 \\~\\
@@ -226,7 +226,7 @@ Também vimos que as variáveis possuem identificadores. Em c\# existem regras p
 	\item Devem começar com uma letra
 	\item Não podem ter espaços
 	\item Não podem usar uma das palavras reservadas pela linguagem
-	\item É case sensitive, ou seja, o nome "Var" é diferente do nome "var"
+	\item É case sensitive, ou seja, o nome "Var"\ é diferente do nome "var"
 \end{itemize}
 
 O identificador deve sempre ter algum sentido que permita a rápida interpretação por parte de algum leitor do código fonte da aplicação. Isso é fundamental para manutenção de códigos produzidos por várias pessoas diferentes. Entretanto, devemos evitar nomes de variáveis muito grandes. Na verdade, quanto menor o nome, mantido o sentido na leitura, melhor.
@@ -240,18 +240,18 @@ Vamos aprender agora como declarar os 4 tipos mais simples de variáveis:
 	\item \verb|int| para definir inteiros
 	\item \verb|double| ou \verb|float| para definir números reais
 	\item \verb|string| para cadeia de caracteres
-	\item \verb|bool| para as variáveis booleanas
+	\item \verb|bool| para as variáveis booleanas (\verb|true| ou \verb|false|)
 \end{itemize}
 
 \begin{center}
 \begin{Verbatim}[tabsize=4,frame=single]
-	static void Main(string[] args) 
-	{
-		int idade, numero;
-		double peso, salario;
-		string nomePai, rua, dtNasc;
-		bol temCasa;
-	} 
+static void Main(string[] args) 
+{
+	int idade, numero;
+	double peso, salario;
+	string nomePai, rua, dtNasc;
+	bol temCasa;
+} 
 \end{Verbatim}
 \end{center}
 
@@ -259,9 +259,158 @@ Nesse código acima temos a declaração de várias variáveis de cada tipo. Bas
 \\~\\
 \textbf{Comentário:} Em c\# todas as linhas precisam conter um caracter de encerramendo que é o ponto e vírgula \verb|;|. Sem esse token, o computador vai interpretar a próxima linha como sendo a continuação da anterior.
 
+\subsection{Etapas de um Algotimo e Operador de Atribuição}
+
+Podemos resumir um algotimo simples como contendo apenas 3 etapas: 1) A entrada de dados; 2) O processamento e 3) A saída de dados.
+\\~\\
+Na etapa de processamento, podemos precisar de grande criatividade e esforço para produzir a saída de dados desejada. Como ferramenta para alcance desse objetivo, temos as \textbf{estruturas básicas} que são:
+\begin{itemize}
+	\item Estrutura Sequencial - Usada para garantir a ordem correta dos passos
+	\item Estrutura Condicional - Usada para permitir contexto ou cenários 
+	\item Estrutura de Repetição - Usada para evitar repetir código sequencial
+\end{itemize}
+
+\subsubsection{Operador de Atribuição}
+
+Uma vez que já sabemos como atribuir uma variável ao seu tipo, precisamos aprender a como atribuir um valor a essas variáveis. Em c\# a atribuição de valor é feita do seguinte modo:
+
+\begin{center}
+\begin{Verbatim}[tabsize=4,frame=single]
+idade = 28;
+numero = 9992233;
+\end{Verbatim}
+\end{center}
+
+É possível fazer 3 tipos de atribuição de valor para uma variável: Valor fixo; Conteúdo de outra variável e Expressão aritmética ou booleana. Abaixo temos 3 exemplo disso.
+
+\begin{center}
+\begin{Verbatim}[tabsize=4,frame=single]
+idade = 28; // Valor fixo
+numero = idade; // Valor de outra variavel
+idadeNum = idade + numero; // Valor por expressão
+idadeEqNum = idade == numero; // Valor por expressao booleana
+\end{Verbatim}
+\end{center}
+
+Nesse ponto vale uma reflexão. Será que sempre precisamos separar as etapas de atribuição do tipo de dados e do valor? Ou podemos, no mesmo momento, definir o tipo de dados e o valor da variável? A resposta, para nossa sorte, é que é possível em c\# atribuição de tipo e valor ao mesmo tempo. A sintaxe fica desse modo:
+
+\begin{center}
+\begin{Verbatim}[tabsize=4,frame=single]
+int idade = 28;
+int numero = idade;
+double = 2.3;
+string nome = "bruno";
+int idadeNum = idade + numero;
+bool idadeEqNum = idade == numero;
+\end{Verbatim}
+\end{center}
+
+\textbf{Saída de Dados}
+\\~\\
+Agora que fizemos esse pequeno desvio no assunto, vamos retornar para as estruturas. Por incrível que pareça, é melhor a gente começar pelo final. A etapa de saída de dados.
+\\~\\
+Em c\# temos duas maneiras de saída de dados:
+
+\begin{center}
+\begin{Verbatim}[tabsize=4,frame=single]
+// Imprime a informacao e cursor fica na mesma linha
+Console.Write('string');
+
+// Imprime a info mas o curso vai pra proxima linha
+Console.WriteLine('string ' + var1 + ' string');
+\end{Verbatim}
+\end{center}
+
+Nesses exemplos a gente pode perceber que podemos concatenar textos e variáveis textuais por meio do operador de soma. Além dessa forma, podemos fazer uso de PlaceHolders ou Interpolação de string como nos exemplos abaixo.
+
+\begin{center}
+\begin{Verbatim}[tabsize=4,frame=single]
+string nome = "Bruno";
+
+// Concatenacao
+Console.WriteLine("Meu nome é " + nome + ", obrigado!");
+
+// PlaceHolder
+Console.WriteLine("Meu nome é {0}, obrigado!", nome);
+
+// Interpolacao
+Console.WriteLine($"Meu nome é {nome}, obrigado!");
+\end{Verbatim}
+\end{center}
+
+Os três exemplos geram o mesmo restulado mas são consideravelmente diferentes no método. Podemos usar o que for mais agradável para uma leitura do código e posterior manutenção do mesmo.
+\\~\\
+\textbf{Entrada de Dados}
+\\~\\
+Agora que sabemos como fazer nosso programa imprimir resultados, vamos aprender como inputar dados nele. Em c\# podemos inserir dados com o seguinte comando:
+
+\begin{center}
+\begin{Verbatim}[tabsize=4,frame=single]
+variavel = Console.ReadLine();
+\end{Verbatim}
+\end{center}
+
+O input captado por esse comando \textbf{sempre retorna uma string}. Mas as vezes precisamos nos certificar que o input foi feito da maneira correta. Para isso podemos manipular os dados inseridos do seguite modo:
+
+\begin{center}
+\begin{Verbatim}[tabsize=4,frame=single]
+// Valores Inteiros
+variavel = int.Parse(Console.ReaLine());
+variavel = Convert.ToInt32(Console.ReadLine());
+
+// Valores Reais
+variavel = double.Parse(Console.ReadLine());
+variavel = float.Parse(Console.ReadLine());
+variavel = Converte.ToDouble(Console.ReadLine());
+
+// Valores Booleanos
+variavel = bool.Parse(Console.ReadLine());
+
+// Valores String
+variavel = Console.ReadLine();
+\end{Verbatim}
+\end{center}
+
+Depois que executamos um dessas maneiras de coletar os dados, é de boa prática fornecermos um output logo após a entrada do dado. Isso evita aquela sensação de dúvida se o programa está sendo executado ou não. Ou seja, é bom sempre manter a dupla \verb|ReadLine()| com o \verb|WriteLine()|. O nome que damos para essa dupla é "Prompt".
+\\~\\
+Outra dica boa é usar o comando \verb|Console.ReadKey()| no final do programa. Isso faz com que o console aguarde alguma tecla para finalizar. Evita que a aplicação abra e feche sem que o user consiga enxergar o resultado do processo.
+
 \subsection{Estrutura Sequencial}
-\subsubsection{Etapas de um Algoritmo e o Operador de Atribuição}
+
+Agora que sabemos como receber valores do usuário e como devolver nova informação a partir do processamento, vamos começar a estudar a etapa de processamento através do estudo das estruturas sequenciais.
+
 \subsubsection{Operadores e Funções Aritméticas}
+
+Em c\# nós temos os seguintes tokens para realizar as operações aritiméticas:
+\begin{itemize}
+	\item \verb|+| Soma
+	\item \verb|-| Subtração
+	\item \verb|*| Multiplicação
+	\item \verb|/| Divisão
+	\item \verb|%| Resto da Divisão inteira
+\end{itemize}
+
+Além disso, temos a presença do que podemos chamar de \textbf{operadores de atribuição combinada}. Que faz a atribuição de valor com alguma operação aritimética:
+\begin{itemize}
+	\item soma += 100 é igual a soma = soma + 100
+	\item subtracao -= 10 é igual a subtracao = subtracao - 10 
+	\item multiplica *= 2 é igual a multiplca = multiplca * 2
+	\item divide /= 3 é igual a divide = divide / 3
+	\item resto \%= 2 é igual a resto = resto / 2
+\end{itemize}
+
+Não bastando essa grande variedade, temos os operadores de \textbf{incremento e decremento}:
+\begin{itemize}
+	\item Pré-incremento (\verb|++x|) - Usa x + 1 antes do processamento
+	\item Pós-incremento (\verb|x++|) - Usa x + 1 após o processamento
+	\item Pré-decréscimo (\verb|--x|) - Usa x - 1 antes do processamento
+	\item Pós-decréscimo (\verb|x--|) - Usa x -1 após o processamento
+\end{itemize}
+
+Essa diferença de pre e pós é importante para as estruturas de repetição, porque podemos lidar com índices de tabelas que começam com valores diferentes. Mas, no geral, devemos olhar cada caso para escolher o que usar.
+\\~\\
+Existem outras operações que estão contidas em um objeto nativo chamado \verb|Math|. Para fazermos potenciação usamos o método \verb|Math.Pow()|. Para fazermos raiz quadrada podemos usar \verb|Math.Sqrt()|\footnote{Embora a gente saiba que a radiciação é uma potência de fração.}.
+
 \subsubsection{Expressões Aritméticas}
 \subsection{Estrutura Condicional}
 \subsubsection{Condição Simples e Composta}
