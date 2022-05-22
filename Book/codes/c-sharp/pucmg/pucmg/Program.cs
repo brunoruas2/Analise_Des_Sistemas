@@ -2,7 +2,7 @@
 // de segundo grau
 
 // Declaracao das variaveis
-double a, b, c, x1, x2;
+double a, b, c, x1, x2, delta;
 
 Console.WriteLine("Vamos resolver uma equação do tipo ax^2 + bx + c = 0");
 
@@ -20,7 +20,19 @@ c = Convert.ToDouble(Console.ReadLine());
 x1 = (-b + Math.Sqrt(Math.Pow(b,2) - 4 * a * c)) / 2 * a;
 x2 = (-b - Math.Sqrt(Math.Pow(b, 2) - 4 * a * c)) / 2 * a;
 
-// Output dos resultados
-Console.WriteLine("Dados: a = {0}, b = {1} e c = {2}", a, b, c);
-Console.WriteLine($"Equação: (-({b}) +- Raiz(({b})^2 - 4*{a}*{c}))/2*{a} = 0");
-Console.WriteLine("Resultado: x1 = {0} e x2 = {1}", x1, x2);
+delta = (Math.Pow(b, 2) - 4 * a * c);
+
+// Output dos resultados com condicao
+if (delta >= 0)
+{
+    Console.WriteLine("Dados: a = {0}, b = {1} e c = {2}", a, b, c);
+    Console.WriteLine($"Equação: (-({b}) +- Raiz(({b})^2 - 4*{a}*{c}))/2*{a} = 0");
+    Console.WriteLine($"Delta: {delta}");
+    Console.WriteLine("Resultado: x1 = {0} e x2 = {1}", x1, x2);
+} else
+{
+    Console.WriteLine("Dados: a = {0}, b = {1} e c = {2}", a, b, c);
+    Console.WriteLine($"Equação: (-({b}) +- Raiz(({b})^2 - 4*{a}*{c}))/2*{a} = 0");
+    Console.WriteLine($"Delta: {delta}");
+    Console.WriteLine("Resultado: X não possui raiz real! ");
+};

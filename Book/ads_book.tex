@@ -460,8 +460,7 @@ Outro exemplo que podemos usar é o do cálculo das raízes de uma função de s
 \scriptsize
 \begin{center}
 \begin{Verbatim}[tabsize=4,frame=single]
-// Programa para calcular o valor de x em uma equacao
-// de segundo grau
+// Programa para calcular o valor de x em uma equacao de segundo grau
 
 // Declaracao das variaveis
 double a, b, c, x1, x2;
@@ -496,7 +495,7 @@ Console.WriteLine("Resultado: x1 = {0} e x2 = {1}", x1, x2);
 	\caption{Programa de resolução de uma equação do segundo grau.}
 \end{figure}
 
-A essa altura já aprendemos como criar programas inteiros com as 3 etapas lógicas de input, processamento e output, tudo isso em c\#. Entretanto, no estado atual do código, nossos programas não estão muito competentes em se adaptar a diferentes tipos de inputs ou resultados.
+A essa altura já aprendemos como criar programas inteiros com as etapas de software que vimos anterioremente: input, processamento e output. Tudo isso em c\#. Entretanto, no estado atual do código, nossos programas não estão muito competentes em se adaptar a diferentes tipos de inputs ou resultados.
 \\~\\
 Um exemplo prático é que, nesse segundo programa, podemos ter inputs que retornem um resultado indesejado como podemos ver na imagem abaixo.
 
@@ -506,12 +505,104 @@ Um exemplo prático é que, nesse segundo programa, podemos ter inputs que retor
 	\caption{Programa de resolução de uma equação do segundo grau com erro.}
 \end{figure}
 
-A necessidade de lidarmos com diferentes situações ou contextos é o que nos leva a estudarmos as \textbf{estruturas condicionais} que é o assunto seguinte.
-
-
 \subsection{Estrutura Condicional}
+
+A necessidade de lidarmos com diferentes situações ou contextos é o que nos leva a estudarmos as \textbf{estruturas condicionais}. Por meio dessas estruturas, podemos construir diferentes outputs de acordo com qualquer lógica que implementarmos e, com isso, evitar vários bugs nos nossos programas.
+
+\subsubsection{Operadores Relacionais}
+
+Ao lidarmos com estrutura condicionais nós temos alguns operadores que nada mais são doque expressões lógicas que retornam apenas 2 resultados possívies: true ou false. Esses operadores são como "gatilhos"\ que são usados para controle do fluxo de processamento do código.
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Operador} & \textbf{Operação} & \textbf{Exemplo} \\
+\hline
+\hline
+\verb|==| & Igualdade & n1 == n2 \\
+\hline
+\verb|<| & Menor & a < 10 \\
+\hline
+\verb|>| & Maio & b > 1 \\
+\hline
+\verb|<=| & Menor igual & c <= 2 \\
+\hline
+\verb|>=| & Maior igual & d >= 22 \\
+\hline
+\verb|!=| & Desigualdade & e != 100 \\
+\hline
+\end{tabular}
+\end{center}
+
+Na tabela acima, temos os operadores relacionais que são usados ao longo das estruturas condicionais simples e compostas.
+\\~\\
+Tome cuidado com o operador de igualdade \verb|==| e o de atribuição \verb|=|, afinal, eles usam o sinal de igualdade mas significam coisas diferentes.
+
 \subsubsection{Condição Simples e Composta}
+
+Em c\# o comando usado para criar uma condição simples é o \verb|if|. Se a condição que colocarmos atrelada ao comando \verb|if| retornar um true, o bloco de código atribuído a ele será executar, caso contrário, o código do bloco será ignorado.
+
+\scriptsize
+\begin{center}
+\begin{Verbatim}[tabsize=4,frame=single]
+// Parte condicional no calculo da equacao de segundo grau
+
+delta = (Math.Pow(b, 2) - 4 * a * c);
+
+// Output dos resultados com condicao
+if (delta >= 0)
+{
+    Console.WriteLine("Dados: a = {0}, b = {1} e c = {2}", a, b, c);
+    Console.WriteLine($"Equação: (-({b}) +- Raiz(({b})^2 - 4*{a}*{c}))/2*{a} = 0");
+    Console.WriteLine($"Delta: {delta}");
+    Console.WriteLine("Resultado: x1 = {0} e x2 = {1}", x1, x2);
+};
+
+if (delta < 0)
+{
+    Console.WriteLine("Dados: a = {0}, b = {1} e c = {2}", a, b, c);
+    Console.WriteLine($"Equação: (-({b}) +- Raiz(({b})^2 - 4*{a}*{c}))/2*{a} = 0");
+    Console.WriteLine($"Delta: {delta}");
+    Console.WriteLine("Resultado: X não possui raiz real! ");
+};
+\end{Verbatim}
+\end{center}
+\normalsize
+
+Com essa adaptação, nosso código estará preparado para o caso onde o interior da raiz (que chamamos de delta) seja negativo. Mas podemos ver que o nosso código ficou um pouco esquisito. Criamos dois blocos de código que são, claramente, relacionados entre si: Se um bloco for executado, o outro não será. Para facilitar o trabalho com essas situações, as linguagens de programação possuem as estruturas de condição compostas.
+\\~\\
+Esses são os casos onde, se o teste lógico retorna true, executamos um bloco, ou o outro bloco será executado caso o resultado lógico seja false. Com isso evitamos ter que criar dois testes com \verb|if|. O token usado em c\# para uma condição com dois blocos de códigos (ou seja, uma condicional compsota) é o \verb|if-else|. Abaixo nós reescrevemos a solução anterior mas agora fazendo uso do condional composto.
+
+\scriptsize
+\begin{center}
+\begin{Verbatim}[tabsize=4,frame=single]
+// Parte condicional no calculo da equacao de segundo grau
+
+delta = (Math.Pow(b, 2) - 4 * a * c);
+
+// Output dos resultados com condicao
+if (delta >= 0)
+{
+    Console.WriteLine("Dados: a = {0}, b = {1} e c = {2}", a, b, c);
+    Console.WriteLine($"Equação: (-({b}) +- Raiz(({b})^2 - 4*{a}*{c}))/2*{a} = 0");
+    Console.WriteLine($"Delta: {delta}");
+    Console.WriteLine("Resultado: x1 = {0} e x2 = {1}", x1, x2);
+} else
+{
+    Console.WriteLine("Dados: a = {0}, b = {1} e c = {2}", a, b, c);
+    Console.WriteLine($"Equação: (-({b}) +- Raiz(({b})^2 - 4*{a}*{c}))/2*{a} = 0");
+    Console.WriteLine($"Delta: {delta}");
+    Console.WriteLine("Resultado: X não possui raiz real! ");
+};
+\end{Verbatim}
+\end{center}
+\normalsize
+
+Agora sim nosso código está elegante e adaptado para as duas saídas possíveis de resultado para os inputs do usuário.
+
 \subsubsection{Operadores Booleanos e Exemplos de Uso do Comando IF}
+
+
 \subsubsection{O Comando Switch e o Operador Ternário}
 \section{Estrutura de Repetição}
 \subsubsection{Os Comandos WHILE, DO WHILE e FOR}
