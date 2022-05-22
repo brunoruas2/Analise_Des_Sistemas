@@ -361,7 +361,7 @@ variavel = Convert.ToInt32(Console.ReadLine());
 // Valores Reais
 variavel = double.Parse(Console.ReadLine());
 variavel = float.Parse(Console.ReadLine());
-variavel = Converte.ToDouble(Console.ReadLine());
+variavel = Convert.ToDouble(Console.ReadLine());
 
 // Valores Booleanos
 variavel = bool.Parse(Console.ReadLine());
@@ -454,6 +454,59 @@ Console.WriteLine("Cuja média é igual a {0}", media);
 	\includegraphics[scale=0.8]{25-algoritmo-logica-media-cs.png}
 	\caption{Programa de cálculo da média de 5 valores em c\#}
 \end{figure}
+
+Outro exemplo que podemos usar é o do cálculo das raízes de uma função de segundo grau\footnote{Se você não se lembra como resolver um problema desse, seu professor da sexta série está rindo de você nesse exato minuto.}. O programa abaixo recebe 3 valores e calcula as raízes, a imagem logo após nos mostra o resultado no prompt de comando.
+
+\scriptsize
+\begin{center}
+\begin{Verbatim}[tabsize=4,frame=single]
+// Programa para calcular o valor de x em uma equacao
+// de segundo grau
+
+// Declaracao das variaveis
+double a, b, c, x1, x2;
+
+Console.WriteLine("Vamos resolver uma equação do tipo ax^2 + bx + c = 0");
+
+// Input das variaveis
+Console.WriteLine("Qual o valor de a? ");
+a = Convert.ToDouble(Console.ReadLine());
+
+Console.WriteLine("Qual o valor de b? ");
+b = Convert.ToDouble(Console.ReadLine());
+
+Console.WriteLine("Qual o valor de c? ");
+c = Convert.ToDouble(Console.ReadLine());
+
+
+x1 = (-b + Math.Sqrt(Math.Pow(b,2) - 4 * a * c)) / 2 * a;
+x2 = (-b - Math.Sqrt(Math.Pow(b, 2) - 4 * a * c)) / 2 * a;
+
+// Output dos resultados
+Console.WriteLine("Dados: a = {0}, b = {1} e c = {2}", a, b, c);
+Console.WriteLine($"Equação: (-({b}) +- Raiz(({b})^2 - 4*{a}*{c}))/2*{a} = 0");
+Console.WriteLine("Resultado: x1 = {0} e x2 = {1}", x1, x2);
+\end{Verbatim}
+\end{center}
+\normalsize
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.8]{26-algoritmo-equacao-grau2.png}
+	\caption{Programa de resolução de uma equação do segundo grau.}
+\end{figure}
+
+A essa altura já aprendemos como criar programas inteiros com as 3 etapas lógicas de input, processamento e output, tudo isso em c\#. Entretanto, no estado atual do código, nossos programas não estão muito competentes em se adaptar a diferentes tipos de inputs ou resultados.
+\\~\\
+Um exemplo prático é que, nesse segundo programa, podemos ter inputs que retornem um resultado indesejado como podemos ver na imagem abaixo.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.8]{27-erro-eq-grau2.png}
+	\caption{Programa de resolução de uma equação do segundo grau com erro.}
+\end{figure}
+
+A necessidade de lidarmos com diferentes situações ou contextos é o que nos leva a estudarmos as \textbf{estruturas condicionais} que é o assunto seguinte.
 
 
 \subsection{Estrutura Condicional}
