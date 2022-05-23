@@ -1,38 +1,21 @@
-﻿// Programa para calcular o valor de x em uma equacao
-// de segundo grau
+﻿// Programa que recebe nome completo e
+// depois devolve uma mensagem de boas vindas
 
-// Declaracao das variaveis
-double a, b, c, x1, x2, delta;
+string nome, mid, last;
 
-Console.WriteLine("Vamos resolver uma equação do tipo ax^2 + bx + c = 0");
+Console.WriteLine(" Seja bem vindo(a)!");
 
-// Input das variaveis
-Console.WriteLine("Qual o valor de a? ");
-a = Convert.ToDouble(Console.ReadLine());
+Console.WriteLine(" Qual seu primeiro nome?");
+nome = Console.ReadLine();
 
-Console.WriteLine("Qual o valor de b? ");
-b = Convert.ToDouble(Console.ReadLine());
+Console.WriteLine(" Qual seu nome do meio?");
+mid = Console.ReadLine();
 
-Console.WriteLine("Qual o valor de c? ");
-c = Convert.ToDouble(Console.ReadLine());
+Console.WriteLine(" Qual seu sobrenome?");
+last = Console.ReadLine();
 
-
-x1 = (-b + Math.Sqrt(Math.Pow(b,2) - 4 * a * c)) / 2 * a;
-x2 = (-b - Math.Sqrt(Math.Pow(b, 2) - 4 * a * c)) / 2 * a;
-
-delta = (Math.Pow(b, 2) - 4 * a * c);
-
-// Output dos resultados com condicao
-if (delta >= 0)
-{
-    Console.WriteLine("Dados: a = {0}, b = {1} e c = {2}", a, b, c);
-    Console.WriteLine($"Equação: (-({b}) +- Raiz(({b})^2 - 4*{a}*{c}))/2*{a} = 0");
-    Console.WriteLine($"Delta: {delta}");
-    Console.WriteLine("Resultado: x1 = {0} e x2 = {1}", x1, x2);
-} else
-{
-    Console.WriteLine("Dados: a = {0}, b = {1} e c = {2}", a, b, c);
-    Console.WriteLine($"Equação: (-({b}) +- Raiz(({b})^2 - 4*{a}*{c}))/2*{a} = 0");
-    Console.WriteLine($"Delta: {delta}");
-    Console.WriteLine("Resultado: X não possui raiz real! ");
-};
+Console.WriteLine(" Bem Vindo(a)!");
+Console.WriteLine(nome);
+Console.WriteLine(mid);
+Console.WriteLine(last);
+Console.WriteLine(" E Volte sempre!");

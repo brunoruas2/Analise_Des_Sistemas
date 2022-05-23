@@ -731,6 +731,62 @@ passou = (nota >= 60) ? true : false // maneira 2
 Agora podemos ver claramente a vantagem do uso do operador ternário.
 
 \section{Estrutura de Repetição}
+
+Como sabemos, ainda temos mais um tipo de estrutura para estudarmos. Até agora, aprendemos como estruturar um código sequencialmente e como criar blocos de código que só serão executados se determinadas condições previamente definidas forem satisfeitas. Agora, vamos aprender como evitar ter que repetir blocos de códigos.
+\\~\\
+O c\# possui 3 operadores de repetição:
+\begin{Verbatim}[tabsize=4,frame=single]
+// tipo 01
+while (condicao)
+	comando;
+
+// tipo 02
+do
+	comando;
+while (condicao);
+
+// tipo 03
+for (inicial; inicial; atualizacao)
+	comando;
+\end{Verbatim}
+
+Vamos ver um exemplo de como nosso código pode ser reduzir com o uso da estrutura de repetição. Primeiro, vamos ver um exemplo onde o programa recebe uma lista de 3 palavras (nome, nome do meio e sobrenome) e depois faz o print.
+
+\begin{Verbatim}[tabsize=4,frame=single]
+// Programa que recebe nome completo e
+// depois devolve uma mensagem de boas vindas
+
+string nome, mid, last;
+
+Console.WriteLine(" Seja bem vindo(a)!");
+
+Console.WriteLine(" Qual seu primeiro nome?");
+nome = Console.ReadLine();
+
+Console.WriteLine(" Qual seu nome do meio?");
+mid = Console.ReadLine();
+
+Console.WriteLine(" Qual seu sobrenome?");
+last = Console.ReadLine();
+
+Console.WriteLine(" Bem Vindo(a)!");
+
+// Aqui temos 3 linhas que podem ser reduzidas a uma só
+Console.WriteLine(nome);
+Console.WriteLine(mid);
+Console.WriteLine(last);
+
+Console.WriteLine(" E Volte sempre!");
+\end{Verbatim}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.8]{28-programa-nome1.png}
+	\caption{Programa simples }
+\end{figure}
+
+Agora vamos refazer esse programa usando os 3 tokens de estrutura de repetição que o c\# nos dá. Vamos usar a mesma ordem em que elas foram apresentadas.
+
 \subsubsection{Os Comandos WHILE, DO WHILE e FOR}
 \subsubsection{Contadores e Acumuladores}
 
