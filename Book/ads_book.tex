@@ -771,12 +771,11 @@ last = Console.ReadLine();
 
 Console.WriteLine(" Bem Vindo(a)!");
 
-// Aqui temos 3 linhas que podem ser reduzidas a uma só
 Console.WriteLine(nome);
 Console.WriteLine(mid);
 Console.WriteLine(last);
 
-Console.WriteLine(" E Volte sempre!");
+Console.WriteLine(" E Vide panel"lte sempre!");
 \end{Verbatim}
 
 \begin{figure}[H]
@@ -788,6 +787,94 @@ Console.WriteLine(" E Volte sempre!");
 Agora vamos refazer esse programa usando os 3 tokens de estrutura de repetição que o c\# nos dá. Vamos usar a mesma ordem em que elas foram apresentadas.
 
 \subsubsection{Os Comandos WHILE, DO WHILE e FOR}
+
+\textbf{Repetição usando WHILE}
+\\~\\
+A repetição usando o token \verb|while| é condicionada ao resultado de uma expressão lógica. Caso a expressão lógica retorne true, o bloco de código será executado até o seu final. Após a execução, é feita uma nova verificação da expressão lógica. O processo de loop só será finalizado caso a expressão lógica retorne o valor false. Abaixo temos a refatoração\footnote{Refatorar é o processo de mudar o código e obter o mesmo resultado no final. É uma ótima prática a ser feita.} evitando a repetição de partes de partes do código anterior.
+
+\begin{Verbatim}[tabsize=4,frame=single]
+// Programa de nomes refatorado com while
+
+string nome, mid, last;
+int contador;
+
+// nome default
+nome = "";
+mid = "";
+last = "";
+
+Console.WriteLine(" Seja bem vindo(a)!");
+
+Console.WriteLine(" Por favor, insira o seu nome completo.");
+Console.WriteLine(" Obs. No máximo 3 palavras");
+contador = 1;
+
+while (contador <= 3)
+{   
+    Console.WriteLine($" Palavra nº {contador} do seu nome?");
+    if (contador == 1)
+        nome = Console.ReadLine();
+    else if (contador == 2)
+        mid = Console.ReadLine();
+    else if (contador == 3)
+        last = Console.ReadLine();
+
+    contador += 1;
+};
+
+Console.WriteLine(" Bem Vindo(a)!");
+Console.WriteLine(nome);
+Console.WriteLine(mid);
+Console.WriteLine(last);
+Console.WriteLine(" E Volte sempre!");
+\end{Verbatim}
+
+Agora nós temos um loop usando a expressão "a variável contador é menor igual a 3?"\ sempre que a resposta for sim, o programa perguntará qual a n-ésima palavra do nome da pessoa. Pode parecer que nesse exemplo o uso do loop mais complicou do que facilitou. Mas o objetivo aqui é exercitar o uso desse operador, então devemos focar em compreender como usar o while.
+\\~\\
+\textbf{Repetição usando DO WHILE}
+\\~\\
+Para a nossa sorte, o operador DO WHILE é muito similar ao WHILE. A única diferença é que primeiro declaramos o bloco de código e, no final, colocamos a condição para sua execução. No exemplo abaixo temos o mesmo resultado que o de cima mas usando essa outra estrutura de operador.
+
+\begin{Verbatim}[tabsize=1,frame=single]
+// Programa de nomes refatorado com do-while
+
+string nome, mid, last;
+int contador;
+
+// nome default
+nome = "";
+mid = "";
+last = "";
+
+Console.WriteLine(" Seja bem vindo(a)!");
+
+Console.WriteLine(" Por favor, insira o seu nome completo.");
+Console.WriteLine(" Obs. No máximo 3 palavras");
+contador = 1;
+
+do
+{   
+  Console.WriteLine($" Palavra nº {contador} do seu nome?");
+   if (contador == 1)
+       nome = Console.ReadLine();
+   else if (contador == 2)
+       mid = Console.ReadLine();
+   else if (contador == 3)
+       last = Console.ReadLine();
+
+   contador += 1;
+} while (contador <= 3);
+
+Console.WriteLine(" Bem Vindo(a)!");
+Console.WriteLine(nome);
+Console.WriteLine(mid);
+Console.WriteLine(last);
+Console.WriteLine(" E Volte sempre!");
+\end{Verbatim}
+
+
+\textbf{Repetição usando FOR}
+
 \subsubsection{Contadores e Acumuladores}
 
 \section{Manipulação de Dados em Memória Primária e Secundária}

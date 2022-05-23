@@ -1,18 +1,31 @@
-﻿// Programa que recebe nome completo e
-// depois devolve uma mensagem de boas vindas
+﻿// Programa de nomes refatorado com while
 
 string nome, mid, last;
+int contador;
+
+// nome default
+nome = "";
+mid = "";
+last = "";
 
 Console.WriteLine(" Seja bem vindo(a)!");
 
-Console.WriteLine(" Qual seu primeiro nome?");
-nome = Console.ReadLine();
+Console.WriteLine(" Por favor, insira o seu nome completo.");
+Console.WriteLine(" Obs. No máximo 3 palavras");
+contador = 1;
 
-Console.WriteLine(" Qual seu nome do meio?");
-mid = Console.ReadLine();
+do
+{   
+    Console.WriteLine($" Qual a palavra nº {contador} do seu nome?");
+    if (contador == 1)
+        nome = Console.ReadLine();
+    else if (contador == 2)
+        mid = Console.ReadLine();
+    else if (contador == 3)
+        last = Console.ReadLine();
 
-Console.WriteLine(" Qual seu sobrenome?");
-last = Console.ReadLine();
+    contador += 1;
+} while (contador <= 3);
 
 Console.WriteLine(" Bem Vindo(a)!");
 Console.WriteLine(nome);
