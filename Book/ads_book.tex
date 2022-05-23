@@ -600,10 +600,136 @@ if (delta >= 0)
 
 Agora sim nosso código está elegante e adaptado para as duas saídas possíveis de resultado para os inputs do usuário.
 
-\subsubsection{Operadores Booleanos e Exemplos de Uso do Comando IF}
+\subsubsection{Operadores Booleanos e Comandos IF Aninhados}
 
+Nós aprendemos que o bloco de código será executado sempre que a expressão lógica retornar um resultado true. Também vimos que existem os operadores relacionais que nos ajudam a construir essas expressões. Agora, vamos aprender os operadores booleanos que nada mais são do que os operadores lógicos clássicos ($\land, \lor, \neg$).
+
+\begin{center}
+\begin{tabular}{|c|l|c|}
+\hline
+\textbf{Operador} & \textbf{Operação} & \textbf{Exemplo} \\
+\hline
+\hline
+\verb|&& (AND)| & true se tudo for true & \verb|if (a > 2 && b == 1)| \\
+\hline
+\verb@|| (OR)@ & true se um for true & \verb@if (a < 2 || b != 0)@ \\
+\hline
+\verb|! (NOT)| & false se true & \verb|if (!(x==y))| \\
+\hline
+\end{tabular}
+\end{center}
+
+Existem problemas que requerem mais de dois resultados no output. Nesse caso, não é suficiente usarmos apenas os tokens de condicional composto \verb|if-else| da maneira como aprendemos até agora.
+\\~\\
+Para resolver esse problema temos a técnica de \verb|IF| aninhados (nested) e a de \verb|IF| escada (ladder). As duas formas produzem o mesmo resultado mas mudam significativamente legibilidade do nosso código. Abaixo temos um exemplo de cada.
+
+\begin{center}
+\begin{Verbatim}[tabsize=4,frame=single]
+// Leadder IF
+
+if (condicao1)
+	comando1;
+else if (condicao2)
+	comando2;
+else if (condicao3)
+	comando3;
+...
+else if (condicao_n-1)
+	comando_n-1;
+else
+	comando_n;
+\end{Verbatim}
+\end{center}
+
+\begin{center}
+\begin{Verbatim}[tabsize=4,frame=single]
+// Nested IF
+
+if (condicao1)
+	comando1;
+else
+	if (condicao2)
+		comando2;
+	else
+		if (condicao3)
+			comando3;
+		else
+			if (condicao4)
+				comando4;
+		...
+			else
+				if (condicao_n-1)
+					comando_n-1;
+				else
+					comando_n;
+\end{Verbatim}
+\end{center}
 
 \subsubsection{O Comando Switch e o Operador Ternário}
+
+Agora que aprendemos a lidar com vários casos condicionais encadeados, podemos construir soluções relativamente complexas com várias saídas diferentes. Entretanto, quando tempos muitas situações possíveis, o nosso código pode ficar um pouco ruim de ser lido por outras pessoas.
+\\~\\
+Pensando nessa necessidade, os criadores do c\# criaram um operador que simplifica ainda mais nosso trabalho. Sim, é isso mesmo, nós acabamos de aprender IFs aninhados e em escada e já vamos aprender uma maneira melhor de fazer exatamente o que eles fazem. Se acostume com isso. Em tecnologia existem quase sempre várias maneiras de se chegar no mesmo resultado.
+\\~\\
+O operador que é mais indicado para lidar com várias situações de saída é o \verb|swith-case|. Cuja construção é bem mais legível que os IFs anteriores. Abaixo temos um exemplo.
+
+\begin{center}
+\begin{Verbatim}[tabsize=4,frame=single]
+// Lidando com varias condicoes com swith/case
+
+swith(opcao)
+{
+	case op1:
+		comandos1;
+		break;
+	case op2:
+		comandos2;
+		break;
+	case op3:
+		comandos3;
+		break;
+	...
+	case op_n:
+		comandos_n;
+		break;
+	default:
+		bloco que sera executado se nenhuma 
+		das anteriores for escolhida;
+}
+\end{Verbatim}
+\end{center}
+
+\textbf{Comentário:} Existem várias maneiras de se usar o switch. Eu não vou me aprofundar agora em todas elas. Mas vale muito a pena fazer uso dessa ferramenta para cenários de várias interações possíveis ou múltiplas saídas contextuais.
+
+Para finalizar o nosso estudo das estruturas condicionais, vamos aprender como trabalhar com o \textbf{Operador ternário}. Esse nome é relativo ao número de operandos que esse comando usa (no caso, 3).
+
+\begin{Verbatim}[tabsize=4,frame=single]
+condicao ? expressao_true : expressao_false
+\end{Verbatim}
+
+A condição é uma expressão lógica (que usa operadores relacionais e booleanos) que só pode retornar true ou false. A expressão logo após o ponto de interrogação será o retorno do operador em caso de true. A expressão após os dois pontos é o retorno em caso de false.
+\\~\\
+Sim, é exatamente um caso de \verb|if-else| só que em apenas uma linha. Como as soluções podem ficar muito grandes, é sempre bom termos em mente que quanto menos linhas, mais fácil será fazer manutenção nos nossos programas. O operador ternário é muito usado por programadores mais experientes. Abaixo temos um exemplo comparando as duas maneiras.
+
+\begin{Verbatim}[tabsize=4,frame=single]
+// Comparacao entre if-else e operador ternario
+
+bool passou;
+double nota;
+
+// if-else
+if (nota >= 60)
+	passou = true;
+else
+	passou = false;
+
+// operador ternario
+passou = nota >= 60 ? true : false // maneira 1
+passou = (nota >= 60) ? true : false // maneira 2
+\end{Verbatim}
+
+Agora podemos ver claramente a vantagem do uso do operador ternário.
+
 \section{Estrutura de Repetição}
 \subsubsection{Os Comandos WHILE, DO WHILE e FOR}
 \subsubsection{Contadores e Acumuladores}
