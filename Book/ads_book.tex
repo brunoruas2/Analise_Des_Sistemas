@@ -136,7 +136,7 @@ Microfundamentos a serem estudados:
 \chapter{Algoritmos e Abstração de Dados}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Bibliografia}
+\section*{Bibliografia}
 
 Bibliografia Básica
 
@@ -172,8 +172,7 @@ Bibliografia Complementar
 \chapter{Algoritmos e Lógica de Programação}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Bibliografia}
-
+\section*{Bibliografia}
 Bibliografia Básica
 
 \begin{itemize}
@@ -730,7 +729,7 @@ passou = (nota >= 60) ? true : false // maneira 2
 
 Agora podemos ver claramente a vantagem do uso do operador ternário.
 
-\section{Estrutura de Repetição}
+\subsection{Estrutura de Repetição}
 
 Como sabemos, ainda temos mais um tipo de estrutura para estudarmos. Até agora, aprendemos como estruturar um código sequencialmente e como criar blocos de código que só serão executados se determinadas condições previamente definidas forem satisfeitas. Agora, vamos aprender como evitar ter que repetir blocos de códigos.
 \\~\\
@@ -746,7 +745,7 @@ do
 while (condicao);
 
 // tipo 03
-for (inicial; inicial; atualizacao)
+for (inicial; expressao logica; atualizacao)
 	comando;
 \end{Verbatim}
 
@@ -831,7 +830,7 @@ Console.WriteLine(" E Volte sempre!");
 
 Agora nós temos um loop usando a expressão "a variável contador é menor igual a 3?"\ sempre que a resposta for sim, o programa perguntará qual a n-ésima palavra do nome da pessoa. Pode parecer que nesse exemplo o uso do loop mais complicou do que facilitou. Mas o objetivo aqui é exercitar o uso desse operador, então devemos focar em compreender como usar o while.
 \\~\\
-\textbf{Repetição usando DO WHILE}
+\textbf{Repetição usando DO-WHILE}
 \\~\\
 Para a nossa sorte, o operador DO WHILE é muito similar ao WHILE. A única diferença é que primeiro declaramos o bloco de código e, no final, colocamos a condição para sua execução. No exemplo abaixo temos o mesmo resultado que o de cima mas usando essa outra estrutura de operador.
 
@@ -874,11 +873,111 @@ Console.WriteLine(" E Volte sempre!");
 
 
 \textbf{Repetição usando FOR}
+\\~\\
+Quando usamos nosso operador while, foi criada uma variável \verb|contador| que era incrementada a cada iteração até que o teste lógico "menor igual a 3"\ retorne false. A vantagem do operador de loop \verb|for| é que podemos fazer isso diretamente no parâmetro da função.
+\\~\\
+O operador de loop \verb|for| recebe 3 parâmetros, na ordem: condição inicial da variável de controle; expressão lógica (que retorna true ou false) e, por fim, um incremento ou decremento.
+
+\scriptsize
+\begin{Verbatim}[tabsize=4,frame=single]
+// Programa de nomes refatorado com for
+
+string nome, mid, last;
+int contador;
+
+// nome default
+nome = "";
+mid = "";
+last = "";
+
+Console.WriteLine(" Seja bem vindo(a)!");
+
+Console.WriteLine(" Por favor, insira o seu nome completo.");
+Console.WriteLine(" Obs. No máximo 3 palavras");
+contador = 1;
+
+for (contador = 1; contador <= 3; contador++)
+{   
+    Console.WriteLine($" Qual a palavra nº {contador} do seu nome?");
+    if (contador == 1)
+        nome = Console.ReadLine();
+    else if (contador == 2)
+        mid = Console.ReadLine();
+    else if (contador == 3)
+        last = Console.ReadLine();
+};
+
+Console.WriteLine(" Bem Vindo(a)!");
+Console.WriteLine(nome);
+Console.WriteLine(mid);
+Console.WriteLine(last);
+Console.WriteLine(" E Volte sempre!");
+\end{Verbatim}
+\normalsize
 
 \subsubsection{Contadores e Acumuladores}
 
+Agora sabemos reduzir nossos códigos usando 3 tipos de tokens fornecidos pelo c\#. Vamos ver um pouquinho mais a respeito do atributo de contador do loop \verb|for|.
+\\~\\
+Um \textbf{contador} nada mais é do que uma variável do tipo constante que receberá a atualização do seu valor a cada loop. Se a situação inicial do nosso contador for igual a 1, a cada iteração ele receberá a expressão \verb|contador = contador + 1|.
+\\~\\
+Podemos criar um contador diretamente no código através da atribuição do valor pela soma. Mas o token de loop \verb|for| recebe um terceiro atributo que é justamente feito para criarmos nossa condição de atualização. Quando colocamos o terceiro parâmetro igual a \verb|contador++|, a cada iteração teremos \verb|+1| atribuído ao contador.
+\\~\\
+Um \textbf{acumulador} é muito parecido com um contador, a diferença é que a cada iteração nós podemos adicionar qualquer valor ao acumulador. Por exemplo, se queremos calcular a média de uma turma, teremos que somar todas as notas e dividir pelo quantitativo dos alunos da turma. Para isso, podemos criar um acumulador chamado \verb|soma_notas| que recebe, para cada aluno, a nota através de um comando parecido com o exemplo a baixo.
+
+\begin{Verbatim}[tabsize=4,frame=single]
+double soma_notas = 0;
+
+for (n_aluno=0; n_alunos <= qtd; n_aluno++)
+{
+	soma_notas = soma_notas + nota
+};
+\end{Verbatim}
+
+A cada iteração, somamos o valor da variável \verb|nota| à variável \verb|soma_notas|.
+
 \section{Manipulação de Dados em Memória Primária e Secundária}
+
+Ao longo do material nós usamos várias vezes frases como "a medida que nosso código cresce"\ ou "para manter a simplicidade no processo de atualização"\ e outras frases de mesmo teor. Isso não é em vão. Quando olhamos os códigos dos sistemas operacionais, por exemplo, podemos ver que a quantidade de linhas de código passam da casa do milhão. Manter tudo isso funcionando de modo coeso e atualizável é uma tarefa que demanda muita habilidade e planejamento.
+\\~\\
+Para nos ajudar nesse trabalho, vamos aprender sobre métodos de organização de código através do uso de funções e procedimentos.
+\\~\\
+\textbf{Comentário: } Cada linguagem podem ter nomes diferentes para esses conceitos, mas o importante é aprender a lógica da coisa.
+
 \subsection{Criando e Usando Funções e Procedimentos}
+
+Em linguagens orientadas à objeto como o c\#, podemos usar os objetos para criação de rotinas que generalizam atividades de modo a reduzir o volume de linhas usadas no nosso código. A ideia é simples: menos linhas, mais fácil será a manutenção.
+\\~\\
+Normalmente, quando estamos desenvolvendo uma solução de software, primeiro nós criamos um algoritmo que descreve nos pormenores o que será feito e como será feito. Essa primeira etapa é focada na solução do problema.
+\\~\\
+A partir dela, devemos pensar em encontrar procedimentos que se repetem ao longo do código ou que podem ser usados para outros trabalhos similares. Sempre que identificarmos padrões que podem ser reutilizados, estamos diante de uma melhoria por modularização.
+\\~\\
+Existem dois tipos de modularização que podemos usar: as que retornar um valor (que chamamos de funções) e as que não retornam valores\footnote{Isso não significa que não podemos printar informação na tela por meio de um procedimento, só significa que o resultado dele não salvará uma variável na memória do computador nem poderá ser atribuída a uma nova variável.} (que chamamos de procedimentos). Abaixo vemos como criar esses dois tipos.
+
+\begin{Verbatim}[tabsize=4,frame=single]
+// criando uma funcao
+
+tipo_retorno nome_metodo (par1,par2,..., parn)
+{
+	comando;
+	...
+	return valor_retorno;
+}
+
+// criando um procedimento
+void nome_procedimento (par1,par2,...,parn)
+{
+	comando;
+	...
+}
+\end{Verbatim}
+
+Temos que lembrar que um procedimento sem c\# sempre vai receber esse token \verb|void| antes de ser criado. Lembremos, também, que um \textbf{método} nada mais é que uma função que será atribuída dentro de um objeto.
+\\~\\
+Para usarmos um parâmetro não precisamos fazer nenhuma atribuição, basta chamar o nome \verb|nome_procedimento(par1,...,parn)| com os parâmetros preenchidos. No caso de uma função, como ela retorna um resultado, precisamos atribuir o resultado a alguma variável. Isso é feito usando o token de atribuição do seguinte modo: \verb|variavel = nome_metodo(par1,...,parn)|.
+\\~\\
+\textbf{Comentário: } Se não queremos usar nenhum parâmetro, basta definir o procedimento ou o método com os parênteses vazios, por exemplo, \verb|nome_procedimento()|.
+
 \subsection{Passagem de Parâmetros}
 \subsection{Manipulação de Arquivos em C\#}
 
@@ -886,7 +985,7 @@ Console.WriteLine(" E Volte sempre!");
 \chapter{Desenvolvimento Web Front-End}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Bibliografia}
+\section*{Bibliografia}
 
 Bibliografia Básica
 
@@ -3631,7 +3730,7 @@ Os navegadores atuais nos permitem uma alternativa ao XMLHttpRequest chamada API
 \chapter{Fundamentos de Engenharia de Software}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Bibliografia}
+\section*{Bibliografia}
 
 Bibliografia Básica
 
@@ -4126,7 +4225,7 @@ Bibliografia Complementar
 
 Como o escopo dessa matéria é super básico. Eu nem vou me dar o trabalho de resumir. Se quiserem ver um material mais completo, podem conferir na Bibliografia ou no meu \href{https://raw.githubusercontent.com/brunoruas2/Meus_Estudos/main/Matem%C3%A1tica/Book%20of%20Proof%20-%20Richard%20Hammack/book_of_proof.pdf}{Projeto Matemática}.
 
-\section{Bibliografia}
+\section*{Bibliografia}
 
 Bibliografia Básica
 
@@ -4153,7 +4252,7 @@ Bibliografia Complementar
 \chapter{Organização de Computadores}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Bibliografia}
+\section*{Bibliografia}
 
 Bibliografia Básica
 
@@ -4329,7 +4428,7 @@ Podemos usar os operadores lógicos para criar expressões do tipo $ Y = (A+B).C
 \chapter{Pensamento Computacional}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Bibliografia}
+\section*{Bibliografia}
 
 Bibliografia Básica
 

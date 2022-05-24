@@ -14,7 +14,7 @@ Console.WriteLine(" Por favor, insira o seu nome completo.");
 Console.WriteLine(" Obs. No máximo 3 palavras");
 contador = 1;
 
-do
+for (contador = 1; contador <= 3; contador++)
 {   
     Console.WriteLine($" Qual a palavra nº {contador} do seu nome?");
     if (contador == 1)
@@ -23,9 +23,7 @@ do
         mid = Console.ReadLine();
     else if (contador == 3)
         last = Console.ReadLine();
-
-    contador += 1;
-} while (contador <= 3);
+};
 
 Console.WriteLine(" Bem Vindo(a)!");
 Console.WriteLine(nome);
