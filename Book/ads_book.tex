@@ -952,30 +952,44 @@ Normalmente, quando estamos desenvolvendo uma solução de software, primeiro n�
 \\~\\
 A partir dela, devemos pensar em encontrar procedimentos que se repetem ao longo do código ou que podem ser usados para outros trabalhos similares. Sempre que identificarmos padrões que podem ser reutilizados, estamos diante de uma melhoria por modularização.
 \\~\\
-Existem dois tipos de modularização que podemos usar: as que retornar um valor (que chamamos de funções) e as que não retornam valores\footnote{Isso não significa que não podemos printar informação na tela por meio de um procedimento, só significa que o resultado dele não salvará uma variável na memória do computador nem poderá ser atribuída a uma nova variável.} (que chamamos de procedimentos). Abaixo vemos como criar esses dois tipos.
+Existem dois tipos de modularização que podemos usar: as que retornar um valor (que chamamos de funções) e as que não retornam valores\footnote{Isso não significa que não podemos printar informação na tela por meio de um procedimento, só significa que o resultado dele não salvará uma variável na memória do computador, logo, não poderá ser atribuída a uma nova variável.} (que chamamos de procedimentos). Abaixo vemos como criar esses dois tipos.
 
+\scriptsize
 \begin{Verbatim}[tabsize=4,frame=single]
-// criando uma funcao
+// criando um metodo/funcao que retorna um inteiro
 
-tipo_retorno nome_metodo (par1,par2,..., parn)
+int nome_metodo(string par1, float par2,..., int parn)
 {
-	comando;
+	int valor_resultado;
+	
+	comando1;
 	...
+
 	return valor_retorno;
-}
+};
 
 // criando um procedimento
-void nome_procedimento (par1,par2,...,parn)
+static void nome_procedimento (string par1, double par2,..., int parn)
 {
-	comando;
+	comando1;
 	...
-}
+};
+\end{Verbatim}
+\normalsize
+
+Temos que lembrar que um procedimento em c\# sempre vai receber esse token \verb|void| antes de ser criado (ainda não aprenderemos o que significa esse termo \verb|static|). Lembremos, também, que um \textbf{método} nada mais é que uma função que será atribuída dentro de um objeto e que temos que definir o tipo da variável de retorno na hora da criação dele.
+\\~\\
+Para usarmos um parâmetro não precisamos fazer nenhuma atribuição, basta chamar-lo com os parâmetros (par1 até parn) preenchidos. No caso de uma função, como ela retorna um resultado, precisamos atribuir o resultado a alguma variável.
+
+\begin{Verbatim}[tabsize=4,frame=single]
+// chamando um procedimento
+nome_procedimento(par1,par2);
+
+// chamando um metodo
+resultado = nome_metodo(par1,par2);
+
 \end{Verbatim}
 
-Temos que lembrar que um procedimento sem c\# sempre vai receber esse token \verb|void| antes de ser criado. Lembremos, também, que um \textbf{método} nada mais é que uma função que será atribuída dentro de um objeto.
-\\~\\
-Para usarmos um parâmetro não precisamos fazer nenhuma atribuição, basta chamar o nome \verb|nome_procedimento(par1,...,parn)| com os parâmetros preenchidos. No caso de uma função, como ela retorna um resultado, precisamos atribuir o resultado a alguma variável. Isso é feito usando o token de atribuição do seguinte modo: \verb|variavel = nome_metodo(par1,...,parn)|.
-\\~\\
 \textbf{Comentário: } Se não queremos usar nenhum parâmetro, basta definir o procedimento ou o método com os parênteses vazios, por exemplo, \verb|nome_procedimento()|.
 
 \subsection{Passagem de Parâmetros}
