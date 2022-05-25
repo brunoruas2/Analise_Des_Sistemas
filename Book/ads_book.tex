@@ -941,23 +941,22 @@ A cada iteração, somamos o valor da variável \verb|nota| à variável \verb|s
 Ao longo do material nós usamos várias vezes frases como "a medida que nosso código cresce"\ ou "para manter a simplicidade no processo de atualização"\ e outras frases de mesmo teor. Isso não é em vão. Quando olhamos os códigos dos sistemas operacionais, por exemplo, podemos ver que a quantidade de linhas de código passam da casa do milhão. Manter tudo isso funcionando de modo coeso e atualizável é uma tarefa que demanda muita habilidade e planejamento.
 \\~\\
 Para nos ajudar nesse trabalho, vamos aprender sobre métodos de organização de código através do uso de funções e procedimentos.
-\\~\\
-\textbf{Comentário: } Cada linguagem podem ter nomes diferentes para esses conceitos, mas o importante é aprender a lógica da coisa.
 
 \subsection{Criando e Usando Funções e Procedimentos}
 
-Em linguagens orientadas à objeto como o c\#, podemos usar os objetos para criação de rotinas que generalizam atividades de modo a reduzir o volume de linhas usadas no nosso código. A ideia é simples: menos linhas, mais fácil será a manutenção.
-\\~\\
-Normalmente, quando estamos desenvolvendo uma solução de software, primeiro nós criamos um algoritmo que descreve nos pormenores o que será feito e como será feito. Essa primeira etapa é focada na solução do problema.
+Normalmente, quando estamos desenvolvendo uma solução de software, primeiro nós criamos um algoritmo que descreve os pormenores o que será feito e como será feito. Essa primeira etapa é focada na solução do problema.
 \\~\\
 A partir dela, devemos pensar em encontrar procedimentos que se repetem ao longo do código ou que podem ser usados para outros trabalhos similares. Sempre que identificarmos padrões que podem ser reutilizados, estamos diante de uma melhoria por modularização.
 \\~\\
-Existem dois tipos de modularização que podemos usar: as que retornar um valor (que chamamos de funções) e as que não retornam valores\footnote{Isso não significa que não podemos printar informação na tela por meio de um procedimento, só significa que o resultado dele não salvará uma variável na memória do computador, logo, não poderá ser atribuída a uma nova variável.} (que chamamos de procedimentos). Abaixo vemos como criar esses dois tipos.
+A mudolarização (também chamada de sub-rotinas ou sub-programas) é a prática de reduzir o nosso código em partes menores que recebem nomes diferentes dependendo da linguagem. Em linaguens orientadas à objeto como o c\# nós chamamos de modularização.
+\\~\\
+A ideia é simples: menos linhas, mais fácil será a manutenção. Esse é um valor muito caro no meio do desenvolvimento profissinal de software e devemos ter sempre essa postura em mente.
+\\~\\
+Existem dois tipos de métodos para modularização: \textbf{funções}, que sempre retornam algum valor, e \textbf{procedimentos} que não retornam nenhum valor. Abaixo vemos como criar esses dois tipos.
 
 \scriptsize
 \begin{Verbatim}[tabsize=4,frame=single]
-// criando um metodo/funcao que retorna um inteiro
-
+// criando uma funcao que retorna um inteiro
 int nome_metodo(string par1, float par2,..., int parn)
 {
 	int valor_resultado;
@@ -977,9 +976,9 @@ static void nome_procedimento (string par1, double par2,..., int parn)
 \end{Verbatim}
 \normalsize
 
-Temos que lembrar que um procedimento em c\# sempre vai receber esse token \verb|void| antes de ser criado (ainda não aprenderemos o que significa esse termo \verb|static|). Lembremos, também, que um \textbf{método} nada mais é que uma função que será atribuída dentro de um objeto e que temos que definir o tipo da variável de retorno na hora da criação dele.
+Podemos ver que um procedimento em c\# recebe esse token \verb|void| antes de ser criado (ainda não aprenderemos o que significa esse termo \verb|static|).
 \\~\\
-Para usarmos um parâmetro não precisamos fazer nenhuma atribuição, basta chamar-lo com os parâmetros (par1 até parn) preenchidos. No caso de uma função, como ela retorna um resultado, precisamos atribuir o resultado a alguma variável.
+Para usarmos um parâmetro não precisamos fazer nenhuma atribuição, basta chamar-lo com os seus parâmetros preenchidos e atribuídos ao tipo de variável correto. No caso de uma função, como ela retorna um resultado, precisamos atribuir o resultado a alguma variável. Abaixo temos um exemplo de como usar cada um desses métodos.
 
 \begin{Verbatim}[tabsize=4,frame=single]
 // chamando um procedimento
@@ -991,9 +990,108 @@ resultado = nome_metodo(par1,par2);
 \end{Verbatim}
 
 \textbf{Comentário: } Se não queremos usar nenhum parâmetro, basta definir o procedimento ou o método com os parênteses vazios, por exemplo, \verb|nome_procedimento()|.
+\\~\\
+A essa altura você já deve ter percebido que um procedimento nada mais é que um tipo de método. Só que ele possui uma regra diferente na hora da criação e não pode ter seu resultado atribuído a nenhuma variável. Desse modo, a modularização faz uso de dois métodos possíveis.
 
 \subsection{Passagem de Parâmetros}
+
+Os parâmetros são variáveis que podem ser transferidos (também dizemos que eles são "passados") para que o nosso método seja executado. Esses serão os valores que o nosso método vai receber e processar.
+\\~\\
+Podemos classificar os parâmetros em dois tipos: \textbf{Formais}, que são definidos na declaração (ou criação) do método e são trabalhados dentro do bloco de código interno a ele como se fossem variáveis novas; e os \textbf{Reais}, que são passados para o método no momento da invocação e serão atribuídos aos parâmetros formal como representantes das variáveis reais.
+\\~\\
+Quanto a passagem desses parâmetros, também temos duas nomenclaturas: \textbf{Passagem por valor} que é quando o parâmetro real é compiado para o parâmetro formal sem alteração do seu valor original e a \textbf{Passagem por referência} em que a manipulação feita dentro do bloco de código é espelhada nas variáveis de referência fora do nosso método.
+\\~\\
+Quando usamos a passagem por valor, estamos usando os parâmetros do tipo formais. Quando usamos a passagem por referência estamos usando os parâmetros reais.
+
+\begin{Verbatim}[tabsize=4,frame=single]
+int a = 5, b = 7;
+// exemplo de passagem por valor
+static void passagemValor(int x, int y)
+{
+	int temp = x;
+	x = y;
+	x = temp
+}
+
+passagemValor(a,b);
+
+Console.Write($"a = {a} e b = {b}");
+> a = 5 e b = 7
+
+// exemplo de passagem por referencia
+static void passagemRef(ref int x, ref int y)
+{
+	int temp = x;
+	x = y;
+	y = temp;
+}
+
+passagemRef(ref a, ref b);
+
+Console.Write($"a = {a} e b = {b}");
+> a = 7 e b = 5
+\end{Verbatim}
+
+\textbf{Dicas e Boas Práticas}
+\\~\\
+o método \verb|Main()| é uma função especial de um programa escrito em c\#. Ele é automaticamente executado quando o programa é iniciado e todos os outros métodos estão contidos dentro dele.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.2]{29-rickmeme.png}
+	\caption{O primeiro contato costuma ser assim mesmo.}
+\end{figure}
+
+Um método deve ser o menor possível. Se o objetivo é simplificar, devemos evitar ao máximo ter grandes blocos de código dentro de um método. Se está grande demais, não seria melhor quebrar em métodos menores?
+\\~\\
+Sempre devemos colocar nomes relevantes e esclarecedores.
+\\~\\
+Devemos evitar ter métodos com um número muito elevado de parâmetros. Cabe a mesma lógica sobre o tamanho: não seria melhor quebrar em mais métodos?
+\\~\\
+Agora que aprendemos mais sobre o métodos e boas práticas, podemos entender bem melhor a estrutura padrão de uma aplicação em c\#.
+
+\begin{Verbatim}[tabsize=4,frame=single]
+using System;
+					
+public class Program
+{
+	public static void Main()
+	{
+		Console.WriteLine("Hello World");
+	}
+}
+\end{Verbatim}
+
+Ainda não sabemos tudo que está nesse template padrão de programa em c\# mas, definitivamente, já podemos dizer que entendemos algumas coisas desse código.
+
 \subsection{Manipulação de Arquivos em C\#}
+
+Aprendemos que um programa pode ser separado em 3 estapas e, até agora, todo o input da informação bem como o output está sendo feito via janela do terminal ou prompt de comando. Mas na vida real, é super raro (se é que acontece) de um usuário leigo ter que ficar usando o terminal para interagir com aplicações.
+\\~\\
+Uma outra maneira de coletarmos informação como input para o nosso processamento é por meio da leitura de arquivos e, consequentemente, também podemos ter como output do nosso código a escrita de um arquivo na memória do computador.
+\\~\\
+Para facilitar nossa vida, o c\# já possui algumas classes (que podemos pensar como se fossem sinônimos de objetos) que foram criadas especialmente para lidar com esse trabalho. Essas classes de manipulação de arquivos estão guardadas em um namespace chamado \verb|System.IO|\footnote{IO significa Input/Output.}.
+\\~\\
+As classes que aprenderemos aqui são:
+\begin{itemize}
+	\item \verb|StreamReader| - Para criação de um fluxo de leitura
+	\item \verb|StreamWriter| - Para criação de um fluxo de saída ou gravação
+\end{itemize}
+
+A manipulação feita por um programa em um arquivo é, basicamente uma dessas operações abaixo:
+\begin{itemize}
+	\item Abrir para escrita
+	\item Abrir para leitura
+	\item Escrever dados no arquivo
+	\item Ler dados
+	\item Fechar o arquivo
+\end{itemize}
+
+Agora o termo "fluxo"\ começa a ficar mais claro. Para um programa trabalhar um arquivo, ele precisa sinalizar para o sistema operacional que aquele arquivo está sendo trabalhado por ele. Por isso existe esse fluxo de abrir o fluxo, ler ou gravar dados e, por fim, fechar o fluxo. Isso libera o arquivo para ser usado por outros programas.
+\\~\\
+\textbf{Abrir um arquivo para escrita}
+\\~\\
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Desenvolvimento Web Front-End}
