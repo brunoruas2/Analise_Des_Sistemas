@@ -1074,8 +1074,8 @@ Para facilitar nossa vida, o c\# já possui algumas classes (que podemos pensar 
 \\~\\
 As classes que aprenderemos aqui são:
 \begin{itemize}
-	\item \verb|StreamReader| - Para criação de um fluxo de leitura
-	\item \verb|StreamWriter| - Para criação de um fluxo de saída ou gravação
+	\item \verb|StreamReader| - Para criação de um fluxo de leitura do arquivo para o programa
+	\item \verb|StreamWriter| - Para criação de um fluxo de saída ou gravação do programa para o arquivo
 \end{itemize}
 
 A manipulação feita por um programa em um arquivo é, basicamente uma dessas operações abaixo:
@@ -1089,9 +1089,68 @@ A manipulação feita por um programa em um arquivo é, basicamente uma dessas o
 
 Agora o termo "fluxo"\ começa a ficar mais claro. Para um programa trabalhar um arquivo, ele precisa sinalizar para o sistema operacional que aquele arquivo está sendo trabalhado por ele. Por isso existe esse fluxo de abrir o fluxo, ler ou gravar dados e, por fim, fechar o fluxo. Isso libera o arquivo para ser usado por outros programas.
 \\~\\
-\textbf{Abrir um arquivo para escrita}
+\textbf{Abrir um arquivo para a leitura}
 \\~\\
+Um arquivo não pode ser lido usando um instanciamento (é a criação de uma variável do tipo de um objeto definido previamente) através do objeto \verb|StreamReader|. Esse objeto é nativo e pode ser envocado sem precisar ser criado anteriormente. E, como todo objeto, possui métodos dentro dele (10 pra ser mais preciso) mas nós só vamos usar o mais básico.
 
+\begin{Verbatim}[tabsize=4,frame=single]
+// abrindo um arquivo para a leitura
+StreamReader NOME = new StreamReader("path.txt");
+StreamReader NOME = new StreamReader("c:\\temp\\path.txt");
+StreamReader NOME = new StreamReader(@"c:\temp\path.txt");
+\end{Verbatim}
+
+Agora que temos nosso objeto criado, para lermos o conteúdo só precisamos usar um dos métodos contidos nesse objeto criado.
+
+\begin{Verbatim}[tabsize=4,frame=single]
+// obtendo o texto
+string linha = NOME.ReadLine();
+
+// ler todas as linhas de um arquivo
+linha = NOME.ReadLine();
+
+while (linha != null)
+{
+	...
+	linha = NOME.ReadLine();
+};
+\end{Verbatim}
+
+\textbf{Abrir um arquivo para escrita}
+
+\begin{Verbatim}[tabsize=4,frame=single]
+// criando o objeto de leitura em diferentes modos
+StreamWriter NOME = new StreamWriter("path.txt");
+StreamWriter NOME = new StreamWriter("c:\\temp\\path.txt");
+StreamWriter NOME = new StreamWriter(@"c:\temp\path.txt");
+\end{Verbatim}
+
+Qualquer arquivo que possa ser lida em um editor de texto (como o notepad) pode ser lida por esse método. Independente da extensão.
+
+\begin{Verbatim}[tabsize=4,frame=single]
+// usando o parametro append (true ou false)
+
+// conteudo existente sera apagado
+StreamWriter NOME = new StreamWriter("path.txt",false);
+
+// conteudo existente sera mantido
+StreamWriter NOME = new StreamWriter("path.txt",true);
+\end{Verbatim}
+
+Agora só precisamos saber como gravar os nossos dados no arquivo de texto. Isso é feito de maneira parecida com o comando que mostrava mensagens na tela do terminal de comando.
+
+\begin{Verbatim}[tabsize=4,frame=single]
+// gravando uma string no arquivo texto aberto
+arquivo.Write(string);
+
+ou
+
+arquivo.WriteLine(string);
+\end{Verbatim}
+
+\textbf{Fechando um Arquivo}
+\\~\\
+Para fechar o stream, seja na leitura ou na gravação, usamos o método \verb|Close()| para garantir que o arquivo não vai ficar bloqueado por um esquecimento. Sempre devemos fechar os fluxos! 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Desenvolvimento Web Front-End}
