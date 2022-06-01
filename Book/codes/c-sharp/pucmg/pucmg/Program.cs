@@ -1,32 +1,17 @@
-﻿// Programa de nomes refatorado com while
+﻿int num = 0, cont1 = 0, cont2 = 0;
 
-string nome, mid, last;
-int contador;
+do
+{
+    num = int.Parse(Console.ReadLine());
 
-// nome default
-nome = "";
-mid = "";
-last = "";
+    if(num > 0)
+    {
+        cont1++;
+    } else
+    {
+        cont2++;
+    }
 
-Console.WriteLine(" Seja bem vindo(a)!");
+} while(num != 0);
 
-Console.WriteLine(" Por favor, insira o seu nome completo.");
-Console.WriteLine(" Obs. No máximo 3 palavras");
-contador = 1;
-
-for (contador = 1; contador <= 3; contador++)
-{   
-    Console.WriteLine($" Qual a palavra nº {contador} do seu nome?");
-    if (contador == 1)
-        nome = Console.ReadLine();
-    else if (contador == 2)
-        mid = Console.ReadLine();
-    else if (contador == 3)
-        last = Console.ReadLine();
-};
-
-Console.WriteLine(" Bem Vindo(a)!");
-Console.WriteLine(nome);
-Console.WriteLine(mid);
-Console.WriteLine(last);
-Console.WriteLine(" E Volte sempre!");
+Console.WriteLine($"Contador 1 = {cont1}, Contador 2 = {cont2}");

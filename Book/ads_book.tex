@@ -18,12 +18,30 @@
 \usepackage{float}
 \usepackage{fancyvrb} % indentation in verbatim (muito bom!)
 \usepackage{makecell} % multiline cell in table
+\usepackage{enumitem,amssymb} % to create a checkbox
 % \usepackage{circuitikz} % para desenhar circuitos lógicos
+\usepackage{pifont}
 
 \DeclareUnicodeCharacter{0301}{\'{e}}
 \graphicspath{{./images/}} % set an default images folder
 % \pagecolor[rgb]{0.7,0.7,0.7} % color theme no pdf
 \setlength{\parindent}{0ex} % tirando indentation dos paragraphs
+
+% to create a checkbox in LaTeX
+\newlist{todolist}{itemize}{2}
+\setlist[todolist]{label=$\square$}
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+\newcommand{\done}{\rlap{$\square$}{\raisebox{2pt}{\large\hspace{1pt}\cmark}}%
+\hspace{-2.5pt}}
+\newcommand{\wontfix}{\rlap{$\square$}{\large\hspace{1pt}\xmark}}
+
+%% exemple of a checkbox list
+%\begin{todolist}
+%	\item teste
+%	\item[\done] teste
+%	\item[\wontfix] teste
+%\end{todolist}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % First page of book which contains 'stuff' like: %
@@ -45,7 +63,7 @@
 \begin{document}
 
 \frontmatter
-
+todolist
 \maketitle
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -64,6 +82,18 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Projeto: Desenvolvimento Web Front-End}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Microfundamentos}
+
+\begin{todolist}
+	\item Algoritmos e Abstração de Dados
+	\item[\done] Algoritmos e Lógica de Programação
+	\item[\done] Desenvolvimento Web Front-End
+	\item[\done] Fundamentos de Engenharia de Software
+	\item Lógica Computacional
+	\item[\wontfix] Matemática Básica
+	\item Organização de Computadores
+	\item[\done] Pensamento Computacional
+\end{todolist}
 
 \section{Etapa 1}
 
@@ -921,7 +951,9 @@ Agora sabemos reduzir nossos códigos usando 3 tipos de tokens fornecidos pelo c
 \\~\\
 Um \textbf{contador} nada mais é do que uma variável do tipo constante que receberá a atualização do seu valor a cada loop. Se a situação inicial do nosso contador for igual a 1, a cada iteração ele receberá a expressão \verb|contador = contador + 1|.
 \\~\\
-Podemos criar um contador diretamente no código através da atribuição do valor pela soma. Mas o token de loop \verb|for| recebe um terceiro atributo que é justamente feito para criarmos nossa condição de atualização. Quando colocamos o terceiro parâmetro igual a \verb|contador++|, a cada iteração teremos \verb|+1| atribuído ao contador.
+Podemos criar um contador diretamente no código através da atribuição do valor pela soma. Ou, podemos usar os operadores de incremento e decremento que aprendemos anteriormente. A cada iteração em uma estrutura de loop, a variável receberá +1 como incremento ou -1 no caso do decremento.
+\\~\\
+Podemos usar o operador de incremento tanto no bloco de código de um loop quanto como parâmetro. Em um \verb|for|, quando colocamos o terceiro parâmetro igual a \verb|contador++|, a cada iteração teremos \verb|+1| atribuído ao contador.
 \\~\\
 Um \textbf{acumulador} é muito parecido com um contador, a diferença é que a cada iteração nós podemos adicionar qualquer valor ao acumulador. Por exemplo, se queremos calcular a média de uma turma, teremos que somar todas as notas e dividir pelo quantitativo dos alunos da turma. Para isso, podemos criar um acumulador chamado \verb|soma_notas| que recebe, para cada aluno, a nota através de um comando parecido com o exemplo a baixo.
 
@@ -4354,6 +4386,8 @@ Para facilitar o complexo processo de software, existem várias ferramentas que 
 
 \section{Bibliografia}
 
+A primeira parte eu já cobri, de maneira mais aprofundada, no projeto matemática. Se quiserem ver um material mais completo, podem conferir na Bibliografia ou no meu \href{https://raw.githubusercontent.com/brunoruas2/Meus_Estudos/main/Matem%C3%A1tica/Book%20of%20Proof%20-%20Richard%20Hammack/book_of_proof.pdf}{Projeto Matemática}.
+\\~\\
 Bibliografia Básica
 
 \begin{itemize}
@@ -4367,15 +4401,100 @@ Bibliografia Complementar
 \end{itemize}
 
 \section{Pensamento Lógico}
-\subsection{Introdução}
-\subsection{O que é Lógica?}
-\subsection{Motivação}
+
 \subsection{Definições}
+
+Aqui vai ficar apenas uma lista de todos os conceitos explicados nesse tópico. Se alguém tiver alguma dúvida sobre eles, recomendo ler a bibliografia indicada ou o projeto matemática.
+
+\begin{itemize}
+	\item Conjunto
+	\item Elemento
+	\item Pertencimento e Igualdade
+	\item Propriedades dos conjuntos
+	\item Conjunto vazio
+	\item Tipos de definições de conjuntos (chaves, set builder notation, recursão, característica) 
+\end{itemize}
+
 \subsection{Subconjuntos}
+
+\begin{itemize}
+	\item Notação $(A \subset B)$
+	\item Diagrama de Venn
+	\item Conjunto Potência (Power Set)
+	\item Sequências (lista de objetos ordenados)
+\end{itemize}
+
 \subsection{Operações sobre Conjuntos}
+
+\begin{itemize}
+	\item Cardinalidade $(|{1,5,3}| = 3)$
+	\item Emparelhamento: Se X e Y possuem a mesmo cardinal, ao ligarmos cada elemento de X a um elemento de Y, dizemos que os conjuntos estão emparelhados
+	\item Produto Cartesiano: $A \times B = \{(a,b) | a \in A  \land b \in B\}$
+	\item Conjunto Universo/Universal
+	\item Propriedades dos Conjuntos:
+		\begin{itemize}
+			\item Comutatividade
+			\item Associatividade
+			\item Distributividade
+			\item União e Interseção com Universo
+			\item Complemento Duplo
+			\item Idempotência
+			\item Lei de DeMorgan
+			\item Absorção
+			\item Diferença de Conjuntos
+			\item União e Interseção com Vazio
+			\item União e Interseção com complemento
+			\item Complementos de U e vazio
+		\end{itemize}
+	\item Conjunto Disjuntos ($A \cap B = \emptyset$)
+	\item Partição ($A = A_1 \cup A_2 \dots \cup A_n$)
+\end{itemize}
+
 \subsection{Princípios da Lógica Proposicional}
+
+\begin{itemize}
+	\item Lógica: Ramo da Filosofia, Matemática e Ciência da Computação que lida com \textbf{inferências válidas}
+	\item Hipóteses vedadeiras $\rightarrow$ Conclusões Verdadeiras
+	\item Asserção: Uma afirmação declarativa
+	\item Proposição: Uma asserção verdadeira ou falsa mas não ambos
+	\item Variáveis Proposicionais: É a variável atribuída à alguma proposição
+	\item Proposições Compostas: Proposições ligadas por operadores lógicos
+	\item Tabela Verdade
+\end{itemize}
+
 \subsection{Conectivos Lógicos}
+
+\begin{itemize}
+	\item Conectivos: Criam novas proposições a partir de duas ou mais proposições
+	\item Negação ($\neq$)
+	\item Conjunção ($\land$)
+	\item Disjunção ($\lor$)
+	\item Disjunção Exclusva ($\oplus$)
+	\item Condicional ou Implicação ($p \rightarrow q$). Onde p é a hipótese e q é a conclusão
+	\item Bicondicional ($p \rightarrow q \land q \rightarrow p$) ou ($p \leftrightarrow q$)
+	\item Proposições Compostas
+	\item Ordem de Precedência em Proposições Compostas:
+		\begin{itemize}
+			\item Negação
+			\item Conjunção
+			\item Disjunção
+			\item Implicação
+			\item Implicação Dupla
+		\end{itemize}
+\end{itemize}
+
 \subsection{Tabela Verdade e Equivalência Lógica}
+
+Esse assunto eu realmente recomendo o material do projeto matemática no site Economia Mainstream.
+
+\begin{itemize}
+	\item Tautologia: Uma proposição que sempre será verdadeira
+	\item Contradição ou Absurdo: Proposição sempre falsa
+	\item Contingência: Proposição cujo valor será definido pelas suas variáveis proposicionais
+	\item Equivalência Lógica: Se duas proposições possuem a mesma tabela verdade, elas são equivalentes
+	\item Lógica Proposicional
+\end{itemize}
+
 \subsection{Predicados e Quantificadores}
 \subsection{Ligando Variáveis}
 \subsection{Negações}
