@@ -63,7 +63,7 @@
 \begin{document}
 
 \frontmatter
-todolist
+
 \maketitle
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -4492,15 +4492,45 @@ Esse assunto eu realmente recomendo o material do projeto matemática no site Ec
 	\item Contradição ou Absurdo: Proposição sempre falsa
 	\item Contingência: Proposição cujo valor será definido pelas suas variáveis proposicionais
 	\item Equivalência Lógica: Se duas proposições possuem a mesma tabela verdade, elas são equivalentes
-	\item Lógica Proposicional
+	\item Lógica Proposicional - Sentenças objetivas e não ambíguas, circuitos lógicos, automação de processos e etc
 \end{itemize}
 
 \subsection{Predicados e Quantificadores}
+
+\begin{itemize}
+	\item A proposição $x > 3$ possui dois componentes:
+		\begin{itemize}
+			\item[] $x$ é chamado de \textbf{sujeito}
+			\item[] $>3$ é chamado de \textbf{predicado}
+		\end{itemize}
+	\item $P(x)$ é a notação para uma declaração com predicado $P$ e sujeito $x$
+	\item A validade de uma proposição desse tipo depende inteiramente do valor do sujeito
+	\item Quantificador universal: $\{\forall x \in \mathbb{R} : P(X)\} = \{P(x_1) \land P(x_2)  \land \dots\}$
+	\item Quantificador existencial: $\{\exists x \in \mathbb{R} : P(X)\} = \{P(x_1) \lor P(x_2)  \lor \dots\}$
+\end{itemize}
+
 \subsection{Ligando Variáveis}
+
+\begin{itemize}
+	\item Uma variável é dita \textbf{amarrada} quando está atrelada a algum quantificador ou quando algum valor é atribuído a ela
+	\item Se uma variável não está amarrada, então dizemos que ela está \textbf{livre}
+	\item Um proposição só existe se todas as suas variáveis estiverem amarradas
+	\item Quando atribuímos um quantificador a uma variáveis, dizemos que estamos definindo o seu \textbf{escopo}
+	\item $\exists x (P(x) \land Q(x)) \lor \forall x R(x)$ : É uma proposição cujo primeiro escopo é dado por $\exists x$ e o segundo é dado por $\forall x$ 
+\end{itemize}
+
 \subsection{Negações}
+
+\begin{itemize}
+	\item $\neg \forall P(x) = \exists x \neg P(x)$
+	\item $\neg \exists x Q(x) = \forall x \neg Q(x)$
+\end{itemize}
 
 \section{Pensamento Analítico}
 \subsection{Provas de Teoremas}
+
+Um \textbf{teorema} é uma declaração em que pode-se demonstrar a sua validade de maneira lógica. Esse processo é chamado de \textbf{prova} e obedece aos construdos lógicos que aprendemos na primeira parte desse microfundamento.
+
 \subsection{Regras de Inferência}
 \subsection{Argumentos Válidos}
 \subsection{Indução Matemática}
