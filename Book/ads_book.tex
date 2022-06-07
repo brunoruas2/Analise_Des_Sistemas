@@ -4530,8 +4530,67 @@ Esse assunto eu realmente recomendo o material do projeto matemática no site Ec
 \subsection{Provas de Teoremas}
 
 Um \textbf{teorema} é uma declaração em que pode-se demonstrar a sua validade de maneira lógica. Esse processo é chamado de \textbf{prova} e obedece aos construdos lógicos que aprendemos na primeira parte desse microfundamento.
+\\~\\
+Sempre que temos um teorema, podemos reduzir sua estrutura em dois componentes: Sua hipótese ($p$) e sua conclusão ($q$). A prova do teorema é justamente a comprovação que, a partir da hipótese, podemos chegar na conclusão proposta.
+\\~\\
+A habilidade de comprovar teoremas é a real linguagem da matemática. Requer muita criatividade, lógica e capacidade de ser claro na exposição dos argumentos.
+\\~\\
+A construção de provas matemáticas deve ter um conjunto de ferramentas que podemos elencar:
+\begin{itemize}
+	\item Axiomas/Postulados
+	\item Teoremas já provados
+	\item Hipóteses
+	\item Proposições derivadas as anteriores segundo as regras de inferência
+\end{itemize}
 
 \subsection{Regras de Inferência}
+
+as regras de inferência são as regras que garantem a obtenção de novas informações a partir de informações anteriores e, simultaneamente, o respeito às regras lógicas.
+\\~\\
+O \textit{modus ponens} (modo de afirmar) é a regra de inferência fundamental. Sua lógica é a seguinte:
+\begin{itemize}
+	\item Data a tautologia $(p \land (p \rightarrow q)) \rightarrow q$
+	\item Se $p$ for verdade, então, a tautologia nos diz que será verdade que $p \rightarrow q$
+	\item O que por fim, nos garante que $q$ seja o resultado alcançado com a verdade de $p$
+\end{itemize}
+
+A escrita desse argumento é com a colocação das verdades na parte de cima de uma linha horizontal e das conclusões na parte de baixo.
+
+\begin{align*}
+p \\
+p \rightarrow q \\
+\dfrac{\hspace*{30pt}}{\therefore q}
+\end{align*}
+
+Esse "$\therefore$" significa "portanto".
+\\~\\
+Além da regra fundamental, nós temos uma grande quantidade de outras regras importantes para construção de provas de teoremas. Abaixo podemos ver uma tabela com várias delas.
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Tautologia} & \textbf{Nome} \\
+\hline
+\hline
+$p \rightarrow (p \lor q)$ & Adição \\
+\hline
+$(p \land q) \rightarrow p$ & Simplificação \\
+\hline
+$((p) \land (q)) \rightarrow (p \land q)$ & Conjunção \\
+\hline
+$[p \land (p \rightarrow q)] \rightarrow q$ & Modus Ponens \\
+\hline
+$[\neg q \land (p \rightarrow q)] \rightarrow \neg p$ & Modus Tollens \\
+\hline
+$[(p \rightarrow q) \land (q \rightarrow r)] \rightarrow (p \rightarrow r)$ & Silogismo Hipotético \\
+\hline
+$[(p \lor q) \land \neg p] \rightarrow q$ & Silogismo disjuntivo \\
+\hline
+$[(p \lor q) \land (\neg p \lor r)]$ & Resolução \\
+\hline
+\end{tabular}
+\end{center}
+
 \subsection{Argumentos Válidos}
 \subsection{Indução Matemática}
 \subsection{Indução Forte}
