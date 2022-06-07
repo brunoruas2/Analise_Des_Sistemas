@@ -4562,7 +4562,7 @@ p \rightarrow q \\
 \dfrac{\hspace*{30pt}}{\therefore q}
 \end{align*}
 
-Esse "$\therefore$" significa "portanto".
+Esse "$\therefore$"\ significa "portanto".
 \\~\\
 Além da regra fundamental, nós temos uma grande quantidade de outras regras importantes para construção de provas de teoremas. Abaixo podemos ver uma tabela com várias delas.
 
@@ -4592,8 +4592,71 @@ $[(p \lor q) \land (\neg p \lor r)]$ & Resolução \\
 \end{center}
 
 \subsection{Argumentos Válidos}
+
+Na lógica proposicional, um argumento é dito \textbf{valido} se sempre que as hipóteses forem verdadeiras, a conclusão será, obrigatóriamente, verdadeira. Em notação formal dizemos que
+
+\begin{center}
+$p_1 \land \dots \land p_n \rightarrow q$
+\end{center}
+
+
+A demonstração da validade de um argumento depende de como as hipóteses se conectam com as conclusões sempre de maneira lógica segundo o correto uso dos conectivos lógicos já estudados.
+\\~\\
+Em tese, a construção de uma tabela verdade é sempre possível para um número arbitrário de hipóteses, o problema disso, é que o tamanho dessa tabela cresce na razão de $2^n$ sendo $n$ a quantidade de hipóteses. Para superarmos esse problema, fazemos grande uso das regras de inferência.
+\\~\\
+Uma premissa \textbf{falsa} aplicada a uma argumentação logicamente correta gera conclusões falsas. Então a validade das premissas também pode ser um motivo de cuidado na hora de construirmos teoremas.
+\\~\\
+Uma \textbf{falácia} é um tipo de erro argumentativo que, à primeira vista, até se parece com um argumento válido, mas possui algum erro na sua construção. Um exemplo é a \textbf{falácia da afirmação da conclusão} que pode ser expressa como $[(p \rightarrow q) \land q] \rightarrow p$. Essa expressão é falsa quando $p$ é falso e $q$ verdadeiro.
+\\~\\
+Um exemplo em linguagem natural dessa falácia é "$p \rightarrow q$: Quem resolve todos os exercícios aprende. $q$: Você aprendeu. Logo, $p$: você resolveu todos os exercícios". Veja que, se alguém aprender (o que torna $q$ verdadeiro) mas não fizer todos os exercícios (tornando $p$ falso) quebra a linha de argumentação e torna essa proposição falsa.
+\\~\\
+Outra falácia conhecida é a \textbf{negação da hipótese}. Podemos construir ela como sendo $[(p \rightarrow q) \land \neg p] \rightarrow \neg q$. A primeira vista, parece certo, mas não é.
+\\~\\
+\textbf{Regras de Inferência}
+\\~\\
+\textbf{Comentário:} Eu achei que essa parte foi um pouco negligenciada no curso. Devo voltar aqui para expandir esse conteúdo mais tarde. Por enquanto, temos essa tabela de referência.
+
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Regre de Inferência} & \textbf{Nome} & \textbf{Nota} \\
+\hline
+\hline
+$\forall x P(x) \rightarrow P(c)$ & Intanciação Universal & c específico \\
+\hline
+$P(c) \rightarrow \forall x P(x)$ & Generalização Universal & c arbitrário \\
+\hline
+$\exists x P(x) \rightarrow P(c)$ & Instanciação Existencial & c específico e não conhecido \\
+\hline
+$P(c) \rightarrow \exists x P(x)$ & Generalização Existencial & c específico e conhecido \\
+\hline
+\end{tabular}
+\end{center}
+
 \subsection{Indução Matemática}
+
+A \textbf{dedução} é o processo de, a partir de premissas verdadeiras, determinar as conclusões verdadeiras necessariamente oriundas dessas premissas. Ou seja, é o processo de, partindo de um \textbf{princípio geral} se chegar em um \textbf{caso especial}.
+\\~\\
+O processo reverso é chamado de \textbf{indução}. Partir do caso específico para um princípio anterior geral.
+\\~\\
+A indução pode ser usada para comprovar teoremas que se relacionam com um número arbitrário de elementos (ou mesmo infinitos elementos). Basicamente, a demonstração por indução consiste em dois passos:
+\begin{itemize}
+	\item Passo básico (provar para $P(n=1)$)
+	\item Passo indutivo (Provar que $P(n) \implies P(n+1)$)
+\end{itemize}
+
+Temos que ter cuidado com o passo básico. Afirmar que $P(n=1)$ é verdadeiro \textbf{não é} provar. Similarmente, no passo indutivo, também não podemos assumir que $P(n)$ é verdade sem tomar muito cuidado. O ideial é que $P(n)$ seja evidentemente verdadeira.
+
 \subsection{Indução Forte}
+
+Similar ao processo de prova por indução simples. A \textbf{indução forte} possui 2 passos:
+\begin{itemize}
+	\item Provar que $P(n=1)$ é verdadeiro
+	\item Provar que $P(1) \land P(2) \land \dots \land P(k) \implies P(k+1)$
+\end{itemize}
+
+Ao contrário do que o nome sugere, a indução forte é mais flexível que a indução simples. O material é um pouco obtuso nesse tema, então vamos ter que revisar essa seção posteriormente.
+
 \subsection{Recursão}
 \subsection{Especificação de Sistemas}
 \subsection{Verificação de Programas}
