@@ -82,14 +82,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Projeto: Desenvolvimento Web Front-End}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Microfundamentos}
+\section*{Microfundamentos}
 
-\begin{todolist}
+\begin{todolist} % options: \item[\done] and \item[\wontfix]
 	\item Algoritmos e Abstração de Dados
 	\item[\done] Algoritmos e Lógica de Programação
 	\item[\done] Desenvolvimento Web Front-End
 	\item[\done] Fundamentos de Engenharia de Software
-	\item Lógica Computacional
+	\item[\done] Lógica Computacional
 	\item[\wontfix] Matemática Básica
 	\item Organização de Computadores
 	\item[\done] Pensamento Computacional
@@ -4386,7 +4386,7 @@ Para facilitar o complexo processo de software, existem várias ferramentas que 
 
 \section{Bibliografia}
 
-A primeira parte eu já cobri, de maneira mais aprofundada, no projeto matemática. Se quiserem ver um material mais completo, podem conferir na Bibliografia ou no meu \href{https://raw.githubusercontent.com/brunoruas2/Meus_Estudos/main/Matem%C3%A1tica/Book%20of%20Proof%20-%20Richard%20Hammack/book_of_proof.pdf}{Projeto Matemática}.
+A primeira parte eu já cobri, de maneira mais aprofundada, no projeto matemática. Se quiserem ver um material mais completo, podem conferir na Bibliografia ou no meu \href{https://raw.githubusercontent.com/brunoruas2/Meus_Estudos/main/Matem%C3%A1tica/Book%20of%20Proof%20-%20Richard%20Hammack/book_of_proof.pdf}{Projeto Matemática}. Provavelmente, essa seção inteira será deletada no futuro e todo o conteúdo dela será desenvolvido pelo projeto matemática.
 \\~\\
 Bibliografia Básica
 
@@ -4642,10 +4642,10 @@ O processo reverso é chamado de \textbf{indução}. Partir do caso específico 
 A indução pode ser usada para comprovar teoremas que se relacionam com um número arbitrário de elementos (ou mesmo infinitos elementos). Basicamente, a demonstração por indução consiste em dois passos:
 \begin{itemize}
 	\item Passo básico (provar para $P(n=1)$)
-	\item Passo indutivo (Provar que $P(n) \implies P(n+1)$)
+	\item Passo indutivo (Provar que $P(k) \implies P(k+1)$)
 \end{itemize}
 
-Temos que ter cuidado com o passo básico. Afirmar que $P(n=1)$ é verdadeiro \textbf{não é} provar. Similarmente, no passo indutivo, também não podemos assumir que $P(n)$ é verdade sem tomar muito cuidado. O ideial é que $P(n)$ seja evidentemente verdadeira.
+Temos que ter cuidado com o passo básico. Afirmar que $P(n=1)$ é verdadeiro \textbf{não é} provar. Similarmente, no passo indutivo, também não podemos assumir que $P(k)$ é verdade sem tomar muito cuidado. O ideial é que $P(k)$ seja evidentemente verdadeira.
 
 \subsection{Indução Forte}
 
@@ -4658,8 +4658,20 @@ Similar ao processo de prova por indução simples. A \textbf{indução forte} p
 Ao contrário do que o nome sugere, a indução forte é mais flexível que a indução simples. O material é um pouco obtuso nesse tema, então vamos ter que revisar essa seção posteriormente.
 
 \subsection{Recursão}
+
+As vezes precisamos lidar com sequências, conjuntos ou funções que não são definíveis facilmente. Para conseguirmos um tipo útil de definição, podemos usar um processo chamado de \textbf{recursão} em que definimos um objeto pela sua característica de composição.
+\\~\\
+Para uma \textbf{sequência} definida recursivamente, podemos usar a indução para provar proposições que façam uso dela.
+\\~\\
+Para um \textbf{conjunto}, primeiro definimos os elementos iniciais e depois fornecemos uma regra para construção de novos elementos. Para demonstrações com conjuntos recursivos, usamos um método de prova chamado indução estrutural.
+\\~\\
+Para uma \textbf{função}, primeiro definimos o passo básico e depois uma rega para encontrar o valor da função no seu domínio definido. Um exemplo famoso disso são os número de Fibonacci onde temos $f_0 = 0, f_1 = 1$ e $f_n = f_{n-1} + f_{n-2} \forall n = 2,3,4,\dots$. 
+\\~\\
+Existe uma relação entre a recursão e a indução pois, geralmente, objetos construídos recursivamente são demonstrados por meio de indução matemática.
+
 \subsection{Especificação de Sistemas}
-\subsection{Verificação de Programas}
+
+A especificação de sistemas é a capacidade de traduzir linguagem natural para linguagem lógica.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Matemática Básica}
