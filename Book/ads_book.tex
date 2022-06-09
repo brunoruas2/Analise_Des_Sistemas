@@ -188,8 +188,74 @@ Bibliografia Complementar
 	\item PUGA, Sandra; RISSETTI, Gerson. Lógica de programação e estruturas de dados com aplicações em Java. 2. ed. São Paulo: Prentice Hall, 2009. ISBN 9788576052074
 \end{itemize}
 
+\textbf{Introdução}
+\\~\\
+Durante o processo de construção de software, a manipulação de informação em memória é tarefa fundamental para que a solução de software seja útil e satisfatória. As linguagens de programação possuem especificações sobre as características que cada grupo de variáveis pode ter, esse controle de propriedade das variáveis e das limitações relacionadas a cada tipo é chamado de \textbf{Tipo de Dado}.
+\\~\\
+Dizemos que um \textbf{Tipo Abstrato de Dado (TAD)} é a definição por parte do programador de uma nova classe de dado otimizada para a resolução do problema a ser trabalhado com o software em desenvolvimento. Contém tanto a estrutura da informação a ser trabalhada quanto as operações, procedimentos e funções que podem ser aplicadas a esse tipo de dado novo.
+\\~\\
+A construção de TADs passa pela indentificação das entidades de um problema computacional e a definição e desenvolvimento do modelo de dados adequado para a solução proposta.
+\\~\\
+Primeiramente, vamos aprender sobre os tipos de dados normalmente existente nas linguagens de programação mais comuns do mercado. Podemos dividir os tipos de dados em dois grandes grupos: Homogêneos e Heterogêneos.
+
 \section{Estrutura de Dados Homogêneas e Heterogêneas}
 \subsection{Estrutura de Dados Homogêneas}
+
+Os dois tipos de TAs Homogêneos mais comuns são os vetores, que são formados por uma lista de $n$ elementos de mesmo tipo e as matrizes, que podem ser entendidas como um empilhamento de vetores ou um tipo de vetor de duas dimensões.
+\\~\\
+\textbf{Vetores}
+\\~\\
+É uma variável composta, homogênea e unidimensional. Podemos pensar em um vetor como uma lista com $n$ elementos do mesmo tipo.
+\\~\\
+Como todos os valores de um vetor possuem o mesmo nome (o nome da variável), para acessarmos algum valor específico de um elemento, precisaremos de um \textbf{índice} que faça referência ao local na lista onde o valor desejado se encontra.
+\\~\\
+Para criarmos um vetor em c\#, usamos a declaração da variável com um par de colchetes vazio e a definição da quantidade de posições (ou lugares) que o nosso vetor terá. Abaixo podemos ver um exemplo disso.
+
+\begin{Verbatim}[tabsize=4,frame=single]
+int[] Idades = new int[100]; // Vetor de int com 100 places
+double[] Alt = new double[20]; // Vetor de double com 20
+string[] Nomes = new string[10]; // Vetor de string com 10
+\end{Verbatim}
+
+\textbf{Comentário:} Existe uma classe que permite a criação de um tipo de vetor genêrico sem tamanho definido em c\# chamado Lista. O curso não entrou nesse assunto mas eu vou deixar esse exemplo de lista aqui.
+\begin{Verbatim}[tabsize=4,frame=single]
+using System.Collectoins.Generic;
+
+List<int> lista = new List<int>();
+List.add(1);
+List.add(2);
+List.remove(2);
+\end{Verbatim}
+
+No exemplo acima, podemos ver que criamos um vetor denominado Idades que receberá apenas valores do tipo inteiro. Um vetor de doubles (que é um float com mais casas de precisão) chamado salario. E, por fim, um vetor de strings chamado Nomes.
+\\~\\
+Agora que sabemos como criar um vetor. O próximo passo é aprendermos como inserir informação nele. Para a nossa sorte, é bem simples. Basta colocarmos o nome do vetor seguido da posição a ser preenchida entre colchetes.
+
+\begin{Verbatim}[tabsize=4,frame=single]
+Idades[20] =  10; // Valor 10 na posição 19
+Alt[0] = 1.2 // Valor 1.2 na posição 1
+\end{Verbatim}
+
+Só temos que ter cuidado com uma coisa. Existem linguagens (como C\#, Java, Python e outras) que colocam o index da primeira posição de um vetor como sendo o valor 0. Outras linguagens (como R) usam o numero 1 para essa primeira posição.
+\\~\\
+Com base no que aprendemos em \textbf{Algotimos e Lógica da Programação}, somos capazes de entender o código abaixo a respeito do uso de um laço de repetição para preenchimento de um vetor de 5 posições.
+
+\begin{Verbatim}[tabsize=4,frame=single]
+int i;
+
+int[] Valores = new int[5];
+
+// Input dos dados
+
+for (i = 0; i < 5; i++)
+{
+	Console.WriteLine($"Digite o valor {i + 1}: ");
+	Valores[i] = int.Parse(Console.ReadLine());
+};
+\end{Verbatim}
+
+\textbf{Matrizes}
+
 \subsection{Estrutura de Dados Heterogêneas}
 
 \section{Tipos Abstratos de Dados - Classes - Implementação}
@@ -4616,19 +4682,20 @@ Outra falácia conhecida é a \textbf{negação da hipótese}. Podemos construir
 \\~\\
 \textbf{Comentário:} Eu achei que essa parte foi um pouco negligenciada no curso. Devo voltar aqui para expandir esse conteúdo mais tarde. Por enquanto, temos essa tabela de referência.
 
+
 \begin{center}
-\begin{tabular}{|l|l|l|}
+\begin{tabular}{|c|c|c|}
 \hline
-\textbf{Regre de Inferência} & \textbf{Nome} & \textbf{Nota} \\
+\textbf{Regra de Inferência} & \textbf{Nome} & \textbf{Nota} \\
 \hline
 \hline
 $\forall x P(x) \rightarrow P(c)$ & Intanciação Universal & c específico \\
 \hline
 $P(c) \rightarrow \forall x P(x)$ & Generalização Universal & c arbitrário \\
 \hline
-$\exists x P(x) \rightarrow P(c)$ & Instanciação Existencial & c específico e não conhecido \\
+$\exists x P(x) \rightarrow P(c)$ & Instanciação Existencial & \begin{tabular}{l} c específico e \\ não conhecido \end{tabular} \\
 \hline
-$P(c) \rightarrow \exists x P(x)$ & Generalização Existencial & c específico e conhecido \\
+$P(c) \rightarrow \exists x P(x)$ & Generalização Existencial & \begin{tabular}{l} c específico e \\ conhecido \end{tabular} \\
 \hline
 \end{tabular}
 \end{center}
