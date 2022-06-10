@@ -201,7 +201,7 @@ Primeiramente, vamos aprender sobre os tipos de dados normalmente existente nas 
 \section{Estrutura de Dados Homogêneas e Heterogêneas}
 \subsection{Estrutura de Dados Homogêneas}
 
-Os dois tipos de TAs Homogêneos mais comuns são os vetores, que são formados por uma lista de $n$ elementos de mesmo tipo e as matrizes, que podem ser entendidas como um empilhamento de vetores ou um tipo de vetor de duas dimensões.
+Os dois tipos de TAs Homogêneos mais comuns são os vetores (também chamados de arrays), que são formados por uma lista de $n$ elementos de mesmo tipo e as matrizes, que podem ser entendidas como um empilhamento de vetores ou um tipo de vetor de duas dimensões.
 \\~\\
 \textbf{Vetores}
 \\~\\
@@ -217,6 +217,8 @@ double[] Alt = new double[20]; // Vetor de double com 20
 string[] Nomes = new string[10]; // Vetor de string com 10
 \end{Verbatim}
 
+No exemplo acima, podemos ver que criamos um vetor denominado Idades que receberá apenas valores do tipo inteiro. Um vetor de doubles (que é um float com mais casas de precisão) chamado salario. E, por fim, um vetor de strings chamado Nomes.
+\\~\\
 \textbf{Comentário:} Existe uma classe que permite a criação de um tipo de vetor genêrico sem tamanho definido em c\# chamado Lista. O curso não entrou nesse assunto mas eu vou deixar esse exemplo de lista aqui.
 \begin{Verbatim}[tabsize=4,frame=single]
 using System.Collectoins.Generic;
@@ -227,13 +229,11 @@ List.add(2);
 List.remove(2);
 \end{Verbatim}
 
-No exemplo acima, podemos ver que criamos um vetor denominado Idades que receberá apenas valores do tipo inteiro. Um vetor de doubles (que é um float com mais casas de precisão) chamado salario. E, por fim, um vetor de strings chamado Nomes.
-\\~\\
 Agora que sabemos como criar um vetor. O próximo passo é aprendermos como inserir informação nele. Para a nossa sorte, é bem simples. Basta colocarmos o nome do vetor seguido da posição a ser preenchida entre colchetes.
 
 \begin{Verbatim}[tabsize=4,frame=single]
 Idades[20] =  10; // Valor 10 na posição 19
-Alt[0] = 1.2 // Valor 1.2 na posição 1
+Alt[0] = 1.2; // Valor 1.2 na posição 1
 \end{Verbatim}
 
 Só temos que ter cuidado com uma coisa. Existem linguagens (como C\#, Java, Python e outras) que colocam o index da primeira posição de um vetor como sendo o valor 0. Outras linguagens (como R) usam o numero 1 para essa primeira posição.
@@ -246,7 +246,6 @@ int i;
 int[] Valores = new int[5];
 
 // Input dos dados
-
 for (i = 0; i < 5; i++)
 {
 	Console.WriteLine($"Digite o valor {i + 1}: ");
@@ -254,7 +253,96 @@ for (i = 0; i < 5; i++)
 };
 \end{Verbatim}
 
+\textbf{Desafio}
+\\~\\
+O professor propõe o seguinte desafio para fixação do conceito de vetor: "Criaremos um vetor de números inteiros com 5 posições e ler cada um de seus valores. Criaremos duas funções que, tomando esse vetor como parâmetro, irão retornar a soma dos números pares contidos no vetor e a quantidade de números ímpares que ele possui."
+\\~\\
+Minha resolução desse problema segue abaixo.
+
+\begin{Verbatim}[tabsize=4,frame=single]
+int[] vetor = new int[5];
+int somaPar = 0;
+int somaInpar = 0;
+int input;
+
+// Soma de dois valores
+int soma(int valor1, int valor2)
+{
+    return valor1 + valor2;
+};
+
+// Iteracao para lancamento dos valores e somas
+for (int i = 0; i < 5; i++)
+{
+    Console.WriteLine($"Valor da Posição nº: {i + 1}");
+    input = int.Parse(Console.ReadLine());
+
+    vetor[i] = input;
+    if (input % 2 == 0)
+    {
+        somaPar = soma(somaPar, input);
+    } else
+    {
+        somaInpar = soma(somaInpar, input);
+    }
+};
+
+Console.WriteLine($"SomaPar = {somaPar},
+SomaInpar = {somaInpar}");
+
+Console.WriteLine($"Vetor = ({vetor[0]},{vetor[1]},
+{vetor[2]},{vetor[3]},{vetor[4]})");
+\end{Verbatim}
+
+Que produz o seguinte resultado para o input (1,2,1,2,1).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1]{30-desafio-cs1.png}
+	\caption{Output do programa acima}
+\end{figure}
+
 \textbf{Matrizes}
+\\~\\
+Como dito no início dessa seção. Podemos pensar que matrizes são vetores de duas dimensões. Por causa disso, a declaração da variável é um pouco diferente.
+
+\begin{Verbatim}[tabsize=4,frame=single]
+double[,] Notas = new double[4,5]; // 4 linhas e 5 colunas 
+\end{Verbatim}
+
+Por ser uma variável de duas dimensões, a maneira como atribuímos valores à cada posição é um pouco diferente do caso com vetor. Para cada atribuição de valor, temos que indicar a \textbf{linha e coluna} que nosso dado será salvo.
+
+\begin{Verbatim}[tabsize=4,frame=single]
+	Notas[0,0] = 1; // Linha 1 coluna 1
+	Notas[0,1] = 1; // Linha 1 coluna 2
+	Notas[2,3] = 1; // Linha 3 coluna 4
+	Notas[3,4] = 1; // Linha 4 coluna 5
+\end{Verbatim}
+
+Devemos sempre lembrar que c\# usa a posição de numeral 0 para o index inicial de vetores e matrizes.
+\\~\\
+Agora vamos ver um programa simples que exemplifica o que acabamos de aprender. A leitura dele não deve ser difícil. Se está tendo dificuldade, volte no microfundamento de lógica da programação.
+
+\begin{Verbatim}[tabsize=4,frame=single]
+int i, j;
+
+int[,] Valor = new int[10,3];
+
+// Loop para entrada de valores na matriz
+for (i = 0; i < 10; i++) // Loop para linhas
+{
+	for (j = 0; j < 3; j++) // Loop para colunas
+	{
+		Console.WriteLine($"Valor Linha:{i+1} Coluna{j+1}");
+		Valor[i,j] = int.Parse(Console.ReadLine());
+	}
+}
+\end{Verbatim}
+
+\textbf{Desafio}
+\\~\\
+Para a fixação do conceito de matrizes, o professor faz o seguinte desafio: "Vamos fazer um programa que irá ler os dados de uma matriz de inteiros de ordem 5, ou seja, de dimensões 5x5. Matematicamente ela é chama de matriz quadrada, porque o número de “linhas” é igual ao número de “colunas”. Depois de darmos entrada nos valores da matriz chamaremos uma função que, tomando essa matriz como parâmetro, retornará um vetor composto pelos elementos da diagonal principal dessa matriz quando, então, os listaremos."
+
 
 \subsection{Estrutura de Dados Heterogêneas}
 

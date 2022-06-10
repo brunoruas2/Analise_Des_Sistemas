@@ -1,17 +1,33 @@
-﻿int num = 0, cont1 = 0, cont2 = 0;
+﻿// Criaremos um vetor de números inteiros com 5 posições e ler cada um de seus valores.
+// Criaremos duas funções que, tomando esse vetor como parâmetro, irão retornar a soma dos
+// números pares contidos no vetor e a quantidade de números ímpares que ele possui. 
 
-do
+int[] vetor = new int[5];
+int somaPar = 0;
+int somaInpar = 0;
+int input;
+
+// Soma de dois valores
+int soma(int valor1, int valor2)
 {
-    num = int.Parse(Console.ReadLine());
+    return valor1 + valor2;
+};
 
-    if(num > 0)
+// Iteracao para lancamento dos valores e somas
+for (int i = 0; i < 5; i++)
+{
+    Console.WriteLine($"Valor da Posição nº: {i + 1}");
+    input = int.Parse(Console.ReadLine());
+
+    vetor[i] = input;
+    if (input % 2 == 0)
     {
-        cont1++;
+        somaPar = soma(somaPar, input);
     } else
     {
-        cont2++;
+        somaInpar = soma(somaInpar, input);
     }
+};
 
-} while(num != 0);
-
-Console.WriteLine($"Contador 1 = {cont1}, Contador 2 = {cont2}");
+Console.WriteLine($"SomaPar = {somaPar}, SomaInpar = {somaInpar}");
+Console.WriteLine($"Vetor = ({vetor[0]},{vetor[1]},{vetor[2]},{vetor[3]},{vetor[4]})");
