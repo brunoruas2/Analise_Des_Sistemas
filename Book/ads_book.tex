@@ -188,8 +188,8 @@ Bibliografia Complementar
 	\item PUGA, Sandra; RISSETTI, Gerson. Lógica de programação e estruturas de dados com aplicações em Java. 2. ed. São Paulo: Prentice Hall, 2009. ISBN 9788576052074
 \end{itemize}
 
-\textbf{Introdução}
-\\~\\
+\section*{Introdução}
+
 Durante o processo de construção de software, a manipulação de informação em memória é tarefa fundamental para que a solução de software seja útil e satisfatória. As linguagens de programação possuem especificações sobre as características que cada grupo de variáveis pode ter, esse controle de propriedade das variáveis e das limitações relacionadas a cada tipo é chamado de \textbf{Tipo de Dado}.
 \\~\\
 Dizemos que um \textbf{Tipo Abstrato de Dado (TAD)} é a definição por parte do programador de uma nova classe de dado otimizada para a resolução do problema a ser trabalhado com o software em desenvolvimento. Contém tanto a estrutura da informação a ser trabalhada quanto as operações, procedimentos e funções que podem ser aplicadas a esse tipo de dado novo.
@@ -259,10 +259,11 @@ O professor propõe o seguinte desafio para fixação do conceito de vetor: "Cri
 \\~\\
 Minha resolução desse problema segue abaixo.
 
+\scriptsize
 \begin{Verbatim}[tabsize=4,frame=single]
 int[] vetor = new int[5];
 int somaPar = 0;
-int somaInpar = 0;
+int contaImpar = 0;
 int input;
 
 // Soma de dois valores
@@ -274,32 +275,32 @@ int soma(int valor1, int valor2)
 // Iteracao para lancamento dos valores e somas
 for (int i = 0; i < 5; i++)
 {
-    Console.WriteLine($"Valor da Posição nº: {i + 1}");
+    Console.WriteLine($" Valor da Posição nº: {i + 1}");
     input = int.Parse(Console.ReadLine());
 
     vetor[i] = input;
     if (input % 2 == 0)
     {
         somaPar = soma(somaPar, input);
-    } else
+    }
+    else
     {
-        somaInpar = soma(somaInpar, input);
+        contaImpar += 1;
     }
 };
 
-Console.WriteLine($"SomaPar = {somaPar},
-SomaInpar = {somaInpar}");
+Console.WriteLine($" SomaPar = {somaPar}, ContaImpar = {contaImpar}");
 
-Console.WriteLine($"Vetor = ({vetor[0]},{vetor[1]},
-{vetor[2]},{vetor[3]},{vetor[4]})");
+Console.WriteLine($"({vetor[0]},{vetor[1]},{vetor[2]},{ vetor[3]},{vetor[4]})");
 \end{Verbatim}
+\normalsize
 
 Que produz o seguinte resultado para o input (1,2,1,2,1).
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=1]{30-desafio-cs1.png}
-	\caption{Output do programa acima}
+	\caption{Output do desafio}
 \end{figure}
 
 \textbf{Matrizes}
@@ -343,8 +344,120 @@ for (i = 0; i < 10; i++) // Loop para linhas
 \\~\\
 Para a fixação do conceito de matrizes, o professor faz o seguinte desafio: "Vamos fazer um programa que irá ler os dados de uma matriz de inteiros de ordem 5, ou seja, de dimensões 5x5. Matematicamente ela é chama de matriz quadrada, porque o número de “linhas” é igual ao número de “colunas”. Depois de darmos entrada nos valores da matriz chamaremos uma função que, tomando essa matriz como parâmetro, retornará um vetor composto pelos elementos da diagonal principal dessa matriz quando, então, os listaremos."
 
+\begin{Verbatim}[tabsize=4,frame=single]
+// Aqui vai ficar o cogido da solucao do desafio
+// quando eu tiver vontade de fazer
+\end{Verbatim}
+
+Vetores e Matrizes são os principais tipos homogêneos de dados. A partir de agora, estudaremos estuturas que nos permitem alocar valores de tipos diferentes em uma mesma variável. A compreensão correta dos tipos de dados é a pedra fundamental do paradigma de desenvolvimento chamado  de \textbf{Programação Orientada à Objetos}.
 
 \subsection{Estrutura de Dados Heterogêneas}
+
+\textbf{Registros}
+
+\begin{Verbatim}[tabsize=4,frame=single]
+int x;
+
+double Result;
+
+string Name;
+\end{Verbatim}
+
+\begin{Verbatim}[tabsize=4,frame=single]
+Aluno xAlu;
+\end{Verbatim}
+
+\textbf{Implementação de um Registro}
+
+\begin{Verbatim}[tabsize=4,frame=single]
+struct Funcionario
+{
+	public string CPF;
+	public string Name;
+	public double Salary;
+	public string dataNasc;
+}
+\end{Verbatim}
+
+\begin{Verbatim}[tabsize=4,frame=single]
+static void Main(string[]) args)
+{
+	Funcionario xFunc;
+
+	xFunc.CPF = "1234";
+	xFunc.Name = "Bruce Wanne";
+	xFunc.Salary = 1234,33;
+	xFunc.dataNasc = "31/08/1993";
+}
+\end{Verbatim}
+
+\begin{Verbatim}[tabsize=4,frame=single]
+xFunc.Name = "Peter Parker"; 
+\end{Verbatim}
+
+\begin{Verbatim}[tabsize=4,frame=single]
+Funcionario[] xFunc = new Funcionario[5];
+
+for (int i = 0; i < 5; i++)
+{
+	Console.WriteLine("CPF do funcionário: ");
+	xFunc[i].CPF = Console.readLine();
+
+	Console.WriteLine("Nome do funcionário: ");
+	xFunc[i].Name = Console.readLine(); 	
+
+	Console.WriteLine("Salário: ");
+	xFunc[i].Salary = Console.readLine();
+
+	Console.WriteLine("Data de Nascimento: ");
+	xFunc[i].dataNasc = Console.readLine();
+
+}
+\end{Verbatim}
+
+\begin{Verbatim}[tabsize=4,frame=single]
+struct Funcionario
+{
+	public string CPF;
+	public string Name;
+	public double Salary;
+	public Data dataNasc;
+}
+
+struct Data
+{
+	public string day;
+	public string month;
+	public string year;
+}
+\end{Verbatim}
+
+\begin{Verbatim}[tabsize=4,frame=single]
+Funcionario[] xFunc = new Funcionario[5];
+
+for (int i = 0; i < 5; i++)
+{
+	Console.WriteLine("CPF do funcionário: ");
+	xFunc[i].CPF = Console.readLine();
+
+	Console.WriteLine("Nome do funcionário: ");
+	xFunc[i].Name = Console.readLine(); 	
+
+	// substituido
+	// Console.WriteLine("Salário: ");
+	// xFunc[i].Salary = Console.readLine();
+
+	Console.WriteLine("Data de Nascimento - Dia: ");
+	xFunc[i].dataNasc.day = Console.readLine();
+
+	Console.WriteLine("Data de Nascimento - Mês: ");
+	xFunc[i].dataNasc.month = Console.readLine();
+
+	Console.WriteLine("Data de Nascimento - Ano: ");
+	xFunc[i].dataNasc.year = Console.readLine();
+
+}
+\end{Verbatim}
 
 \section{Tipos Abstratos de Dados - Classes - Implementação}
 \subsection{Definição de um TAD - Classes e Objetos}
