@@ -314,10 +314,10 @@ double[,] Notas = new double[4,5]; // 4 linhas e 5 colunas
 Por ser uma variável de duas dimensões, a maneira como atribuímos valores à cada posição é um pouco diferente do caso com vetor. Para cada atribuição de valor, temos que indicar a \textbf{linha e coluna} que nosso dado será salvo.
 
 \begin{Verbatim}[tabsize=4,frame=single]
-	Notas[0,0] = 1; // Linha 1 coluna 1
-	Notas[0,1] = 1; // Linha 1 coluna 2
-	Notas[2,3] = 1; // Linha 3 coluna 4
-	Notas[3,4] = 1; // Linha 4 coluna 5
+Notas[0,0] = 1; // Linha 1 coluna 1
+Notas[0,1] = 1; // Linha 1 coluna 2
+Notas[2,3] = 1; // Linha 3 coluna 4
+Notas[3,4] = 1; // Linha 4 coluna 5
 \end{Verbatim}
 
 Devemos sempre lembrar que c\# usa a posição de numeral 0 para o index inicial de vetores e matrizes.
@@ -354,6 +354,14 @@ Vetores e Matrizes são os principais tipos homogêneos de dados. A partir de ag
 \subsection{Estrutura de Dados Heterogêneas}
 
 \textbf{Registros}
+\\~\\
+Na definição de um tipo de dado, nós definimos precisamente a faixa de valores que podem ser atribuídos e os métodos nativos do tipo de dado.
+\\~\\
+Chamamos de \textbf{tipo simples de dados} são os grupos de valores do mesmo tipo (inteiros,reais, string ou booleanos). Por outro lado, chamamos de \textbf{tipo estruturado de dados} os nodelos que comportam valores de tipagem diferentes na mesma variável.
+\\~\\
+Um \textbf{registro} é um tipo de dado estruturado.
+\\~\\
+Nós já estamos familiarizados com as definições de variáveis em c\# para os tipos nativos de dados.
 
 \begin{Verbatim}[tabsize=4,frame=single]
 int x;
@@ -363,11 +371,25 @@ double Result;
 string Name;
 \end{Verbatim}
 
+A essa altura do aprendizado, as linhas acima são simples de serem compreendidas. São apenas declarações do tipos de 3 variáveis simples. Mas vejam só o que podemos fazer abaixo.
+
 \begin{Verbatim}[tabsize=4,frame=single]
 Aluno xAlu;
 \end{Verbatim}
 
+Estranho, né?! Estamos declarando a variável xAlu como sendo do tipo..."Aluno"?
+\\~\\
+Sim, é isso mesmo.
+\\~\\
+Nós podemos usar um token dedicado na linguagem para a criação de tipos novos de dados que sirvam melhor para solução dos problemas que queremos resolver como nosso código.
+\\~\\
+O token dedicado para construção de tipos de dados em c\# é o \verb|struct|. Mas para usa-lo bem, temos que aprender os conceitos de tipos de dados heterogêneos e, no futuro, avançaremos para o conceito de classes.
+\\~\\
+O comando \verb|struct| é pensado para o encapsulamento de pequenos conjuntos de variáveis relacionadas. No exemplo do tipo Aluno, podemos pensar que todos os alunos devem ter um nome, um cpf e uma data de nascimento, por exemplo. Como essas características se repetem para todos, podemos definir um tipo de dado específico para lidarmos com as informações dos alunos.
+\\~\\
 \textbf{Implementação de um Registro}
+\\~\\
+A criação de um tipo de dado é simples. Basta definirmos o nome do tipo de dado e declararmos o conjunto de variáveis que farão parte dele. No exemplo abaixo, nós criamos o tipo "Funcionário"\ com as informações que serão usadas.
 
 \begin{Verbatim}[tabsize=4,frame=single]
 struct Funcionario
@@ -378,6 +400,10 @@ struct Funcionario
 	public string dataNasc;
 }
 \end{Verbatim}
+
+Podemos ver que a declaração das variáveis dentro do bloco de código estão com o token \verb|public| antes da declaração do tipo de dado. Isso ocorre porque precisamos dizer ao compilador da linguagem que essas variáveis serão acessíveis fora do bloco de código em que elas são criadas. Isso tem relação direta com o conceito de método e procedimento que aprendemos no curso de Algoritmo e Lógica Computacional.
+\\~\\
+Agora que temos o nosso novo tipo de dado criado, podemos usar esse recurso para a definição de novas variáveis.
 
 \begin{Verbatim}[tabsize=4,frame=single]
 static void Main(string[]) args)
@@ -391,9 +417,13 @@ static void Main(string[]) args)
 }
 \end{Verbatim}
 
-\begin{Verbatim}[tabsize=4,frame=single]
-xFunc.Name = "Peter Parker"; 
-\end{Verbatim}
+Não precisamos nos preocupar com a primeira linha agora. Basta saber que todo programa em c\# é um procedimento em algum nível. Podemos focar apenas no que está dentro dos colchetes.
+\\~\\
+Com o tipo de dado criado. Podemos criar a variável \verb|xFunc| e acessar seus parâmetros usando um ponto após o seu nome. A atribuição é feita como antes mas agora não precisamos declarar os tipos porque eles estão definidos dentro do tipo de dado.
+\\~\\
+Já aprendemos no começo desse microfundamento que a criação de vetores (que são listas de elementos do mesmo tipo) são feitas em c\# pela adição de colchetes vazios na declaração das variáveis. Por exemplo, um vetor de inteiros é definido por \verb|int[]|.
+\\~\\
+Pois bem, podemos usar a mesma lógica e criar um vetor do tipo que acabamos de criar\footnote{Isso é muito legal!}. Analogamente, como nosso tipo de dado é \verb|Funcionario|, seu vetor que conterá vários funcionários diferentes será criado por \verb|Funcionario[]|.
 
 \begin{Verbatim}[tabsize=4,frame=single]
 Funcionario[] xFunc = new Funcionario[5];
@@ -415,6 +445,14 @@ for (int i = 0; i < 5; i++)
 }
 \end{Verbatim}
 
+Acima, temos a criação de um vetor de 5 posições onde cada elemento é do tipo Funcionario. Logo abaixo, temos um loop para facilitar o preenchimento das informações de cada elemento do vetor.
+\\~\\
+Estamos começando a nos aproximar do conceito de banco de dados. Mas não veremos isso agora.
+\\~\\
+\textbf{Tipos de Dados Aninhados}
+\\~\\
+Não precisamos parar por aqui, é plenamente possível criarmos um tipo de dados que use outro tipo de dados criado fora dele. Por exemplo, ao invés de salvarmos a data de nascimento como uma string, podemos criar um tipo de dados chamado \verb|Data| que recebe 3 informações: dia, mês e ano.
+
 \begin{Verbatim}[tabsize=4,frame=single]
 struct Funcionario
 {
@@ -432,6 +470,10 @@ struct Data
 }
 \end{Verbatim}
 
+Dentro do tipo funcionário, temos a declaração de um variável do tipo data.
+\\~\\
+Para aproveitarmos o código de criação de um vetor Funcionario. Podemos fazer apenas uma pequena alteração.
+
 \begin{Verbatim}[tabsize=4,frame=single]
 Funcionario[] xFunc = new Funcionario[5];
 
@@ -443,7 +485,7 @@ for (int i = 0; i < 5; i++)
 	Console.WriteLine("Nome do funcionário: ");
 	xFunc[i].Name = Console.readLine(); 	
 
-	// substituido
+	// Parte que foi substituida
 	// Console.WriteLine("Salário: ");
 	// xFunc[i].Salary = Console.readLine();
 
@@ -458,6 +500,8 @@ for (int i = 0; i < 5; i++)
 
 }
 \end{Verbatim}
+
+A criação de tipos eficientes de dados é uma ferramenta muito eficiente para padronização e manutenção de soluções de software. É sempre bom entendermos bem o problema proposto e quais tipos de dados podem ser criados para a criação de uma resposta adequada a ele.
 
 \section{Tipos Abstratos de Dados - Classes - Implementação}
 \subsection{Definição de um TAD - Classes e Objetos}
