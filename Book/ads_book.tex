@@ -6,6 +6,7 @@
 
 \documentclass[a4paper,11pt,oneside]{book}
 
+\usepackage[margin=1.2in]{geometry} % reduce margins
 \usepackage[portuguese]{babel}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -504,7 +505,38 @@ for (int i = 0; i < 5; i++)
 A criação de tipos eficientes de dados é uma ferramenta muito eficiente para padronização e manutenção de soluções de software. É sempre bom entendermos bem o problema proposto e quais tipos de dados podem ser criados para a criação de uma resposta adequada a ele.
 
 \section{Tipos Abstratos de Dados - Classes - Implementação}
+
 \subsection{Definição de um TAD - Classes e Objetos}
+
+Um \textbf{tipo abstrato de dado} ou TAD é um "padrão"\ ou "modelo"\ que rege as características que determinada estrutura de dado criada bem como suas funções (que chamamos de métodos) internas. Ou seja, um TAD é a definição das informações contidas e as operações executáveis por uma variável de um determinado modelo.
+\\~\\
+Nós estamos usando isso o tempo todo sem perceber. Por exemplo, quando usamos a função \verb|Math.Pow(a,b)| nós estamos, na verdade, executando um método chamamo \verb|Pow| dentro do objeto \verb|Math|. Exatamente o mesmo pensamento é aplicado ao \verb|Console.Write()| ou \verb|Console.ReadLine()|.
+\\~\\
+Agora que estamos avançando mais no nosso conhecimento sobre desenvolvimento de software, começamos a entender mais sobre as estruturas que nos permitem realizar os nossos trabalhos, ou no jargão, estamos começando a ver "de baixo do capô". 
+\\~\\
+Até agora, nós temos definido os nossos TADs através da definição de sua \textbf{estrutura} (pelo token \verb|struct|), mas as linguagens que utilizam o paradigma orientado à objeto atuais usam o conceito de \textbf{classes} para definição dos seus TADs.
+
+\subsubsection{Implementando TADs usando Classes}
+
+Já aprendemos a implementar um TAD por estrutura.
+
+\begin{Verbatim}[tabsize=4,frame=single]
+// Definindo o TAD
+struct Produto
+{
+	public string Nome;
+	public double PrecoUnd;
+}
+
+// Usando o TAD
+Produto xProd;
+
+xProd.Nome = "PS5";
+xProd.PrecoUnd = 8000.99;
+\end{Verbatim}
+
+
+
 \subsection{Atributos, Propriedades e Métodos de Classe}
 \subsection{Mecanismos de Visibilidade/Acessibilidade}
 \subsection{Construtores de Classe}
