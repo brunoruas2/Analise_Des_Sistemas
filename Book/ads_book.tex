@@ -86,7 +86,7 @@
 \section*{Microfundamentos}
 
 \begin{todolist} % options: \item[\done] and \item[\wontfix]
-	\item Algoritmos e Abstração de Dados
+	\item[\done] Algoritmos e Abstração de Dados
 	\item[\done] Algoritmos e Lógica de Programação
 	\item[\done] Desenvolvimento Web Front-End
 	\item[\done] Fundamentos de Engenharia de Software
@@ -198,6 +198,8 @@ Dizemos que um \textbf{Tipo Abstrato de Dado (TAD)} é a definição por parte d
 A construção de TADs passa pela indentificação das entidades de um problema computacional e a definição e desenvolvimento do modelo de dados adequado para a solução proposta.
 \\~\\
 Primeiramente, vamos aprender sobre os tipos de dados normalmente existente nas linguagens de programação mais comuns do mercado. Podemos dividir os tipos de dados em dois grandes grupos: Homogêneos e Heterogêneos.
+\\~\\
+\textbf{Comentário:} Esse microfundamento deve ser estudado somente após o microfundamento de \textbf{Algoritmo e Lógica de Programação}. Como esse material é de referência, ele não deve ser lido, necessariamente, como se fosse um livro.
 
 \section{Estrutura de Dados Homogêneas e Heterogêneas}
 \subsection{Estrutura de Dados Homogêneas}
@@ -846,7 +848,206 @@ namespace WorkSpace
 Desse modo, podemos ver que caso o valor inputado no raio for negativo, o resultado da área será 0. Caso for positivo, o valor da área será calculado normalmente. Se importássemos esse objeto sem saber o que acontece por dentro dele, não entenderíamos o que acontece exatamete dentro do objeto \verb|circulo|.
 
 \subsection{Mecanismos de Visibilidade/Acessibilidade}
-\subsection{Construtores de Classe}
+
+Os \textbf{modificadores de acesso} ou \textbf{mecanimos de visibilidade} são os métodos de acesso às classes e seus, atibutos, propriedades e métodos. Existem vários tipos de modificadores de acesso (\verb|protected|, \verb|internal|, \verb|protected internal| e etc), mas por agora, vamos estudar somente o \verb|public| e o \verb|private|.
+\\~\\
+Observemos novamente o código da última seção com algumas anotações adicionais.
+
+\begin{Verbatim}[tabsize=4,frame=single]
+// Bloco contendo todo o programa
+namespace WorkSpace
+{
+	// Definicao do TAD circulo
+	class circulo
+	{
+		private double _raio;
+
+		public double raio
+		{
+			get { return _raio; }
+			set
+			{
+				if (value < 0)
+					_raio = 0;
+				else
+					_raio = value;
+			}
+		}
+		public double calcArea()
+		{
+			return Math.PI* Math.Pow(_raio, 2);
+		}
+	}
+	
+	// Bloco contendo o programa
+	class Program
+    {
+		// Procedimento do programa
+		static void Main(string[] args)
+        {
+					double area;
+
+					circulo xcir = new circulo();
+					xcir.raio = -2.5;
+					area = xcir.calcArea();
+
+					Console.WriteLine($"Area: {area:F2}");
+        }
+    }
+}
+\end{Verbatim}
+
+Podemos ver que a classe \verb|circulo| é criada antes do bloco que contém o programa propriamente dito. Ou seja, estão em escopos diferentes. Desse modo, um comando contido no procedimento \verb|Main| não tem acesso a nenhuma propriedade ou atributos com o parâmetro \verb|private| nele somente os de parâmetro \verb|public| ou através das funções \verb|set| e \verb|get|.
+\\~\\
+\textbf{Atenção:} Na criação da classe circulo não foi dito se ela seria acessável fora do seu escopo original, ou seja, não usamos o comando \verb|public class circulo| e sim o comando \verb|class circulo|. Em c\#, quando se cria uma classe sem a definição explícita da sua visibilidade, o padrão da linguagem é deixar a classe como \verb|public|.
+
+\subsubsection*{Qualidade e Robustez de Software}
+
+Esses conceitos de controle de acesso são importantes porque nosso código precisa fazer o que foi planejado, da maneira planejada. Quando não limitamos a capacidade do usuário inserir dados, podemos cair em situações não previstas que podem comprometer a execução do nosso programa.
+\\~\\
+Um conceito que nos ajuda a entender melhor essa situação é o \textbf{robustez do software}. Esse conceito é usado pelos profissionais de qualidade de software e que é referente a capacidade do programa em funcionar da maneira correta em diferentes cenários e condições adversas.
+\\~\\
+Outro conceito útil dessa área é o \textbf{correção de software} que é a qualidade referente a capacidade do nosso programa funcionar da maneira prevista e especificada.
+\\~\\
+A técnica da omissão da informação nos ajuda a garantir o cumprimento desses requisitos.
+
+\subsection{Construtores e Destrutores de Classe}
+
+Um construtor de classe é usado para criação de um objeto e pela inicialização dos seus atributos. Sempre que instanciamos um objeto, o seu construtor entra em ação.
+\\~\\
+\textbf{Comentário:} Não entraremos a fundo no conceito de Common Language Runtime (CLR) agora. Talvez mais pra frente a gente veja isso.
+\\~\\
+Se um construtor não for declarado explícitamente, o c\# cria a classe usando algumas convenções de modo a colocar o objeto disponível para uso. Esses padrões de construtores são definidos de acordo com o tipo primitivo das variáveis contidas no nosso objeto (que sabemos que se chamam atributos). Por padrão, o CLR atribui os seguintes valores para os atributos dos objetos:
+\begin{itemize}
+	\item 0 para variáveis do tipo int, double e float
+	\item false para variáveis booleanas
+	\item '$\backslash$0' para variáveis do tipo string
+\end{itemize}
+
+\subsubsection*{Definindo Construtores}
+
+Para não usarmos as convenções padrão do CLR. Podemos, nós mesmo, atribuir os construtores dos atributos dos nossos objetos. Para isso, usamos um método (ou seja, uma função interna do objeto) com \textbf{o mesmo nome do objeto}. Esse método não possui retorno e são declarados como \verb|public|.
+
+\begin{Verbatim}[tabsize=4,frame=single]
+[...] // Codigo com o namespasce
+
+class circulo
+{
+	private double _raio;
+
+	public double raio
+	{
+		get {return _raio;}
+		set {_raio = value;}
+	}
+
+	public circulo() // construtor
+	{
+		_raio = 0;
+	}
+
+	public double calcArea()
+	{
+		return Math.PI * Math.Pow(_raio,2);
+	}
+}
+\end{Verbatim}
+
+A partir de agora, sempre que executarmos um instanciamento através do comando
+
+\begin{Verbatim}[tabsize=4,frame=single]
+circulo xcir = new circulo(); 
+\end{Verbatim}
+
+O construtor será chamado e executará as instruções contidas no construtor. No caso de exemplo, o valor default para o atributo \verb|_raio| será 0.
+\\~\\
+Não é difícil pensar em situações onde precisaríamos usar diferentes métodos de construção em um objeto. Para isso, podemos ter mais de um construtor no mesmo objeto, chamamos isso de \textbf{sobrecarregamento}. A condição é que esses construtuores sejam diferentes em temos de parâmetros ou ordem dos parâmetros.
+
+\begin{Verbatim}[tabsize=4,frame=single]
+[...] // Codigo com o namespasce
+
+class circulo
+{
+	private double _raio;
+
+	public double raio
+	{
+		get {return _raio;}
+		set {_raio = value;}
+	}
+
+	public circulo() // construtor
+	{
+		_raio = 0;
+	}
+
+	public circulo(int R)
+	{
+		_raio = R;
+	}
+
+	public double calcArea()
+	{
+		return Math.PI * Math.Pow(_raio,2);
+	}
+}
+\end{Verbatim}
+
+Para executar o segundo construtor, basta passarmos um parâmetro no momento do instanciamento do nosos novo objeto.
+
+\begin{Verbatim}[tabsize=4,frame=single]
+circulo xcirc = new circulo(2.3); 
+\end{Verbatim}
+
+Como fizemos um instanciamento com valor, o c\# saberá que queremos usar o segundo construtor ao invés do primeiro.
+
+\subsubsection*{Destrutores}
+
+Ao contrário do que podemos pensar pelo nome, os \textbf{destrutores} não são usados para "destruir" os objetos. Eles são usados definir um comportamento específico no momento da destruição de um objeto. Ou seja, eles são acionados na destruição e não são os destruidores.
+\\~\\
+Não precisam ser chamaos ou referenciados pois são invodados automaticamente. O normal é não se usar destrutores no dia a dia visto que o CLR já faz o trabalho de padronização para eliminação de um objeto.
+\\~\\
+Diferente dos construtores, uma classe pode ter \textbf{apenas um destrutor}. E a sua criação é parecida com a do construtor, uma vez que são métodos sem retorno. A única diferença é que sua notação começa com o til.
+
+\begin{Verbatim}[tabsize=4,frame=single]
+[...] // Codigo com o namespasce
+
+class circulo
+{
+	private double _raio;
+
+	public double raio
+	{
+		get {return _raio;}
+		set {_raio = value;}
+	}
+
+	public circulo() // construtor 1
+	{
+		_raio = 0;
+	}
+
+	public circulo(int R) // constutor 2
+	{
+		_raio = R;
+	}
+
+	~circulo
+	{
+		Console.WriteLine("Adeus, mundo cruel!");
+	}
+
+	public double calcArea()
+	{
+		return Math.PI * Math.Pow(_raio,2);
+	}
+}
+\end{Verbatim}
+
+Os detalhes de como um computador funciona são estudados em \textbf{Estrutura de Computadores} mas, para adiantar, algumas linguagens tem um programa chamado \textbf{garbage colector} que é responsável pela reutilização de slots de memória que estão sendo usados por obetos que não tem mais utilização no código.
+\\~\\
+Em c\# nós não precisamos explicitamente eliminar um objeto porque o próprio garbage colector faz esse trabalho.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Algoritmos e Lógica de Programação}

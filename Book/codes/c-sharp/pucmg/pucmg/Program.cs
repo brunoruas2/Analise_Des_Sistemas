@@ -1,6 +1,6 @@
 ﻿namespace WorkSpace
 {
-	class circulo
+	private class circulo
 	{
 		private double _raio;
 
@@ -28,7 +28,7 @@
 			double area;
 
 			circulo xcir = new circulo();
-			xcir.raio = -2.5;
+			xcir.raio = 2.5;
 			area = xcir.calcArea();
 
 			Console.WriteLine($"Area: {area:F2}");
