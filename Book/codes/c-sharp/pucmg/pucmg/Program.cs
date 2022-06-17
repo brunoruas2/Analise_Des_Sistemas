@@ -1,31 +1,37 @@
-﻿int[] vetor = new int[5];
-int somaPar = 0;
-int contaImpar = 0;
-int input;
-
-// Soma de dois valores
-int soma(int valor1, int valor2)
+﻿namespace WorkSpace
 {
-    return valor1 + valor2;
-};
+	class circulo
+	{
+		private double _raio;
 
-// Iteracao para lancamento dos valores e somas
-for (int i = 0; i < 5; i++)
-{
-    Console.WriteLine($" Valor da Posição nº: {i + 1}");
-    input = int.Parse(Console.ReadLine());
+		public double raio
+		{
+			get { return _raio; }
+			set
+			{
+				if (value < 0)
+					_raio = 0;
+				else
+					_raio = value;
+			}
+		}
+		public double calcArea()
+		{
+			return Math.PI* Math.Pow(_raio, 2);
+		}
+	}
 
-    vetor[i] = input;
-    if (input % 2 == 0)
+	class Program
     {
-        somaPar = soma(somaPar, input);
-    }
-    else
-    {
-        contaImpar += 1;
-    }
-};
+		static void Main(string[] args)
+        {
+			double area;
 
-Console.WriteLine($" SomaPar = {somaPar}, ContaImpar = {contaImpar}");
+			circulo xcir = new circulo();
+			xcir.raio = -2.5;
+			area = xcir.calcArea();
 
-Console.WriteLine($" Vetor = ({vetor[0]},{vetor[1]},{vetor[2]},{ vetor[3]},{vetor[4]})");
+			Console.WriteLine($"Area: {area:F2}");
+        }
+    }
+}

@@ -528,16 +528,323 @@ struct Produto
 	public double PrecoUnd;
 }
 
-// Usando o TAD
+// Criando uma variável com TAD
 Produto xProd;
 
+// Usando o TAD
 xProd.Nome = "PS5";
 xProd.PrecoUnd = 8000.99;
 \end{Verbatim}
 
+Podemos construir uma solução análoga a essa pelo token de criação de classes.
 
+\begin{Verbatim}[tabsize=4,frame=single]
+// Definindo o TAD
+class Produto
+{
+	public string Nome;
+	public double PrecoUnd;
+}
+
+// Criando a classe
+Produto xProd = new Produto();
+
+// Usando o TAD
+xProd.Nome = "Xbox One";
+xProd.PrecoUnd = 9999.99;
+\end{Verbatim}
+
+Em uma primeira vista, parecem ser abordagens equivalentes. Mas existem algumas diferenças importantes que merecem a nossa atenção.
+\\~\\
+Para entender bem a diferença entre essas construções, vamos ter que aprender um pouco mais sobre como o computador guarda informações. O layout de memória de programas em C são separados em níveis que variam entre 5 níveis  \href{https://www.geeksforgeeks.org/memory-layout-of-c-program/}{[link aqui]}
+:
+\begin{itemize}
+	\item Text segment (aka instructions) 
+	\item Initializes data segment
+	\item Uninitialized data segment (bss)
+	\item Heap
+	\item Stack (aka Inline)
+\end{itemize}
+
+Nós não vamos nos atentar muito aos detalhes agora. Mas agora que sabemos um pouco das diferentes alocações possíveis na memória durante a execução de um programa. Podemos focar no que for necessário para diferenciarmos o \verb|struct| do \verb|class|.
+\\~\\
+Os valores do tipo struct são alocados na memória stack. Essa parte de memória grava temporariamente as variáveis criadas por uma função. No stack, as variáveis são declaras, guardadas e inicializadas durante a execução do programa e apagadas na sua conclusão. A memória é alocada em um bloco contíguos. É  mais limitada e de rápido acesso.
+\\~\\
+Os valores do tipo class são alocados no heap. Essa é a parte da memória usada pelas linguagens de programação para suas variáveis de escopo global. A memória é alocada de maneira aleatória e é mais abundante se comparada com a stack. Sempre que criamos uma nova instância como fizemos em \verb|Produto xProd = new Produto()| nós estamos apontando um novo endereço de memória para ser usado.
+\\~\\
+\textbf{Desafio:} Cadastrar objetos em um vetor usando uma classe.
+
+\begin{Verbatim}[tabsize=4,frame=single]
+using System;
+
+namespace WorkSpace
+{
+    // Criando o TAD do tipo class
+    class carro
+    {
+        public string name;
+        public string marca;
+        public string anoFab;
+        public string placa;
+        public double precoFip;
+    };
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Criando um vetor do tipo carro
+            carro[] cadCarro = new carro[3];
+
+            // Loop para inserir o input no vetor
+            for (int i = 0; i < 2; i++)
+            {
+                carro x = new carro();
+
+                Console.Write($"\n Qual o nome? ");
+                x.name = Console.ReadLine();
+
+                Console.Write($" Qual a marca? ");
+                x.marca = Console.ReadLine();
+
+                Console.Write($" Qual o ano de fabricação? ");
+                x.anoFab = Console.ReadLine();
+
+                Console.Write($" Qual a placa? ");
+                x.placa = Console.ReadLine();
+
+                Console.Write($" Qual o preço da tabela FIP? ");
+                x.precoFip = double.Parse(Console.ReadLine());
+
+                // Salvando o x no vetor cadCarro
+                cadCarro[i] = x;
+            };
+
+            Console.Clear();
+
+            // Mostrando o resultado
+            foreach (carro C in cadCarro)
+            {
+                Console.WriteLine($"\n Carro: {C.name},Marca:{C.marca}");
+                Console.WriteLine($" Placa: {C.placa}, Ano:{C.anoFab}");
+                Console.WriteLine($" Preço da Tabela Fip: {C.precoFip}");
+            };
+
+            Console.ReadKey();
+
+        }
+    }
+}
+\end{Verbatim}
+
+É muito mais comum se achar situações de construção de TADs por uso de classes ao invés de estruturas. Vale a pena estudar mais para sabermos exatamente quando cada uma dessas opções é a adequada. Mas no começo, as classes nos servirão muito bem.
 
 \subsection{Atributos, Propriedades e Métodos de Classe}
+
+Vamos analisar com calma essas duas citações do texto:
+\begin{itemize}
+	\item "Uma classe especifica uma \textbf{estrutura de dados} e os \textbf{seus métodos} operacionais permissíceis que se aplicam a cada um dos seus objetos" (MARTIN e ODELL, 1995).
+	\item "Um objeto é qualquer coisa, real ou abstrata, a respeito da qual armazenamos os \textbf{dados} e os \textbf{métodos} que os manipulam" (MARTIN e ODELL, 1995).
+\end{itemize}
+
+Em ambas as citações temos as figuras dos dados e dos métodos. A estrutura dos dados nós já vimos na seção passada quando lidamos com definição de TADs declarando os tipos das variáveis tanto na declaração via estrutura quanto por classe.
+\\~\\
+Agora, vamos expandir um pouco mais o poder dos TADs nos permitindo definir, além das regras de quais dados serão armazenados, quais operações e funções serão executadas internamente por nossos objetos.
+\\~\\
+Ao construir um tipo abstrato de dados, nos perguntamos quais informações serão necessárias e, além disso, quais operações serão usadas para resolução do nosso problema.
+
+\subsubsection*{Atributos, Propriedades e Métodos de Classe}
+
+Vejamos o seguinte TAD criado apenas com a definição da estrutura de dados:
+\begin{Verbatim}[tabsize=4,frame=single]
+class pessoa
+{
+	public string name;
+	public double salary;
+}
+\end{Verbatim}
+
+Dizemos que as informações sobre nome e salário são \textbf{atributos} do nosso objeto \verb|pessoa|. Eles definem a estrutura do tipo abstrato de dados que definimos. Também podemos chama-los de \textbf{variáveis da classe pessoa}.
+\\~\\
+Mesmo que o exemplo acima funcione. Uma maneira mais apropriada de reconstruir essa solução pode ser vista abaixo.
+
+\begin{Verbatim}[tabsize=4,frame=single]
+class pessoa
+{
+	private string _name;
+
+	public string name
+	{
+		get {return _name;}
+		set {_name = value;}
+	}
+
+	private double _salary;
+
+	public double salary
+	{
+		get {return _salary;}
+		set {_salary = value;}
+	}
+}
+\end{Verbatim}
+
+Os campos \verb|_name| e \verb|_salary| são definidos com o escopo privado e podem ser acessados somente internamente ao objeto. Para podermos acessar fora do escopo do objeto, usamos as funções nativas \verb|get| e \verb|set|.
+\\~\\
+Os nomes das funções deixam claro o que cada uma faz. \verb|set| é usado para atribuição de um valor passado (que chamamos de value) e \verb|get| é usado para retorno de valor salvo no objeto.
+\\~\\
+Vamos ver um programa simples que utiliza esses conceitos.
+
+\begin{Verbatim}[tabsize=4,frame=single]
+namespace WorkSpace
+{
+	class pessoa
+	{
+		private string _name;
+
+		public string name
+		{
+			get {return _name;}
+			set {_name = value;}
+		}
+
+		private double _salary;
+
+		public double salary
+		{
+			get {return _salary;}
+			set {_salary = value;}
+		}
+	};
+
+	class Program
+	{
+		static void Main(string[] args)
+		{
+			pessoa xpes = new pessoa();
+
+			xpes.name = "Clark Kent";
+			xpes.salary = 1234.56;
+
+			Console.WriteLine($"Nome: {xpes.name}");
+			Console.WriteLine($"Salário: R$ {xpes.salary}");
+		}
+	}
+}
+\end{Verbatim}
+
+Na linha \verb|xpes.name = "Clark Kent"| vemos como a função interna \verb|set| funciona. Ela recebe o valor e atribui à variável provada \verb|_name|.
+\\~\\
+Quando definimos um atributo privado e funções (\verb|get| e \verb|set|) que manipulam esse atributo dentro da classe, podemos dizer que criamos uma \textbf{propriedade} do objeto.
+\\~\\
+Já temos os conceitos de objeto, atributo e propriedade bem definidos. Agora vamos aprender sobre as funções dentro de um objeto. A essas funções, damos o nome de \textbf{métodos ou serviços do objeto}.
+
+\begin{Verbatim}[tabsize=4,frame=single]
+class circulo
+{
+	private double _raio;
+
+	public double raio
+	{
+		get { return _raio; }
+		set { _raio = value; }
+	}
+
+	public double calcArea()
+	{
+		return Math.PI * Math.Pow(_raio, 2);
+	}
+}
+\end{Verbatim}
+
+Aqui temos um atributo chamado \verb|_raio|. Uma propriedade chamada \verb|raio|. E, por fim, temo também um método chamamdo \verb|calcArea|. Abaixo temos um exemplo de como usar esses conceitos na prática.
+
+\begin{Verbatim}[tabsize=4,frame=single]
+namespace WorkSpace
+{
+	class circulo
+	{
+		private double _raio;
+
+		public double raio
+		{
+			get { return _raio; }
+			set { _raio = value; }
+		}
+
+		public double calcArea()
+		{
+			return Math.PI * Math.Pow(_raio, 2);
+		}
+	}
+
+	class Program
+	{
+		static void Main(string[] args)
+		{
+			double area;
+
+			circulo xcirculo = new circulo();
+
+			xcirculo.raio = 2.5;
+
+			area = xcirculo.calcArea();
+
+			Console.WriteLine($"A área é igual a {area:F2}");
+			Console.ReadKey();
+		}
+	}
+}
+\end{Verbatim}
+
+\textbf{Comentário:} Eu não sei você, mas eu fiquei com dúvidas sobre essa parte do \verb|area:F2|. Isso é muito simples. Como o valor \verb|area| é do tipo double, ele possui várias casas após a vírgula. Esse parâmetro é a definição da quantidade de casas após a vírgula. Nesse caso, o resultado terá 2 casas após a vírgula.
+\\~\\
+Quando encapsulamos as propriedades e os métodos dentro de um objeto, estamos omitindo os detalhes de como objeto faz as transformações e armazena os dados. A essa técnica damos o nome de \textbf{ocultação da informação}. Isso é útil para garantir a integridade da manipulação dos dados por parte dos usuários e aumenta a segurança quanto a lógica implementada no código.
+\\~\\
+Podemos definir a lógica também dentro das funções de \verb|set| e \verb|get|.
+
+\begin{Verbatim}[tabsize=4,frame=single]
+namespace WorkSpace
+{
+	class circulo
+	{
+		private double _raio;
+
+		public double raio
+		{
+			get { return _raio; }
+			set
+			{
+				if (value < 0)
+					_raio = 0;
+				else
+					_raio = value;
+			}
+		}
+		public double calcArea()
+		{
+			return Math.PI* Math.Pow(_raio, 2);
+		}
+	}
+
+	class Program
+    {
+		static void Main(string[] args)
+        {
+			double area;
+
+			circulo xcir = new circulo();
+			xcir.raio = -2.5;
+			area = xcir.calcArea();
+
+			Console.WriteLine($"Area: {area:F2}");
+        }
+    }
+}
+\end{Verbatim}
+
+Desse modo, podemos ver que caso o valor inputado no raio for negativo, o resultado da área será 0. Caso for positivo, o valor da área será calculado normalmente. Se importássemos esse objeto sem saber o que acontece por dentro dele, não entenderíamos o que acontece exatamete dentro do objeto \verb|circulo|.
+
 \subsection{Mecanismos de Visibilidade/Acessibilidade}
 \subsection{Construtores de Classe}
 
@@ -1147,7 +1454,7 @@ Console.WriteLine(nome);
 Console.WriteLine(mid);
 Console.WriteLine(last);
 
-Console.WriteLine(" E Vide panel"lte sempre!");
+Console.WriteLine(" E Volte sempre!");
 \end{Verbatim}
 
 \begin{figure}[H]
@@ -5183,19 +5490,19 @@ Como nosso estudo nesse manual é mais focado em ADS eu só vou manter as anota�
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.5]{04-porta_NAND.png}
-	\caption{Porta OR  | Equação $Y = \overline{A\ . \ B} $}
+	\caption{Porta NAND  | Equação $Y = \overline{A\ . \ B} $}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.5]{05-porta_NOR.png}
-	\caption{Porta OR  | Equação $Y = \overline{A + B} $}
+	\caption{Porta NOR  | Equação $Y = \overline{A + B} $}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.5]{06-porta_XOR.png}
-	\caption{Porta OR  | Equação $Y = A \oplus B $}
+	\caption{Porta XOR  | Equação $Y = A \oplus B $}
 \end{figure}
 
 \subsubsection{Expressões Lógicas e Circuitos}
