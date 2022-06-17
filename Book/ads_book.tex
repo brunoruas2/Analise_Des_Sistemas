@@ -5663,9 +5663,9 @@ Podemos categorizar as portas lógicas em 3 grupos:
 	\item Expressões Lógicas e Circuitos Digitais
 \end{itemize}
 
-Eu já trabalhei bem a fundo a lógica matemática no meu curso do Projeto Matemática. Você pode conferir no capítulo 02 nesse \href{https://github.com/brunoruas2/Meus_Estudos/blob/main/Matem%C3%A1tica/Book%20of%20Proof%20-%20Richard%20Hammack/book_of_proof.pdf}{[LINK]}. A única diferença é que quando lá for TRUE ou VERDADE, aqui será 1 e, claramente, quando lá for FALSE ou FALSO, aqui será 0. 
+Eu já trabalhei bem a fundo a lógica matemática no meu curso do Projeto Matemática. Você pode conferir no capítulo 02 nesse \href{https://github.com/brunoruas2/Meus_Estudos/blob/main/Matem%C3%A1tica/Book%20of%20Proof%20-%20Richard%20Hammack/book_of_proof.pdf}{[link]}. A única diferença é que quando lá for TRUE ou VERDADE, aqui será 1 e, claramente, quando lá for FALSE ou FALSO, aqui será 0. 
 \\~\\
-Como nosso estudo nesse manual é mais focado em ADS eu só vou manter as anotações referentes à transposição da algebra booleana para os circuitos eletrônicos.
+Como nosso estudo nesse manual é mais focado em Análise e Desenvolvimento de Sistemas, vamos manter as anotações referentes à transposição da algebra booleana para os circuitos eletrônicos. Mas caso haja alguma dúvida, a leitura do material acima é recomendada.
 
 \subsubsection{Operadores Básicos}
 
@@ -5709,13 +5709,45 @@ Como nosso estudo nesse manual é mais focado em ADS eu só vou manter as anota�
 
 \subsubsection{Expressões Lógicas e Circuitos}
 
-Podemos usar os operadores lógicos para criar expressões do tipo $ Y = (A+B).C $ que pode ser lida como "Y é igual a A ou B e C"\footnote{Usando os símbolos lógicos mais clássicos, podemos escrever como $Y: (A \lor B) \land C $}. Podemos também usar os diagramas de circuitos para representar exatamente essa mesma opração lógica.
+Podemos usar os operadores lógicos para criar expressões do tipo $ Y = (A+B).C $ que pode ser lida como "Y é igual a (A ou B) e C"\footnote{Usando os símbolos lógicos mais clássicos, podemos escrever como $Y: (A \lor B) \land C $}. Podemos também usar os diagramas de circuitos para representar exatamente essa mesma opração lógica.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.8]{07-operacao_logica.png}
 \end{figure}
 
+Para entender como cada input produz um resultado é necessário usarmos uma \textbf{tabela verdade} que nos mostra todos os casos entre os inputs e os outputs.
+\\~\\
+\textbf{Desafio:} Vamos olhar a tabela verdade abaixo:
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+A & B & C & Y \\
+\hline
+\hline
+0 & 0 & 0 & 1 \\
+\hline
+0 & 0 & 1 & 1 \\
+\hline
+0 & 1 & 0 & 1 \\
+\hline
+0 & 1 & 1 & 1 \\
+\hline
+1 & 0 & 0 & 1 \\
+\hline
+1 & 0 & 1 & 1 \\
+\hline
+1 & 1 & 0 & 1 \\
+\hline
+1 & 1 & 1 & 0 \\
+\hline
+\end{tabular}
+\end{center}
+
+Qual função lógica produz o resultado compatível para a coluna Y? A resposta está na observação cuidadosa dos valores. Podemos ver que sempre que tivermos algum valor 0 como input, o resultado será 1. Como existe essa alternância, podemos ver que o operador de negação está sendo usado. Além disso, se tivéssemos o operador "ou" aliado a um operador de negação, na linha $(0,0,1)$ teríamos o resultado 1 que, ao ser negado, retornaria um resultado 0.
+\\~\\
+Portanto, só nos resta acreitar que temos uma situação de operações do tipo "e" e de negação. A essa estrutura damos o nome de "NOT-AND" ou "NAND". Em temos lógicos formais, temos a expressão $\neg (A \land B \land C)$ e na notação que usamos no curso, temos um $\overline{(A . B . C)}$.
 
 \subsection{Circuitos Lógicos Digitais Básicos}
 \subsection{Introdução à Organização de Computadores}
