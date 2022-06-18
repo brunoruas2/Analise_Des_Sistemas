@@ -5750,6 +5750,106 @@ Qual função lógica produz o resultado compatível para a coluna Y? A resposta
 Portanto, só nos resta acreitar que temos uma situação de operações do tipo "e" e de negação. A essa estrutura damos o nome de "NOT-AND" ou "NAND". Em temos lógicos formais, temos a expressão $\neg (A \land B \land C)$ e na notação que usamos no curso, temos um $\overline{(A . B . C)}$.
 
 \subsection{Circuitos Lógicos Digitais Básicos}
+
+Com o uso das portas lógicas, nós podemos construir circuitos mais complexos e que desempenham funções importantes para o funcionamento de um computador. Podemos agrupar esses circuitos (também chamados de módulos) em dois grupos:
+\begin{itemize}
+	\item Circuitos Lógicos Combinacionais
+		\begin{itemize}
+			\item Multiplexadores
+			\item Demultiplexadores
+			\item Codificadores
+			\item Decodificadores
+		\end{itemize}
+	\item Circuitos Sequenciais
+		\begin{itemize}
+			\item Registradores
+			\item Contadores
+		\end{itemize}
+\end{itemize}
+
+\subsubsection{Circuitos Combinacionais}
+
+Os \textbf{circuitos combinacionais} são construídos de maneira que o resultado obtido por ele é condiconado ao input atual nas portas lógicas que o compões. Para analizarmos um circuito composto de $n$ portas lógicas e $m$ saídas, podemos usar a tabela verdade, símbolos gráficos no padrão das portas que aprendemos antes e equações booleanas que convertem a lógica eletrônica para a matemática.
+\\~\\
+Observemos a tabela verdade abaixo:
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{A} & \textbf{B} & \textbf{C} & \textbf{F} \\
+\hline
+\hline
+0 & 0 & 0 & 0 \\
+\hline
+0 & 0 & 1 & 0 \\
+\hline
+0 & 1 & 0 & 1 \\
+\hline
+0 & 1 & 1 & 1 \\
+\hline
+1 & 0 & 0 & 0 \\
+\hline
+1 & 0 & 1 & 0 \\
+\hline
+1 & 1 & 0 & 1 \\
+\hline
+1 & 1 & 1 & 0 \\
+\hline
+\end{tabular}
+\end{center}
+
+Para criar a representação do circuito lógico que corresponde a coluna F, basta observarmos as condições necessárias para o valor 1 na referida coluna. Temos 3 eventos em que isso acontece. Podemos demonstrar essa relação pode meio da seguinte equação boolena:
+
+$$ F = \overline{A} B \overline{C} + \overline{A} B C + A B \overline{C} $$
+
+A essa primeira maneira de escrita, damos o nome de \textbf{Soma de Produtos} ou \textbf{Sum Of Products (SOP)}.
+\\~\\
+Uma outra forma de representarmos o circuito F é se focarmos na negativa das condições que retornam o valor 0. Desse modo, também podemos representar o circuito da seguite maneira:
+
+$$ F = \overline{\overline{A B C}} . \overline{\overline{A B} C} . \overline{A \overline{B C}} . \overline{A \overline{B} C} . \overline{A B C} $$
+
+Podemos visualizar essa condição no diagrama abaixo.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{31-circuito-logico.png}
+	\caption{Um Circuito Lógico de uma Soma de Produtos}
+\end{figure}
+
+Ao aplicarmos o teorema de DeMorgan $(\overline{X1 . X2} = \overline{X1} + \overline{X2})$ nessa segunda versão podemos desenvolve-la até chegarmos em uma terceira configuração:
+
+$$ F = (A + B + C) . (A + B + \overline{C}) . (\overline{A} + B + C) . (\overline{A} + B + \overline{C}) . (\overline{A} + \overline{B} + \overline{C}) $$
+
+Que chamamos de \textbf{Produto das Somas} ou \textbf{Product of Sums (POS)}.
+\\~\\
+\textbf{Comentário:} O material do microfundamento é consideravelmente reduzido nessa parte. Mas como estou perto da prova enquanto escrevo essa parte, terei que, por agora, reduzir a profundidade e seguir como é dado pelo material da aula. Em tempo oportuno eu volto aqui e expando essa seção.
+\\~\\
+Agora que entendemos um pouco melhor sobre cisrcuitos lógicos combinacionais, vamos aprender mais sobre alguns circuitos desse tipo.
+\\~\\
+Os \textbf{multiplexadores} são circuitos combinacioinais que selecionam $n$ entradas a uma única saída por meio de suas linhas de seleção. Para cada duas entradas, serão necessárias 1 linha de seleção. Os \textbf{demultiplexadores} são o oposto, ligando uma única entrada para $n$ saídas.
+\\~\\
+Um \textbf{codificador} normalmente só permite que uma das entradas esteja ativa a cada instante e sua função é converter os valores de entrada em um número binário. Similarmente, um \textbf{decodificador} recebe um binário como entrada e a saída será alguma linha previamente definida.
+
+\subsubsection*{Circuitos Sequenciais}
+
+Por outro lado, os \textbf{circuitos sequenciais} usam elementos armazenadores chamados \textbf{latches} e \textbf{flip-flops} e possuem a cacapidade de armazenamento de informações.
+\\~\\
+Um \textbf{latch} é um circuito capaz de armazenar o valor de 1 bit e pode ser construído com 2 portas NOR ou NAND como na imagem abaixo.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1]{32-circuito-latch.png}
+	\caption{Circuito Latch}
+\end{figure}
+
+A entrada S é chamada de Set e atribui um valor ao sistema. A porta R é chamada de Reset e retorna o valor 0 para o nosso circuito. Se ambos são 0, o nosso sistema retorna um status inalterado memorizando o estado anterior.
+\\~\\
+Com o latch podemos usar o controle de tempo (chamado de \textbf{clock}) para controlarmos o comportamento oscilante dos circuitos sequenciais.
+\\~\\
+Os circuitos sequenciais são precisamente os circutos com latch e sinais de controle por clock. São muito releventes para os computadores pois possuem a capaciade de memorização.
+\\~\\
+Existem dois tipos de circuitos sequenciais muito importantes para a estrutura dos computadores modernos. O primeiro deles é o \textbf{registradores} que são usados para memorizar temporariamente informações em memória maiores que 1 bit. Os \textbf{contadores} usam o clock para a contagem da passagem do tempo.
+
 \subsection{Introdução à Organização de Computadores}
 \subsection{Unidade Central de Processamento - UCP}
 \subsection{Memória}
