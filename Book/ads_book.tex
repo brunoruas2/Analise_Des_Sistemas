@@ -22,6 +22,7 @@
 \usepackage{enumitem,amssymb} % to create a checkbox
 % \usepackage{circuitikz} % para desenhar circuitos lógicos
 \usepackage{pifont}
+\usepackage{chronology} % to draw a horizontal line with markers
 
 \DeclareUnicodeCharacter{0301}{\'{e}}
 \graphicspath{{./images/}} % set an default images folder
@@ -5816,7 +5817,7 @@ Podemos visualizar essa condição no diagrama abaixo.
 	\caption{Um Circuito Lógico de uma Soma de Produtos}
 \end{figure}
 
-Ao aplicarmos o teorema de DeMorgan $(\overline{X1 . X2} = \overline{X1} + \overline{X2})$ nessa segunda versão podemos desenvolve-la até chegarmos em uma terceira configuração:
+Ao aplicarmos o teorema de DeMorgan $(\overline{X1 . X2}) = \overline{X1} + \overline{X2}$ nessa segunda versão podemos desenvolve-la até chegarmos em uma terceira configuração:
 
 $$ F = (A + B + C) . (A + B + \overline{C}) . (\overline{A} + B + C) . (\overline{A} + B + \overline{C}) . (\overline{A} + \overline{B} + \overline{C}) $$
 
@@ -5844,19 +5845,148 @@ Um \textbf{latch} é um circuito capaz de armazenar o valor de 1 bit e pode ser 
 
 A entrada S é chamada de Set e atribui um valor ao sistema. A porta R é chamada de Reset e retorna o valor 0 para o nosso circuito. Se ambos são 0, o nosso sistema retorna um status inalterado memorizando o estado anterior.
 \\~\\
-Com o latch podemos usar o controle de tempo (chamado de \textbf{clock}) para controlarmos o comportamento oscilante dos circuitos sequenciais.
+Com o latch podemos usar o controle de tempo (chamado de \textbf{clock}) para controlarmos o comportamento oscilante de alguns circuitos sequenciais mais complexos.
 \\~\\
-Os circuitos sequenciais são precisamente os circutos com latch e sinais de controle por clock. São muito releventes para os computadores pois possuem a capaciade de memorização.
+Os circuitos sequenciais são criados com o uso dos latchs e sinais de controle por clock. São muito releventes para os computadores pois permitem a capaciade de memorização de informação na memória de trabalho. Aqui, não estamos falando dos discos rígidos ou memória flash.
 \\~\\
-Existem dois tipos de circuitos sequenciais muito importantes para a estrutura dos computadores modernos. O primeiro deles é o \textbf{registradores} que são usados para memorizar temporariamente informações em memória maiores que 1 bit. Os \textbf{contadores} usam o clock para a contagem da passagem do tempo.
+Existem dois tipos de circuitos sequenciais muito importantes para a estrutura dos computadores modernos. O primeiro deles é o \textbf{registradores} que são usados para memorizar temporariamente informações em memória maiores que 1 bit (as de 1 bit podem ser armazenadas diretamente pelo latch). Os \textbf{contadores} usam o clock para a contagem da passagem do tempo.
 
 \subsection{Introdução à Organização de Computadores}
+
+A medida que os computadores foram evoluindo, a representação das suas partes por meio das portas digitais se tornou inviável devido ao número exponencial de portas que faziam parte de cada nova geração de computadores.
+\\~\\
+Desse modo, a representação por meio da \textbf{hierarquia de subsistemas} se tornou mais adequada. O objetivo é conseguirmos compreender como cada subsistema se interliga com os demais e desempenha funções específicas para o correto funcionamento do equipamento.
+\\~\\
+Para prosseguirmos, é necessário definirmos o que seria esse "correto funcionamento"\ dos computadores. Em suma, podemos afirmar que um computador deve realizar 4 funções:
+\begin{itemize}
+	\item Processamento de Dados - Produzir nova informação a partir de informação anterior
+	\item Armazenamento de Dados - Capacidade de memorizar tanto no prazo de trabalho quanto no longo prazo
+	\item Transferência de Dados - Envio das informações por meio dos dispositivos de entrada e saída
+	\item Controle - Para a garantia das 3 funções acima
+\end{itemize}
+
+Para realizar esses trabalhos, podemos dividir o computador moderno nos seguintes subsistemas:
+\begin{itemize}
+	\item Unidade Central de Processamento (CPU) - Que faz o controle de toda a operação do computador
+	\item Memória Principal - Conectada por meio de um barramento ao CPU, armazena os dados necessários para o CPU realizar as operações desejadas
+	\item Entrada e Saídad e Dados - São os elementos que inputam informações ao CPU e retiram dele os resultados para o mundo exterior
+	\item Barramento - Meio físico de comunicação entre os subsistemas do computador
+\end{itemize}
+
+\subsubsection*{Organização x Arquitetura}
+
+Embora esses conceitos sejam muito parecidos. Podemos definir a \textbf{organização de computadores} como a descrição de computadores por meio dos seus subsistemas, suas funções e interconexões. Por sua vez, a \textbf{arquitetura de computadores} está relacionada à conexão entre o projeto de computador e a execução dos programas, ou seja, é o estudo de como uma mudança no design de um computador impacta na execução dos programas.
+\\~\\
+Uma mesma arquitetura pode ser implementada em várias organizações possíveis. A arquitetura tem foco na abstração do computador e a organização tem foco na implementação.
+\\~\\
+Para facilitar a diferenciação dos termos, vamos elencar alguns tópicos de estudo dessas áreas.
+
+\begin{itemize}
+	\item Organização de Computadores
+		\begin{itemize}
+			\item Implementação de hardware
+			\item Implementação de sistemas de controle que transmitem a execução das instruções
+			\item Comunicação entre o computador e seus periféricos
+			\item Tecnologia usada pra a memória
+		\end{itemize}
+	\item Arquitatura de Computadores
+		\begin{itemize}
+			\item Conjunto de instruções que a CPU processa
+			\item O formato das instruções
+			\item Maneiras de endereçamento de memória
+			\item Representação dos tipos de dados usados nas instruções
+		\end{itemize}
+\end{itemize}
+
+\subsubsection*{Organização Básica de um Computador Digital - Modelo de Von Neumann}
+
+Antigamente, os programas executados pelos computadores eram feitos por meio do arranjo físico dos seus componentes. A programação era feita diretamente no hardware. contudo, uma nova arquitetura foi necessária porque se buscava a construção de um mecanismo que permitesse, ao mesmo tempo, o salvamento tanto dos dados quanto das instruções necessárias para o processamento dos mesmo.
+\\~\\
+Foi nesse contexto que a arquitetura de Von Neumann foi construída. Ela é constituída de, basicamente, 3 componentes principais interligados por um barramento:
+\begin{itemize}
+	\item CPU
+	\item Memória Principal
+	\item Dispositivos de Entrada e saída
+\end{itemize}
+
 \subsection{Unidade Central de Processamento - UCP}
+
+Na seção passada, nós vimos que a arquitetura de Von Neumann possui o CPU (também chamado de processador) como um dos seus componentes. Durante um \textbf{ciclo de execução}, o processador deve buscar as instruções na memória, decodificá-la e executá-la. Para entender melhor como ele faz tudo isso, podemos subdividi-lo nas seguintes partes:
+\begin{itemize}
+	\item  Unidade de Controle - É quem faz a busca na memória e permite a execução das instruções (programas)
+	\item Unidade Lógica e Aritmética (ULA) - Executa as instruções enviadas pela unidade de controle referentes às operações lógicas e aritméticas
+	\item Registradores - São componentes de memória de extrema velocidade de leitura mas baixa disponibilidade. Essa memória é usada temporariamente para auxiliar o ciclo de execução
+\end{itemize}
+
+\subsubsection*{Ciclo de Execução de Instruções}
+
+As instruções sempre são executadas sequencialmente. Quem controle o fluxo de qual instrução será executada a cada ciclo é um registrador chamado \textbf{controlador de programas (PC)}. Ele armazena o endereço da próxima instrução a ser executada e, a cada ciclo, é reescrito com o novo endereço de execução.
+\\~\\
+O ciclo de execução é composto seguites etapas:
+\begin{itemize}
+	\item Busca da próxima execução - O PC indica o endereço na memória da instrução a ser executada. Esse endereço é carregado em outro registrador chamado \textbf{registrador de instruções (RI)} e então o PC recebe o endereço da próxima instrução
+	\item Decodificação da instrução - o endereço armazenado no RI (também chamado de \textbf{opcode}) é lido pela unidade de controle e o comando à ULA é feito para execução da instrução
+	\item Busca dos operandos - A unidade de controle busca todos os dados necessários à execução da instrução por meio do envio de sinais através do barramento\footnote{Sempre que você está vendo uma tela de loading, é isso que está acontecendo no seu computador.}
+	\item Execução da Instrução - A ULA, de posse dos dados, faz a execução da instrução lendo os operandos carregados em memória pela unidade de controle
+	\item Repetição do processo
+\end{itemize}
+
 \subsection{Memória}
+
+Idealmente, a memória deveria ser super rápida e abundante. O problema é que existe um trade-off entre essas duas qualidades. Quanto mais rápida é a leitura, mais cara é a memória. Esse é o motivo de, na arquitetura dos computadores atuais, existirem diversos tipos de memória.
+\\~\\
+\begin{center}
+\begin{chronology}[1]{0}{4}{10cm}[7cm]
+	\event{1}{\small{Registradores}}
+	\event{2}{\small{Memoria Cache}}
+	\event{3}{\small{Memoria Principal}}
+	\event{4}{\small{Memoria Secundária}}
+\end{chronology}
+\end{center}
+
+Na esquerda estão as memórias mais rápidas e caras. Na direita, estão as mais lentas e baratas.
+\\~\\
+A memória principal é a memória RAM e ROM dos nossos computadores. Dela, a CPU lê as instruções escritas em alguma linguagem de programação e é nela que o processador salva o resultado das operações.
+\\~\\
+Para entender como a memória principale funciona, basta pensarmos em um conjunto de pequenas células (posições) de armazenamento de informação. Todas as células da memória possuem o mesmo tamanho (medido em quantidade de bits). Os \textbf{endereços} são os indentificadores da posição física de cada célula no material de armazenamento (disco magnético ou chip).
+\\~\\
+Se soubermos a quantidade de bits em cada célula e a quantidade de células, saberemos a capacidade de armazenamento do dispositivo por meio do cálculo
+
+$$ \textrm{Capacidade} = 2^{\textrm{Numero de Celulas}} * \textrm{Numero de bits por celula} $$
+
+A memória principal pode ser divida em \textbf{memória RAM - Random Access Memory}, que pode ser lida e apagada a qualquer momento mas não é capaz de armazenar os dados após o desligamento do computador, e a \textbf{memória ROM - Read Only Memory} que não pode ser alterada na execução do programa mas se mantém após o desligamento do computador.
+\\~\\
+\textbf{Comentário:} A memória RAM ainda é subdividida em outras memórias mas veremos isso em uma atualização desse curso.
+
+A memória secundária é o HD e o SSD dos nossos computadores. O processador só faz uso dela por meio de dispositivos de entrada e saída. A vantagem dela é o seu preço que é infinitamente menor que as memórias mais rápidas.
+
 \subsection{Entrada e Saída}
 
+São os componentes que permitem os usuários acessar e visualizar os resultados dos ciclos de processamento. 
+\begin{itemize}
+	\item E/S de entrada - Teclado, Mouse, Scanner ...
+	\item E/S de saída - Impressoras, Monitores, Caixas de Som ...
+	\item Interface de E/S - São os programas que intermediam a comunicação entre o CPU e o dispositivos
+\end{itemize}
+
+Existem alguns tipos de comunicações entre os dispositivos de Entrada e Saída mas nós vamos parar por aqui.
+
 \section{Arquitetura de Computadores}
+
 \subsection{Arquiteturas RISC e CISC}
+
+Como o processador exerce um papel central na atividade de um computador moderno, não é nada estranho se preocupar muito sobre como ele é capaz de compreender as instruções e executar. Na verdade, existe um campo específico de pesquisa chamado \textbf{arquitetura de instruções do precessador}.
+\\~\\
+Esse campo estuda o formato das instruções, os códigos de operação, os reistradores, a memória de dados e outros tópicos relacionados a atividade desse componente.
+\\~\\
+Na primeira geração de processadores, o conjunto de operações era reduzido para simplificação da construção desse componente. Na década de 60, a quantidade de operações aumentou junto com a complexidade dos processadores. A essa família dá-se o nome de \textbf{CISC - Complex Instruction Set Computer}.
+\\~\\
+Os computadores da família CISC possuem uma maior quantidade de instruções, contudo, o seu ciclo de processamento é mais lento. O exempo dessa família de processadores é a Intel: 286, 386, 486 e Pentium.
+\\~\\
+No final da década de 80, os processadores com um conjunto reduzido de instruções voltaram a serem utilizados sob o nome de \textbf{RISC - Reduced Instruction Set Computer}. A ideia era a de melhorar o desempenho dos processadores via simplificação e ganho de velocidade. Os exemplos são os processadores MIPS e a arquitetura ARM (muito usados nos smartphones).
+\\~\\
+Hoje em dia os processadores possuem ambas as abordagens implementadas simultaneamente.
+
 \subsection{Arquitetura do Conjunto de Instruções: Exemplo do MIPS}
 \subsection{Linguagem de Montagem}
 \subsection{Conceito de Pipeline de Instruções}
