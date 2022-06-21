@@ -84,6 +84,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Projeto: Desenvolvimento Web Front-End}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Organização do Material}
+
+Bem vindo ao meu material do curso de Análise e Desenvolvimento de Sistemas pela PUC/MG. Meu nome é Bruno Ruas e meu método de estudo é produzir materiais em pdf para auxiliar outros estudantes no futuro. O curso está divido em 5 semestres orientados sempre por um projeto.
+\\~\\
+No primeiro capítulo de cada semestre está a descrição do projeto e uma trilha dos microfundamentos (que são as matérias) que devem ser estudados. Como, a cada etapa, temos mais de um microfundamento a ser estudado, eu não tenho como organizar as matérias em uma ordem definitiva, portanto, recomendo fortemente que vocês se guiem pelo projeto para definir quais microfundamentos estudar antes dos outros.
+\\~\\
+Esse trabalho é totalmente voluntário e, se vocês quiserem, sintam-se livres para contribuir no repositório do github nesse \href{https://github.com/brunoruas2/Analise_Des_Sistemas/blob/main/README.md}{[link]}. Podem me seguir no twitter também \href{https://twitter.com/bruno_ruas2}{[link]}.
+
 \section*{Microfundamentos}
 
 \begin{todolist} % options: \item[\done] and \item[\wontfix]
@@ -93,7 +101,7 @@
 	\item[\done] Fundamentos de Engenharia de Software
 	\item[\done] Lógica Computacional
 	\item[\wontfix] Matemática Básica
-	\item Organização de Computadores
+	\item[\done] Organização de Computadores
 	\item[\done] Pensamento Computacional
 \end{todolist}
 
@@ -5988,10 +5996,138 @@ No final da década de 80, os processadores com um conjunto reduzido de instruç
 Hoje em dia os processadores possuem ambas as abordagens implementadas simultaneamente.
 
 \subsection{Arquitetura do Conjunto de Instruções: Exemplo do MIPS}
+
+No tópico anterior, nosso foco foi na história dos desenhos físicos dos processadores. Agora, nossa atenção será voltada para a arquitetura das instruções, ou seja, as operações nativas que os processadores já vem de fábrica capazes de fazer.
+\\~\\
+Diferente da arquitetura física, o mercado acabou por convergir para um padrão relativamente comum de arquitetura de instruções básicas. Como exemplo, o material cita o \textbf{Microprocessor Without Interlocked Pipeline Stages - MIPS}.
+\\~\\
+Desenvolvido na década de 80, o MIPS foi implementado mesmo antes da RISC ser criada. Hoje em dia, podemo encontrar essa arquitetura de opareções em equipamentos da Cisco, Nintendo, Toshiba, Sony e etc.
+\\~\\
+A arquitetura do conjunto de instruções define os tipos de instruções executáveis pelo processador, o formato de cada instrução, o tamanho em bits delas, o métodos de endereçamento e outras taregas importantes para o funcionamento desse componente.
+\\~\\
+Podemos elencar algumas classes de instruções que o MIPS 32 bits é capaz de executar:
+\begin{itemize}
+	\item Operações Aritméticas
+	\item Operações Lógicas
+	\item Transfência de Dados
+	\item Desvios Condicionais
+	\item Desvios Incondicionais
+\end{itemize}
+
 \subsection{Linguagem de Montagem}
+
+Já sabemos que o processador só trabalha com número em binário, entretanto, também sabemos que os programas são escritos em linguagens de programação que não são, definitamente, escritas em binário. Existe uma linguagem que está mais próxima do binário mas ao mesmo tempo pode ser lida (com a devida prática do leitor) e escrita para construção de programas. Essa linguagem é a \textbf{linguagem assembly} ou \textbf{de montagem}.
+\\~\\
+Em assembly, cada instrução é definida por um mnemônico (ADD, SUB, LW, SW, ...) que indica um operador nativo do processador. Cada instrução dessa possui um correspondente em binário do lado do processador de modo que é possível converter de um para o outro por um programa chamado \textbf{assempler} ou \textbf{montador}. No MIPS, cada instrução assembly é convetida em um binário de 32 bits no formato RIJ.
+\\~\\
+O assembly contém um conjunto de classes de instruções que, a primeira vista, se parecem muito com qualquer linguagem de alto nível:
+\begin{itemize}
+	\item Instruções Aritméticas
+		\begin{itemize}
+			\item \verb|add $t1, $t2, $t3 # t1 = t2 + t3|
+			\item \verb|sub $t1, $t2, $t3 # t1 = t2 - t3|
+			\item \verb|addi $t1, $t2, 10 # t1 = t2 + 10|
+		\end{itemize}
+	\item Instruções Lógicas
+		\begin{itemize}
+			\item \verb|and $s1, $s2, $t0 # s1 = s2 AND t0|
+			\item \verb|or $s1, $s2, $t0 # s1 = t2 OR t0|
+		\end{itemize}
+	\item Instruções de Uso de Memória
+		\begin{itemize}
+			\item \verb|lw $t0, 0($s3) # t0 receber valor de s3|
+			\item \verb|sw $t0, 0($s3) # t0 é armazenado em s3|
+		\end{itemize}
+	\item Instruções de Controle de Fluxo
+		\begin{itemize}
+			\item \begin{Verbatim}[tabsize=4,frame=single]
+# Codigo em C    # Codigo em Assembly
+if (i ==  j)     bne $s3, $s4, Else  # vai pra else se s3 != s4
+	f = g + h;   add $s0, $s1, $s2     # f=g+h
+else             j Exit              # salto para Exit
+	f = h - h;   Else: sub $s0, $s1, $s2
+                 Exit:
+			\end{Verbatim}
+		\end{itemize}
+\end{itemize}
+
+Já conseguimos ver que em assembly é necessário mais linhas quando comparamos a uma linguagem de alto nível. Para finalizar, vamos comparar a declaração de uma função em C e em assembly.
+
+\begin{Verbatim}[tabsize=4,frame=single]
+# Construcao de funcao em C
+int func(int g, int h, int i, int j) 
+{
+	int f;
+	f = (g+h) - (i+j);
+	return f;
+}
+
+# Contrucao da mesma funcao em assembly
+func:
+	add t0, a0, a1    # t0 recebe g + h
+	add t1, a2, a3    # t1 recebe i + j
+	sub s0, t0, t1    # s0 recebe t0 - t1
+	add v0, s0, zero  # v0 recebe s0 + 0
+	jr ra             # retorna o resultado
+\end{Verbatim}
+
+\textbf{Dica:} Caso, em algum momento da sua vida, você precise programar em assembly, uma boa dica é usar o simulador/IDE MARS - MIPS Assembler and Runtime Simulator. Disponível nesse \href{http://courses.missouristate.edu/kenvollmar/mars/}{[link]}.
+
 \subsection{Conceito de Pipeline de Instruções}
-\subsection{Paralelismo em Nível de Instruções}
-\subsection{Paralelismo em Nível de Processadores}
+
+A essa altura, já compreendemos relativamente bem como um processador é capaz de trabalhar e como a ordem da execução das instruções é relevante para o trabalho dele. Entretanto, existem etapas de processamento que não são necessariamente encadeadas, ou seja, não dependem uma do resultado da outra. Diante dessa constatação, o conceito de \textbf{pipeline} surge como uma técnica de otimização que executa instruções simultaneamente parecido com uma linha de montagem industrial.
+\\~\\
+O pipeline pode ser pensando como uma "triha"\ que o processador possui para trabalhar a cada ciclo de clock. Nos processadores modernos, temos várias linhas de trabalho simultâneo que podem ser usadas para paralelismo de tarefas.
+\\~\\
+Se pensarmos que, para cada instrução, o processador deve passar pelos 6 estágios abaixo:
+\begin{itemize}
+	\item FI - Fetch Instruction/Busca da Instrução
+	\item DI - Decodificação da Instrução
+	\item CO - Cálculo dos Endereços dos Operandos
+	\item BO - Busca do Operandos
+	\item EI - Execução da Instrução
+	\item WO - Armazenamento do Operando Destino
+\end{itemize}
+
+A cada ciclo de clock, então, ao invés de termos um único programa sendo executado por uma linha de pipeline do processador, podemos separar esse programa em unidades menores independentes que executam, cada uma em uma linha própria, suas etapas paralelamente a cada ciclo de clock. Abaixo nós temos uma tabela demonstrando o ganho de tempo com o uso dessa técnica para duas instruções.
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\ 
+\hline
+\hline
+Instrucao 1 & FI & DI & CO & FO & EI & WO & \\
+\hline
+Instrucao 2 &  & FI & DI & CO & FO & EI & WO \\
+\hline
+\end{tabular}
+\end{center}
+
+Podemos ver que as duas instruções estarão finalizadas em apenas 7 ciclos de clock. Sem o paralelismo, teríamos levado 12 ciclos para completar essas mesmas duas instruções.
+
+\subsection{Paralelismo em Nível de Instruções e Processadores}
+
+Existem dois tipos de paralelismo para obtenção de desempenho sem aumento do clock do processador:
+\begin{itemize}
+	\item Paralelismo a nível de instrução
+		\begin{itemize}
+			\item[] Existem duas abordagens típias para o paralelismo a nível de instrução:
+				\begin{itemize}
+					\item Superpipeline - Há uma quebra de estágios de pipeline em estágios menores que 1 clock mas. Um exemplo é o MIPS R4000 que é um RISC com Superpipeline.
+					\item Superescalar - Múltiplas unidades funcionais independentes que executam mais de uma instrução por clock. É como se houvesse mais de um pipeline dentro do processador. Os intel x86 usam essa técnica.
+				\end{itemize}
+		\end{itemize}
+	\item Paralelismo a nível de procassador
+		\begin{itemize}
+			\item[] É feito pelo uso de vários processadores ao mesmo tempo. E existem duas classes de computadores com essa abordagem:
+				\begin{itemize}
+					\item Multiprocessadores - Sistema com mais de uma CPU que compartilham a memória principal por meio de um processo coordenado. Podem ser implementados por barramento único ou memórias locais. CPUs fortemente acompladas.
+					\item Multicomputadores - Sistema com computadores interligados em rede com alguma topologia. O foco está na comunicação entre eles. Processadores fracamente acomplados.
+				\end{itemize}
+		\end{itemize}
+\end{itemize}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Pensamento Computacional}
